@@ -8,7 +8,7 @@
 
 @set EDITION 2.5
 @set UPDATED March 1995
-@set VERSION 2.5
+@set VERSION 2.5.4a
 
 @c FIXME - Reread a printed copy with a red pen and patience.
 @c FIXME - Modify all "See ..." references and replace with @xref's.
