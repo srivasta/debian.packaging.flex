@@ -345,19 +345,19 @@ m4_ifdef( [[M4_YY_NO_ANSI_FUNC_DEFS]],
 %#        yyscan_t yyscanner;
 %#
 %# Generate traditional function defs
-    m4_define( [[YYFARGS0]], [[(M4_YY_DEF_ONLY_ARG)
+    m4_define( [[YYFARGS0]], [[(M4_YY_DEF_ONLY_ARG) [[\]]
         M4_YY_DECL_LAST_ARG]])
-    m4_define( [[YYFARGS1]], [[($2 M4_YY_DEF_LAST_ARG)
-        $1 $2;
+    m4_define( [[YYFARGS1]], [[($2 M4_YY_DEF_LAST_ARG) [[\]]
+        $1 $2; [[\]]
         M4_YY_DECL_LAST_ARG]])
-    m4_define( [[YYFARGS2]], [[($2,$4 M4_YY_DEF_LAST_ARG)
-        $1 $2;
-        $3 $4;
+    m4_define( [[YYFARGS2]], [[($2,$4 M4_YY_DEF_LAST_ARG) [[\]]
+        $1 $2; [[\]]
+        $3 $4; [[\]]
         M4_YY_DECL_LAST_ARG]])
-    m4_define( [[YYFARGS3]], [[($2,$4,$6 M4_YY_DEF_LAST_ARG)
-        $1 $2;
-        $3 $4;
-        $5 $6;
+    m4_define( [[YYFARGS3]], [[($2,$4,$6 M4_YY_DEF_LAST_ARG) [[\]]
+        $1 $2; [[\]]
+        $3 $4; [[\]]
+        $5 $6; [[\]]
         M4_YY_DECL_LAST_ARG]])
 ]],
 [[
@@ -1124,9 +1124,9 @@ m4_ifdef( [[M4_YY_BISON_LVAL]],
     m4_dnl  The bison pure parser is used. Redefine yylex to
     m4_dnl  accept the lval parameter.
 
-    m4_define( [[M4_YY_LEX_PROTO]],
+    m4_define( [[M4_YY_LEX_PROTO]], [[\]]
                [[M4_YY_PARAMS(YYSTYPE * yylval_param M4_YY_PROTO_LAST_ARG)]])
-    m4_define( [[M4_YY_LEX_DECLARATION]],
+    m4_define( [[M4_YY_LEX_DECLARATION]], [[\]]
                [[YYFARGS1(YYSTYPE *,yylval_param)]])
 ]])
 
@@ -1134,9 +1134,9 @@ m4_ifdef( [[<M4_YY_BISON_LLOC>]],
 [[
     m4_dnl  Locations are used. yylex should also accept the ylloc parameter.
 
-    m4_define( [[M4_YY_LEX_PROTO]],
+    m4_define( [[M4_YY_LEX_PROTO]], [[\]]
                [[M4_YY_PARAMS(YYSTYPE * yylval_param, YYLTYPE * yylloc_param M4_YY_PROTO_LAST_ARG)]])
-    m4_define( [[M4_YY_LEX_DECLARATION]],
+    m4_define( [[M4_YY_LEX_DECLARATION]], [[\]]
                [[YYFARGS2(YYSTYPE *,yylval_param, YYLTYPE *,yylloc_param)]])
 ]])
 
