@@ -151,12 +151,12 @@ This manual documents @code{flex}.  It covers release @value{VERSION}.
 @end ifinfo
 
 @node Name, Synopsis, Top, Top
-@section Name
+@chapter Name
 
 flex - fast lexical analyzer generator
 
 @node Synopsis, Overview, Name, Top
-@section Synopsis
+@chapter Synopsis
 
 @example
 flex [-bcdfhilnpstvwBFILTV78+? -C[aefFmr] -ooutput -Pprefix -Sskeleton]
@@ -164,7 +164,7 @@ flex [-bcdfhilnpstvwBFILTV78+? -C[aefFmr] -ooutput -Pprefix -Sskeleton]
 @end example
 
 @node Overview, Description, Synopsis, Top
-@section Overview
+@chapter Overview
 
 This manual describes @code{flex}, a tool for generating programs
 that perform pattern-matching on text.  The manual
@@ -244,7 +244,7 @@ includes contact information
 @end table
 
 @node Description, Examples, Overview, Top
-@section Description
+@chapter Description
 
 @code{flex} is a tool for generating @dfn{scanners}: programs which
 recognized lexical patterns in text.  @code{flex} reads the given
@@ -260,7 +260,7 @@ expressions.  Whenever it finds one, it executes the
 corresponding C code.
 
 @node Examples, Format, Description, Top
-@section Some simple examples
+@chapter Some simple examples
 
 First some simple examples to get the flavor of how one
 uses @code{flex}.  The following @code{flex} input specifies a scanner
@@ -371,7 +371,7 @@ The details of this example will be explained in the
 following sections.
 
 @node Format, Patterns, Examples, Top
-@section Format of the input file
+@chapter Format of the input file
 
 The @code{flex} input file consists of three sections, separated
 by a line with just @samp{%%} in it:
@@ -439,7 +439,7 @@ pattern   action
 where the pattern must be unindented and the action must
 begin on the same line.
 
-See below for a further description of patterns and
+@xref{Patterns}, for a further description of patterns and
 actions.
 
 Finally, the user code section is simply copied to
@@ -468,7 +468,7 @@ an unindented comment (i.e., a line beginning with "/*")
 is also copied verbatim to the output up to the next "*/".
 
 @node Patterns, Matching, Format, Top
-@section Patterns
+@chapter Patterns
 
 The patterns in the input are written using an extended
 set of regular expressions.  These are:
@@ -697,7 +697,7 @@ bar-at-the-beginning-of-a-line.
 @end itemize
 
 @node Matching, Actions, Patterns, Top
-@section How the input is matched
+@chapter How the input is matched
 
 When the generated scanner is run, it analyzes its input
 looking for strings which match any of its patterns.  If
@@ -773,7 +773,7 @@ Also note that you cannot use @samp{%array} with C++ scanner
 classes (the @code{c++} option; see below).
 
 @node Actions, Generated scanner, Matching, Top
-@section Actions
+@chapter Actions
 
 Each pattern in a rule has a corresponding action, which
 can be any arbitrary C statement.  The pattern ends at the
@@ -1035,7 +1035,7 @@ macro and may be redefined.
 @end itemize
 
 @node Generated scanner, Start conditions, Actions, Top
-@section The generated scanner
+@chapter The generated scanner
 
 The output of @code{flex} is the file @file{lex.yy.c}, which contains
 the scanning routine @samp{yylex()}, a number of tables used by
@@ -1136,15 +1136,15 @@ returns 1.
 
 Three routines are available for scanning from in-memory
 buffers rather than files: @samp{yy_scan_string()},
-@samp{yy_scan_bytes()}, and @samp{yy_scan_buffer()}.  See the discussion
-of them below in the section Multiple Input Buffers.
+@samp{yy_scan_bytes()}, and @samp{yy_scan_buffer()}.  
+@xref{Multiple buffers, ,Multiple Input Buffers}.
 
 The scanner writes its @samp{ECHO} output to the @code{yyout} global
 (default, stdout), which may be redefined by the user
 simply by assigning it to some other @code{FILE} pointer.
 
 @node Start conditions, Multiple buffers, Generated scanner, Top
-@section Start conditions
+@chapter Start conditions
 
 @code{flex} provides a mechanism for conditionally activating
 rules.  Any rule whose pattern is prefixed with "<sc>"
@@ -1500,7 +1500,7 @@ To use start condition stacks, your scanner must include a
 @samp{%option stack} directive (see Options below).
 
 @node Multiple buffers, End-of-file rules, Start conditions, Top
-@section Multiple input buffers
+@chapter Multiple input buffers
 
 Some scanners (such as those which support "include"
 files) require reading from several input streams.  As
@@ -1675,7 +1675,7 @@ of the buffer.
 @end table
 
 @node End-of-file rules, Miscellaneous, Multiple buffers, Top
-@section End-of-file rules
+@chapter End-of-file rules
 
 The special rule "<<EOF>>" indicates actions which are to
 be taken when an end-of-file is encountered and yywrap()
@@ -1735,7 +1735,7 @@ comments.  An example:
 @end example
 
 @node Miscellaneous, User variables, End-of-file rules, Top
-@section Miscellaneous macros
+@chapter Miscellaneous macros
 
 The macro @code{YY_USER_ACTION} can be defined to provide an
 action which is always executed prior to the matched
@@ -1800,7 +1800,7 @@ warnings where because a rule's action ends with "return",
 the @code{YY_BREAK} is inaccessible.
 
 @node User variables, YACC interface, Miscellaneous, Top
-@section Values available to the user
+@chapter Values available to the user
 
 This section summarizes the various values available to
 the user in the rule actions.
@@ -1865,7 +1865,7 @@ condition.
 @end itemize
 
 @node YACC interface, Options, User variables, Top
-@section Interfacing with @code{yacc}
+@chapter Interfacing with @code{yacc}
 
 One of the main uses of @code{flex} is as a companion to the @code{yacc}
 parser-generator.  @code{yacc} parsers expect to call a routine
@@ -1890,7 +1890,7 @@ scanner might look like:
 @end example
 
 @node Options, Performance, YACC interface, Top
-@section Options
+@chapter Options
 @code{flex} has the following options:
 
 @table @samp
@@ -1903,8 +1903,8 @@ states.  If @emph{all} backing-up states are eliminated
 and @samp{-Cf} or @samp{-CF} is used, the generated scanner will
 run faster (see the @samp{-p} flag).  Only users who wish
 to squeeze every last cycle out of their scanners
-need worry about this option.  (See the section on
-Performance Considerations below.)
+need worry about this option.  (@pxref{Performance, ,
+Performance Considerations})
 
 @item -c
 is a do-nothing, deprecated option included for
@@ -2138,8 +2138,7 @@ scanners.
 
 @item -+
 specifies that you want flex to generate a C++
-scanner class.  See the section on Generating C++
-Scanners below for details.
+scanner class.  @xref{C++, ,Generating C++ Scanners}.
 
 @item -C[aefFmr]
 controls the degree of table compression and, more
@@ -2152,8 +2151,10 @@ performance because the elements of the tables are better
 aligned for memory access and computation.  On some
 RISC architectures, fetching and manipulating
 long-words is more efficient than with smaller-sized
-units such as shortwords.  This option can double
-the size of the tables used by your scanner.
+units such as shortwords.  This option can quadruple
+the size of the tables used by your scanner.  It has the
+side effect of permitting much larger scanners, however,
+if you need this.
 
 @samp{-Ce} directs @code{flex} to construct @dfn{equivalence classes},
 i.e., sets of characters which have identical
@@ -2419,8 +2420,7 @@ informs @code{flex} that you have derived @samp{foo} as a subclass of
 function @samp{foo::yylex()} instead of @samp{yyFlexLexer::yylex()}.
 It also generates a @samp{yyFlexLexer::yylex()} member function that
 emits a run-time error (by invoking @samp{yyFlexLexer::LexerError()})
-if called.  See Generating C++ Scanners, below, for additional
-information.
+if called.  @xref{C++, ,Generating C++ Scanners}.
 
 A number of options are available for lint purists who
 want to suppress the appearance of unneeded routines in
@@ -2439,7 +2439,7 @@ yy_scan_buffer, yy_scan_bytes, yy_scan_string
 unless you use @samp{%option stack}).
 
 @node Performance, C++, Options, Top
-@section Performance considerations
+@chapter Performance considerations
 
 The main design goal of @code{flex} is that it generate
 high-performance scanners.  It has been optimized for dealing
@@ -2756,7 +2756,7 @@ text but not "huge" quantities, where the cutoff between
 the two is at about 8K characters/token.
 
 @node C++, Incompatibilities, Performance, Top
-@section Generating C++ scanners
+@chapter Generating C++ scanners
 
 @code{flex} provides two different ways to generate scanners for
 use with C++.  The first way is to simply compile a
@@ -2975,7 +2975,7 @@ IMPORTANT: the present form of the scanning class is
 releases.
 
 @node Incompatibilities, Diagnostics, C++, Top
-@section Incompatibilities with @code{lex} and POSIX
+@chapter Incompatibilities with @code{lex} and POSIX
 
 @code{flex} is a rewrite of the AT&T Unix @code{lex} tool (the two
 implementations do not share any code, though), with some
@@ -3051,8 +3051,8 @@ interactive scanner.
 
 Also note that flex C++ scanner classes @emph{are}
 reentrant, so if using C++ is an option for you, you
-should use them instead.  See "Generating C++
-Scanners" above for details.
+should use them instead.  @xref{C++, ,Generating C++ 
+Scanners}.
 
 @item
 @samp{output()} is not supported.  Output from the @samp{ECHO}
@@ -3198,7 +3198,7 @@ enclosed in braces are simply terminated at the end of the
 line.
 
 @node Diagnostics, Files, Incompatibilities, Top
-@section Diagnostics
+@chapter Diagnostics
 
 @table @samp
 @item warning, rule cannot be matched
@@ -3251,8 +3251,7 @@ Your
 scanner specification includes recognizing the 8-bit
 character @var{x} and you did not specify the -8 flag, and your
 scanner defaulted to 7-bit because you used the @samp{-Cf} or @samp{-CF}
-table compression options.  See the discussion of the @samp{-7}
-flag for details.
+table compression options. @xref{Options, ,@samp{-7}flag}.
 
 @item flex scanner push-back overflow
 you used @samp{unput()} to push
@@ -3285,7 +3284,7 @@ must have listed at least one of them twice).
 @end table
 
 @node Files, Deficiencies, Diagnostics, Top
-@section Files
+@chapter Files
 
 @table @file
 @item -lfl
@@ -3311,7 +3310,7 @@ on some systems).
 @end table
 
 @node Deficiencies, See also, Files, Top
-@section Deficiencies / Bugs
+@chapter Deficiencies / Bugs
 
 Some trailing context patterns cannot be properly matched
 and generate warning messages ("dangerous trailing
@@ -3365,7 +3364,7 @@ somewhat greater than the number of states if it does.
 The @code{flex} internal algorithms need documentation.
 
 @node See also, Author, Deficiencies, Top
-@section See also
+@chapter See also
 
 @code{lex}(1), @code{yacc}(1), @code{sed}(1), @code{awk}(1).
 
@@ -3380,7 +3379,7 @@ Describes the pattern-matching techniques used by @code{flex}
 (deterministic finite automata).
 
 @node Author,  , See also, Top
-@section Author
+@chapter Author
 
 Vern Paxson, with the help of many ideas and much inspiration from
 Van Jacobson.  Original version by Jef Poskanzer.  The fast table
