@@ -49,7 +49,15 @@
 	return CHAR;
 
 #define RETURNNAME \
-	strcpy( nmstr, yytext ); \
+	if(strlen(yytext) < MAXLINE) \
+         { \
+	    strcpy( nmstr, yytext ); \
+	 } \
+	else \
+	 { \
+	   fputs("Input line too long!\n", stderr); \
+	   exit(1);  \
+	 } /* end of else */  \
 	return NAME;
 
 #define PUT_BACK_STRING(str, start) \
@@ -136,7 +144,15 @@ LEXOPT		[aceknopr]
 	^"%"[^sxaceknopr{}].*	synerr( _( "unrecognized '%' directive" ) );
 
 	^{NAME}		{
-			strcpy( nmstr, yytext );
+			if(strlen(yytext) < MAXLINE) 
+        		 { 
+			    strcpy( nmstr, yytext ); 
+			 } 
+			else 
+			 { 
+			   fputs("Input line too long!\n", stderr); 
+			   exit(1);  
+			 } /* end of else */  
 			didadef = false;
 			BEGIN(PICKUPDEF);
 			}
@@ -184,7 +200,17 @@ LEXOPT		[aceknopr]
 	{WS}		/* separates name and definition */
 
 	{NOT_WS}.*	{
-			strcpy( (char *) nmdef, yytext );
+		        if(strlen(yytext) < MAXLINE)
+		         {
+		           strcpy( (char *) nmdef, yytext );
+		         } 
+		        else
+		         {
+		           fputs("Input line too long!\n", stderr);
+		           exit(1); 
+		         } /* end of else */
+  
+ 
 
 			/* Skip trailing whitespace. */
 			for ( i = strlen( (char *) nmdef ) - 1;
@@ -244,7 +270,7 @@ LEXOPT		[aceknopr]
 	lex-compat	lex_compat = option_sense;
 	main		{
 			action_define( "YY_MAIN", option_sense );
-			do_yywrap = ! option_sense;
+			if ( option_sense ) do_yywrap = ! option_sense;
 			}
 	meta-ecs	usemecs = option_sense;
 	never-interactive	{
@@ -277,7 +303,15 @@ LEXOPT		[aceknopr]
 	yyclass		return OPT_YYCLASS;
 
 	\"[^"\n]*\"	{
-			strcpy( nmstr, yytext + 1 );
+			if(strlen(yytext + 1 ) < MAXLINE) 
+        		 { 
+			    strcpy( nmstr, yytext + 1 ); 
+			 } 
+			else 
+			 { 
+			   fputs("Input line too long!\n", stderr); 
+			   exit(1);  
+			 } /* end of else */			
 			nmstr[strlen( nmstr ) - 1] = '\0';
 			return NAME;
 			}
@@ -401,7 +435,15 @@ LEXOPT		[aceknopr]
 	"["({FIRST_CCL_CHAR}|{CCL_EXPR})({CCL_CHAR}|{CCL_EXPR})*	{
 			int cclval;
 
-			strcpy( nmstr, yytext );
+			if(strlen(yytext ) < MAXLINE) 
+        		 { 
+			    strcpy( nmstr, yytext ); 
+			 } 
+			else 
+			 { 
+			   fputs("Input line too long!\n", stderr); 
+			   exit(1);  
+			 } 
 
 			/* Check to see if we've already encountered this
 			 * ccl.
@@ -436,7 +478,15 @@ LEXOPT		[aceknopr]
 			register Char *nmdefptr;
 			Char *ndlookup();
 
-			strcpy( nmstr, yytext + 1 );
+			if(strlen(yytext + 1 ) < MAXLINE) 
+        		 { 
+			    strcpy( nmstr, yytext + 1 ); 
+			 } 
+			else 
+			 { 
+			   fputs("Input line too long!\n", stderr); 
+			   exit(1);  
+			 } /* end of else */			
 			nmstr[yyleng - 2] = '\0';  /* chop trailing brace */
 
 			if ( (nmdefptr = ndlookup( nmstr )) == 0 )

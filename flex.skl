@@ -10,8 +10,8 @@
 
 %-
 #include <stdio.h>
+#include <errno.h>
 %*
-
 
 /* cfront 1.2 defines "c_plusplus" instead of "__cplusplus" */
 #ifdef c_plusplus
@@ -25,9 +25,15 @@
 
 #include <stdlib.h>
 %+
+#include <iostream>
 class istream;
+using std::cin;                                                             
+using std::cout;                                                            
+using std::cerr;
 %*
+#ifndef _WIN32
 #include <unistd.h>
+#endif
 
 /* Use prototypes in function declarations. */
 #define YY_USE_PROTOS
@@ -66,6 +72,7 @@ class istream;
 #else
 #define YY_PROTO(proto) ()
 #endif
+
 
 /* Returned upon end-of-file. */
 #define YY_NULL 0
@@ -1177,9 +1184,13 @@ void yyFlexLexer::yy_delete_buffer( YY_BUFFER_STATE b )
 
 
 %-
+#ifndef _WIN32
+#include <unistd.h>
+#else
 #ifndef YY_ALWAYS_INTERACTIVE
 #ifndef YY_NEVER_INTERACTIVE
 extern int isatty YY_PROTO(( int ));
+#endif
 #endif
 #endif
 
@@ -1192,7 +1203,6 @@ FILE *file;
 #endif
 
 %+
-extern "C" int isatty YY_PROTO(( int ));
 void yyFlexLexer::yy_init_buffer( YY_BUFFER_STATE b, istream* file )
 %*
 
