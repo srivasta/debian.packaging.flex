@@ -13,7 +13,7 @@ CLEANFILES = \
 EXTRA_DIST = \
 	$(man_MANS)
 
-$(man_MANS): $(top_srcdir)/main.c
-	for i in $(man_MANS) ; do \
-	$(help2man) --name='fast lexical analyzer generator' --section=`echo $$i|rev|cut -f 1 -d .|rev` ../flex > $$i ; \
-	done
+@MAINTAINER_MODE_TRUE@$(man_MANS): $(top_srcdir)/main.c
+@MAINTAINER_MODE_TRUE@	for i in $(man_MANS) ; do \
+@MAINTAINER_MODE_TRUE@	$(help2man) --name='fast lexical analyzer generator' --section=`echo $$i|rev|cut -f 1 -d .|rev` ../flex > $$i ; \
+@MAINTAINER_MODE_TRUE@	done
