@@ -1109,7 +1109,7 @@ single blank, and throws away whitespace found at the end of a line:
 @cindex actions, embedded C strings
 @cindex C-strings, in actions
 @cindex comments, in actions
-If the action contains a @samp{@}}, then the action spans till the
+If the action contains a @samp{@{}, then the action spans till the
 balancing @samp{@}} is found, and the action may cross multiple lines.
 @code{flex} knows about C strings and comments and won't be fooled by
 braces found within them, but also allows actions to begin with
