@@ -194,8 +194,14 @@ LEXOPT		[aceknopr]
 <COMMENT>{
 	"*/"		ACTION_ECHO; yy_pop_state();
 	"*"		ACTION_ECHO;
-	[^*\n]+		ACTION_ECHO;
-	[^*\n]*{NL}	++linenum; ACTION_ECHO;
+	[\[\]]		ACTION_ECHO;
+	[^*\[\]\n]+	ACTION_ECHO;
+	[^*\[\]\n]*{NL}	++linenum; ACTION_ECHO;
+	\[\[		add_action("[" "[]" "]m4_" "userquote_start()");
+	\]\]		add_action("[" "[]" "]m4_" "userquote_end()");
+			/* Macros need to be clearly separated from surrounding
+			 * text and this file needs to go through flex untouched.
+			 */
 }
 
 <LINEDIR>{

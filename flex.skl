@@ -27,6 +27,11 @@ m4preproc_changecom
 %# Macros for runtime processing stage.
 m4_changecom
 m4_changequote
+
+%# Let user use our quoting strings
+m4_changequote({, })
+m4_define( {m4_userquote_start}, {m4_changequote(<, >)[[m4_changequote([[, ]])})
+m4_define( {m4_userquote_end}, {m4_changequote(<, >)]]m4_changequote([[, ]])})
 m4_changequote([[, ]])
 
 %# 
