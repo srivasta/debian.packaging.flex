@@ -1,0 +1,899 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: flex 2.5.31-30\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-12-02 18:35+0100\n"
+"PO-Revision-Date: 2004-12-02 18:34+0100\n"
+"Last-Translator: Luk Claes <luk.claes@ugent.be>\n"
+"Language-Team: Debian l10n Dutch <debian-l10n-dutch@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: dfa.c:61
+#, c-format
+msgid "State #%d is non-accepting -\n"
+msgstr "Toestand #%d is niet-aanvaarden -\n"
+
+#: dfa.c:124
+msgid "dangerous trailing context"
+msgstr "gevaarlijke vervolgcontext"
+
+#: dfa.c:166
+#, c-format
+msgid " associated rule line numbers:"
+msgstr "geassocieerde regelnummers:"
+
+#: dfa.c:202
+#, c-format
+msgid " out-transitions: "
+msgstr "uit-transities:"
+
+#: dfa.c:210
+#, c-format
+msgid ""
+"\n"
+" jam-transitions: EOF "
+msgstr ""
+"\n"
+" jam-transities: EOF"
+
+#: dfa.c:341
+msgid "consistency check failed in epsclosure()"
+msgstr "consistentiecontrole faalde in epsclosure()"
+
+#: dfa.c:429
+msgid ""
+"\n"
+"\n"
+"DFA Dump:\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"DFA-dump:\n"
+"\n"
+
+#: dfa.c:604
+msgid "could not create unique end-of-buffer state"
+msgstr "kon unieke einde-van-buffer-toestand niet aanmaken"
+
+#: dfa.c:625
+#, c-format
+msgid "state # %d:\n"
+msgstr "toestand # %d:\n"
+
+#: dfa.c:800
+msgid "Could not write yynxt_tbl[][]"
+msgstr "Kon yynxt_tbl[][] niet schrijven"
+
+#: dfa.c:1023
+msgid "consistency check failed in symfollowset"
+msgstr "consistentiecontrole faalde in symboolvervolgverzameling"
+
+#: dfa.c:1071
+msgid "bad transition character detected in sympartition()"
+msgstr "er is een slecht transitiekarakter gedetecteerd in sympartition()"
+
+#: gen.c:484
+msgid ""
+"\n"
+"\n"
+"Equivalence Classes:\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Equivalentieklassen:\n"
+"\n"
+
+#: gen.c:668 gen.c:697 gen.c:1221
+#, c-format
+msgid "state # %d accepts: [%d]\n"
+msgstr "toestand # %d aanvaardt: [%d]\n"
+
+#: gen.c:1116
+#, c-format
+msgid "state # %d accepts: "
+msgstr "toestand # %d aanvaardt:"
+
+#: gen.c:1163
+msgid "Could not write yyacclist_tbl"
+msgstr "Kon yyacclist_tbl niet schrijven"
+
+#: gen.c:1239
+msgid "Could not write yyacc_tbl"
+msgstr "Kon yyacc_tbl niet schrijven"
+
+#: gen.c:1254 gen.c:1639 gen.c:1662
+msgid "Could not write ecstbl"
+msgstr "Kon ecstbl niet schrijven"
+
+#: gen.c:1277
+msgid ""
+"\n"
+"\n"
+"Meta-Equivalence Classes:\n"
+msgstr ""
+"\n"
+"\n"
+"Meta-equivalentieklassen:\n"
+
+#: gen.c:1299
+msgid "Could not write yymeta_tbl"
+msgstr "Kon yymeta_tbl niet schrijven"
+
+#: gen.c:1360
+msgid "Could not write yybase_tbl"
+msgstr "Kon yybase_tbl niet schrijven"
+
+#: gen.c:1394
+msgid "Could not write yydef_tbl"
+msgstr "Kon yydef_tbl niet schrijven"
+
+#: gen.c:1434
+msgid "Could not write yynxt_tbl"
+msgstr "Kon yynxt_tbl niet schrijven"
+
+#: gen.c:1470
+msgid "Could not write yychk_tbl"
+msgstr "Kon yychk_tbl niet schrijven"
+
+#: gen.c:1624 gen.c:1653
+msgid "Could not write ftbl"
+msgstr "Kon ftbl niet schrijven"
+
+#: gen.c:1630
+msgid "Could not write ssltbl"
+msgstr "Kon ssltbl niet schrijven"
+
+#: gen.c:1681
+msgid "Could not write eoltbl"
+msgstr "Kon eoltbl niet schrijven"
+
+#: gen.c:1741
+msgid "Could not write yynultrans_tbl"
+msgstr "Kon yynultrans_tbl niet schrijven"
+
+#: main.c:176
+msgid "rule cannot be matched"
+msgstr "regel komt niet overeen"
+
+#: main.c:181
+msgid "-s option given but default rule can be matched"
+msgstr "optie -s gegeven, maar standaard regel komt niet overeen"
+
+#: main.c:218
+msgid "Can't use -+ with -l option"
+msgstr "Kan -+ niet gebruiken bij optie -l"
+
+#: main.c:221
+msgid "Can't use -f or -F with -l option"
+msgstr "Kan -f of -F niet gebruiken met optie -l"
+
+#: main.c:225
+msgid "Can't use --reentrant or --bison-bridge with -l option"
+msgstr "Kan --reentrant of --bison-bridge niet gebruiken met optie -l"
+
+#: main.c:262
+msgid "-Cf/-CF and -Cm don't make sense together"
+msgstr "-Cf/-CF en -Cm gaan niet samen"
+
+#: main.c:265
+msgid "-Cf/-CF and -I are incompatible"
+msgstr "-Cf/-CF en -l zijn incompatibel"
+
+#: main.c:269
+msgid "-Cf/-CF are incompatible with lex-compatibility mode"
+msgstr "-Cf/-CF zijn incompatibel met lex-compatibiliteitsmodus"
+
+#: main.c:274
+msgid "-Cf and -CF are mutually exclusive"
+msgstr "-Cf en -CF zijn mutueel exclusief"
+
+#: main.c:278
+msgid "Can't use -+ with -CF option"
+msgstr "Kan -+ niet gebruiken met optie -CF"
+
+#: main.c:281
+#, c-format
+msgid "%array incompatible with -+ option"
+msgstr "%array incompatibel met optie -+"
+
+#: main.c:286
+msgid "Options -+ and --reentrant are mutually exclusive."
+msgstr "Opties -+ en --reentrant zijn mutueel exclusief."
+
+#: main.c:289
+msgid "bison bridge not supported for the C++ scanner."
+msgstr "bison-brug niet ondersteund voor de C++-scanner."
+
+#: main.c:341 main.c:386
+#, c-format
+msgid "could not create %s"
+msgstr "kon %s niet aanmaken"
+
+#: main.c:399
+msgid "could not write tables header"
+msgstr "kon tabellenheader niet schrijven"
+
+#: main.c:403
+#, c-format
+msgid "can't open skeleton file %s"
+msgstr "kan skeletbestand %s niet openen"
+
+#: main.c:484
+#, c-format
+msgid "input error reading skeleton file %s"
+msgstr "invoerfout bij het lezen van skeletbestand %s"
+
+#: main.c:488
+#, c-format
+msgid "error closing skeleton file %s"
+msgstr "fout bij het sluiten van skeletbestand %s"
+
+#: main.c:672
+#, c-format
+msgid "error creating header file %s"
+msgstr "fout bij het aanmaken van headerbestand %s"
+
+#: main.c:680
+#, c-format
+msgid "error writing output file %s"
+msgstr "fout bij het schrijven van uitvoerbestand %s"
+
+#: main.c:684
+#, c-format
+msgid "error closing output file %s"
+msgstr "fout bij het sluiten van uitvoerbestand %s"
+
+#: main.c:688
+#, c-format
+msgid "error deleting output file %s"
+msgstr "fout bij het verwijderen van uitvoerbestand %s"
+
+#: main.c:695
+#, c-format
+msgid "No backing up.\n"
+msgstr "Geen reservekopie.\n"
+
+#: main.c:699
+#, c-format
+msgid "%d backing up (non-accepting) states.\n"
+msgstr "%d gemaakte reservekopies (niet-aanvaardende) toestanden.\n"
+
+#: main.c:703
+#, c-format
+msgid "Compressed tables always back up.\n"
+msgstr "Gecomprimeerde tabellen hebben altijd reservekopies.\n"
+
+#: main.c:706
+#, c-format
+msgid "error writing backup file %s"
+msgstr "fout bij het schrijven van reservekopie %s"
+
+#: main.c:710
+#, c-format
+msgid "error closing backup file %s"
+msgstr "fout bij het sluiten van reservekopie %s"
+
+#: main.c:715
+#, c-format
+msgid "%s version %s usage statistics:\n"
+msgstr "%s versie %s gebruikstatistieken:\n"
+
+#: main.c:718
+#, c-format
+msgid "  scanner options: -"
+msgstr "  scanner-opties: -"
+
+#: main.c:797
+#, c-format
+msgid "  %d/%d NFA states\n"
+msgstr "  %d/%d NFA-toestanden\n"
+
+#: main.c:799
+#, c-format
+msgid "  %d/%d DFA states (%d words)\n"
+msgstr "  %d/%d DFA-toestanden (%d woorden)\n"
+
+#: main.c:801
+#, c-format
+msgid "  %d rules\n"
+msgstr "  %d regels\n"
+
+#: main.c:806
+#, c-format
+msgid "  No backing up\n"
+msgstr "  Geen reservekopie\n"
+
+#: main.c:810
+#, c-format
+msgid "  %d backing-up (non-accepting) states\n"
+msgstr "  %d gemaakte reservekopies (niet-aanvaardende) toestanden\n"
+
+#: main.c:815
+#, c-format
+msgid "  Compressed tables always back-up\n"
+msgstr "  Gecomprimeerde tabellen hebben altijd reservekopies\n"
+
+#: main.c:819
+#, c-format
+msgid "  Beginning-of-line patterns used\n"
+msgstr "  Begin-van-de-regel-patronen gebruikt\n"
+
+#: main.c:821
+#, c-format
+msgid "  %d/%d start conditions\n"
+msgstr "  %d/%d startvoorwaarden\n"
+
+#: main.c:825
+#, c-format
+msgid "  %d epsilon states, %d double epsilon states\n"
+msgstr "  %d epsilon-toestanden, %d dubbele epsilon-toestanden\n"
+
+#: main.c:829
+#, c-format
+msgid "  no character classes\n"
+msgstr "  geen karakterklassen\n"
+
+#: main.c:833
+#, c-format
+msgid "  %d/%d character classes needed %d/%d words of storage, %d reused\n"
+msgstr ""
+"  %d/%d karakterklassen hebben %d/%d woorden nodig voor opslag, %d gebruikt\n"
+
+#: main.c:838
+#, c-format
+msgid "  %d state/nextstate pairs created\n"
+msgstr "  %d transities aangemaakt\n"
+
+#: main.c:841
+#, c-format
+msgid "  %d/%d unique/duplicate transitions\n"
+msgstr "  %d/%d unieke/kopie-toestanden\n"
+
+#: main.c:846
+#, c-format
+msgid "  %d table entries\n"
+msgstr "  %d tabelvelden\n"
+
+#: main.c:854
+#, c-format
+msgid "  %d/%d base-def entries created\n"
+msgstr "  %d/%d basis-def-velden aangemaakt\n"
+
+#: main.c:858
+#, c-format
+msgid "  %d/%d (peak %d) nxt-chk entries created\n"
+msgstr "  %d/%d (piek %d) nxt-chk-velden aangemaakt\n"
+
+#: main.c:862
+#, c-format
+msgid "  %d/%d (peak %d) template nxt-chk entries created\n"
+msgstr "  %d/%d (piek %d) template nxt-chk-velden aangemaakt\n"
+
+#: main.c:866
+#, c-format
+msgid "  %d empty table entries\n"
+msgstr "  %d lege tabelvelden\n"
+
+#: main.c:868
+#, c-format
+msgid "  %d protos created\n"
+msgstr "  %d proto's aangemaakt\n"
+
+#: main.c:871
+#, c-format
+msgid "  %d templates created, %d uses\n"
+msgstr "  %d templates aangemaakt, %d gebruikt\n"
+
+#: main.c:879
+#, c-format
+msgid "  %d/%d equivalence classes created\n"
+msgstr "  %d/%d equivalentieklassen aangemaakt\n"
+
+#: main.c:887
+#, c-format
+msgid "  %d/%d meta-equivalence classes created\n"
+msgstr "  %d/%d meta-equivalentieklassen aangemaakt\n"
+
+#: main.c:893
+#, c-format
+msgid "  %d (%d saved) hash collisions, %d DFAs equal\n"
+msgstr "  %d (%d bewaarde) hash-botsingen, %d DFA's gelijk\n"
+
+#: main.c:895
+#, c-format
+msgid "  %d sets of reallocations needed\n"
+msgstr "  %d verzamelingen van reallocaties nodig\n"
+
+#: main.c:897
+#, c-format
+msgid "  %d total table entries needed\n"
+msgstr "  %d totale tabelvelden nodig\n"
+
+#: main.c:972
+#, c-format
+msgid "Internal error. flexopts are malformed.\n"
+msgstr "Interne fout. flexopts hebben verkeerd formaat.\n"
+
+#: main.c:982
+#, c-format
+msgid "Try `%s --help' for more information.\n"
+msgstr "Probeer `%s --help' voor meer informatie.\n"
+
+#: main.c:1039
+#, c-format
+msgid "unknown -C option '%c'"
+msgstr "onbekende -C-optie '%c'"
+
+#: main.c:1168
+#, c-format
+msgid "%s %s\n"
+msgstr "%s %s\n"
+
+#: main.c:1443
+msgid "fatal parse error"
+msgstr "fatale parsefout"
+
+#: main.c:1475
+#, c-format
+msgid "could not create backing-up info file %s"
+msgstr "kon infobestand %s voor reservekopie niet aanmaken"
+
+#: main.c:1496
+#, c-format
+msgid "-l AT&T lex compatibility option entails a large performance penalty\n"
+msgstr ""
+"-I AT&T lex-compatibiliteitsoptie brengt een groot performantieverlies met "
+"zich mee\n"
+
+#: main.c:1499
+#, c-format
+msgid " and may be the actual source of other reported performance penalties\n"
+msgstr ""
+" en kan de eigenlijke bron zijn van ander gerapporteerd performantieverlies\n"
+
+#: main.c:1505
+#, c-format
+msgid ""
+"%%option yylineno entails a performance penalty ONLY on rules that can match "
+"newline characters\n"
+msgstr ""
+"%%optie yylineno brengt een performantieverlies met zich mee ENKEL op regels "
+"die kunnen overeenkomen met nl-karakters\n"
+
+#: main.c:1512
+#, c-format
+msgid "-I (interactive) entails a minor performance penalty\n"
+msgstr "-I (interactief) brengt een licht performantieverlies met zich mee\n"
+
+#: main.c:1517
+#, c-format
+msgid "yymore() entails a minor performance penalty\n"
+msgstr "yymore() brengt een licht performantieverlies met zich mee\n"
+
+#: main.c:1523
+#, c-format
+msgid "REJECT entails a large performance penalty\n"
+msgstr "REJECT brengt een groot performantieverlies met zich mee\n"
+
+#: main.c:1528
+#, c-format
+msgid "Variable trailing context rules entail a large performance penalty\n"
+msgstr ""
+"Regels met een variabele eindcontext brengen een groot performantieverlies "
+"met zich mee\n"
+
+#: main.c:1540
+msgid "REJECT cannot be used with -f or -F"
+msgstr "REJECT kan niet worden gebruikt met -f of -F"
+
+#: main.c:1543
+#, c-format
+msgid "%option yylineno cannot be used with REJECT"
+msgstr "%optie yylineno kan niet worden gebruikt met REJECT"
+
+#: main.c:1546
+msgid "variable trailing context rules cannot be used with -f or -F"
+msgstr ""
+"regels met variabele eindcontext kunnen niet gebruikt worden met -f of -F"
+
+#: main.c:1661
+#, c-format
+msgid "%option yyclass only meaningful for C++ scanners"
+msgstr "%optie yyclass enkel betekenisvol voor C++-scanners"
+
+#: main.c:1768
+#, c-format
+msgid "Usage: %s [OPTIONS] [FILE]...\n"
+msgstr "Gebruik: %s [OPTIES] [BESTAND] ...\n"
+
+#: main.c:1771
+#, c-format
+msgid ""
+"Generates programs that perform pattern-matching on text.\n"
+"\n"
+"Table Compression:\n"
+"  -Ca, --align      trade off larger tables for better memory alignment\n"
+"  -Ce, --ecs        construct equivalence classes\n"
+"  -Cf               do not compress tables; use -f representation\n"
+"  -CF               do not compress tables; use -F representation\n"
+"  -Cm, --meta-ecs   construct meta-equivalence classes\n"
+"  -Cr, --read       use read() instead of stdio for scanner input\n"
+"  -f, --full        generate fast, large scanner. Same as -Cfr\n"
+"  -F, --fast        use alternate table representation. Same as -CFr\n"
+"  -Cem              default compression (same as --ecs --meta-ecs)\n"
+"\n"
+"Debugging:\n"
+"  -d, --debug             enable debug mode in scanner\n"
+"  -b, --backup            write backing-up information to %s\n"
+"  -p, --perf-report       write performance report to stderr\n"
+"  -s, --nodefault         suppress default rule to ECHO unmatched text\n"
+"  -T, --trace             %s should run in trace mode\n"
+"  -w, --nowarn            do not generate warnings\n"
+"  -v, --verbose           write summary of scanner statistics to stdout\n"
+"\n"
+"Files:\n"
+"  -o, --outfile=FILE      specify output filename\n"
+"  -S, --skel=FILE         specify skeleton file\n"
+"  -t, --stdout            write scanner on stdout instead of %s\n"
+"      --yyclass=NAME      name of C++ class\n"
+"      --header-file=FILE   create a C header file in addition to the "
+"scanner\n"
+"      --tables-file[=FILE] write tables to FILE\n"
+"\n"
+"Scanner behavior:\n"
+"  -7, --7bit              generate 7-bit scanner\n"
+"  -8, --8bit              generate 8-bit scanner\n"
+"  -B, --batch             generate batch scanner (opposite of -I)\n"
+"  -i, --case-insensitive  ignore case in patterns\n"
+"  -l, --lex-compat        maximal compatibility with original lex\n"
+"  -X, --posix-compat      maximal compatibility with POSIX lex\n"
+"  -I, --interactive       generate interactive scanner (opposite of -B)\n"
+"      --yylineno          track line count in yylineno\n"
+"\n"
+"Generated code:\n"
+"  -+,  --c++               generate C++ scanner class\n"
+"  -Dmacro[=defn]           #define macro defn  (default defn is '1')\n"
+"  -L,  --noline            suppress #line directives in scanner\n"
+"  -P,  --prefix=STRING     use STRING as prefix instead of \"yy\"\n"
+"  -R,  --reentrant         generate a reentrant C scanner\n"
+"       --bison-bridge      scanner for bison pure parser.\n"
+"       --bison-locations   include yylloc support.\n"
+"       --stdinit           initialize yyin/yyout to stdin/stdout\n"
+"       --noansi-definitions old-style function definitions\n"
+"       --noansi-prototypes  empty parameter list in prototypes\n"
+"       --nounistd          do not include <unistd.h>\n"
+"       --noFUNCTION        do not generate a particular FUNCTION\n"
+"\n"
+"Miscellaneous:\n"
+"  -c                      do-nothing POSIX option\n"
+"  -n                      do-nothing POSIX option\n"
+"  -?\n"
+"  -h, --help              produce this help message\n"
+"  -V, --version           report %s version\n"
+msgstr ""
+"Maakt programma's die een pattroonherkening uitvoeren op tekst.\n"
+"\n"
+"Tabelcompressie:\n"
+"  -Ca, --align         trade-off grotere tabellen voor betere "
+"geheugenaliniëring\n"
+"  -Ce, --ecs          construeer equivalentieklassen\n"
+"  -Cf                  comprimeer tabellen niet; gebruik -f-voorstelling\n"
+"  -CF                  comprimeer tabellen niet; gebruik -F-voorstelling\n"
+"  -Cm, --meta-ecs      construeer meta-equivalentieklassen\n"
+"  -Cr, --read          gebruik read() inplaats van stdio voor scanner-"
+"invoer\n"
+"  -f, --full           genereer snelle, grote scanner. Zelfde als -Cfr\n"
+"  -F, --fast           gebruik alternerende tabelvoorstelling. Zelfde als -"
+"CFr\n"
+"  -Cem                 standaard compressie (zelfde als --ecs --meta-ecs)\n"
+"\n"
+"Debugging:\n"
+"  -d, --debug          schakel debug-modus in scanner in\n"
+"  -b, --backup         schrijf informatie over reservekopies naar %s\n"
+"  -p, --perf-report    schrijf performantierapport naar stderr\n"
+"  -s, --nodefault      onderdruk standaard regel om niet overeenkomende "
+"tekst te echoën\n"
+"  -T, --trace          %s zou in trace-modus moeten uitvoeren\n"
+"  -w, --nowarn         genereer geen waarschuwingen\n"
+"  -v, --verbose        schrijf samenvatting van scannerstatistieken naar "
+"stdout\n"
+"\n"
+"Bestanden:\n"
+"  -o, --outfile=BESTAND     specifieer uitvoerbestandsnaam\n"
+"  -S, --skel=BESTAND        specifieer skeletbestand\n"
+"  -t, --stdout              schrijf scanner op stdout inplaats van %s\n"
+"      --yyclass=NAAM        naam van C++-klasse\n"
+"      --header-file=BESTAND maak een C-headerbestand naast de scanner\n"
+"      --tables-file[=BESTAND]  schrijf tabellen naar BESTAND\n"
+"\n"
+"Scanner-gedrag:\n"
+"  -7, --7bit           maak een 7-bit scanner\n"
+"  -8, --8bit           maak een 8-bit scanner\n"
+"  -B, --batch          maak batch-scanner (tegengestelde van -l)\n"
+"  -i, --case-insentive negeer hoofdletters in patronen\n"
+"  -l, --lex-compat     maximale compatibiliteit met originele lex\n"
+"  -X, --posix-compat   maximale compatibiliteit met POSIX-lex\n"
+"  -I, --interactive    maak interactieve scanner (tegengestelde van -B)\n"
+"      --yylineno       traceer regelnummers in yylineno\n"
+"\n"
+"Gegenereerde code:\n"
+"  -+, --c++                maak C++-scannerklasse\n"
+"  -Dmacro[=defn]           #define macro defn (standaard defn is '1')\n"
+"  -L, --noline             onderdruk #line-richtlijnen in scanner\n"
+"  -P, --prefix=STRING      gebruik STRING als prefix inplaats van \"yy\"\n"
+"  -R, --reentrant          maak een reentrant-scanner\n"
+"      --bison-bridge       scanner voor bison pure parser.\n"
+"      --bison-locations     includeer yylloc-ondersteuning.\n"
+"      --stdinit            initialiseer yyin/yyout naar stdin/stdout\n"
+"      --noansi-definitions oude stijl functie-definities\n"
+"      --noansi-prototypes  leeg parameterlijst in prototypes\n"
+"      --nounistd           includeer geen <unistd.h>\n"
+"      --noFUNCTIE          genereer geen bepaalde FUNCTIE\n"
+"\n"
+"Overige:\n"
+"  -c                   doe niets POSIX-optie\n"
+"  -n                   doe niets POSIX-optie\n"
+"  -?\n"
+"  -h, --help            produceer deze help-boodschap\n"
+"  -V, --version        rapporteer %s-versie\n"
+
+#: misc.c:100 misc.c:126
+#, c-format
+msgid "name \"%s\" ridiculously long"
+msgstr "naam \"%s\" belachelijk lang"
+
+#: misc.c:175
+msgid "memory allocation failed in allocate_array()"
+msgstr "geheugenallocatie faalde in allocate_array()"
+
+#: misc.c:250
+#, c-format
+msgid "bad character '%s' detected in check_char()"
+msgstr "slecht karakter '%s' gedetecteerd in check_char()"
+
+#: misc.c:255
+#, c-format
+msgid "scanner requires -8 flag to use the character %s"
+msgstr "scanner vereist -8 vlag om het karakter %s te gebruiken"
+
+#: misc.c:288
+msgid "dynamic memory failure in copy_string()"
+msgstr "dynamische geheugenfout in copy_string()"
+
+#: misc.c:422
+#, c-format
+msgid "%s: fatal internal error, %s\n"
+msgstr "%s: fatale interne fout, %s\n"
+
+#: misc.c:875
+msgid "attempt to increase array size failed"
+msgstr "poging om rijgrootte te vergroten faalde"
+
+#: misc.c:1002
+msgid "bad line in skeleton file"
+msgstr "slechte regel in skeletbestand"
+
+#: misc.c:1051
+msgid "memory allocation failed in yy_flex_xmalloc()"
+msgstr "geheugenallocatie faalde in yy_flex_xmalloc()"
+
+#: nfa.c:104
+#, c-format
+msgid ""
+"\n"
+"\n"
+"********** beginning dump of nfa with start state %d\n"
+msgstr ""
+"\n"
+"\n"
+"********** begin dump van nfa met starttoestand %d\n"
+
+#: nfa.c:115
+#, c-format
+msgid "state # %4d\t"
+msgstr "toestand # %4d\t"
+
+#: nfa.c:130
+#, c-format
+msgid "********** end of dump\n"
+msgstr "********** einde van dump\n"
+
+#: nfa.c:174
+msgid "empty machine in dupmachine()"
+msgstr "lege machine in dumpmachine()"
+
+#: nfa.c:240
+#, c-format
+msgid "Variable trailing context rule at line %d\n"
+msgstr "Regel met variabele eindcontext op regel %d\n"
+
+#: nfa.c:353
+msgid "bad state type in mark_beginning_as_normal()"
+msgstr "slecht toestandstype in mark_beginning_as_normal()"
+
+#: nfa.c:598
+#, c-format
+msgid "input rules are too complicated (>= %d NFA states)"
+msgstr "invoerregels zijn te complex (>= %d NFA-toestanden)"
+
+#: nfa.c:677
+msgid "found too many transitions in mkxtion()"
+msgstr "vond te veel transities in mkxtion()"
+
+#: nfa.c:703
+#, c-format
+msgid "too many rules (> %d)!"
+msgstr "te veel regels (> %d)!"
+
+#: parse.y:183
+msgid "unknown error processing section 1"
+msgstr "onbekende fout bij het behandelen van sectie 1"
+
+#: parse.y:208 parse.y:373
+msgid "bad start condition list"
+msgstr "slechte startvoorwaardenlijst"
+
+#: parse.y:337
+msgid "unrecognized rule"
+msgstr "onbekende regel"
+
+#: parse.y:456 parse.y:469 parse.y:538
+msgid "trailing context used twice"
+msgstr "eindcontext twee keer gebruikt"
+
+#: parse.y:574 parse.y:584 parse.y:657 parse.y:667
+msgid "bad iteration values"
+msgstr "slechte iteratiewaarden"
+
+#: parse.y:602 parse.y:620 parse.y:685 parse.y:703
+msgid "iteration value must be positive"
+msgstr "iteratiewaarde moet positief zijn"
+
+#: parse.y:817 parse.y:827
+#, c-format
+msgid "the character range [%c-%c] is ambiguous in a case-insensitive scanner"
+msgstr ""
+"het karakterbereik [%c-%c] is ambigu in een niet-hoofdlettergevoelige scanner"
+
+#: parse.y:832
+msgid "negative range in character class"
+msgstr "negatief bereik in karakterklasse"
+
+#: scan.l:70 scan.l:180 scan.l:273 scan.l:415 scan.l:554 scan.l:604
+msgid "Input line too long\n"
+msgstr "Invoerregel te lang\n"
+
+#: scan.l:149
+#, c-format
+msgid "malformed '%top' directive"
+msgstr "'%top'-richtlijn in slecht formaat"
+
+#. ignore
+#. ignore
+#: scan.l:171
+#, no-c-format
+msgid "unrecognized '%' directive"
+msgstr "onbekende '%'-richtlijn"
+
+#: scan.l:257
+msgid "Unmatched '{'"
+msgstr "Niet-gebalanceerde '{'"
+
+#: scan.l:290
+msgid "incomplete name definition"
+msgstr "onvolledige naamdefinitie"
+
+#: scan.l:423
+#, c-format
+msgid "unrecognized %%option: %s"
+msgstr "onbekende %%optie: %s"
+
+#: scan.l:564 scan.l:683
+msgid "bad character class"
+msgstr "slechte karakterklasse"
+
+#: scan.l:611
+#, c-format
+msgid "undefined definition {%s}"
+msgstr "ongedefinieerde definitie {%s}"
+
+#: scan.l:651
+#, c-format
+msgid "bad <start condition>: %s"
+msgstr "slechte <startvoorwaarde>: %s"
+
+#: scan.l:664
+msgid "missing quote"
+msgstr "ontbrekend aanhalingsteken"
+
+#: scan.l:704
+#, c-format
+msgid "bad character class expression: %s"
+msgstr "slechte karakterklasse-expressie: %s"
+
+#: scan.l:726
+msgid "bad character inside {}'s"
+msgstr "slecht karakter in {}'en"
+
+#: scan.l:732
+msgid "missing }"
+msgstr "ontbrekend }"
+
+#: scan.l:805
+msgid "EOF encountered inside an action"
+msgstr "EOF tegengekomen in een actie"
+
+#: scan.l:825
+#, c-format
+msgid "bad character: %s"
+msgstr "slecht karakter: %s"
+
+#: scan.l:854
+#, c-format
+msgid "can't open %s"
+msgstr "kan %s niet openen"
+
+#: scanopt.c:291
+#, c-format
+msgid "Usage: %s [OPTIONS]...\n"
+msgstr "Gebruik: %s [OPTIES] ...\n"
+
+#: scanopt.c:565
+#, c-format
+msgid "option `%s' doesn't allow an argument\n"
+msgstr "optie `%s' heeft geen argumenten\n"
+
+#: scanopt.c:570
+#, c-format
+msgid "option `%s' requires an argument\n"
+msgstr "optie `%s' heeft een argument\n"
+
+#: scanopt.c:574
+#, c-format
+msgid "option `%s' is ambiguous\n"
+msgstr "optie `%s' is ambigu\n"
+
+#: scanopt.c:578
+#, c-format
+msgid "Unrecognized option `%s'\n"
+msgstr "Onbekende optie `%s'\n"
+
+#: scanopt.c:582
+#, c-format
+msgid "Unknown error=(%d)\n"
+msgstr "Onbekende fout=(%d)\n"
+
+#: sym.c:100
+msgid "symbol table memory allocation failed"
+msgstr "geheugenallocatie voor symbooltabel faalde"
+
+#: sym.c:203
+msgid "name defined twice"
+msgstr "naam twee keer gedefinieerd"
+
+#: sym.c:254
+#, c-format
+msgid "start condition %s declared twice"
+msgstr "startvoorwaarde %s twee keer opgegeven"
+
+#: yylex.c:56
+msgid "premature EOF"
+msgstr "premature EOF"
+
+#: yylex.c:198
+#, c-format
+msgid "End Marker\n"
+msgstr "Einde-markering\n"
+
+#: yylex.c:204
+#, c-format
+msgid "*Something Weird* - tok: %d val: %d\n"
+msgstr "*Iets vreemd* - tok: %d val: %d\n"
