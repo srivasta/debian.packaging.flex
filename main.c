@@ -199,6 +199,7 @@ int main (argc, argv)
 {
 #if ENABLE_NLS
 	setlocale (LC_MESSAGES, "");
+	setlocale (LC_CTYPE, "");
 	textdomain (PACKAGE);
 	bindtextdomain (PACKAGE, LOCALEDIR);
 #endif
@@ -1594,7 +1595,6 @@ void readin ()
 			outn ("#endif");
 			outn ("#else");
 			outn (yy_stdinit);
-			outn ("#endif");
 			outn ("#endif");
 		}
 
