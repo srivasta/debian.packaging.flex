@@ -490,8 +490,8 @@ For example, the following character classes are all equivalent:
 .nf
 
     [[:alnum:]]
-    [[:alpha:][:digit:]
-    [[:alpha:]0-9]
+    [[:alpha:][:digit:]]
+    [[:alpha:][0-9]]
     [a-zA-Z0-9]
 
 .fi
@@ -1915,7 +1915,7 @@ The macro
 can be used to control whether the current buffer's scanning
 context for the next token match is done as though at the
 beginning of a line.  A non-zero macro argument makes rules anchored with
-'^' active, while a zero argument makes '^' rules inactive.
+\&'^' active, while a zero argument makes '^' rules inactive.
 .PP
 The macro
 .B YY_AT_BOL()
@@ -2730,7 +2730,10 @@ ANSI C, which does not require
 .I stdin
 and
 .I stdout
-to be compile-time constant.
+to be compile-time constant. In a reentrant scanner,
+however, this is not a problem since initialization     is performed in 
+.I yylex_init
+at runtime.
 .TP
 .B yylineno
 directs

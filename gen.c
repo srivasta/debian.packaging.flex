@@ -1329,10 +1329,19 @@ void make_tables()
 		{
 		if ( use_read )
 			{
-			outn(
-"\tif ( (result = read( fileno(yyin), (char *) buf, max_size )) < 0 ) \\" );
-			outn(
-		"\t\tYY_FATAL_ERROR( \"input in flex scanner failed\" );" );
+                       outn( "\terrno=0; \\" );
+		       outn(
+"\twhile ( (result = read( fileno(yyin), (char *) buf, max_size )) < 0 ) \\" );
+                       outn( "\t{ \\" );
+                       outn( "\t\tif( errno != EINTR) \\" );
+                       outn( "\t\t{ \\" );
+		       outn(
+	"\t\t\tYY_FATAL_ERROR( \"input in flex scanner failed\" ); \\" );
+                       outn( "\t\t\tbreak; \\" );
+                       outn( "\t\t} \\" );
+                       outn( "\t\terrno=0; \\" );
+                       outn( "\t\tclearerr(yyin); \\" );
+                       outn( "\t}" );
 			}
 
 		else
@@ -1351,11 +1360,22 @@ void make_tables()
 	"\t\t\tYY_FATAL_ERROR( \"input in flex scanner failed\" ); \\" );
 			outn( "\t\tresult = n; \\" );
 			outn( "\t\t} \\" );
+			outn( "\telse \\" );
+			outn( "\t\t{ \\" );
+			outn( "\t\terrno=0; \\" );
 			outn(
-	"\telse if ( ((result = fread( buf, 1, max_size, yyin )) == 0) \\" );
-			outn( "\t\t  && ferror( yyin ) ) \\" );
+"\t\twhile ( (result = fread(buf, 1, max_size, yyin))==0 && ferror(yyin)) \\" );
+			outn( "\t\t\t{ \\" );
+			outn( "\t\t\tif( errno != EINTR) \\" );
+			outn( "\t\t\t\t{ \\" );
 			outn(
-		"\t\tYY_FATAL_ERROR( \"input in flex scanner failed\" );" );
+	"\t\t\t\tYY_FATAL_ERROR( \"input in flex scanner failed\" ); \\" );
+			outn( "\t\t\t\tbreak; \\" );
+			outn( "\t\t\t\t} \\" );
+			outn( "\t\t\terrno=0; \\" );
+			outn( "\t\t\tclearerr(yyin); \\" );
+			outn( "\t\t\t} \\" );
+			outn( "\t\t}" );
 			}
 		}
 
@@ -1455,7 +1475,9 @@ void make_tables()
 		else
 			{
 			indent_puts(
-	"fprintf( stderr, \"--accepting rule at line %d (\\\"%s\\\")\\n\"," );
+        (long_align ?
+	"fprintf( stderr, \"--accepting rule at line %ld (\\\"%s\\\")\\n\",":
+        "fprintf( stderr, \"--accepting rule at line %d (\\\"%s\\\")\\n\","));
 
 			indent_puts(
 				"         yy_rule_linenum[yy_act], yytext );" );
