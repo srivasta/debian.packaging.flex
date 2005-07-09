@@ -3804,6 +3804,7 @@ Here is an example of a simple C++ scanner:
 @example
 @verbatim
         // An example of using the flex C++ scanner class.
+    %option noyywrap
 
     %{
     int mylineno = 0;
@@ -3832,7 +3833,7 @@ Here is an example of a simple C++ scanner:
                 if(c == '\n')
                     ++mylineno;
 
-                else if(c == @samp{*})
+                else if(c == '*')
                     {
                     if((c = yyinput()) == '/')
                         break;
@@ -3842,19 +3843,19 @@ Here is an example of a simple C++ scanner:
                 }
             }
 
-    {number}  cout  "number "  YYText()  '\n';
+    {number}  std::cout <<  "number " <<  YYText() <<  '\n';
 
     \n        mylineno++;
 
-    {name}    cout  "name "  YYText()  '\n';
+    {name}    std::cout <<  "name " <<  YYText()  << '\n';
 
-    {string}  cout  "string "  YYText()  '\n';
+    {string}  std::cout <<  "string " <<   YYText() <<  '\n';
 
     %%
 
     int main( int /* argc */, char** /* argv */ )
         {
-        @code{flex}Lexer* lexer = new yyFlexLexer;
+        FlexLexer* lexer = new yyFlexLexer;
         while(lexer->yylex() != 0)
             ;
         return 0;
@@ -3866,7 +3867,7 @@ Here is an example of a simple C++ scanner:
 If you want to create multiple (different) lexer classes, you use the
 @samp{-P} flag (or the @code{prefix=} option) to rename each
 @code{yyFlexLexer} to some other @samp{xxFlexLexer}.  You then can
-include @file{FlexLexer.h>} in your other sources once per lexer class,
+include @file{FlexLexer>} in your other sources once per lexer class,
 first renaming @code{yyFlexLexer} as follows:
 
 @cindex include files, with C++
@@ -3876,11 +3877,11 @@ first renaming @code{yyFlexLexer} as follows:
 @verbatim
     #undef yyFlexLexer
     #define yyFlexLexer xxFlexLexer
-    #include <FflexLexer.h>
+    #include <FflexLexer>
 
     #undef yyFlexLexer
     #define yyFlexLexer zzFlexLexer
-    #include FlexLexer.h>
+    #include FlexLexer>
 @end verbatim
 @end example
 
