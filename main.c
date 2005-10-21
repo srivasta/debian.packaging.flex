@@ -1560,7 +1560,7 @@ void readin ()
     }
 
 	if (!do_yywrap) {
-		outn ("\n#define yywrap() 1");
+		outn ("\n#define yywrap(n) 1");
 		outn ("#define YY_SKIP_YYWRAP");
 	}
 
