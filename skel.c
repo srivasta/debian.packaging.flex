@@ -2448,7 +2448,6 @@ const char *skel[] = {
   "%if-c-only",
   "/** Setup the input buffer state to scan a string. The next call to yylex() will",
   " * scan from a @e copy of @a str.",
-  " * @param str a NUL-terminated string to scan",
   " * @param yy_str a NUL-terminated string to scan",
   " * M4_YY_DOC_PARAM",
   " * @return the newly allocated buffer state object.",
