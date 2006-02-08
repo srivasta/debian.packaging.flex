@@ -1560,7 +1560,19 @@ void readin ()
     }
 
 	if (!do_yywrap) {
-		outn ("\n#define yywrap(n) 1");
+              /*
+               * Output different macro defs, since older compilers can't
+               * handle a macro taking a single argument called with none
+               * (which is legal C99)
+               */
+               if(reentrant)
+                {
+                 outn ("\n#define yywrap(n) 1");
+                }
+               else
+                {
+                 outn ("\n#define yywrap() 1"); 
+                }
 		outn ("#define YY_SKIP_YYWRAP");
 	}
 
