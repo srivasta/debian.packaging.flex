@@ -1,35 +1,36 @@
-# Turkish translations for GNU flex messages.
-# Copyright (C) 2002 Free Software Foundation, Inc.
-# Altuğ Bayram <altugbayram_2000@yahoo.com>, 2002.
+# Translation of 'flex' messages to Turkish
+# Copyright (C) 2004 Free Software Foundation, Inc.
+# Deniz Akkus Kanca <deniz@arayan.com>, 2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: flex 2.5.19\n"
-"POT-Creation-Date: 2003-04-01 11:33-0500\n"
-"PO-Revision-Date: 2002-11-06 11:33GMT+200\n"
+"Project-Id-Version: flex 2.5.31\n"
+"Report-Msgid-Bugs-To: lex-help@lists.sourceforge.net\n"
+"POT-Creation-Date: 2006-02-20 21:46-0500\n"
+"PO-Revision-Date: 2004-05-16 18:36+0300\n"
 "Last-Translator: Deniz Akkus Kanca <deniz@arayan.com>\n"
 "Language-Team: Turkish <gnu-tr-u12a@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-9\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.9.5\n"
+"X-Generator: KBabel 1.0.2\n"
 
 #: dfa.c:61
 #, c-format
 msgid "State #%d is non-accepting -\n"
-msgstr "Durum #%d kabul edilmiyor -\n"
+msgstr "Durum #%d kabul etmiyor -\n"
 
 #: dfa.c:124
 msgid "dangerous trailing context"
-msgstr "tehlikeli izleme ortamı"
+msgstr "izleyen baÄŸlam tehlikeli"
 
 #: dfa.c:166
 msgid " associated rule line numbers:"
-msgstr " birleşmiş kural satır numaraları:"
+msgstr " alakalÄ± kural satÄ±r numaralarÄ±:"
 
 #: dfa.c:202
 msgid " out-transitions: "
-msgstr " dış-geçişler: "
+msgstr " dÄ±ÅŸ-geÃ§iÅŸler: "
 
 #: dfa.c:210
 msgid ""
@@ -37,11 +38,11 @@ msgid ""
 " jam-transitions: EOF "
 msgstr ""
 "\n"
-" sıkışık-geçişler: EOF "
+" sÄ±kÄ±ÅŸÄ±k-geÃ§iÅŸler: EOF "
 
 #: dfa.c:341
 msgid "consistency check failed in epsclosure()"
-msgstr "epsclosure() içindeki tutarlılık kontrolü başarısız"
+msgstr "epsclosure() iÃ§indeki tutarlÄ±lÄ±k kontrolÃ¼ baÅŸarÄ±sÄ±z"
 
 #: dfa.c:429
 msgid ""
@@ -52,12 +53,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"DFA Dökümü:\n"
+"DFA DÃ¶kÃ¼mÃ¼:\n"
 "\n"
 
 #: dfa.c:604
 msgid "could not create unique end-of-buffer state"
-msgstr "tekil tampon sonu durumu yaratılamadı"
+msgstr "tekil tampon sonu durumu yaratÄ±lamadÄ±"
 
 #: dfa.c:625
 #, c-format
@@ -66,15 +67,15 @@ msgstr "durum # %d:\n"
 
 #: dfa.c:800
 msgid "Could not write yynxt_tbl[][]"
-msgstr "yynxt_tbl[][] yazılamadı"
+msgstr "yynxt_tbl[][] yazÄ±lamadÄ±"
 
 #: dfa.c:1023
 msgid "consistency check failed in symfollowset"
-msgstr "symfollowset içindeki tutarlık kontrolü başarısız"
+msgstr "symfollowset iÃ§indeki tutarlÄ±k kontrolÃ¼ baÅŸarÄ±sÄ±z"
 
 #: dfa.c:1071
 msgid "bad transition character detected in sympartition()"
-msgstr "sympartition() içinde hatalı geçiş karakterleri saptandı"
+msgstr "sympartition() iÃ§inde hatalÄ± geÃ§iÅŸ karakterleri saptandÄ±"
 
 #: gen.c:484
 msgid ""
@@ -85,7 +86,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Denklik Sınıfları:\n"
+"Denklik SÄ±nÄ±flarÄ±:\n"
 "\n"
 
 #: gen.c:668 gen.c:697 gen.c:1221
@@ -99,17 +100,16 @@ msgid "state # %d accepts: "
 msgstr "durum # %d kabul eder: "
 
 #: gen.c:1163
-#, fuzzy
 msgid "Could not write yyacclist_tbl"
-msgstr "yyacc_tbl yazılamadı"
+msgstr "yyacclist_tbl yazÄ±lamadÄ±"
 
 #: gen.c:1239
 msgid "Could not write yyacc_tbl"
-msgstr "yyacc_tbl yazılamadı"
+msgstr "yyacc_tbl yazÄ±lamadÄ±"
 
 #: gen.c:1254 gen.c:1639 gen.c:1662
 msgid "Could not write ecstbl"
-msgstr "ecstbl yazılamadı"
+msgstr "ecstbl yazÄ±lamadÄ±"
 
 #: gen.c:1277
 msgid ""
@@ -119,385 +119,384 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Ara-Denklik Sınıfları:\n"
+"Ara-Denklik SÄ±nÄ±flarÄ±:\n"
 
 #: gen.c:1299
 msgid "Could not write yymeta_tbl"
-msgstr "yymeta_tbl yazılamadı"
+msgstr "yymeta_tbl yazÄ±lamadÄ±"
 
 #: gen.c:1360
 msgid "Could not write yybase_tbl"
-msgstr "yybase_tbl yazılamadı"
+msgstr "yybase_tbl yazÄ±lamadÄ±"
 
 #: gen.c:1394
 msgid "Could not write yydef_tbl"
-msgstr "yydef_tbl yazılamadı"
+msgstr "yydef_tbl yazÄ±lamadÄ±"
 
 #: gen.c:1434
 msgid "Could not write yynxt_tbl"
-msgstr "yynxt_tbl yazılamadı"
+msgstr "yynxt_tbl yazÄ±lamadÄ±"
 
 #: gen.c:1470
 msgid "Could not write yychk_tbl"
-msgstr "yychk_tbl yazılamadı"
+msgstr "yychk_tbl yazÄ±lamadÄ±"
 
 #: gen.c:1624 gen.c:1653
 msgid "Could not write ftbl"
-msgstr "ftbl yazılamadı"
+msgstr "ftbl yazÄ±lamadÄ±"
 
 #: gen.c:1630
-#, fuzzy
 msgid "Could not write ssltbl"
-msgstr "ecstbl yazılamadı"
+msgstr "ssltbl yazÄ±lamadÄ±"
 
 #: gen.c:1681
-#, fuzzy
 msgid "Could not write eoltbl"
-msgstr "ecstbl yazılamadı"
+msgstr "eoltbl yazÄ±lamadÄ±"
 
 #: gen.c:1741
 msgid "Could not write yynultrans_tbl"
-msgstr "yynultrans_tbl yazılamadı"
+msgstr "yynultrans_tbl yazÄ±lamadÄ±"
 
-#: main.c:176
+#: main.c:187
 msgid "rule cannot be matched"
-msgstr "kural eşlenemdi"
+msgstr "kural eÅŸlenemedi"
 
-#: main.c:181
+#: main.c:192
 msgid "-s option given but default rule can be matched"
-msgstr "-s seçeneği verilmiş fakat öntanımlı kural eşlenebilmeli"
+msgstr "-s seÃ§eneÄŸi verilmiÅŸ fakat Ã¶ntanÄ±mlÄ± kural eÅŸlenebiliyor"
 
-#: main.c:217
+#: main.c:231
 msgid "Can't use -+ with -l option"
-msgstr "-+'yi -l seçeneği ile kullanma"
+msgstr "-+'yi -l seÃ§eneÄŸi ile kullanma"
 
-#: main.c:220
+#: main.c:234
 msgid "Can't use -f or -F with -l option"
-msgstr "-f veya -F'yi -l seçeneği ile kullanma"
+msgstr "-f veya -F'yi -l seÃ§eneÄŸi ile kullanma"
 
-#: main.c:224
-#, fuzzy
+#: main.c:238
 msgid "Can't use --reentrant or --bison-bridge with -l option"
-msgstr "-R veya -Rb -l seçeneği ile kullanılmaz"
+msgstr "-l seÃ§eneÄŸi ile --reentrant veya --bison-bridge bir arada kullanÄ±lamaz"
 
-#: main.c:261
+#: main.c:275
 msgid "-Cf/-CF and -Cm don't make sense together"
-msgstr "-Cf/-CF ve -Cm birlikte hassas değillerdir"
+msgstr "-Cf/-CF ve -Cm birlikte anlam ifade etmiyor"
 
-#: main.c:264
+#: main.c:278
 msgid "-Cf/-CF and -I are incompatible"
-msgstr "-Cf/-CF ve -I uyumsuzdur"
+msgstr "-Cf/-CF ve -I uyumsuz"
 
-#: main.c:268
+#: main.c:282
 msgid "-Cf/-CF are incompatible with lex-compatibility mode"
-msgstr "-Cf/-CF lex-uyumluluk kipi ile uyumsuzdur"
+msgstr "-Cf/-CF lex-uyumluluk kipi ile uyumsuz"
 
-#: main.c:273
+#: main.c:287
 msgid "-Cf and -CF are mutually exclusive"
-msgstr "-Cf ve -CF karşılıklı dışarlayandır"
+msgstr "-Cf ve -CF bir arada kullanÄ±lamaz"
 
-#: main.c:277
+#: main.c:291
 msgid "Can't use -+ with -CF option"
-msgstr "-+ yi -CF seçeneği ile kullanma"
+msgstr "-+, -CF seÃ§eneÄŸi ile kullanÄ±lamaz"
 
-#: main.c:280
+#: main.c:294
 #, c-format
 msgid "%array incompatible with -+ option"
-msgstr "%array -+ seçeneği ile uyumsuz"
+msgstr "%array, -+ seÃ§eneÄŸi ile uyumsuz"
 
-#: main.c:285
-#, fuzzy
+#: main.c:299
 msgid "Options -+ and --reentrant are mutually exclusive."
-msgstr "-+ ve -R seçenekleri karşılıklı dışarlayandır."
+msgstr "-+ ve --reentrant seÃ§enekleri bir arada kullanÄ±lamaz"
 
-#: main.c:288
+#: main.c:302
 msgid "bison bridge not supported for the C++ scanner."
-msgstr ""
+msgstr "bison bridge, C++ tarayÄ±cÄ±sÄ± iÃ§in desteklenmiyor."
 
-#: main.c:340 main.c:385
+#: main.c:354 main.c:402
 #, c-format
 msgid "could not create %s"
-msgstr "%s yaratılamadı"
+msgstr "%s oluÅŸturulamadÄ±"
 
-#: main.c:398
+#: main.c:415
 msgid "could not write tables header"
-msgstr "tablo başlığı yazılamadı"
+msgstr "tablo baÅŸlÄ±ÄŸÄ± yazÄ±lamadÄ±"
 
-#: main.c:402
+#: main.c:419
 #, c-format
 msgid "can't open skeleton file %s"
-msgstr "iskelet dosyası %s açılamadı"
+msgstr "iskelet dosyasÄ± %s aÃ§Ä±lamadÄ±"
 
-#: main.c:483
+#: main.c:500
 #, c-format
 msgid "input error reading skeleton file %s"
-msgstr "iskelet dosyası %s okunurken girdi hatası"
+msgstr "iskelet dosyasÄ± %s okunurken girdi hatasÄ±"
 
-#: main.c:487
+#: main.c:504
 #, c-format
 msgid "error closing skeleton file %s"
-msgstr "iskelet dosyası kapatılırken hata: %s"
+msgstr "iskelet dosyasÄ± %s kapatÄ±lÄ±rken hata"
 
-#: main.c:671
+#: main.c:688
 #, c-format
 msgid "error creating header file %s"
-msgstr "başlık dosyası %s'i oluştururken hata"
+msgstr "baÅŸlÄ±k dosyasÄ± %s oluÅŸturulurken hata"
 
-#: main.c:679
+#: main.c:696
 #, c-format
 msgid "error writing output file %s"
-msgstr "çıktı dosyası yazılırken hata: %s"
+msgstr "Ã§Ä±ktÄ± dosyasÄ± %s yazÄ±lÄ±rken hata"
 
-#: main.c:683
+#: main.c:700
 #, c-format
 msgid "error closing output file %s"
-msgstr "çıktı dosyası kapatılırken hata: %s"
+msgstr "Ã§Ä±ktÄ± dosyasÄ± %s kapatÄ±lÄ±rken hata"
 
-#: main.c:687
+#: main.c:704
 #, c-format
 msgid "error deleting output file %s"
-msgstr "çıktı dosyası %s silinirken hata"
+msgstr "Ã§Ä±ktÄ± dosyasÄ± %s silinirken hata"
 
-#: main.c:694
+#: main.c:711
 msgid "No backing up.\n"
 msgstr "Yedekleme yok.\n"
 
-#: main.c:698
+#: main.c:715
 #, c-format
 msgid "%d backing up (non-accepting) states.\n"
-msgstr "%d yedeklenmiş (kabul-edilmeyen) durum.\n"
+msgstr "%d yedeklenen (kabul-etmeyen) durumlar.\n"
 
-#: main.c:702
+#: main.c:719
 msgid "Compressed tables always back up.\n"
-msgstr "Sıkıştırılmış tablolar daima yedeklidir.\n"
+msgstr "SÄ±kÄ±ÅŸtÄ±rÄ±lmÄ±ÅŸ tablolar daima yedeklidir.\n"
 
-#: main.c:705
+#: main.c:722
 #, c-format
 msgid "error writing backup file %s"
-msgstr "yedek dosyası yazılırken hata: %s"
+msgstr "yedek dosyasÄ± %s yazÄ±lÄ±rken hata"
 
-#: main.c:709
+#: main.c:726
 #, c-format
 msgid "error closing backup file %s"
-msgstr "yedek dosyası kapatılırken hata: %s"
+msgstr "yedek dosyasÄ± %s kapatÄ±lÄ±rken hata"
 
-#: main.c:714
+#: main.c:731
 #, c-format
 msgid "%s version %s usage statistics:\n"
-msgstr "%s sürüm %s kullanım istatistikleri:\n"
+msgstr "%s sÃ¼rÃ¼m %s kullanÄ±m istatistikleri:\n"
 
-#: main.c:717
+#: main.c:734
 msgid "  scanner options: -"
-msgstr "  tarayıcı seçenekleri: -"
+msgstr "  tarayÄ±cÄ± seÃ§enekleri: -"
 
-#: main.c:796
+#: main.c:813
 #, c-format
 msgid "  %d/%d NFA states\n"
 msgstr "  %d/%d NFA durumu\n"
 
-#: main.c:798
+#: main.c:815
 #, c-format
 msgid "  %d/%d DFA states (%d words)\n"
-msgstr "  %d/%d DFA durumu (%d sözcük)\n"
+msgstr "  %d/%d DFA durumu (%d sÃ¶zcÃ¼k)\n"
 
-#: main.c:800
+#: main.c:817
 #, c-format
 msgid "  %d rules\n"
 msgstr "  %d kural\n"
 
-#: main.c:805
+#: main.c:822
 msgid "  No backing up\n"
 msgstr "  Yedekleme yok\n"
 
-#: main.c:809
+#: main.c:826
 #, c-format
 msgid "  %d backing-up (non-accepting) states\n"
-msgstr "  %d yedeklenmiş (kabul-edilmeyen) durum\n"
+msgstr "  %d yedeklenmiÅŸ (kabul-edilmeyen) durum\n"
 
-#: main.c:814
+#: main.c:831
 msgid "  Compressed tables always back-up\n"
-msgstr "  Sıkıştırılmış tablolar daima yedeklenir\n"
+msgstr "  SÄ±kÄ±ÅŸtÄ±rÄ±lmÄ±ÅŸ tablolar daima yedeklenir\n"
 
-#: main.c:818
+#: main.c:835
 msgid "  Beginning-of-line patterns used\n"
-msgstr "  Başlangıç-satırı kalıpları kullanıldı\n"
-
-#: main.c:820
-#, c-format
-msgid "  %d/%d start conditions\n"
-msgstr "  %d/%d başlangıç şartları\n"
-
-#: main.c:824
-#, c-format
-msgid "  %d epsilon states, %d double epsilon states\n"
-msgstr "  %d epsilon durumu, %d çift epsilon durumu\n"
-
-#: main.c:828
-msgid "  no character classes\n"
-msgstr "  karakter sınıfları yok\n"
-
-#: main.c:832
-#, c-format
-msgid "  %d/%d character classes needed %d/%d words of storage, %d reused\n"
-msgstr ""
-"  %d/%d ihtiyaç duyulan karakter sınıfı %d/%d depolanan sözcük, %d yeniden "
-"kullanıldı\n"
+msgstr "  BaÅŸlangÄ±Ã§-satÄ±rÄ± kalÄ±plarÄ± kullanÄ±ldÄ±\n"
 
 #: main.c:837
 #, c-format
-msgid "  %d state/nextstate pairs created\n"
-msgstr "  %d durumu/sonrakidurum çifti yaratıldı\n"
+msgid "  %d/%d start conditions\n"
+msgstr "  %d/%d baÅŸlangÄ±Ã§ ÅŸartlarÄ±\n"
 
-#: main.c:840
+#: main.c:841
 #, c-format
-msgid "  %d/%d unique/duplicate transitions\n"
-msgstr "  %d/%d tekil/çift geçişler\n"
+msgid "  %d epsilon states, %d double epsilon states\n"
+msgstr "  %d epsilon durumu, %d Ã§ift epsilon durumu\n"
 
 #: main.c:845
+msgid "  no character classes\n"
+msgstr "  karakter sÄ±nÄ±fÄ± yok\n"
+
+#: main.c:849
+#, c-format
+msgid "  %d/%d character classes needed %d/%d words of storage, %d reused\n"
+msgstr ""
+"  %d/%d ihtiyaÃ§ duyulan karakter sÄ±nÄ±fÄ± %d/%d depolanan sÃ¶zcÃ¼k, %d yeniden "
+"kullanÄ±ldÄ±\n"
+
+#: main.c:854
+#, c-format
+msgid "  %d state/nextstate pairs created\n"
+msgstr "  %d durumu/sonrakidurum Ã§ifti yaratÄ±ldÄ±\n"
+
+#: main.c:857
+#, c-format
+msgid "  %d/%d unique/duplicate transitions\n"
+msgstr "  %d/%d tekil/Ã§ift geÃ§iÅŸler\n"
+
+#: main.c:862
 #, c-format
 msgid "  %d table entries\n"
 msgstr "  %d tablo girdileri\n"
 
-#: main.c:853
-#, c-format
-msgid "  %d/%d base-def entries created\n"
-msgstr "  %d/%d temel-tanım girdileri yaratıldı\n"
-
-#: main.c:857
-#, c-format
-msgid "  %d/%d (peak %d) nxt-chk entries created\n"
-msgstr "  %d/%d (en yüksek %d) nxt-chk girdileri yaratıldı\n"
-
-#: main.c:861
-#, c-format
-msgid "  %d/%d (peak %d) template nxt-chk entries created\n"
-msgstr "  %d/%d (en yüksek %d) şablon nxt-chk girdileri yaratıldı\n"
-
-#: main.c:865
-#, c-format
-msgid "  %d empty table entries\n"
-msgstr "  %d boş tablo girdileri\n"
-
-#: main.c:867
-#, c-format
-msgid "  %d protos created\n"
-msgstr "  %d prototip yaratıldı\n"
-
 #: main.c:870
 #, c-format
-msgid "  %d templates created, %d uses\n"
-msgstr "  %d aşblon yaratıldı, %d kullanıldı\n"
+msgid "  %d/%d base-def entries created\n"
+msgstr "  %d/%d temel-tanÄ±m girdileri yaratÄ±ldÄ±\n"
+
+#: main.c:874
+#, c-format
+msgid "  %d/%d (peak %d) nxt-chk entries created\n"
+msgstr "  %d/%d (en yÃ¼ksek %d) nxt-chk girdileri yaratÄ±ldÄ±\n"
 
 #: main.c:878
 #, c-format
-msgid "  %d/%d equivalence classes created\n"
-msgstr "  %d/%d denk sınıflar yaratıldı\n"
+msgid "  %d/%d (peak %d) template nxt-chk entries created\n"
+msgstr "  %d/%d (en yÃ¼ksek %d) ÅŸablon nxt-chk girdileri yaratÄ±ldÄ±\n"
 
-#: main.c:886
+#: main.c:882
+#, c-format
+msgid "  %d empty table entries\n"
+msgstr "  %d boÅŸ tablo girdileri\n"
+
+#: main.c:884
+#, c-format
+msgid "  %d protos created\n"
+msgstr "  %d prototip yaratÄ±ldÄ±\n"
+
+#: main.c:887
+#, c-format
+msgid "  %d templates created, %d uses\n"
+msgstr "  %d ÅŸablon yaratÄ±ldÄ±, %d kullanÄ±ldÄ±\n"
+
+#: main.c:895
+#, c-format
+msgid "  %d/%d equivalence classes created\n"
+msgstr "  %d/%d denklik sÄ±nÄ±fÄ± yaratÄ±ldÄ±\n"
+
+#: main.c:903
 #, c-format
 msgid "  %d/%d meta-equivalence classes created\n"
-msgstr "  %d/%d ara-denklik sınıfları yaratıldı\n"
+msgstr "  %d/%d ara-denklik sÄ±nÄ±fÄ± yaratÄ±ldÄ±\n"
 
-#: main.c:892
+#: main.c:909
 #, c-format
 msgid "  %d (%d saved) hash collisions, %d DFAs equal\n"
-msgstr "  %d (%d kaydedildi) saçılma çarpışması, %d DFA denk\n"
+msgstr "  %d (%d kaydedildi) saÃ§Ä±lma Ã§arpÄ±ÅŸmasÄ±, %d DFA denk\n"
 
-#: main.c:894
+#: main.c:911
 #, c-format
 msgid "  %d sets of reallocations needed\n"
-msgstr "  %d tekrar ayırım kumesine ihtiyaç var\n"
+msgstr "  %d tekrar ayÄ±rÄ±m kÃ¼mesine ihtiyaÃ§ var\n"
 
-#: main.c:896
+#: main.c:913
 #, c-format
 msgid "  %d total table entries needed\n"
-msgstr "  %d toplam tablo girdilerine ihtiyaç var\n"
+msgstr "  %d toplam tablo girdisine ihtiyaÃ§ var\n"
 
-#: main.c:971
+#: main.c:988
 msgid "Internal error. flexopts are malformed.\n"
-msgstr "İç hata. flexopt'ler bozuk.\n"
+msgstr "Ä°Ã§ hata. flexopt'lar bozuk.\n"
 
-#: main.c:981
+#: main.c:998
 #, c-format
 msgid "Try `%s --help' for more information.\n"
-msgstr "Daha fazla bilgi için `%s --help' yazın.\n"
+msgstr "Daha fazla bilgi iÃ§in `%s --help' yazÄ±n.\n"
 
-#: main.c:1038
+#: main.c:1055
 #, c-format
 msgid "unknown -C option '%c'"
-msgstr "bilinmeyen -C seçeneği '%c'"
+msgstr "bilinmeyen -C seÃ§eneÄŸi '%c'"
 
-#: main.c:1167
+#: main.c:1184
 #, c-format
 msgid "%s %s\n"
 msgstr "%s %s\n"
 
-#: main.c:1442
+#: main.c:1459
 msgid "fatal parse error"
-msgstr "ölümcül ayrıştırma hatası"
+msgstr "Ã¶lÃ¼mcÃ¼l ayrÄ±ÅŸtÄ±rma hatasÄ±"
 
-#: main.c:1474
+#: main.c:1491
 #, c-format
 msgid "could not create backing-up info file %s"
-msgstr "yedekleme bilgi dosyası %s yaratılamadı"
+msgstr "yedekleme bilgi dosyasÄ± %s oluÅŸturulamadÄ±"
 
-#: main.c:1495
+#: main.c:1512
 msgid "-l AT&T lex compatibility option entails a large performance penalty\n"
-msgstr "-l AT&T lex uyumluluğu seçeneği bir büyük başarım kaybına neden olur\n"
+msgstr "-l AT&T lex uyumluluÄŸu seÃ§eneÄŸi Ã¶nemli Ã¶lÃ§Ã¼de yavaÅŸlamaya yol aÃ§ar\n"
 
-#: main.c:1498
+#: main.c:1515
 msgid " and may be the actual source of other reported performance penalties\n"
-msgstr " ve belki diğer raporlanan başarım kayıplarının güncel kaynağı\n"
+msgstr ""
+" ve belki bildirilen baÅŸka performans kayÄ±plarÄ±nÄ±n da kaynaÄŸÄ± olabilir\n"
 
-#: main.c:1504
-#, fuzzy, c-format
+#: main.c:1521
+#, c-format
 msgid ""
 "%%option yylineno entails a performance penalty ONLY on rules that can match "
 "newline characters\n"
-msgstr "%%option yylineno bir büyük başarım kaybına neden olur\n"
-
-#: main.c:1511
-msgid "-I (interactive) entails a minor performance penalty\n"
-msgstr "-I (etkileşimli) bir küçük başarım kaybına neden olur\n"
-
-#: main.c:1516
-msgid "yymore() entails a minor performance penalty\n"
-msgstr "yymore() bir küçük başarım kaybına neden olur\n"
-
-#: main.c:1522
-msgid "REJECT entails a large performance penalty\n"
-msgstr "REJECT bir büyük başarım kaybına neden olur\n"
-
-#: main.c:1527
-msgid "Variable trailing context rules entail a large performance penalty\n"
 msgstr ""
-"Değişken izleme ortamı kuralları bir büyük başarım kaybına neden olur\n"
+"yylineno %%seÃ§eneÄŸi YALNIZCA yenisatÄ±r karakterlerini de eÅŸleyen satÄ±rlarda "
+"yavaÅŸlar.\n"
+
+#: main.c:1528
+msgid "-I (interactive) entails a minor performance penalty\n"
+msgstr "-I (etkileÅŸimli) kÃ¼Ã§Ã¼k Ã¶lÃ§ekli bir yavaÅŸlamaya neden olur\n"
+
+#: main.c:1533
+msgid "yymore() entails a minor performance penalty\n"
+msgstr "yymore() kÃ¼Ã§Ã¼k Ã¶lÃ§ekli bir yavaÅŸlamaya neden olur\n"
 
 #: main.c:1539
-msgid "REJECT cannot be used with -f or -F"
-msgstr "REJECT -f veya -F ile kullanılamadı"
+msgid "REJECT entails a large performance penalty\n"
+msgstr "REJECT bÃ¼yÃ¼k Ã¶lÃ§ekli bir yavaÅŸlamaya neden olur\n"
 
-#: main.c:1542
+#: main.c:1544
+msgid "Variable trailing context rules entail a large performance penalty\n"
+msgstr ""
+"DeÄŸiÅŸken izleyen baÄŸlam kurallarÄ±, bÃ¼yÃ¼k Ã¶lÃ§ekli yavaÅŸlamaya neden olur\n"
+
+#: main.c:1556
+msgid "REJECT cannot be used with -f or -F"
+msgstr "REJECT, -f veya -F ile kullanÄ±lamaz"
+
+#: main.c:1559
 #, c-format
 msgid "%option yylineno cannot be used with REJECT"
-msgstr "%option yylineno REJECT ile kullanılamaz"
+msgstr "%option yylineno, REJECT ile birlikte kullanÄ±lamaz"
 
-#: main.c:1545
+#: main.c:1562
 msgid "variable trailing context rules cannot be used with -f or -F"
-msgstr "değişken izleme ortamı kuralları -f veya -F ile kullanılamaz"
+msgstr "deÄŸiÅŸken izleme ortamÄ± kurallarÄ±, -f veya -F ile birlikte kullanÄ±lamaz"
 
-#: main.c:1661
+#: main.c:1677
 #, c-format
 msgid "%option yyclass only meaningful for C++ scanners"
-msgstr "%option yyclass sadece C++ tarayıcılar için anlamlıdır"
+msgstr "%option yyclass, sadece C++ tarayÄ±cÄ±larÄ± iÃ§in anlamlÄ±dÄ±r"
 
-#: main.c:1768
+#: main.c:1784
 #, c-format
 msgid "Usage: %s [OPTIONS] [FILE]...\n"
-msgstr "Kullanım: %s [SEÇENEKLER...] [DOSYA...]\n"
+msgstr "KullanÄ±m: %s [SEÃ‡ENEKLER...] [DOSYA...]\n"
 
-#: main.c:1771
-#, fuzzy, c-format
+#: main.c:1787
+#, c-format
 msgid ""
 "Generates programs that perform pattern-matching on text.\n"
 "\n"
@@ -561,107 +560,107 @@ msgid ""
 "  -h, --help              produce this help message\n"
 "  -V, --version           report %s version\n"
 msgstr ""
-"Metin üzerinde kalıp eşleştiren yazılımlar üretir.\n"
+"Metin Ã¼zerinde kalÄ±p eÅŸleyen yazÄ±lÄ±mlar oluÅŸturur.\n"
 "\n"
-"Tablo Sıkıştırma:\n"
-"  -Ca, --align      daha iyi bellek hizalaması için daha büyük tablolardan\n"
-"                    feragat eder\n"
-"  -Ce, --ecs        denklik sınıflarını oluştur\n"
-"  -Cf               tarayıcı tablolarını sıkıştırma; -f gösterimini kullan\n"
-"  -CF               tarayıcı tablolarını sıkıştırma; -F gösterimini kullan\n"
-"  -Cm, --meta-ecs   ara-denklik sınıflarını oluştur\n"
-"  -Cr, --read       tarayıcı girdisi için stdionun yerine read() kullan\n"
-"  -f, --full        hızlı, geniş tarayıcılar oluştur. -Cfr'ye benzer\n"
-"  -F, --fast        alternatif tablo gösterimlerini kullan. -CFr'ye benzer\n"
-"  -Cem              öntanımlı sıkıştırma (--ecs --meta-ecs ile aynı)\n"
+"Tablo SÄ±kÄ±ÅŸtÄ±rma SeÃ§enekleri:\n"
+"  -Ca, --align      daha iyi bellek hizalamasÄ± iÃ§in daha bÃ¼yÃ¼k tablolardan\n"
+"                    vazgeÃ§er.\n"
+"  -Ce, --ecs        eÅŸitlik sÄ±nÄ±flarÄ± oluÅŸturur\n"
+"  -Cf               tablolarÄ± sÄ±kÄ±ÅŸtÄ±rmaz; -f gÃ¶sterimini kullanÄ±r\n"
+"  -CF               tablolarÄ± sÄ±kÄ±ÅŸtÄ±rmaz; -F gÃ¶sterimini kullanÄ±r\n"
+"  -Cm, --meta-ecs   Ã¼st-eÅŸitlik sÄ±nÄ±flarÄ± oluÅŸturur\n"
+"  -Cr, --read       tarama girdisi iÃ§in stdio yerine read() kullanÄ±r\n"
+"  -f, --full        hÄ±zlÄ±, bÃ¼yÃ¼k tarayÄ±cÄ± oluÅŸturur. -Cfr ile aynÄ±\n"
+"  -F, --fast        alternatif tablo gÃ¶sterimi kullanÄ±r. -CFr ile aynÄ±\n"
+"  -Cem              Ã¶n tanÄ±mlÄ± sÄ±kÄ±ÅŸtÄ±rma (--ecs --meta-ecs ile aynÄ±)\n"
 "\n"
-"Hata Ayıklama:\n"
-"  -d, --debug             tarayıcı içinde hata ayıklayıcı "
-"kipini                           etkinleştir\n"
-"  -b, --backup            yedekleme bilgisini %s'e yaz\n"
-"  -p, --perf-report       başarım raporunu stderr'a yaz\n"
-"  -s, --nodefault         eşlenemeyen metni öntanımlı kural ECHO'ya bas\n"
-"  -T, --trace             %s izleme kipinde çalışmalı\n"
-"  -w, --nowarn            uyarılar üretme\n"
-"  -v, --verbose           tarayıcı istatistiklerinin özetini stdout'a yaz\n"
+"Hata AyÄ±klama:\n"
+"  -d, --debug             tarayÄ±cÄ±da hata ayÄ±klama kipini etkinleÅŸtirir\n"
+"  -b, --backup            yedekleme bilgisini %s'e yazdÄ±rÄ±r\n"
+"  -p, --perf-report       performans raporunu standart hataya yazdÄ±rÄ±r\n"
+"  -s, --nodefault         eÅŸleÅŸmeyen metni gÃ¶stermek davranÄ±ÅŸÄ±nÄ± durdurur\n"
+"  -T, --trace             %s izleme kipinde Ã§alÄ±ÅŸmalÄ±dÄ±r\n"
+"  -w, --nowarn            uyarÄ± bildirmez\n"
+"  -v, --verbose           tarama istatistiklerini standart Ã§Ä±ktÄ±ya yazdÄ±rÄ±r\n"
 "\n"
-"Dosyalar:\n"
-"  -o, --outfile=DOSYA     çıktı dosya adını belirle\n"
-"  -S, --skel=DOSYA        iskelet dosyayı belirle\n"
-"  -t, --stdout            tarayıcıları %s'in yerine stdout'a yaz\n"
-"      --yyclass=İSİM      C++ sınıfının adı\n"
-"      --header-file=DOSYA tarayıcıya ek olarak bir C başlık dosyası\n"
-"                          oluşturur\n"
-"      --tables-file[=DOSYA] tabloları DOSYA'ya yazar\n"
+"Files:\n"
+"  -o, --outfile=DOSYA     Ã§Ä±ktÄ± dosya adÄ±nÄ± belirtir\n"
+"  -S, --skel=DOSYA        iskelet dosyanÄ±n adÄ±nÄ± belirtir\n"
+"  -t, --stdout            tarayÄ±cÄ±yÄ± %s yerine stdout'a yazdÄ±rÄ±r\n"
+"      --yyclass=Ä°SÄ°M      C++ sÄ±nÄ±fÄ±nÄ±n ismi\n"
+"      --header-file=DOSYA tarayÄ±cÄ± yanÄ±nda C baÅŸlÄ±k dosyasÄ± da oluÅŸturur\n"
+"      --tables-file[=DOSYA] tablolarÄ± DOSYA'ya yazar\n"
 "\n"
-"Tarayıcı davranışı:\n"
-"  -7, --7bit              7-bit tarayıcı oluştur\n"
-"  -8, --8bit              generate 8-bit scanner\n"
-"  -B, --batch             yığın tarayıcılar üret (-I'nın karşıtı)\n"
-"  -i, --case-insensitive  kalıplardaki büyük-küçük duyarlılığını ihmal et\n"
-"  -l, --lex-compat        özgün lex ile en yüksek seviyede uyumluluk\n"
-"  -X, --posix-compat      POSIX lex ile en yüksek seviyede uyumluluk\n"
-"  -I, --interactive       etkileşimli tarayıcı üret (-B'nin karşıtı)\n"
-"      --yylineno          yylineno içindeki satır sayısını izle\n"
+"TarayÄ±cÄ± davranÄ±ÅŸÄ±:\n"
+"  -7, --7bit              7-bit tarayÄ±cÄ± oluÅŸturur\n"
+"  -8, --8bit              8-bit tarayÄ±cÄ± oluÅŸturur\n"
+"  -B, --batch             etkileÅŸimsiz tarayÄ±cÄ± oluÅŸturur (-I'nÄ±n tersi)\n"
+"  -i, --case-insensitive  kalÄ±plarda bÃ¼yÃ¼k/kÃ¼Ã§Ã¼k harf gÃ¶zetmez\n"
+"  -l, --lex-compat        lex ile en fazla uyumluluÄŸu saÄŸlar\n"
+"  -X, --posix-compat      POSIX lex ile en fazla uyumluluÄŸu saÄŸlar\n"
+"  -I, --interactive       etkileÅŸimli tarayÄ±cÄ± oluÅŸturur (-B'nin tersi)\n"
+"      --yylineno          yylineno iÃ§inde satÄ±r sayÄ±sÄ±nÄ± tutar\n"
 "\n"
-"Üretilen  kod:\n"
-"  -+,  --c++               C++ tarayıcı sınıfı oluştur\n"
-"  -Dmacro[=defn]           #define makro defn  (öntanımlı defn '1'dir)\n"
-"  -L,  --noline            tarayıcı içinde #line bildirimlerini bas\n"
-"  -P,  --prefix=DİZİ       önek olarak \"yy\"'nin yerine DİZİ kullan \n"
-"  -R,  --reentrant         yineli girilebilen C tarayıcısı üret\n"
-"  -Rb, --reentrant-bison   saf bison ayrıştırıcısı için "
-"yineli                            girilebilen tarayıcı.\n"
-"       --stdinit           yyin/yyout'u stdin/stdout'a ayarlı başlat\n"
-"       --nounistd          <unistd.h> dosyasını içerme\n"
-"       --noFUNCTION        özel bir FONKSİYON üretme\n"
+"OluÅŸturulan kod:\n"
+"  -+,  --c++               C++ tarayÄ±cÄ± sÄ±nÄ±fÄ± oluÅŸturur\n"
+"  -Dmacro[=defn]           #define ile makro tanÄ±mÄ±  (Ã¶ntanÄ±mlÄ± defn, '1')\n"
+"  -L,  --noline            tarayÄ±cÄ±da #line yÃ¶nergeleri oluÅŸturmaz\n"
+"  -P,  --prefix=STRING     \"yy\" yerine STRING'i Ã¶nek olarak kullanÄ±r\n"
+"  -R,  --reentrant         yeniden giriÅŸli C tarayÄ±cÄ±sÄ± oluÅŸturur\n"
+"       --bison-bridge      saf bison ayrÄ±ÅŸtÄ±rÄ±cÄ±sÄ± iÃ§in tarayÄ±cÄ±.\n"
+"       --bison-locations   yylloc desteÄŸini etkinleÅŸtirir.\n"
+"       --stdinit           yyin/yyout'u stdin/stdout'a tanÄ±mlar\n"
+"       --noansi-definitions eski tÃ¼r iÅŸlev tanÄ±mlarÄ±\n"
+"       --noansi-prototypes  prototiplerde boÅŸ parametre listesi\n"
+"       --nounistd          <unistd.h>'yi iÃ§ermez\n"
+"       --noFUNCTION        FUNCTION ismindeki iÅŸlevi Ã¼retmez\n"
 "\n"
-"Çeşitli:\n"
-"  -c                      hiçbirşeyi POSIX seçenekli yapma\n"
-"  -n                      hiçbirşeyi POSIX seçenekli yapma\n"
+"Muhtelif:\n"
+"  -c                      hiÃ§ bir ÅŸey yapmayan POSIX seÃ§eneÄŸi\n"
+"  -n                      hiÃ§ bir ÅŸey yapmayan POSIX seÃ§eneÄŸi\n"
 "  -?\n"
-"  -h, --help              bu yardım iletisini üret\n"
-"  -V, --version           %s sürümünü raporlar\n"
+"  -h, --help              bu yardÄ±m bilgisini gÃ¶sterir\n"
+"  -V, --version           %s sÃ¼rÃ¼mÃ¼nÃ¼ bildirir\n"
 
 #: misc.c:100 misc.c:126
 #, c-format
 msgid "name \"%s\" ridiculously long"
-msgstr "isim \"%s\" gülünç derecede uzun"
+msgstr "\"%s\" ismi gÃ¼lÃ¼nÃ§ derecede uzun"
 
 #: misc.c:175
 msgid "memory allocation failed in allocate_array()"
-msgstr "allocate_array() içinde hafıza ayırımı başarısız"
+msgstr "allocate_array() iÃ§inde bellek ayÄ±rÄ±mÄ± baÅŸarÄ±sÄ±z"
 
 #: misc.c:250
 #, c-format
 msgid "bad character '%s' detected in check_char()"
-msgstr "check_char() içinde hatalı karakter '%s' saptandı"
+msgstr "check_char() iÃ§inde hatalÄ± karakter '%s' saptandÄ±"
 
 #: misc.c:255
 #, c-format
 msgid "scanner requires -8 flag to use the character %s"
-msgstr "tarayıcı %s karakterini kullanmak için -8 bayrağına ihtiyaç duyar"
+msgstr "tarayÄ±cÄ± %s karakterini kullanmak iÃ§in -8 bayraÄŸÄ±na ihtiyaÃ§ duyar"
 
 #: misc.c:288
 msgid "dynamic memory failure in copy_string()"
-msgstr "copy_string() içinde dinamik hafıza başarısızlığı"
+msgstr "copy_string() iÃ§inde dinamik bellek hatasÄ±"
 
 #: misc.c:422
 #, c-format
 msgid "%s: fatal internal error, %s\n"
-msgstr "%s: ölümcül iç hata, %s\n"
+msgstr "%s: Ã¶lÃ¼mcÃ¼l iÃ§ hata, %s\n"
 
 #: misc.c:875
 msgid "attempt to increase array size failed"
-msgstr "dizi boyutunu artırma çabası başarısız"
+msgstr "dizi boyutunu artÄ±rma denemesi baÅŸarÄ±sÄ±z"
 
 #: misc.c:1002
 msgid "bad line in skeleton file"
-msgstr "iskelet dosya içinde hatalı satır"
+msgstr "iskelet dosya iÃ§inde hatalÄ± satÄ±r"
 
 #: misc.c:1051
 msgid "memory allocation failed in yy_flex_xmalloc()"
-msgstr "yy_flex_xmalloc() içinde hafıza ayırımı başarısız"
+msgstr "yy_flex_xmalloc() iÃ§inde bellek ayÄ±rÄ±mÄ± baÅŸarÄ±sÄ±z"
 
 #: nfa.c:104
 #, c-format
@@ -672,7 +671,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"********** nfa'nın dökümü başlangıç durumu %d ile başlıyor\n"
+"********** baÅŸlangÄ±Ã§ durumu %d olan nfa'nÄ±n dÃ¶kÃ¼mÃ¼ne baÅŸlanÄ±yor\n"
 
 #: nfa.c:115
 #, c-format
@@ -681,42 +680,42 @@ msgstr "durum # %4d\t"
 
 #: nfa.c:130
 msgid "********** end of dump\n"
-msgstr "********** döküm sonu\n"
+msgstr "********** dÃ¶kÃ¼m sonu\n"
 
 #: nfa.c:174
 msgid "empty machine in dupmachine()"
-msgstr "dupmachine() içinde boş makine"
+msgstr "dupmachine() iÃ§inde boÅŸ makine"
 
 #: nfa.c:240
 #, c-format
 msgid "Variable trailing context rule at line %d\n"
-msgstr "Değişken izleme ortamı satır %d'de\n"
+msgstr "%d satÄ±rÄ±nda deÄŸiÅŸken izleyen baÄŸlam kuralÄ±\n"
 
 #: nfa.c:353
 msgid "bad state type in mark_beginning_as_normal()"
-msgstr "mark_beginning_as_normal() içinde hatalı durum tipi"
+msgstr "mark_beginning_as_normal() iÃ§inde hatalÄ± durum tÃ¼rÃ¼"
 
 #: nfa.c:598
 #, c-format
 msgid "input rules are too complicated (>= %d NFA states)"
-msgstr "girdi kuralları çok karışık (>= %d NFA durumu)"
+msgstr "girdi kurallarÄ± fazla karÄ±ÅŸÄ±k (>= %d NFA durumu)"
 
 #: nfa.c:677
 msgid "found too many transitions in mkxtion()"
-msgstr "mkxtion() içinde çok fazla geçiş bulundu"
+msgstr "mkxtion() iÃ§inde Ã§ok fazla geÃ§iÅŸ bulundu"
 
 #: nfa.c:703
 #, c-format
 msgid "too many rules (> %d)!"
-msgstr "çok fazla kural (> %d)!"
+msgstr "Ã§ok fazla kural (> %d)!"
 
 #: parse.y:183
 msgid "unknown error processing section 1"
-msgstr "1. bölüm işlenirken bilinmeyen hata oluştu"
+msgstr "1. bÃ¶lÃ¼m iÅŸlenirken bilinmeyen hata oluÅŸtu"
 
 #: parse.y:208 parse.y:373
 msgid "bad start condition list"
-msgstr "hatalı başlangıç şart listesi"
+msgstr "hatalÄ± baÅŸlangÄ±Ã§ ÅŸart listesi"
 
 #: parse.y:337
 msgid "unrecognized rule"
@@ -724,121 +723,123 @@ msgstr "bilinmeyen kural"
 
 #: parse.y:456 parse.y:469 parse.y:538
 msgid "trailing context used twice"
-msgstr "son bağlam iki defa kullanılmış"
+msgstr "izleyen baÄŸlam iki defa kullanÄ±lmÄ±ÅŸ"
 
 #: parse.y:574 parse.y:584 parse.y:657 parse.y:667
 msgid "bad iteration values"
-msgstr "hatalı yineleme değerleri"
+msgstr "hatalÄ± yineleme deÄŸerleri"
 
 #: parse.y:602 parse.y:620 parse.y:685 parse.y:703
 msgid "iteration value must be positive"
-msgstr "yineleme değeri pozitif olmalı"
+msgstr "yineleme deÄŸeri pozitif olmalÄ±"
 
 #: parse.y:817 parse.y:827
 #, c-format
 msgid "the character range [%c-%c] is ambiguous in a case-insensitive scanner"
 msgstr ""
+"[%c-%c] karakter aralÄ±ÄŸÄ±, bÃ¼yÃ¼k/kÃ¼Ã§Ã¼k harf farkÄ± gÃ¶zetmeyen bir tarayÄ±cÄ±da\n"
+"belirsiz anlamlÄ±"
 
 #: parse.y:832
 msgid "negative range in character class"
-msgstr "karakter sınıflarında negatif aralık"
+msgstr "karakter sÄ±nÄ±flarÄ±nda negatif aralÄ±k"
 
-#: scan.l:70 scan.l:180 scan.l:267 scan.l:409 scan.l:548 scan.l:598
+#: scan.l:71 scan.l:181 scan.l:268 scan.l:410 scan.l:549 scan.l:599
 msgid "Input line too long\n"
-msgstr "Girdi satırı fazla uzun\n"
+msgstr "Girdi satÄ±rÄ± fazla uzun\n"
 
-#: scan.l:149
-#, fuzzy, c-format
+#: scan.l:150
+#, c-format
 msgid "malformed '%top' directive"
-msgstr "'%' bildirimi tanınmadı"
+msgstr "hatalÄ± `%top' yÃ¶nergesi"
 
-#: scan.l:171
+#: scan.l:172
 #, no-c-format
 msgid "unrecognized '%' directive"
-msgstr "'%' bildirimi tanınmadı"
+msgstr "'%' yÃ¶nergesi bilinmiyor"
 
-#: scan.l:251
+#: scan.l:252
 msgid "Unmatched '{'"
-msgstr ""
+msgstr "'{' eÅŸleÅŸmiyor"
 
-#: scan.l:284
+#: scan.l:285
 msgid "incomplete name definition"
-msgstr "eksik isim tanımlaması"
+msgstr "eksik isim tanÄ±mlamasÄ±"
 
-#: scan.l:417
+#: scan.l:418
 #, c-format
 msgid "unrecognized %%option: %s"
-msgstr "geçersiz %%seçenek: %s"
+msgstr "geÃ§ersiz %%seÃ§enek: %s"
 
-#: scan.l:558 scan.l:677
+#: scan.l:559 scan.l:678
 msgid "bad character class"
-msgstr "hatalı karakter sınıfı"
+msgstr "hatalÄ± karakter sÄ±nÄ±fÄ±"
 
-#: scan.l:605
+#: scan.l:606
 #, c-format
 msgid "undefined definition {%s}"
-msgstr "belirsiz tanım {%s}"
+msgstr "belirsiz tanÄ±m {%s}"
 
-#: scan.l:645
+#: scan.l:646
 #, c-format
 msgid "bad <start condition>: %s"
-msgstr "hatalı <başlangıç şartı>: %s"
+msgstr "hatalÄ± <baÅŸlangÄ±Ã§ ÅŸartÄ±>: %s"
 
-#: scan.l:658
+#: scan.l:659
 msgid "missing quote"
-msgstr "eksik çift tırnak"
+msgstr "eksik Ã§ift tÄ±rnak"
 
-#: scan.l:698
+#: scan.l:699
 #, c-format
 msgid "bad character class expression: %s"
-msgstr "bozuk karakter sınıfı ifadesi: %s"
+msgstr "bozuk karakter sÄ±nÄ±fÄ± ifadesi: %s"
 
-#: scan.l:720
+#: scan.l:721
 msgid "bad character inside {}'s"
-msgstr "{}'ler içinde hatalı karakter"
+msgstr "{}'ler iÃ§inde hatalÄ± karakter"
 
-#: scan.l:726
+#: scan.l:727
 msgid "missing }"
-msgstr "kayıp }"
+msgstr "eksik }"
 
-#: scan.l:799
+#: scan.l:800
 msgid "EOF encountered inside an action"
-msgstr "bir eylem içinde EOF ile karşılaşıldı"
+msgstr "bir eylem iÃ§inde EOF ile karÅŸÄ±laÅŸÄ±ldÄ±"
 
-#: scan.l:819
+#: scan.l:820
 #, c-format
 msgid "bad character: %s"
-msgstr "hatalı karakter: %s"
+msgstr "hatalÄ± karakter: %s"
 
-#: scan.l:848
+#: scan.l:849
 #, c-format
 msgid "can't open %s"
-msgstr "%s açılamıyor"
+msgstr "%s aÃ§Ä±lamÄ±yor"
 
 #: scanopt.c:291
 #, c-format
 msgid "Usage: %s [OPTIONS]...\n"
-msgstr "Kullanım: %s [SEÇENEKLER...]\n"
+msgstr "KullanÄ±m: %s [SEÃ‡ENEKLER...]\n"
 
 #: scanopt.c:565
 #, c-format
 msgid "option `%s' doesn't allow an argument\n"
-msgstr "`%s' seçeneği argüman kullanmaz\n"
+msgstr "`%s' seÃ§eneÄŸi argÃ¼man kullanmaz\n"
 
 #: scanopt.c:570
 #, c-format
 msgid "option `%s' requires an argument\n"
-msgstr "`%s' seçeneği için argüman zorunludur\n"
+msgstr "`%s' seÃ§eneÄŸi iÃ§in argÃ¼man zorunludur\n"
 
 #: scanopt.c:574
 #, c-format
 msgid "option `%s' is ambiguous\n"
-msgstr "`%s' seçeneği belirsiz\n"
+msgstr "`%s' seÃ§eneÄŸi belirsiz\n"
 
 #: scanopt.c:578
 #, c-format
 msgid "Unrecognized option `%s'\n"
-msgstr "Bilinmeyen seçenek: `%s'\n"
+msgstr "Bilinmeyen seÃ§enek: `%s'\n"
 
 #: scanopt.c:582
 #, c-format
@@ -847,16 +848,16 @@ msgstr "Bilinmeyen hata=(%d)\n"
 
 #: sym.c:100
 msgid "symbol table memory allocation failed"
-msgstr "simge tablosu hafıza ayırımı başarısız"
+msgstr "simge tablosu bellek ayÄ±rÄ±mÄ± baÅŸarÄ±sÄ±z"
 
 #: sym.c:203
 msgid "name defined twice"
-msgstr "isim iki defa tanımlandı"
+msgstr "isim iki defa tanÄ±mlandÄ±"
 
 #: sym.c:254
 #, c-format
 msgid "start condition %s declared twice"
-msgstr "başlangıç şartı %s iki defa bildirildi"
+msgstr "baÅŸlangÄ±Ã§ ÅŸartÄ± %s iki defa bildirildi"
 
 #: yylex.c:56
 msgid "premature EOF"
@@ -864,25 +865,9 @@ msgstr "erken EOF"
 
 #: yylex.c:198
 msgid "End Marker\n"
-msgstr "Bitiş İşaretçisi\n"
+msgstr "BitiÅŸ Ä°ÅŸaretÃ§isi\n"
 
 #: yylex.c:204
 #, c-format
 msgid "*Something Weird* - tok: %d val: %d\n"
-msgstr "*Birşey Anlaşılmaz* -andaç: %d değer: %d\n"
-
-#~ msgid "Can't specify header option if writing to stdout."
-#~ msgstr "Eğer stdout'a yazılacaksa başlık seçeneğini belirtme"
-
-#~ msgid "unknown -R option '%c'"
-#~ msgstr "bilinmeyen -R seçeneği '%c'"
-
-#~ msgid "-Cf/-CF and %option yylineno are incompatible"
-#~ msgstr "-Cf/-CF ve %option yylineno uyumsuz"
-
-#~ msgid ""
-#~ "For usage, try\n"
-#~ "\t%s --help\n"
-#~ msgstr ""
-#~ "Kullanım için, aşağıdakini deneyin\n"
-#~ "\t%s --help\n"
+msgstr "*Garip Bir Åey* -andaÃ§: %d deÄŸer: %d\n"
