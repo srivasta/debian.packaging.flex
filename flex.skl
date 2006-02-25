@@ -1451,13 +1451,6 @@ m4_ifdef( [[M4_YY_USES_REJECT]],
 ]])
 }
 
-yyFlexLexer::~yyFlexLexer()
-{
-	delete [] yy_state_buf;
-	yyfree( yy_start_stack M4_YY_CALL_LAST_ARG );
-	yy_delete_buffer( YY_CURRENT_BUFFER M4_YY_CALL_LAST_ARG);
-}
-
 void yyFlexLexer::switch_streams( std::istream* new_in, std::ostream* new_out )
 {
 	if ( new_in )
@@ -2761,9 +2754,14 @@ int yylex_init(yyscan_t* ptr_yy_globals)
 
 %endif
 
-%if-c-only SNIP! this currently causes conflicts with the c++ scanner
+%if-c-or-c++
+%if-c-only
 /* yylex_destroy is for both reentrant and non-reentrant scanners. */
 int yylex_destroy  YYFARGS0(void)
+%endif
+%if-c++-only
+yyFlexLexer::~yyFlexLexer()
+%endif
 {
     M4_YY_DECL_GUTS_VAR();
 
@@ -2778,6 +2776,12 @@ int yylex_destroy  YYFARGS0(void)
 	yyfree(YY_G(yy_buffer_stack) M4_YY_CALL_LAST_ARG);
 	YY_G(yy_buffer_stack) = NULL;
 
+%if-c++-only
+	delete [] YY_G(yy_state_buf);
+	yyfree(YY_G(yy_start_stack) M4_YY_CALL_LAST_ARG );
+%endif
+
+%if-c-only
 %# This is the m4 way to say "if (stack_used || is_reentrant){ destroy_stack }"
 m4_ifdef( [[M4_YY_STACK_USED]], [[m4_define([[M4_YY_DESTROY_START_STACK]])]])
 m4_ifdef( [[M4_YY_REENTRANT]],  [[m4_define([[M4_YY_DESTROY_START_STACK]])]])
@@ -2798,6 +2802,7 @@ m4_ifdef( [[M4_YY_USES_REJECT]],
     yyfree ( yyscanner M4_YY_CALL_LAST_ARG );
 %endif
     return 0;
+%endif
 }
 %endif
 
