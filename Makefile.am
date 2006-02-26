@@ -118,7 +118,6 @@ EXTRA_DIST = \
 	ONEWS \
 	README \
 	README.cvs-snapshot \
-	RoadMap \
 	THANKS \
 	TODO \
 	autogen.sh \

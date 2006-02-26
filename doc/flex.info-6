@@ -1,4 +1,4 @@
-This is flex.info, produced by makeinfo version 4.3d from flex.texi.
+This is flex.info, produced by makeinfo version 4.5 from flex.texi.
 
 INFO-DIR-SECTION Programming
 START-INFO-DIR-ENTRY
@@ -826,7 +826,7 @@ unnamed-faq-100
      		Vern
 
 
-File: flex.info,  Node: unnamed-faq-101,  Prev: unnamed-faq-100,  Up: FAQ
+File: flex.info,  Node: unnamed-faq-101,  Next: What is the difference between YYLEX_PARAM and YY_DECL?,  Prev: unnamed-faq-100,  Up: FAQ
 
 unnamed-faq-101
 ===============
@@ -855,6 +855,40 @@ unnamed-faq-101
      then the problem is that the last rule needs to be "{whitespace}" !
      
      		Vern
+
+
+File: flex.info,  Node: What is the difference between YYLEX_PARAM and YY_DECL?,  Next: Why do I get "conflicting types for yylex" error?,  Prev: unnamed-faq-101,  Up: FAQ
+
+What is the difference between YYLEX_PARAM and YY_DECL?
+=======================================================
+
+   YYLEX_PARAM is not a flex symbol. It is for Bison. It tells Bison to
+pass extra params when it calls yylex() from the parser.
+
+   YY_DECL is the Flex declaration of yylex. The default is similar to
+this:
+
+
+     #define int yy_lex ()
+
+
+File: flex.info,  Node: Why do I get "conflicting types for yylex" error?,  Next: How do I access the values set in a Flex action from within a Bison action?,  Prev: What is the difference between YYLEX_PARAM and YY_DECL?,  Up: FAQ
+
+Why do I get "conflicting types for yylex" error?
+=================================================
+
+   This is a compiler error regarding a generated Bison parser, not a
+Flex scanner.  It means you need a prototype of yylex() in the top of
+the Bison file.  Be sure the prototype matches YY_DECL.
+
+
+File: flex.info,  Node: How do I access the values set in a Flex action from within a Bison action?,  Prev: Why do I get "conflicting types for yylex" error?,  Up: FAQ
+
+How do I access the values set in a Flex action from within a Bison action?
+===========================================================================
+
+   With $1, $2, $3, etc. These are called "Semantic Values" in the
+Bison manual.  See *Note Top: (bison)Top.
 
 
 File: flex.info,  Node: Appendices,  Next: Indices,  Prev: FAQ,  Up: Top
@@ -1064,11 +1098,15 @@ the actions will be sent through m4. Please follow these rules to
 protect your code from unwanted `m4' processing.
 
    * Do not use symbols that begin with, `m4_', such as, `m4_define',
-     or `m4_include', since those are reserved for `m4' macro names.
+     or `m4_include', since those are reserved for `m4' macro names. If
+     for some reason you need m4_ as a prefix, use a preprocessor
+     #define to get your symbol past m4 unmangled.
 
    * Do not use the strings `[[' or `]]' anywhere in your code. The
-     former is not valid in C, except within comments, but the latter
-     is valid in code such as `x[y[z]]'.
+     former is not valid in C, except within comments and strings, but
+     the latter is valid in code such as `x[y[z]]'. The solution is
+     simple. To get the literal string `"]]"', use `"]""]"'. To get the
+     array notation `x[y[z]]', use `x[y[z] ]'.
 
 
    `m4' is only required at the time you run `flex'. The generated
@@ -1077,6 +1115,7 @@ scanner is ordinary C or C++, and does _not_ require `m4'.
    ---------- Footnotes ----------
 
    (1) The use of m4 is subject to change in future revisions of flex.
+It is not part of the public API of flex. Do not depend on it.
 
 
 File: flex.info,  Node: Indices,  Prev: Appendices,  Up: Top
