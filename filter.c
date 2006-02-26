@@ -22,6 +22,11 @@
 /*  PURPOSE. */
 
 #include "flexdef.h"
+static const char * check_4_gnu_m4 =
+    "m4_dnl ifdef(`__gnu__', ,"
+    "`errprint(Flex requires GNU M4. Set the PATH or set the M4 environment variable to its path name.)"
+    " m4exit(2)')\n";
+
 
 /** global chain. */
 struct filter *output_chain = NULL;
@@ -158,9 +163,9 @@ bool filter_apply_chain (struct filter * chain)
 			int     r;
 
 			/* setup streams again */
-			if ((stdin = fdopen (0, "r")) == NULL)
+			if ( ! fdopen (0, "r"))
 				flexfatal (_("fdopen(0) failed"));
-			if ((stdout = fdopen (1, "w")) == NULL)
+			if (!fdopen (1, "w"))
 				flexfatal (_("fdopen(1) failed"));
 
 			if ((r = chain->filter_func (chain)) == -1)
@@ -181,7 +186,7 @@ bool filter_apply_chain (struct filter * chain)
 	if (dup2 (pipes[1], 1) == -1)
 		flexfatal (_("dup2(pipes[1],1)"));
 	close (pipes[1]);
-	if ((stdout = fdopen (1, "w")) == NULL)
+	if ( !fdopen (1, "w"))
 		flexfatal (_("fdopen(1) failed"));
 
 	return true;
@@ -248,6 +253,7 @@ int filter_tee_header (struct filter *chain)
 	 */
 
 	if (write_header) {
+        fputs (check_4_gnu_m4, to_h);
 		fputs ("m4_changecom`'m4_dnl\n", to_h);
 		fputs ("m4_changequote`'m4_dnl\n", to_h);
 		fputs ("m4_changequote([[,]])[[]]m4_dnl\n", to_h);
@@ -262,6 +268,7 @@ int filter_tee_header (struct filter *chain)
 
 	}
 
+    fputs (check_4_gnu_m4, to_c);
 	fputs ("m4_changecom`'m4_dnl\n", to_c);
 	fputs ("m4_changequote`'m4_dnl\n", to_c);
 	fputs ("m4_changequote([[,]])[[]]m4_dnl\n", to_c);
@@ -286,12 +293,23 @@ int filter_tee_header (struct filter *chain)
 		fputs ("m4_undefine( [[M4_YY_IN_HEADER]])m4_dnl\n", to_h);
 
 		fflush (to_h);
-		fclose (to_h);
+	    if (ferror (to_h))
+		    lerrsf (_("error writing output file %s"),
+                (char *) chain->extra);
+
+    	else if (fclose (to_h))
+	    	lerrsf (_("error closing output file %s"),
+                (char *) chain->extra);
 	}
 
 	fflush (to_c);
-	fclose (to_c);
+	if (ferror (to_c))
+		lerrsf (_("error writing output file %s"),
+			outfilename ? outfilename : "<stdout>");
 
+	else if (fclose (to_c))
+		lerrsf (_("error closing output file %s"),
+			outfilename ? outfilename : "<stdout>");
 
 	while (wait (0) > 0) ;
 
@@ -373,6 +391,13 @@ int filter_fix_linedirs (struct filter *chain)
 		lineno++;
 	}
 	fflush (stdout);
+	if (ferror (stdout))
+		lerrsf (_("error writing output file %s"),
+			outfilename ? outfilename : "<stdout>");
+
+	else if (fclose (stdout))
+		lerrsf (_("error closing output file %s"),
+			outfilename ? outfilename : "<stdout>");
 
 	return 0;
 }

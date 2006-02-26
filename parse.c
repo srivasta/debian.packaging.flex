@@ -1386,7 +1386,7 @@ case 47:
 				}
 
 			else
-				yyval = mkrep( yyvsp[-4], yyvsp[-2], INFINITY );
+				yyval = mkrep( yyvsp[-4], yyvsp[-2], INFINITE_REPEAT );
 			;
     break;}
 case 48:
@@ -1473,7 +1473,7 @@ case 53:
 				}
 
 			else
-				yyval = mkrep( yyvsp[-4], yyvsp[-2], INFINITY );
+				yyval = mkrep( yyvsp[-4], yyvsp[-2], INFINITE_REPEAT );
 			;
     break;}
 case 54:
