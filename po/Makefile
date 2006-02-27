@@ -1,5 +1,5 @@
 # Makefile for PO directory in any package using GNU gettext.
-# Copyright (C) 1995-1997, 2000-2002 by Ulrich Drepper <drepper@gnu.ai.mit.edu>
+# Copyright (C) 1995-1997, 2000-2003 by Ulrich Drepper <drepper@gnu.ai.mit.edu>
 #
 # This file can be copied and used freely without restrictions.  It can
 # be used in projects which are not available under the GNU General Public
@@ -9,7 +9,7 @@
 # General Public License and is *not* in the public domain.
 
 PACKAGE = flex
-VERSION = 2.5.31
+VERSION = 2.5.33
 
 SHELL = /bin/sh
 
@@ -27,7 +27,7 @@ gettextsrcdir = $(datadir)/gettext/po
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
 MKINSTALLDIRS = $(top_builddir)/./mkinstalldirs
-mkinstalldirs = $(SHELL) `case "$(MKINSTALLDIRS)" in /*) echo "$(MKINSTALLDIRS)" ;; *) echo "$(top_builddir)/mkinstalldirs" ;; esac`
+mkinstalldirs = $(SHELL) $(MKINSTALLDIRS)
 
 GMSGFMT = /usr/bin/msgfmt
 MSGFMT = /usr/bin/msgfmt
@@ -38,13 +38,13 @@ MSGINIT = msginit
 MSGCONV = msgconv
 MSGFILTER = msgfilter
 
-POFILES =  ca.po da.po de.po es.po ru.po sv.po tr.po fr.po ko.po zh_CN.po pt_BR.po
-GMOFILES =  ca.gmo da.gmo de.gmo es.gmo ru.gmo sv.gmo tr.gmo fr.gmo ko.gmo zh_CN.gmo pt_BR.gmo
-UPDATEPOFILES =  ca.po-update da.po-update de.po-update es.po-update ru.po-update sv.po-update tr.po-update fr.po-update ko.po-update zh_CN.po-update pt_BR.po-update
-DUMMYPOFILES =  ca.nop da.nop de.nop es.nop ru.nop sv.nop tr.nop fr.nop ko.nop zh_CN.nop pt_BR.nop
-DISTFILES.common = Makefile.in.in Makevars remove-potcdate.sin \
+POFILES =  ca.po da.po de.po es.po fr.po ga.po ko.po nl.po pl.po pt_BR.po ro.po ru.po sv.po tr.po vi.po zh_CN.po
+GMOFILES =  ca.gmo da.gmo de.gmo es.gmo fr.gmo ga.gmo ko.gmo nl.gmo pl.gmo pt_BR.gmo ro.gmo ru.gmo sv.gmo tr.gmo vi.gmo zh_CN.gmo
+UPDATEPOFILES =  ca.po-update da.po-update de.po-update es.po-update fr.po-update ga.po-update ko.po-update nl.po-update pl.po-update pt_BR.po-update ro.po-update ru.po-update sv.po-update tr.po-update vi.po-update zh_CN.po-update
+DUMMYPOFILES =  ca.nop da.nop de.nop es.nop fr.nop ga.nop ko.nop nl.nop pl.nop pt_BR.nop ro.nop ru.nop sv.nop tr.nop vi.nop zh_CN.nop
+DISTFILES.common = Makefile.in.in remove-potcdate.sin \
 $(DISTFILES.common.extra1) $(DISTFILES.common.extra2) $(DISTFILES.common.extra3)
-DISTFILES = $(DISTFILES.common) POTFILES.in $(DOMAIN).pot \
+DISTFILES = $(DISTFILES.common) Makevars POTFILES.in $(DOMAIN).pot stamp-po \
 $(POFILES) $(GMOFILES) \
 $(DISTFILES.extra1) $(DISTFILES.extra2) $(DISTFILES.extra3)
 
@@ -68,7 +68,7 @@ POTFILES = \
      ../tblcmp.c \
      ../yylex.c
 
-CATALOGS =  ca.gmo da.gmo de.gmo es.gmo ru.gmo sv.gmo tr.gmo fr.gmo ko.gmo zh_CN.gmo pt_BR.gmo
+CATALOGS =  ca.gmo da.gmo de.gmo es.gmo fr.gmo ga.gmo ko.gmo nl.gmo pl.gmo pt_BR.gmo ro.gmo ru.gmo sv.gmo tr.gmo vi.gmo zh_CN.gmo
 
 # Makevars gets inserted here. (Don't remove this line!)
 # Makefile variables for PO directory in any package using GNU gettext.
@@ -92,6 +92,22 @@ XGETTEXT_OPTIONS = --keyword=_ --keyword=N_
 # the public domain; in this case the translators are expected to disclaim
 # their copyright.
 COPYRIGHT_HOLDER = 
+
+# This is the email address or URL to which the translators shall report
+# bugs in the untranslated strings:
+# - Strings which are not entire sentences, see the maintainer guidelines
+#   in the GNU gettext documentation, section 'Preparing Strings'.
+# - Strings which use unclear terms or require additional context to be
+#   understood.
+# - Strings which make invalid assumptions about notation of date, time or
+#   money.
+# - Pluralisation problems.
+# - Incorrect English spelling.
+# - Incorrect formatting.
+# It can be your email address, or a mailing list address where translators
+# can write to without being subscribed, or the URL of a web page through
+# which the translators can contact you.
+MSGID_BUGS_ADDRESS = lex-help@lists.sourceforge.net
 
 # This is the list of locale categories, beyond LC_MESSAGES, for which the
 # message catalogs shall be used.  It is usually empty.
@@ -117,18 +133,35 @@ EXTRA_LOCALE_CATEGORIES =
 
 all: all-yes
 
-all-yes: $(CATALOGS)
+all-yes: stamp-po
 all-no:
+
+# stamp-po is a timestamp denoting the last time at which the CATALOGS have
+# been loosely updated. Its purpose is that when a developer or translator
+# checks out the package via CVS, and the $(DOMAIN).pot file is not in CVS,
+# "make" will update the $(DOMAIN).pot and the $(CATALOGS), but subsequent
+# invocations of "make" will do nothing. This timestamp would not be necessary
+# if updating the $(CATALOGS) would always touch them; however, the rule for
+# $(POFILES) has been designed to not touch files that don't need to be
+# changed.
+stamp-po: $(srcdir)/$(DOMAIN).pot
+	test -z "$(CATALOGS)" || $(MAKE) $(CATALOGS)
+	@echo "touch stamp-po"
+	@echo timestamp > stamp-poT
+	@mv stamp-poT stamp-po
 
 # Note: Target 'all' must not depend on target '$(DOMAIN).pot-update',
 # otherwise packages like GCC can not be built if only parts of the source
 # have been downloaded.
 
+# This target rebuilds $(DOMAIN).pot; it is an expensive operation.
+# Note that $(DOMAIN).pot is not touched if it doesn't need to be changed.
 $(DOMAIN).pot-update: $(POTFILES) $(srcdir)/POTFILES.in remove-potcdate.sed
 	$(XGETTEXT) --default-domain=$(DOMAIN) --directory=$(top_srcdir) \
 	  --add-comments=TRANSLATORS: $(XGETTEXT_OPTIONS) \
 	  --files-from=$(srcdir)/POTFILES.in \
-	  --copyright-holder='$(COPYRIGHT_HOLDER)'
+	  --copyright-holder='$(COPYRIGHT_HOLDER)' \
+	  --msgid-bugs-address='$(MSGID_BUGS_ADDRESS)'
 	test ! -f $(DOMAIN).po || { \
 	  if test -f $(srcdir)/$(DOMAIN).pot; then \
 	    sed -f remove-potcdate.sed < $(srcdir)/$(DOMAIN).pot > $(DOMAIN).1po && \
@@ -144,9 +177,14 @@ $(DOMAIN).pot-update: $(POTFILES) $(srcdir)/POTFILES.in remove-potcdate.sed
 	  fi; \
 	}
 
+# This rule has no dependencies: we don't need to update $(DOMAIN).pot at
+# every "make" invocation, only create it when it is missing.
+# Only "make $(DOMAIN).pot-update" or "make dist" will force an update.
 $(srcdir)/$(DOMAIN).pot:
 	$(MAKE) $(DOMAIN).pot-update
 
+# This target rebuilds a PO file if $(DOMAIN).pot has changed.
+# Note that a PO file is not touched if it doesn't need to be changed.
 $(POFILES): $(srcdir)/$(DOMAIN).pot
 	@lang=`echo $@ | sed -e 's,.*/,,' -e 's/\.po$$//'`; \
 	test "$(srcdir)" = . && cdcmd="" || cdcmd="cd $(srcdir) && "; \
@@ -157,11 +195,14 @@ $(POFILES): $(srcdir)/$(DOMAIN).pot
 install: install-exec install-data
 install-exec:
 install-data: install-data-yes
-	if test "$(PACKAGE)" = "gettext"; then \
+	if test "$(PACKAGE)" = "gettext-tools"; then \
 	  $(mkinstalldirs) $(DESTDIR)$(gettextsrcdir); \
-	  for file in $(DISTFILES.common); do \
+	  for file in $(DISTFILES.common) Makevars.template; do \
 	    $(INSTALL_DATA) $(srcdir)/$$file \
 			    $(DESTDIR)$(gettextsrcdir)/$$file; \
+	  done; \
+	  for file in Makevars; do \
+	    rm -f $(DESTDIR)$(gettextsrcdir)/$$file; \
 	  done; \
 	else \
 	  : ; \
@@ -213,7 +254,7 @@ install-strip: install
 installdirs: installdirs-exec installdirs-data
 installdirs-exec:
 installdirs-data: installdirs-data-yes
-	if test "$(PACKAGE)" = "gettext"; then \
+	if test "$(PACKAGE)" = "gettext-tools"; then \
 	  $(mkinstalldirs) $(DESTDIR)$(gettextsrcdir); \
 	else \
 	  : ; \
@@ -258,8 +299,8 @@ installcheck:
 uninstall: uninstall-exec uninstall-data
 uninstall-exec:
 uninstall-data: uninstall-data-yes
-	if test "$(PACKAGE)" = "gettext"; then \
-	  for file in $(DISTFILES.common); do \
+	if test "$(PACKAGE)" = "gettext-tools"; then \
+	  for file in $(DISTFILES.common) Makevars.template; do \
 	    rm -f $(DESTDIR)$(gettextsrcdir)/$$file; \
 	  done; \
 	else \
@@ -278,10 +319,11 @@ uninstall-data-yes:
 
 check: all
 
-dvi info tags TAGS ID:
+info dvi ps pdf html tags TAGS ctags CTAGS ID:
 
 mostlyclean:
 	rm -f remove-potcdate.sed
+	rm -f stamp-poT
 	rm -f core core.* $(DOMAIN).po $(DOMAIN).1po $(DOMAIN).2po *.new.po
 	rm -fr *.o
 
@@ -293,7 +335,7 @@ distclean: clean
 maintainer-clean: distclean
 	@echo "This command is intended for maintainers to use;"
 	@echo "it deletes files that may require special tools to rebuild."
-	rm -f $(GMOFILES)
+	rm -f stamp-po $(GMOFILES)
 
 distdir = $(top_builddir)/$(PACKAGE)-$(VERSION)/$(subdir)
 dist distdir:
@@ -302,7 +344,17 @@ dist distdir:
 # This is a separate target because 'update-po' must be executed before.
 dist2: $(DISTFILES)
 	dists="$(DISTFILES)"; \
-	if test -f $(srcdir)/ChangeLog; then dists="$$dists ChangeLog"; fi; \
+	if test "$(PACKAGE)" = "gettext-tools"; then \
+	  dists="$$dists Makevars.template"; \
+	fi; \
+	if test -f $(srcdir)/ChangeLog; then \
+	  dists="$$dists ChangeLog"; \
+	fi; \
+	for i in 0 1 2 3 4 5 6 7 8 9; do \
+	  if test -f $(srcdir)/ChangeLog.$$i; then \
+	    dists="$$dists ChangeLog.$$i"; \
+	  fi; \
+	done; \
 	if test -f $(srcdir)/LINGUAS; then dists="$$dists LINGUAS"; fi; \
 	for file in $$dists; do \
 	  if test -f $$file; then \
@@ -314,14 +366,14 @@ dist2: $(DISTFILES)
 
 update-po: Makefile
 	$(MAKE) $(DOMAIN).pot-update
-	$(MAKE) $(UPDATEPOFILES)
+	test -z "$(UPDATEPOFILES)" || $(MAKE) $(UPDATEPOFILES)
 	$(MAKE) update-gmo
 
 # General rule for updating PO files.
 
 .nop.po-update:
 	@lang=`echo $@ | sed -e 's/\.po-update$$//'`; \
-	if test "$(PACKAGE)" = "gettext"; then PATH=`pwd`/../src:$$PATH; fi; \
+	if test "$(PACKAGE)" = "gettext-tools"; then PATH=`pwd`/../src:$$PATH; fi; \
 	tmpdir=`pwd`; \
 	echo "$$lang:"; \
 	test "$(srcdir)" = . && cdcmd="" || cdcmd="cd $(srcdir) && "; \
@@ -348,7 +400,7 @@ $(DUMMYPOFILES):
 update-gmo: Makefile $(GMOFILES)
 	@:
 
-Makefile: Makefile.in.in $(top_builddir)/config.status POTFILES.in
+Makefile: Makefile.in.in $(top_builddir)/config.status POTFILES.in LINGUAS
 	cd $(top_builddir) \
 	  && CONFIG_FILES=$(subdir)/$@.in CONFIG_HEADERS= \
 	       $(SHELL) ./config.status

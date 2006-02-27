@@ -64,6 +64,7 @@ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/gettext.m4 \
 	$(top_srcdir)/m4/iconv.m4 $(top_srcdir)/m4/lib-ld.m4 \
 	$(top_srcdir)/m4/lib-link.m4 $(top_srcdir)/m4/lib-prefix.m4 \
+	$(top_srcdir)/m4/nls.m4 $(top_srcdir)/m4/po.m4 \
 	$(top_srcdir)/m4/progtest.m4 $(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
@@ -200,6 +201,8 @@ dist_noinst_SCRIPTS = \
 	create-test
 
 DIST_SUBDIRS = \
+	test-rescan-r \
+	test-rescan-nr \
 	test-basic-nr \
 	test-basic-r \
 	test-bison-yylloc \
@@ -241,6 +244,8 @@ DIST_SUBDIRS = \
 	test-table-opts
 
 SUBDIRS = \
+	test-rescan-r \
+	test-rescan-nr \
 	test-basic-nr \
 	test-basic-r \
 	test-bison-yylloc \

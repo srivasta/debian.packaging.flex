@@ -22,6 +22,11 @@
 /*  PURPOSE. */
 
 #include "flexdef.h"
+static const char * check_4_gnu_m4 =
+    "m4_dnl ifdef(`__gnu__', ,"
+    "`errprint(Flex requires GNU M4. Set the PATH or set the M4 environment variable to its path name.)"
+    " m4exit(2)')\n";
+
 
 /** global chain. */
 struct filter *output_chain = NULL;
@@ -157,15 +162,11 @@ bool filter_apply_chain (struct filter * chain)
 		if (chain->filter_func) {
 			int     r;
 
-			/* setup streams again  -- Removed. POSIX states that children inherit
-			   open streams in the parent. Also, ANSI C99 states that the stdin
-				 and stdout macors need not be modified lvalues; so this code is 
-				 broken in the first place.
-			if ((stdin = fdopen (0, "r")) == NULL)
+			/* setup streams again */
+			if ( ! fdopen (0, "r"))
 				flexfatal (_("fdopen(0) failed"));
-			if ((stdout = fdopen (1, "w")) == NULL)
+			if (!fdopen (1, "w"))
 				flexfatal (_("fdopen(1) failed"));
-      */
 
 			if ((r = chain->filter_func (chain)) == -1)
 				flexfatal (_("filter_func failed"));
@@ -185,11 +186,9 @@ bool filter_apply_chain (struct filter * chain)
 	if (dup2 (pipes[1], 1) == -1)
 		flexfatal (_("dup2(pipes[1],1)"));
 	close (pipes[1]);
-	/* This is not legal; stfout does not need to be a modifiable
-	lvalue 
-	if ((stdout = fdopen (1, "w")) == NULL)
+	if ( !fdopen (1, "w"))
 		flexfatal (_("fdopen(1) failed"));
-	*/
+
 	return true;
 }
 
@@ -254,6 +253,7 @@ int filter_tee_header (struct filter *chain)
 	 */
 
 	if (write_header) {
+        fputs (check_4_gnu_m4, to_h);
 		fputs ("m4_changecom`'m4_dnl\n", to_h);
 		fputs ("m4_changequote`'m4_dnl\n", to_h);
 		fputs ("m4_changequote([[,]])[[]]m4_dnl\n", to_h);
@@ -268,6 +268,7 @@ int filter_tee_header (struct filter *chain)
 
 	}
 
+    fputs (check_4_gnu_m4, to_c);
 	fputs ("m4_changecom`'m4_dnl\n", to_c);
 	fputs ("m4_changequote`'m4_dnl\n", to_c);
 	fputs ("m4_changequote([[,]])[[]]m4_dnl\n", to_c);

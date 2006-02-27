@@ -1,4 +1,4 @@
-This is flex.info, produced by makeinfo version 4.3d from flex.texi.
+This is flex.info, produced by makeinfo version 4.5 from flex.texi.
 
 INFO-DIR-SECTION Programming
 START-INFO-DIR-ENTRY
@@ -612,18 +612,18 @@ scanner classes; you must use `%pointer' (the default).
 
    If you want to create multiple (different) lexer classes, you use the
 `-P' flag (or the `prefix=' option) to rename each `yyFlexLexer' to
-some other `xxFlexLexer'.  You then can include `FlexLexer.h>' in your
+some other `xxFlexLexer'.  You then can include `<FlexLexer.h>' in your
 other sources once per lexer class, first renaming `yyFlexLexer' as
 follows:
 
 
          #undef yyFlexLexer
          #define yyFlexLexer xxFlexLexer
-         #include <FflexLexer.h>
+         #include <FlexLexer.h>
      
          #undef yyFlexLexer
          #define yyFlexLexer zzFlexLexer
-         #include FlexLexer.h>
+         #include <FlexLexer.h>
 
    if, for example, you used `%option prefix="xx"' for one of your
 scanners and `%option prefix="zz"' for the other.
@@ -1217,6 +1217,10 @@ exceptions:
      `flex' being used is a beta version, then the symbol `FLEX_BETA'
      is defined.
 
+   * The symbols `[[' and `]]' in the code sections of the input may
+     conflict with the m4 delimiters. *Note M4 Dependency::.
+
+
    The following `flex' features are not included in `lex' or the POSIX
 specification:
 
@@ -1312,13 +1316,19 @@ all memory when you call `yylex_destroy' *Note faq-memory-leak::.
      will grow if necessary, doubling the size each time.  Flex frees
      this memory when you call yylex_destroy().  The default size of
      this buffer (16384 bytes) is almost always too large.  The ideal
-     size for this buffer is the length of the longest token expected.
-     Flex will allocate a few extra bytes for housekeeping.
+     size for this buffer is the length of the longest token expected,
+     in bytes, plus a little more.  Flex will allocate a few extra
+     bytes for housekeeping. Currently, to override the size of the
+     input buffer you must `#define YY_BUF_SIZE' to whatever number of
+     bytes you want. We don't plan to change this in the near future,
+     but we reserve the right to do so if we ever add a more robust
+     memory management API.
 
-16kb for the REJECT state. This will only be allocated if you use REJECT.
-     The size is the same as the input buffer, so if you override the
-     size of the input buffer, then you automatically override the size
-     of this buffer as well.
+64kb for the REJECT state. This will only be allocated if you use REJECT.
+     The size is the large enough to hold the same number of states as
+     characters in the input buffer. If you override the size of the
+     input buffer (via `YY_BUF_SIZE'), then you automatically override
+     the size of this buffer as well.
 
 100 bytes for the start condition stack.
      Flex allocates memory for the start condition stack. This is the
