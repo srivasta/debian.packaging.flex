@@ -1,4 +1,4 @@
-This is flex.info, produced by makeinfo version 4.3d from flex.texi.
+This is flex.info, produced by makeinfo version 4.5 from flex.texi.
 
 INFO-DIR-SECTION Programming
 START-INFO-DIR-ENTRY
@@ -78,7 +78,7 @@ Is there a way to make flex treat NULL like a regular character?
 ================================================================
 
    Yes, `\0' and `\x00' should both do the trick.  Perhaps you have an
-ancient version of `flex'.  The latest release is version 2.5.31.
+ancient version of `flex'.  The latest release is version 2.5.33.
 
 
 File: flex.info,  Node: Whenever flex can not match the input it says "flex scanner jammed".,  Next: Why doesnt flex have non-greedy operators like perl does?,  Prev: Is there a way to make flex treat NULL like a regular character?,  Up: FAQ

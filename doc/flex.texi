@@ -256,6 +256,9 @@ FAQ
 * unnamed-faq-99::              
 * unnamed-faq-100::             
 * unnamed-faq-101::             
+* What is the difference between YYLEX_PARAM and YY_DECL?::
+* Why do I get "conflicting types for yylex" error?::
+* How do I access the values set in a Flex action from within a Bison action?::
 
 Appendices
 
@@ -290,7 +293,7 @@ Indices
 
 If you have problems with @code{flex} or think you have found a bug,
 please send mail detailing your problem to
-@email{lex-help@@lists.sourceforge.net}. Patches are always welcome.
+@email{flex-help@@lists.sourceforge.net}. Patches are always welcome.
 
 @node Introduction, Simple Examples, Reporting Bugs, Top
 @chapter Introduction
@@ -3804,7 +3807,6 @@ Here is an example of a simple C++ scanner:
 @example
 @verbatim
         // An example of using the flex C++ scanner class.
-    %option noyywrap
 
     %{
     int mylineno = 0;
@@ -3833,7 +3835,7 @@ Here is an example of a simple C++ scanner:
                 if(c == '\n')
                     ++mylineno;
 
-                else if(c == '*')
+                else if(c == @samp{*})
                     {
                     if((c = yyinput()) == '/')
                         break;
@@ -3843,19 +3845,19 @@ Here is an example of a simple C++ scanner:
                 }
             }
 
-    {number}  std::cout <<  "number " <<  YYText() <<  '\n';
+    {number}  cout  "number "  YYText()  '\n';
 
     \n        mylineno++;
 
-    {name}    std::cout <<  "name " <<  YYText()  << '\n';
+    {name}    cout  "name "  YYText()  '\n';
 
-    {string}  std::cout <<  "string " <<   YYText() <<  '\n';
+    {string}  cout  "string "  YYText()  '\n';
 
     %%
 
     int main( int /* argc */, char** /* argv */ )
         {
-        FlexLexer* lexer = new yyFlexLexer;
+        @code{flex}Lexer* lexer = new yyFlexLexer;
         while(lexer->yylex() != 0)
             ;
         return 0;
@@ -3867,7 +3869,7 @@ Here is an example of a simple C++ scanner:
 If you want to create multiple (different) lexer classes, you use the
 @samp{-P} flag (or the @code{prefix=} option) to rename each
 @code{yyFlexLexer} to some other @samp{xxFlexLexer}.  You then can
-include @file{FlexLexer>} in your other sources once per lexer class,
+include @file{<FlexLexer.h>} in your other sources once per lexer class,
 first renaming @code{yyFlexLexer} as follows:
 
 @cindex include files, with C++
@@ -3877,11 +3879,11 @@ first renaming @code{yyFlexLexer} as follows:
 @verbatim
     #undef yyFlexLexer
     #define yyFlexLexer xxFlexLexer
-    #include <FflexLexer>
+    #include <FlexLexer.h>
 
     #undef yyFlexLexer
     #define yyFlexLexer zzFlexLexer
-    #include FlexLexer>
+    #include <FlexLexer.h>
 @end verbatim
 @end example
 
@@ -4586,6 +4588,12 @@ indicating which version of @code{flex} generated the scanner. For
 example, for the 2.5.22 release, these defines would be 2,  5 and 22
 respectively. If the version of @code{flex} being used is a beta
 version, then the symbol @code{FLEX_BETA} is defined.
+
+@item
+The symbols @samp{[[} and @samp{]]} in the code sections of the input
+may conflict with the m4 delimiters. @xref{M4 Dependency}.
+
+
 @end itemize
 
 @cindex POSIX comp;compliance
@@ -4695,12 +4703,15 @@ character buffer.  This buffer is typically the largest chunk of dynamic memory
 flex consumes. This buffer will grow if necessary, doubling the size each time.
 Flex frees this memory when you call yylex_destroy().  The default size of this
 buffer (16384 bytes) is almost always too large.  The ideal size for this
-buffer is the length of the longest token expected.  Flex will allocate a few
-extra bytes for housekeeping.
+buffer is the length of the longest token expected, in bytes, plus a little more.  Flex will allocate a few
+extra bytes for housekeeping. Currently, to override the size of the input buffer
+you must @code{#define YY_BUF_SIZE} to whatever number of bytes you want. We don't plan
+to change this in the near future, but we reserve the right to do so if we ever add a more robust memory management
+API. 
 
-@item 16kb for the REJECT state. This will only be allocated if you use REJECT.
-The size is the same as the input buffer, so if you override the size of the
-input buffer, then you automatically override the size of this buffer as well.
+@item 64kb for the REJECT state. This will only be allocated if you use REJECT.
+The size is the large enough to hold the same number of states as characters in the input buffer. If you override the size of the
+input buffer (via @code{YY_BUF_SIZE}), then you automatically override the size of this buffer as well.
 
 @item 100 bytes for the start condition stack.
 Flex allocates memory for the start condition stack. This is the stack used
@@ -5393,6 +5404,9 @@ publish them here.
 * unnamed-faq-99::              
 * unnamed-faq-100::             
 * unnamed-faq-101::             
+* What is the difference between YYLEX_PARAM and YY_DECL?::
+* Why do I get "conflicting types for yylex" error?::
+* How do I access the values set in a Flex action from within a Bison action?::
 @end menu
 
 @node  When was flex born?
@@ -5828,7 +5842,7 @@ You can specify an action for the @code{<<EOF>>} rule.
 @unnumberedsec Where else can I find help?
 
 You can find the flex homepage on the web at
-@uref{http://lex.sourceforge.net/}. See that page for details about flex
+@uref{http://flex.sourceforge.net/}. See that page for details about flex
 mailing lists as well.
 
 @node  Can I include comments in the "rules" section of the file?
@@ -8006,6 +8020,34 @@ then the problem is that the last rule needs to be "{whitespace}" !
 @end verbatim
 @end example
 
+@node What is the difference between YYLEX_PARAM and YY_DECL?
+@unnumberedsec What is the difference between YYLEX_PARAM and YY_DECL?
+
+YYLEX_PARAM is not a flex symbol. It is for Bison. It tells Bison to pass extra
+params when it calls yylex() from the parser.
+
+YY_DECL is the Flex declaration of yylex. The default is similar to this:
+
+@example
+@verbatim
+#define int yy_lex ()
+@end verbatim
+@end example
+
+
+@node Why do I get "conflicting types for yylex" error?
+@unnumberedsec Why do I get "conflicting types for yylex" error?
+
+This is a compiler error regarding a generated Bison parser, not a Flex scanner.
+It means you need a prototype of yylex() in the top of the Bison file.
+Be sure the prototype matches YY_DECL.
+
+@node How do I access the values set in a Flex action from within a Bison action?
+@unnumberedsec How do I access the values set in a Flex action from within a Bison action?
+
+With $1, $2, $3, etc. These are called "Semantic Values" in the Bison manual.
+See @ref{Top, , , bison, the GNU Bison Manual}.
+
 @node Appendices, Indices, FAQ, Top
 @appendix Appendices
 
@@ -8229,9 +8271,9 @@ As you can see, there really is no magic here. We just use
 @node M4 Dependency, , Bison Bridge, Appendices
 @section M4 Dependency
 @cindex m4
-
 The macro processor @code{m4}@footnote{The use of m4 is subject to change in
-future revisions of flex.} must be installed wherever flex is installed.
+future revisions of flex. It is not part of the public API of flex. Do not depend on it.}
+must be installed wherever flex is installed.
 @code{flex} invokes @samp{m4}, found by searching the directories in the
 @code{PATH} environment variable. Any code you place in section 1 or in the
 actions will be sent through m4. Please follow these rules to protect your
@@ -8240,11 +8282,15 @@ code from unwanted @code{m4} processing.
 @itemize
 
 @item Do not use symbols that begin with, @samp{m4_}, such as, @samp{m4_define},
-or @samp{m4_include}, since those are reserved for @code{m4} macro names.
+or @samp{m4_include}, since those are reserved for @code{m4} macro names. If for 
+some reason you need m4_ as a prefix, use a preprocessor #define to get your
+symbol past m4 unmangled.
 
 @item Do not use the strings @samp{[[} or @samp{]]} anywhere in your code. The
-former is not valid in C, except within comments, but the latter is valid in
-code such as @code{x[y[z]]}.
+former is not valid in C, except within comments and strings, but the latter is valid in
+code such as @code{x[y[z]]}. The solution is simple. To get the literal string 
+@code{"]]"}, use @code{"]""]"}. To get the array notation @code{x[y[z]]},
+use @code{x[y[z] ]}.
 
 @end itemize
 
