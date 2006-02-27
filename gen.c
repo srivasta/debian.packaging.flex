@@ -1812,7 +1812,6 @@ void make_tables ()
 			if (yytext_is_array) {
 				if (!reentrant){
     				indent_puts ("static int yy_more_offset = 0;");
-                }else{
                     indent_puts ("static int yy_prev_more_offset = 0;");
                 }
 			}
@@ -1983,7 +1982,7 @@ void make_tables ()
 	do_indent ();
 	out_str ("for ( yyl = %s; yyl < yyleng; ++yyl )\n",
 		 yymore_used ? (yytext_is_array ? "YY_G(yy_prev_more_offset)" :
-				"(yy_more_len)") : "0");
+				"YY_G(yy_more_len)") : "0");
 	indent_up ();
 	indent_puts ("if ( yytext[yyl] == '\\n' )");
 	indent_up ();
