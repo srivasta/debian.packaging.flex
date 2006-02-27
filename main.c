@@ -136,6 +136,7 @@ extern FILE* yyout;
 static char outfile_path[MAXLINE];
 static int outfile_created = 0;
 static char *skelname = NULL;
+static int _stdout_closed = 0; /* flag to prevent double-fclose() on stdout. */
 
 /* For debugging. The max number of filters to apply to skeleton. */
 static int preproc_level = 1000;
@@ -147,7 +148,7 @@ int flex_main (argc, argv)
      int argc;
      char   *argv[];
 {
-	int     i, exit_status;
+	int     i, exit_status, child_status;
 
 	/* Set a longjmp target. Yes, I know it's a hack, but it gets worse: The
 	 * return value of setjmp, if non-zero, is the desired exit code PLUS ONE.
@@ -158,11 +159,21 @@ int flex_main (argc, argv)
 	 */
 	exit_status = setjmp (flex_main_jmp_buf);
 	if (exit_status){
-        fflush(stdout);
-        fclose(stdout);
-        while (wait(0) > 0){
+        if (stdout && !_stdout_closed && !ferror(stdout)){
+            fflush(stdout);
+            fclose(stdout);
         }
-		return exit_status - 1;
+        while (wait(&child_status) > 0){
+            if (!WIFEXITED (child_status)
+                || WEXITSTATUS (child_status) != 0){
+                /* report an error of a child
+                 */
+                if( exit_status <= 1 )
+                    exit_status = 2;
+
+            }
+        }
+        return exit_status - 1;
     }
 
 	flexinit (argc, argv);
@@ -198,9 +209,11 @@ int main (argc, argv)
      char   *argv[];
 {
 #if ENABLE_NLS
+#if HAVE_LOCALE_H
 	setlocale (LC_MESSAGES, "");
 	textdomain (PACKAGE);
 	bindtextdomain (PACKAGE, LOCALEDIR);
+#endif
 #endif
 
 	return flex_main (argc, argv);
@@ -211,6 +224,7 @@ int main (argc, argv)
 void check_options ()
 {
 	int     i;
+    const char * m4 = NULL;
 
 	if (lex_compat) {
 		if (C_plus_plus)
@@ -342,9 +356,12 @@ void check_options ()
 		outfile_created = 1;
 	}
 
+
     /* Setup the filter chain. */
     output_chain = filter_create_int(NULL, filter_tee_header, headerfilename);
-    filter_create_ext(output_chain,"m4","-P",0);
+    if ( !(m4 = getenv("M4")))
+        m4 = M4;
+    filter_create_ext(output_chain, m4, "-P", 0);
     filter_create_int(output_chain, filter_fix_linedirs, NULL);
 
     /* For debugging, only run the requested number of filters. */
@@ -431,8 +448,8 @@ void check_options ()
         buf_init(&tmpbuf, sizeof(char));
         for (i = 1; i <= lastsc; i++) {
              char *str, *fmt = "#define %s %d\n";
-             
-             str = (char*)flex_alloc(strlen(fmt) + strlen(scname[i]) + (int)(1 + log(i)/log(10)) + 2);
+
+             str = (char*)flex_alloc(strlen(fmt) + strlen(scname[i]) + (int)(1 + log10(i)) + 2);
              sprintf(str, fmt,      scname[i], i - 1);
              buf_strappend(&tmpbuf, str);
              free(str);
@@ -453,7 +470,7 @@ void check_options ()
 
     /* Place a bogus line directive, it will be fixed in the filter. */
     outn("#line 0 \"M4_YY_OUTFILE_NAME\"\n");
-    
+
 	/* Dump the user defined preproc directives. */
 	if (userdef_buf.elts)
 		outn ((char *) (userdef_buf.elts));
@@ -488,7 +505,7 @@ void flexend (exit_status)
 				skelname);
 	}
 
-#if 0 
+#if 0
 		fprintf (header_out,
 			 "#ifdef YY_HEADER_EXPORT_START_CONDITIONS\n");
 		fprintf (header_out,
@@ -646,7 +663,7 @@ void flexend (exit_status)
                 /* must be null-terminated */
                 NULL};
 
-                
+
                 for (i=0; undef_list[i] != NULL; i++)
                     fprintf (header_out, "#undef %s\n", undef_list[i]);
         }
@@ -679,7 +696,7 @@ void flexend (exit_status)
 			lerrsf (_("error writing output file %s"),
 				outfilename);
 
-		else if (fclose (stdout))
+		else if ((_stdout_closed = 1) && fclose (stdout))
 			lerrsf (_("error closing output file %s"),
 				outfilename);
 
@@ -1594,7 +1611,6 @@ void readin ()
 			outn ("#endif");
 			outn ("#else");
 			outn (yy_stdinit);
-			outn ("#endif");
 			outn ("#endif");
 		}
 
