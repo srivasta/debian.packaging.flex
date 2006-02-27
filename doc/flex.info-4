@@ -1,4 +1,4 @@
-This is flex.info, produced by makeinfo version 4.3d from flex.texi.
+This is flex.info, produced by makeinfo version 4.5 from flex.texi.
 
 INFO-DIR-SECTION Programming
 START-INFO-DIR-ENTRY
@@ -685,6 +685,9 @@ here.
 * unnamed-faq-99::
 * unnamed-faq-100::
 * unnamed-faq-101::
+* What is the difference between YYLEX_PARAM and YY_DECL?::
+* Why do I get "conflicting types for yylex" error?::
+* How do I access the values set in a Flex action from within a Bison action?::
 
 
 File: flex.info,  Node: When was flex born?,  Next: How do I expand \ escape sequences in C-style quoted strings?,  Up: FAQ
@@ -1161,7 +1164,7 @@ Where else can I find help?
 ===========================
 
    You can find the flex homepage on the web at
-`http://lex.sourceforge.net/'. See that page for details about flex
+`http://flex.sourceforge.net/'. See that page for details about flex
 mailing lists as well.
 
 
