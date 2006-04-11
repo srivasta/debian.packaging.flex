@@ -676,7 +676,7 @@ msgstr "%s: error intern fatal, %s\n"
 
 #: misc.c:875
 msgid "attempt to increase array size failed"
-msgstr "ha fallat l'intent d'augmentar el tamany de la matriu"
+msgstr "ha fallat l'intent d'augmentar la mida de la matriu"
 
 #: misc.c:1002
 msgid "bad line in skeleton file"
