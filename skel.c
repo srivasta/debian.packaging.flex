@@ -1833,7 +1833,7 @@ const char *skel[] = {
   "",
   "		/* Read in more data. */",
   "		YY_INPUT( (&YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[number_to_move]),",
-  "			YY_G(yy_n_chars), num_to_read );",
+  "			YY_G(yy_n_chars), (size_t) num_to_read );",
   "",
   "		YY_CURRENT_BUFFER_LVALUE->yy_n_chars = YY_G(yy_n_chars);",
   "		}",
