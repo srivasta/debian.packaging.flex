@@ -45,7 +45,9 @@ AUTOMAKE_OPTIONS = \
 	1.7
 
 bin_PROGRAMS = flex
-lib_LIBRARIES = libfl.a
+lib_LIBRARIES = \
+       libfl.a  \
+       libfl_pic.a
 
 flex_SOURCES = \
 	ccl.c \
@@ -72,6 +74,13 @@ flex_SOURCES = \
 libfl_a_SOURCES = \
 	libmain.c \
 	libyywrap.c
+
+libfl_pic_a_SOURCES = \
+        libmain.c \
+        libyywrap.c
+libfl_pic_a_CFLAGS =  \
+        -fPIC         \
+        $(AM_CFLAGS)
 
 noinst_HEADERS = \
 	flexdef.h \

@@ -78,7 +78,7 @@ DIST_COMMON = README $(am__configure_deps) $(include_HEADERS) \
 	$(noinst_HEADERS) $(srcdir)/Makefile.am $(srcdir)/Makefile.in \
 	$(srcdir)/conf.in $(srcdir)/flex.spec.in \
 	$(top_srcdir)/configure ABOUT-NLS AUTHORS COPYING ChangeLog \
-	INSTALL NEWS README-alpha THANKS TODO config.guess \
+	INSTALL NEWS README-alpha THANKS TODO compile config.guess \
 	config.rpath config.sub depcomp install-sh missing \
 	mkinstalldirs parse.c parse.h scan.c
 subdir = .
@@ -111,6 +111,11 @@ libfl_a_AR = $(AR) $(ARFLAGS)
 libfl_a_LIBADD =
 am_libfl_a_OBJECTS = libmain.$(OBJEXT) libyywrap.$(OBJEXT)
 libfl_a_OBJECTS = $(am_libfl_a_OBJECTS)
+libfl_pic_a_AR = $(AR) $(ARFLAGS)
+libfl_pic_a_LIBADD =
+am_libfl_pic_a_OBJECTS = libfl_pic_a-libmain.$(OBJEXT) \
+	libfl_pic_a-libyywrap.$(OBJEXT)
+libfl_pic_a_OBJECTS = $(am_libfl_pic_a_OBJECTS)
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am_flex_OBJECTS = ccl.$(OBJEXT) dfa.$(OBJEXT) ecs.$(OBJEXT) \
@@ -130,8 +135,9 @@ CCLD = $(CC)
 LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 LEXCOMPILE = $(LEX) $(LFLAGS) $(AM_LFLAGS)
 YACCCOMPILE = $(YACC) $(YFLAGS) $(AM_YFLAGS)
-SOURCES = $(libfl_a_SOURCES) $(flex_SOURCES)
-DIST_SOURCES = $(libfl_a_SOURCES) $(flex_SOURCES)
+SOURCES = $(libfl_a_SOURCES) $(libfl_pic_a_SOURCES) $(flex_SOURCES)
+DIST_SOURCES = $(libfl_a_SOURCES) $(libfl_pic_a_SOURCES) \
+	$(flex_SOURCES)
 RECURSIVE_TARGETS = all-recursive check-recursive dvi-recursive \
 	html-recursive info-recursive install-data-recursive \
 	install-exec-recursive install-info-recursive \
@@ -180,6 +186,7 @@ ECHO_T = @ECHO_T@
 EGREP = @EGREP@
 EXEEXT = @EXEEXT@
 GMSGFMT = @GMSGFMT@
+GREP = @GREP@
 HELP2MAN = @HELP2MAN@
 INDENT = @INDENT@
 INSTALL_DATA = @INSTALL_DATA@
@@ -224,10 +231,9 @@ USE_NLS = @USE_NLS@
 VERSION = @VERSION@
 XGETTEXT = @XGETTEXT@
 YACC = @YACC@
+YFLAGS = @YFLAGS@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_CXX = @ac_ct_CXX@
-ac_ct_RANLIB = @ac_ct_RANLIB@
-ac_ct_STRIP = @ac_ct_STRIP@
 am__fastdepCC_FALSE = @am__fastdepCC_FALSE@
 am__fastdepCC_TRUE = @am__fastdepCC_TRUE@
 am__fastdepCXX_FALSE = @am__fastdepCXX_FALSE@
@@ -244,23 +250,30 @@ build_cpu = @build_cpu@
 build_os = @build_os@
 build_vendor = @build_vendor@
 datadir = @datadir@
+datarootdir = @datarootdir@
+docdir = @docdir@
+dvidir = @dvidir@
 exec_prefix = @exec_prefix@
 host = @host@
 host_alias = @host_alias@
 host_cpu = @host_cpu@
 host_os = @host_os@
 host_vendor = @host_vendor@
+htmldir = @htmldir@
 includedir = @includedir@
 infodir = @infodir@
 install_sh = @install_sh@
 libdir = @libdir@
 libexecdir = @libexecdir@
+localedir = $(datadir)/locale
 localstatedir = @localstatedir@
 mandir = @mandir@
 mkdir_p = @mkdir_p@
 oldincludedir = @oldincludedir@
+pdfdir = @pdfdir@
 prefix = @prefix@
 program_transform_name = @program_transform_name@
+psdir = @psdir@
 sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
@@ -275,7 +288,10 @@ AUTOMAKE_OPTIONS = \
 	dist-bzip2 \
 	1.7
 
-lib_LIBRARIES = libfl.a
+lib_LIBRARIES = \
+       libfl.a  \
+       libfl_pic.a
+
 flex_SOURCES = \
 	ccl.c \
 	dfa.c \
@@ -301,6 +317,14 @@ flex_SOURCES = \
 libfl_a_SOURCES = \
 	libmain.c \
 	libyywrap.c
+
+libfl_pic_a_SOURCES = \
+        libmain.c \
+        libyywrap.c
+
+libfl_pic_a_CFLAGS = \
+        -fPIC         \
+        $(AM_CFLAGS)
 
 noinst_HEADERS = \
 	flexdef.h \
@@ -366,7 +390,6 @@ SUBDIRS = \
 	tools \
 	tests
 
-localedir = $(datadir)/locale
 AM_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\" -I@includedir@ -I$(top_srcdir)/intl
 
 # Run GNU indent on sources. Don't run this unless all the sources compile cleanly.
@@ -493,6 +516,10 @@ libfl.a: $(libfl_a_OBJECTS) $(libfl_a_DEPENDENCIES)
 	-rm -f libfl.a
 	$(libfl_a_AR) libfl.a $(libfl_a_OBJECTS) $(libfl_a_LIBADD)
 	$(RANLIB) libfl.a
+libfl_pic.a: $(libfl_pic_a_OBJECTS) $(libfl_pic_a_DEPENDENCIES) 
+	-rm -f libfl_pic.a
+	$(libfl_pic_a_AR) libfl_pic.a $(libfl_pic_a_OBJECTS) $(libfl_pic_a_LIBADD)
+	$(RANLIB) libfl_pic.a
 install-binPROGRAMS: $(bin_PROGRAMS)
 	@$(NORMAL_INSTALL)
 	test -z "$(bindir)" || $(mkdir_p) "$(DESTDIR)$(bindir)"
@@ -553,6 +580,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ecs.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/filter.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gen.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libfl_pic_a-libmain.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libfl_pic_a-libyywrap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmain.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libyywrap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
@@ -583,6 +612,34 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(COMPILE) -c `$(CYGPATH_W) '$<'`
+
+libfl_pic_a-libmain.o: libmain.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfl_pic_a_CFLAGS) $(CFLAGS) -MT libfl_pic_a-libmain.o -MD -MP -MF "$(DEPDIR)/libfl_pic_a-libmain.Tpo" -c -o libfl_pic_a-libmain.o `test -f 'libmain.c' || echo '$(srcdir)/'`libmain.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libfl_pic_a-libmain.Tpo" "$(DEPDIR)/libfl_pic_a-libmain.Po"; else rm -f "$(DEPDIR)/libfl_pic_a-libmain.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='libmain.c' object='libfl_pic_a-libmain.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfl_pic_a_CFLAGS) $(CFLAGS) -c -o libfl_pic_a-libmain.o `test -f 'libmain.c' || echo '$(srcdir)/'`libmain.c
+
+libfl_pic_a-libmain.obj: libmain.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfl_pic_a_CFLAGS) $(CFLAGS) -MT libfl_pic_a-libmain.obj -MD -MP -MF "$(DEPDIR)/libfl_pic_a-libmain.Tpo" -c -o libfl_pic_a-libmain.obj `if test -f 'libmain.c'; then $(CYGPATH_W) 'libmain.c'; else $(CYGPATH_W) '$(srcdir)/libmain.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libfl_pic_a-libmain.Tpo" "$(DEPDIR)/libfl_pic_a-libmain.Po"; else rm -f "$(DEPDIR)/libfl_pic_a-libmain.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='libmain.c' object='libfl_pic_a-libmain.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfl_pic_a_CFLAGS) $(CFLAGS) -c -o libfl_pic_a-libmain.obj `if test -f 'libmain.c'; then $(CYGPATH_W) 'libmain.c'; else $(CYGPATH_W) '$(srcdir)/libmain.c'; fi`
+
+libfl_pic_a-libyywrap.o: libyywrap.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfl_pic_a_CFLAGS) $(CFLAGS) -MT libfl_pic_a-libyywrap.o -MD -MP -MF "$(DEPDIR)/libfl_pic_a-libyywrap.Tpo" -c -o libfl_pic_a-libyywrap.o `test -f 'libyywrap.c' || echo '$(srcdir)/'`libyywrap.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libfl_pic_a-libyywrap.Tpo" "$(DEPDIR)/libfl_pic_a-libyywrap.Po"; else rm -f "$(DEPDIR)/libfl_pic_a-libyywrap.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='libyywrap.c' object='libfl_pic_a-libyywrap.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfl_pic_a_CFLAGS) $(CFLAGS) -c -o libfl_pic_a-libyywrap.o `test -f 'libyywrap.c' || echo '$(srcdir)/'`libyywrap.c
+
+libfl_pic_a-libyywrap.obj: libyywrap.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfl_pic_a_CFLAGS) $(CFLAGS) -MT libfl_pic_a-libyywrap.obj -MD -MP -MF "$(DEPDIR)/libfl_pic_a-libyywrap.Tpo" -c -o libfl_pic_a-libyywrap.obj `if test -f 'libyywrap.c'; then $(CYGPATH_W) 'libyywrap.c'; else $(CYGPATH_W) '$(srcdir)/libyywrap.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libfl_pic_a-libyywrap.Tpo" "$(DEPDIR)/libfl_pic_a-libyywrap.Po"; else rm -f "$(DEPDIR)/libfl_pic_a-libyywrap.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='libyywrap.c' object='libfl_pic_a-libyywrap.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfl_pic_a_CFLAGS) $(CFLAGS) -c -o libfl_pic_a-libyywrap.obj `if test -f 'libyywrap.c'; then $(CYGPATH_W) 'libyywrap.c'; else $(CYGPATH_W) '$(srcdir)/libyywrap.c'; fi`
 
 .l.c:
 	$(LEXCOMPILE) $<
