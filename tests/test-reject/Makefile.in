@@ -73,6 +73,7 @@ SOURCES =
 DIST_SOURCES =
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
+ALLOCA = @ALLOCA@
 AMDEP_FALSE = @AMDEP_FALSE@
 AMDEP_TRUE = @AMDEP_TRUE@
 AMTAR = @AMTAR@
@@ -119,9 +120,6 @@ LTLIBICONV = @LTLIBICONV@
 LTLIBINTL = @LTLIBINTL@
 LTLIBOBJS = @LTLIBOBJS@
 M4 = @M4@
-MAINT = @MAINT@
-MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
-MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
 MAKEINFO = @MAKEINFO@
 MKINSTALLDIRS = @MKINSTALLDIRS@
 MSGFMT = @MSGFMT@
@@ -192,7 +190,7 @@ sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 FLEX = $(top_builddir)/flex
 EXTRA_DIST = scanner.l test.input
-CLEANFILES = scanner.c test-reject-* OUTPUT $(OBJS)
+CLEANFILES = scanner.c $(testname)$(EXEEXT)-* OUTPUT $(OBJS)
 OBJS = test-reject-nr.o test-reject-r.o test-reject-ver.o \
        test-reject-ser.o
 
@@ -204,8 +202,7 @@ testname = test-reject
 all: all-am
 
 .SUFFIXES:
-.SUFFIXES: .c .o
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -214,9 +211,9 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  tests/test-reject/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnits  tests/test-reject/Makefile'; \
 	cd $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu  tests/test-reject/Makefile
+	  $(AUTOMAKE) --gnits  tests/test-reject/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -230,9 +227,9 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 
-$(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
+$(top_srcdir)/configure:  $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
-$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
+$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 uninstall-info-am:
 tags: TAGS
@@ -386,8 +383,17 @@ test: $(tests)
 	./$(testname)-ver$(EXEEXT) $(testname)-ver.tables < $(srcdir)/test.input
 	./$(testname)-ser$(EXEEXT) $(testname)-ser.tables < $(srcdir)/test.input
 
-.c.o:
+test-reject-nr.o: test-reject-nr.c
 	$(CC) -c -o $@ $(AM_CPPFLAGS) $(CPPFLAGS) $(CFLAGS) $<
+
+test-reject-ver.o: test-reject-ver.c
+	$(CC) -c -o $@ $(AM_CPPFLAGS) $(CPPFLAGS) -DTEST_HAS_TABLES_EXTERNAL $(CFLAGS) $<
+
+test-reject-ser.o: test-reject-ser.c
+	$(CC) -c -o $@ $(AM_CPPFLAGS) $(CPPFLAGS) -DTEST_HAS_TABLES_EXTERNAL $(CFLAGS) $<
+
+test-reject-r.o: test-reject-r.c
+	$(CC) -c -o $@ $(AM_CPPFLAGS) $(CPPFLAGS) -DTEST_IS_REENTRANT $(CFLAGS) $<
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

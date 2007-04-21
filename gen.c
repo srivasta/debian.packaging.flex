@@ -447,9 +447,6 @@ struct yytbl_data *mkecstbl (void)
 		(flex_int32_t *) calloc (tbl->td_lolen, sizeof (flex_int32_t));
 
 	for (i = 1; i < csize; ++i) {
-		if (caseins && isupper (i))
-			ecgroup[i] = ecgroup[tolower (i)];
-
 		ecgroup[i] = ABS (ecgroup[i]);
 		tdata[i] = ecgroup[i];
 	}
@@ -471,9 +468,6 @@ void genecs ()
 	out_str_dec (get_int32_decl (), "yy_ec", csize);
 
 	for (i = 1; i < csize; ++i) {
-		if (caseins && (i >= 'A') && (i <= 'Z'))
-			ecgroup[i] = ecgroup[clower (i)];
-
 		ecgroup[i] = ABS (ecgroup[i]);
 		mkdata (ecgroup[i]);
 	}
@@ -869,11 +863,11 @@ void gen_next_state (worry_about_NULs)
 
 	if (worry_about_NULs && !nultrans) {
 		if (useecs)
-			(void) sprintf (char_map,
+			snprintf (char_map, sizeof(char_map),
 					"(*yy_cp ? yy_ec[YY_SC_TO_UI(*yy_cp)] : %d)",
 					NUL_ec);
 		else
-			(void) sprintf (char_map,
+            snprintf (char_map, sizeof(char_map),
 					"(*yy_cp ? YY_SC_TO_UI(*yy_cp) : %d)",
 					NUL_ec);
 	}
@@ -980,7 +974,7 @@ void gen_NUL_trans ()
 	else {
 		char    NUL_ec_str[20];
 
-		(void) sprintf (NUL_ec_str, "%d", NUL_ec);
+		snprintf (NUL_ec_str, sizeof(NUL_ec_str), "%d", NUL_ec);
 		gen_next_compressed_state (NUL_ec_str);
 
 		do_indent ();
@@ -1896,7 +1890,7 @@ void make_tables ()
 			outn ("\tif ( YY_CURRENT_BUFFER_LVALUE->yy_is_interactive ) \\");
 			outn ("\t\t{ \\");
 			outn ("\t\tint c = '*'; \\");
-			outn ("\t\tsize_t n; \\");
+			outn ("\t\tint n; \\");
 			outn ("\t\tfor ( n = 0; n < max_size && \\");
 			outn ("\t\t\t     (c = getc( yyin )) != EOF && c != '\\n'; ++n ) \\");
 			outn ("\t\t\tbuf[n] = (char) c; \\");

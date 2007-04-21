@@ -36,9 +36,9 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 subdir = doc
-DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in \
-	$(srcdir)/stamp-vti $(srcdir)/version.texi mdate-sh \
-	texinfo.tex
+DIST_COMMON = $(dist_man_MANS) $(srcdir)/Makefile.am \
+	$(srcdir)/Makefile.in $(srcdir)/stamp-vti \
+	$(srcdir)/version.texi mdate-sh texinfo.tex
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/gettext.m4 \
 	$(top_srcdir)/m4/iconv.m4 $(top_srcdir)/m4/lib-ld.m4 \
@@ -67,9 +67,10 @@ DVIPS = dvips
 am__installdirs = "$(DESTDIR)$(infodir)" "$(DESTDIR)$(man1dir)"
 man1dir = $(mandir)/man1
 NROFF = nroff
-MANS = $(man_MANS)
+MANS = $(dist_man_MANS)
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
+ALLOCA = @ALLOCA@
 AMDEP_FALSE = @AMDEP_FALSE@
 AMDEP_TRUE = @AMDEP_TRUE@
 AMTAR = @AMTAR@
@@ -116,9 +117,6 @@ LTLIBICONV = @LTLIBICONV@
 LTLIBINTL = @LTLIBINTL@
 LTLIBOBJS = @LTLIBOBJS@
 M4 = @M4@
-MAINT = @MAINT@
-MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
-MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
 MAKEINFO = @MAKEINFO@
 MKINSTALLDIRS = @MKINSTALLDIRS@
 MSGFMT = @MSGFMT@
@@ -189,22 +187,17 @@ sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 help2man = @HELP2MAN@
 info_TEXINFOS = flex.texi
-man_MANS = flex.1
-MAINTAINERCLEANFILES = \
-	flex.1
-
+dist_man_MANS = flex.1
+EXTRA_DIST = flex.pdf
 CLEANFILES = \
 	flex.hks \
 	flex.ops
-
-EXTRA_DIST = \
-	$(man_MANS)
 
 all: all-am
 
 .SUFFIXES:
 .SUFFIXES: .dvi .html .info .pdf .ps .texi
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -213,9 +206,9 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  doc/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnits  doc/Makefile'; \
 	cd $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu  doc/Makefile
+	  $(AUTOMAKE) --gnits  doc/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -229,9 +222,9 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 
-$(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
+$(top_srcdir)/configure:  $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
-$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
+$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 
 .texi.info:
@@ -283,7 +276,7 @@ $(srcdir)/flex.info: flex.texi $(srcdir)/version.texi
 flex.dvi: flex.texi $(srcdir)/version.texi
 flex.pdf: flex.texi $(srcdir)/version.texi
 flex.html: flex.texi $(srcdir)/version.texi
-$(srcdir)/version.texi: @MAINTAINER_MODE_TRUE@ $(srcdir)/stamp-vti
+$(srcdir)/version.texi:  $(srcdir)/stamp-vti
 $(srcdir)/stamp-vti: flex.texi $(top_srcdir)/configure
 	@(dir=.; test -f ./flex.texi || dir=$(srcdir); \
 	set `$(SHELL) $(srcdir)/mdate-sh $$dir/flex.texi`; \
@@ -301,7 +294,7 @@ mostlyclean-vti:
 	-rm -f vti.tmp
 
 maintainer-clean-vti:
-@MAINTAINER_MODE_TRUE@	-rm -f $(srcdir)/stamp-vti $(srcdir)/version.texi
+	-rm -f $(srcdir)/stamp-vti $(srcdir)/version.texi
 .dvi.ps:
 	TEXINPUTS="$(am__TEXINFO_TEX_DIR)$(PATH_SEPARATOR)$$TEXINPUTS" \
 	$(DVIPS) -o $@ $<
@@ -472,7 +465,6 @@ distclean-generic:
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
-	-test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)
 clean: clean-am
 
 clean-am: clean-generic mostlyclean-am
@@ -567,9 +559,11 @@ uninstall-man: uninstall-man1
 	uninstall-man1
 
 
-$(man_MANS): $(top_srcdir)/main.c
-	for i in $(man_MANS) ; do \
-	$(help2man) --name='fast lexical analyzer generator' --section=`echo $$i|rev|cut -f 1 -d .|rev` ../flex > $$i ; \
+$(dist_man_MANS): $(top_srcdir)/main.c
+	for i in $(dist_man_MANS) ; do \
+	$(help2man) --name='$(PACKAGE_NAME)' \
+	--section=`echo $$i | sed -e 's/.*\.\([^.]*\)$$/\1/'` \
+	 ../flex$(EXEEXT) > $$i || rm -f $$i ; \
 	done
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
