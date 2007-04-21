@@ -76,11 +76,10 @@ host_triplet = @host@
 bin_PROGRAMS = flex$(EXEEXT)
 DIST_COMMON = README $(am__configure_deps) $(include_HEADERS) \
 	$(noinst_HEADERS) $(srcdir)/Makefile.am $(srcdir)/Makefile.in \
-	$(srcdir)/conf.in $(srcdir)/flex.spec.in \
-	$(top_srcdir)/configure ABOUT-NLS AUTHORS COPYING ChangeLog \
-	INSTALL NEWS README-alpha THANKS TODO compile config.guess \
-	config.rpath config.sub depcomp install-sh missing \
-	mkinstalldirs parse.c parse.h scan.c
+	$(srcdir)/conf.in $(top_srcdir)/configure ABOUT-NLS AUTHORS \
+	COPYING ChangeLog INSTALL NEWS README-alpha THANKS TODO \
+	compile config.guess config.rpath config.sub depcomp \
+	install-sh missing mkinstalldirs parse.c parse.h scan.c
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/gettext.m4 \
@@ -94,7 +93,7 @@ am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno configure.status.lineno
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = config.h
-CONFIG_CLEAN_FILES = flex.spec
+CONFIG_CLEAN_FILES =
 am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
 am__vpath_adj = case $$p in \
     $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
@@ -119,11 +118,12 @@ libfl_pic_a_OBJECTS = $(am_libfl_pic_a_OBJECTS)
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am_flex_OBJECTS = ccl.$(OBJEXT) dfa.$(OBJEXT) ecs.$(OBJEXT) \
-	gen.$(OBJEXT) main.$(OBJEXT) misc.$(OBJEXT) nfa.$(OBJEXT) \
-	parse.$(OBJEXT) scan.$(OBJEXT) skel.$(OBJEXT) sym.$(OBJEXT) \
-	tblcmp.$(OBJEXT) yylex.$(OBJEXT) options.$(OBJEXT) \
-	scanopt.$(OBJEXT) buf.$(OBJEXT) tables.$(OBJEXT) \
-	tables_shared.$(OBJEXT) filter.$(OBJEXT) regex.$(OBJEXT)
+	scanflags.$(OBJEXT) gen.$(OBJEXT) main.$(OBJEXT) \
+	misc.$(OBJEXT) nfa.$(OBJEXT) parse.$(OBJEXT) scan.$(OBJEXT) \
+	skel.$(OBJEXT) sym.$(OBJEXT) tblcmp.$(OBJEXT) yylex.$(OBJEXT) \
+	options.$(OBJEXT) scanopt.$(OBJEXT) buf.$(OBJEXT) \
+	tables.$(OBJEXT) tables_shared.$(OBJEXT) filter.$(OBJEXT) \
+	regex.$(OBJEXT)
 flex_OBJECTS = $(am_flex_OBJECTS)
 flex_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I.
@@ -161,6 +161,7 @@ GZIP_ENV = --best
 distuninstallcheck_listfiles = find . -type f -print
 distcleancheck_listfiles = find . -type f -print
 ACLOCAL = @ACLOCAL@
+ALLOCA = @ALLOCA@
 AMDEP_FALSE = @AMDEP_FALSE@
 AMDEP_TRUE = @AMDEP_TRUE@
 AMTAR = @AMTAR@
@@ -207,9 +208,6 @@ LTLIBICONV = @LTLIBICONV@
 LTLIBINTL = @LTLIBINTL@
 LTLIBOBJS = @LTLIBOBJS@
 M4 = @M4@
-MAINT = @MAINT@
-MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
-MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
 MAKEINFO = @MAKEINFO@
 MKINSTALLDIRS = @MKINSTALLDIRS@
 MSGFMT = @MSGFMT@
@@ -282,20 +280,15 @@ AM_YFLAGS = -d
 ACLOCAL_AMFLAGS = -I m4
 m4 = @M4@
 indent = @INDENT@
-AUTOMAKE_OPTIONS = \
-	gnits \
-	check-news \
-	dist-bzip2 \
-	1.7
-
 lib_LIBRARIES = \
-       libfl.a  \
-       libfl_pic.a
+	libfl.a \
+	libfl_pic.a
 
 flex_SOURCES = \
 	ccl.c \
 	dfa.c \
 	ecs.c \
+	scanflags.c \
 	gen.c \
 	main.c \
 	misc.c \
@@ -319,12 +312,12 @@ libfl_a_SOURCES = \
 	libyywrap.c
 
 libfl_pic_a_SOURCES = \
-        libmain.c \
-        libyywrap.c
+	libmain.c \
+	libyywrap.c
 
 libfl_pic_a_CFLAGS = \
-        -fPIC         \
-        $(AM_CFLAGS)
+	-fPIC         \
+	$(AM_CFLAGS)
 
 noinst_HEADERS = \
 	flexdef.h \
@@ -338,29 +331,7 @@ noinst_HEADERS = \
 include_HEADERS = \
 	FlexLexer.h
 
-MAINTAINERCLEANFILES = \
-	ABOUT-NLS \
-	config.rpath \
-	config.sub \
-	config.guess \
-	configure \
-	config.sub \
-	config.guess \
-	depcomp \
-	mkinstalldirs \
-	install-sh \
-	ABOUT-NLS \
-	ChangeLog \
-	INSTALL \
-	conf.in \
-	aclocal.m4 \
-	Makefile.in \
-	mdate-sh \
-	missing
-
 EXTRA_DIST = \
-	flex.spec.in \
-	flex.spec \
 	.indent.pro \
 	AUTHORS \
 	COPYING \
@@ -368,7 +339,7 @@ EXTRA_DIST = \
 	NEWS \
 	ONEWS \
 	README \
-	README.cvs-snapshot \
+	README.cvs \
 	THANKS \
 	TODO \
 	autogen.sh \
@@ -390,7 +361,7 @@ SUBDIRS = \
 	tools \
 	tests
 
-AM_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\" -I@includedir@ -I$(top_srcdir)/intl
+AM_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\" -I$(top_srcdir)/intl
 
 # Run GNU indent on sources. Don't run this unless all the sources compile cleanly.
 #
@@ -406,6 +377,7 @@ indentfiles = \
 	ccl.c \
 	dfa.c \
 	ecs.c \
+	scanflags.c \
 	filter.c \
 	flexdef.h \
 	gen.c \
@@ -433,7 +405,7 @@ all: $(BUILT_SOURCES) config.h
 .SUFFIXES: .c .l .o .obj .y
 am--refresh:
 	@:
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -460,9 +432,9 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	$(SHELL) ./config.status --recheck
 
-$(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
+$(top_srcdir)/configure:  $(am__configure_deps)
 	cd $(srcdir) && $(AUTOCONF)
-$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
+$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
 
 config.h: stamp-h1
@@ -474,15 +446,13 @@ config.h: stamp-h1
 stamp-h1: $(srcdir)/conf.in $(top_builddir)/config.status
 	@rm -f stamp-h1
 	cd $(top_builddir) && $(SHELL) ./config.status config.h
-$(srcdir)/conf.in: @MAINTAINER_MODE_TRUE@ $(am__configure_deps) 
+$(srcdir)/conf.in:  $(am__configure_deps) 
 	cd $(top_srcdir) && $(AUTOHEADER)
 	rm -f stamp-h1
 	touch $@
 
 distclean-hdr:
 	-rm -f config.h stamp-h1
-flex.spec: $(top_builddir)/config.status $(srcdir)/flex.spec.in
-	cd $(top_builddir) && $(SHELL) ./config.status $@
 install-libLIBRARIES: $(lib_LIBRARIES)
 	@$(NORMAL_INSTALL)
 	test -z "$(libdir)" || $(mkdir_p) "$(DESTDIR)$(libdir)"
@@ -591,6 +561,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/parse.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/regex.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/scan.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/scanflags.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/scanopt.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/skel.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sym.Po@am__quote@
@@ -764,6 +735,7 @@ ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	  $(AWK) '    { files[$$0] = 1; } \
 	       END { for (i in files) print i; }'`; \
 	mkid -fID $$unique
+tags: TAGS
 
 TAGS: tags-recursive $(HEADERS) $(SOURCES) conf.in $(TAGS_DEPENDENCIES) \
 		$(TAGS_FILES) $(LISP)
@@ -825,7 +797,7 @@ distdir: $(DISTFILES)
 	esac
 	$(am__remove_distdir)
 	mkdir $(distdir)
-	$(mkdir_p) $(distdir)/. $(distdir)/m4 $(distdir)/po
+	$(mkdir_p) $(distdir)/m4 $(distdir)/po
 	@srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	topsrcdirstrip=`echo "$(top_srcdir)" | sed 's|.|.|g'`; \
 	list='$(DISTFILES)'; for file in $$list; do \
@@ -1002,7 +974,6 @@ maintainer-clean-generic:
 	-rm -f parse.h
 	-rm -f scan.c
 	-test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
-	-test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)
 clean: clean-recursive
 
 clean-am: clean-binPROGRAMS clean-generic clean-libLIBRARIES \
@@ -1088,6 +1059,7 @@ buf.o: buf.c flexdef.h flexint.h
 ccl.o: ccl.c flexdef.h flexint.h
 dfa.o: dfa.c flexdef.h flexint.h tables.h tables_shared.h
 ecs.o: ecs.c flexdef.h flexint.h
+scanflags.o: scanflags.c flexdef.h flexint.h
 gen.o: gen.c flexdef.h flexint.h tables.h tables_shared.h
 libmain.o: libmain.c
 libyywrap.o: libyywrap.c
@@ -1108,13 +1080,9 @@ tblcmp.o: tblcmp.c flexdef.h flexint.h
 yylex.o: yylex.c flexdef.h flexint.h parse.h
 filter.o: filter.c flexdef.h flexint.h
 
-# Create a tags file.
-tags:
-	ctags --c-types='defgmstuv' $(srcdir)/*.[ch]
-
 # Create the ChangeLog, but only if we're inside a cvs working directory
 
-ChangeLog:
+ChangeLog: $(srcdir)/tools/cvsauthors $(srcdir)/tools/cvs2cl.pl
 	if [ -d CVS ] ; then \
 		sh $(srcdir)/tools/cvs2cl.pl -F trunk -U $(srcdir)/tools/cvsauthors \
 	; fi

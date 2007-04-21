@@ -26,6 +26,10 @@ dist_noinst_SCRIPTS = \
 	create-test
 
 DIST_SUBDIRS = \
+	test-c++-yywrap \
+	test-extended \
+	test-ccl \
+	test-quotes \
 	test-rescan-r \
 	test-rescan-nr \
 	test-basic-nr \
@@ -69,6 +73,10 @@ DIST_SUBDIRS = \
 	test-table-opts
 
 SUBDIRS = \
+	test-c++-yywrap \
+	test-extended \
+	test-ccl \
+	test-quotes \
 	test-rescan-r \
 	test-rescan-nr \
 	test-basic-nr \
@@ -119,10 +127,10 @@ check-local: clean
 		echo Executing test "$$dir" ; \
 		( cd "$$dir" && $(MAKE) test  > OUTPUT 2>&1 ) ; \
 		case $$? in \
-			0 )  echo Test "$$DIR" succeeded.; \
+			0 )  echo Test "$$dir" succeeded.; \
 				NOK=0$$NOK;\
 				;; \
-			* )  echo Test "$$DIR" FAILED. See "$$dir"/OUTPUT for details. ; \
+			* )  echo Test "$$dir" FAILED. See "$$dir"/OUTPUT for details. ; \
 				NFAIL=0$$NFAIL; \
 				;; \
 		esac; \

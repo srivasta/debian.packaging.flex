@@ -73,6 +73,7 @@ SOURCES =
 DIST_SOURCES =
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
+ALLOCA = @ALLOCA@
 AMDEP_FALSE = @AMDEP_FALSE@
 AMDEP_TRUE = @AMDEP_TRUE@
 AMTAR = @AMTAR@
@@ -119,9 +120,6 @@ LTLIBICONV = @LTLIBICONV@
 LTLIBINTL = @LTLIBINTL@
 LTLIBOBJS = @LTLIBOBJS@
 M4 = @M4@
-MAINT = @MAINT@
-MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
-MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
 MAKEINFO = @MAKEINFO@
 MKINSTALLDIRS = @MKINSTALLDIRS@
 MSGFMT = @MSGFMT@
@@ -193,7 +191,7 @@ target_alias = @target_alias@
 FLEX = $(top_builddir)/flex
 builddir = @builddir@
 EXTRA_DIST = scanner-1.l scanner-2.l main.cpp test.input
-CLEANFILES = scanner-1.cpp test-c++-multiple-scanners OUTPUT $(OBJS) scanner-2.cpp
+CLEANFILES = scanner-1.cpp $(testname)$(EXEEXT) OUTPUT $(OBJS) scanner-2.cpp
 OBJS = scanner-1.o scanner-2.o main.o
 AM_CXXFLAGS = -I$(srcdir) -I$(top_srcdir) -I$(top_builddir)
 #LDFLAGS = $(top_srcdir)/libfl.a 
@@ -203,7 +201,7 @@ all: all-am
 
 .SUFFIXES:
 .SUFFIXES: .cpp .o
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -212,9 +210,9 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  tests/test-c++-multiple-scanners/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnits  tests/test-c++-multiple-scanners/Makefile'; \
 	cd $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu  tests/test-c++-multiple-scanners/Makefile
+	  $(AUTOMAKE) --gnits  tests/test-c++-multiple-scanners/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -228,9 +226,9 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 
-$(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
+$(top_srcdir)/configure:  $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
-$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
+$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 uninstall-info-am:
 tags: TAGS
