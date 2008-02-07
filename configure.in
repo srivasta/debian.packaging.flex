@@ -25,7 +25,7 @@
 # autoconf requirements and initialization
 
 AC_PREREQ(2.59)
-AC_INIT([the fast lexical analyser generator], [2.5.33],
+AC_INIT([the fast lexical analyser generator], [2.5.34],
 [flex-help@lists.sourceforge.net], [flex])
 AC_CONFIG_SRCDIR([scan.l])
 AM_INIT_AUTOMAKE([gnits dist-bzip2])
@@ -87,6 +87,16 @@ AC_HEADER_SYS_WAIT
 AC_CHECK_HEADERS([inttypes.h libintl.h limits.h locale.h malloc.h netinet/in.h stddef.h stdlib.h string.h strings.h unistd.h])
 AC_CHECK_LIB(m, log10)
 
+# The test test-pthread uses libpthread, so we check for it here, but
+# all we need is the preprocessor symbol defined since we don't need
+# LIBS to include libpthread for building flex.
+
+AC_CHECK_LIB(pthread, pthread_mutex_lock,
+AC_DEFINE([HAVE_LIBPTHREAD], 1, [pthread library] ),
+AC_DEFINE([HAVE_LIBPTHREAD], 0, [pthread library] )
+)
+AC_CHECK_HEADERS([pthread.h])
+
 # Checks for typedefs, structures, and compiler characteristics.
 
 AC_HEADER_STDBOOL
@@ -134,6 +144,7 @@ tests/test-pthread/Makefile
 tests/test-string-nr/Makefile
 tests/test-string-r/Makefile
 tests/test-yyextra/Makefile
+tests/test-alloc-extra/Makefile
 tests/test-lineno-nr/Makefile
 tests/test-lineno-r/Makefile
 tests/test-linedir-r/Makefile
@@ -155,6 +166,7 @@ tests/test-quotes/Makefile
 tests/test-ccl/Makefile
 tests/test-extended/Makefile
 tests/test-c++-yywrap/Makefile
+tests/test-concatenated-options/Makefile
 dnl --new-test-here-- This line is processed by tests/create-test.
 )
 

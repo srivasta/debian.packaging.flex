@@ -3,7 +3,16 @@ changes between releases of flex.
 
 See the file COPYING for copying conditions.
 
-* after version 2.5.33
+* version 2.5.34 released 2007-12-12
+
+** introduce yylex_init_extra; see the manual for details
+
+** introduce %option extra-type="your_type *" (resolves bug #1744505)
+
+** The flex program now parses multiple short concatenated options (resolves bug
+  #1619820). Thanks to Petr Machata of Red Hat on this issue.
+
+** better checking after yyalloc/yyrealloc (resolves bug #1595967)
 
 ** flex now provides for a libfl_pic.a compiled with position
    independent code. Particularly useful when including a flex scanner
@@ -13,7 +22,7 @@ See the file COPYING for copying conditions.
 	header file.
 
 ** flex better escapes filenames with special characters in them
-(resolves#1623600)
+   (resolves bug #1623600)
 
 ** a memory leak was plugged(resolves bug #1601111)
 

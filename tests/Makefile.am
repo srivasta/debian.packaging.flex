@@ -26,6 +26,7 @@ dist_noinst_SCRIPTS = \
 	create-test
 
 DIST_SUBDIRS = \
+	test-concatenated-options \
 	test-c++-yywrap \
 	test-extended \
 	test-ccl \
@@ -68,11 +69,13 @@ DIST_SUBDIRS = \
 	test-string-nr \
 	test-string-r \
 	test-yyextra \
+	test-alloc-extra \
 	test-noansi-nr \
 	test-noansi-r \
 	test-table-opts
 
 SUBDIRS = \
+	test-concatenated-options \
 	test-c++-yywrap \
 	test-extended \
 	test-ccl \
@@ -113,6 +116,7 @@ SUBDIRS = \
 	test-string-nr \
 	test-string-r \
 	test-yyextra \
+	test-alloc-extra \
 	test-noansi-nr \
 	test-noansi-r \
 	test-top \
