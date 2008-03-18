@@ -1,3 +1,46 @@
+2008-02-26 15:36  Will Estes <wlestes@users.sourceforge.net>
+
+	* NEWS: add date of release
+
+2008-02-15 07:37  Will Estes <wlestes@users.sourceforge.net>
+
+	* NEWS, parse.y: fix bug that prevented comments from working
+	properly
+
+2008-02-12 07:57  Will Estes <wlestes@users.sourceforge.net>
+
+	* po/de.po: new de translation
+
+2008-02-10 06:08  Will Estes <wlestes@users.sourceforge.net>
+
+	* NEWS, po/vi.po: new vi translation
+
+2008-02-09 19:22  Will Estes <wlestes@users.sourceforge.net>
+
+	* NEWS, po/nl.po: new nl translation
+
+2008-02-09 14:59  Will Estes <wlestes@users.sourceforge.net>
+
+	* NEWS, po/pl.po: new pl translation
+
+2008-02-09 14:19  Will Estes <wlestes@users.sourceforge.net>
+
+	* NEWS, po/de.po, po/pt_BR.po: new de, pt_br translations
+
+2008-02-09 13:54  Will Estes <wlestes@users.sourceforge.net>
+
+	* NEWS, flex.skl: generate headers for all functions (resolves bug
+	#1628314)
+
+2008-02-09 10:49  Will Estes <wlestes@users.sourceforge.net>
+
+	* NEWS, flex.skl: change yy_size_t to be size_t (resolves bug
+	#1849812)
+
+2008-02-09 10:46  Will Estes <wlestes@users.sourceforge.net>
+
+	* configure.in: start work on version 2.5.35
+
 2007-12-12 16:00  Will Estes <wlestes@users.sourceforge.net>
 
 	* NEWS, configure.in: revert NEWS and configure.in to version
