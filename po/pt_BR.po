@@ -1,13 +1,14 @@
 # flex: translation to Brazilian Portuguese (pt_BR)
-# Copyright (C) 2002 Free Software Foundation, Inc.
-# Alexandre Folle de Menezes <afmenez@terra.com.br>, 2003.
+# Copyright (C) 2003, 2004 Free Software Foundation, Inc.
+# This file is distributed under the same license as the flex package.
+# Alexandre Folle de Menezes <afmenez@terra.com.br>, 2003, 2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: flex 2.5.19\n"
+"Project-Id-Version: flex 2.5.31\n"
 "Report-Msgid-Bugs-To: flex-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2007-12-12 16:05-0500\n"
-"PO-Revision-Date: 2003-01-15 02:00-0300\n"
+"POT-Creation-Date: 2008-02-26 16:34-0500\n"
+"PO-Revision-Date: 2004-02-08 18:45-0200\n"
 "Last-Translator: Alexandre Folle de Menezes <afmenez@terra.com.br>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar.conectiva.com.br>\n"
 "MIME-Version: 1.0\n"
@@ -98,9 +99,8 @@ msgid "state # %d accepts: "
 msgstr "estado # %d aceita: "
 
 #: gen.c:1157
-#, fuzzy
 msgid "Could not write yyacclist_tbl"
-msgstr "Impossível escrever yyacc_tbl"
+msgstr "Impossível escrever yyacclist_tbl"
 
 #: gen.c:1233
 msgid "Could not write yyacc_tbl"
@@ -145,14 +145,12 @@ msgid "Could not write ftbl"
 msgstr "Impossível escrever ftbl"
 
 #: gen.c:1624
-#, fuzzy
 msgid "Could not write ssltbl"
-msgstr "Impossível escrever ecstbl"
+msgstr "Impossível escrever ssltbl"
 
 #: gen.c:1675
-#, fuzzy
 msgid "Could not write eoltbl"
-msgstr "Impossível escrever ecstbl"
+msgstr "Impossível escrever eoltbl"
 
 #: gen.c:1735
 msgid "Could not write yynultrans_tbl"
@@ -175,9 +173,8 @@ msgid "Can't use -f or -F with -l option"
 msgstr "Impossível usar -f ou -F  com a opção -l"
 
 #: main.c:241
-#, fuzzy
 msgid "Can't use --reentrant or --bison-bridge with -l option"
-msgstr "Impossível usar -R ou -Rb com a opção -l"
+msgstr "Impossível usar --reentrant ou --bison-bridge com a opção -l"
 
 #: main.c:278
 msgid "-Cf/-CF and -Cm don't make sense together"
@@ -205,13 +202,12 @@ msgid "%array incompatible with -+ option"
 msgstr "%array é incompatível com a opção -+"
 
 #: main.c:302
-#, fuzzy
 msgid "Options -+ and --reentrant are mutually exclusive."
-msgstr "As opções -+ e -R são mutuamente exclusivas."
+msgstr "As opções -+ e --reentrant são mutuamente exclusivas."
 
 #: main.c:305
 msgid "bison bridge not supported for the C++ scanner."
-msgstr ""
+msgstr "ponte bison não suportada pelo processador C++."
 
 #: main.c:360 main.c:406
 #, c-format
@@ -462,11 +458,13 @@ msgstr ""
 " e pode ser a fonte real de outras penalidades de performance reportadas\n"
 
 #: main.c:1529
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%%option yylineno entails a performance penalty ONLY on rules that can match "
 "newline characters\n"
-msgstr "%%option yylineno acarreta em uma grande penalidade na performance\n"
+msgstr ""
+"%%option yylineno acarreta em uma penalidade na performance APENAS em regras "
+"que podem bater caracters de nova linha\n"
 
 #: main.c:1536
 #, c-format
@@ -696,27 +694,35 @@ msgstr "valor de iteração deve ser positivo"
 #, c-format
 msgid "the character range [%c-%c] is ambiguous in a case-insensitive scanner"
 msgstr ""
+"a faixa de caracteres [%c-%c] é ambígua em um processador \"case-insensitive"
+"\""
 
 #: parse.y:821
 msgid "negative range in character class"
 msgstr "faixa negativa na classe de caracteres"
 
 #: parse.y:918
+#, fuzzy
 msgid "[:^lower:] is ambiguous in case insensitive scanner"
 msgstr ""
+"a faixa de caracteres [%c-%c] é ambígua em um processador \"case-insensitive"
+"\""
 
 #: parse.y:924
+#, fuzzy
 msgid "[:^upper:] ambiguous in case insensitive scanner"
 msgstr ""
+"a faixa de caracteres [%c-%c] é ambígua em um processador \"case-insensitive"
+"\""
 
 #: scan.l:75 scan.l:192 scan.l:300 scan.l:443 scan.l:618 scan.l:676
 msgid "Input line too long\n"
 msgstr "Linha de entrada muito longa\n"
 
 #: scan.l:161
-#, fuzzy, c-format
+#, c-format
 msgid "malformed '%top' directive"
-msgstr "diretiva '%' não reconhecida"
+msgstr "diretiva '%top' malformada"
 
 #: scan.l:183
 #, no-c-format
@@ -725,7 +731,7 @@ msgstr "diretiva '%' não reconhecida"
 
 #: scan.l:284
 msgid "Unmatched '{'"
-msgstr ""
+msgstr "'{' sem fechamento"
 
 #: scan.l:317
 msgid "incomplete name definition"

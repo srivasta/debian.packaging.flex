@@ -1,13 +1,14 @@
 # Polish translation for flex.
-# Copyright (C) 2003 Free Software Foundation, Inc.
-# Jakub Bogusz <qboosh@pld-linux.org>, 2003.
+# This file is distributed under the same license as the flex package.
+# Copyright (C) 2003, 2008 Free Software Foundation, Inc.
+# Jakub Bogusz <qboosh@pld-linux.org>, 2003-2008.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: flex 2.5.31\n"
+"Project-Id-Version: flex 2.5.34\n"
 "Report-Msgid-Bugs-To: flex-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2007-12-12 16:05-0500\n"
-"PO-Revision-Date: 2003-06-19 00:44+0200\n"
+"POT-Creation-Date: 2008-02-26 16:34-0500\n"
+"PO-Revision-Date: 2008-02-09 20:14+0100\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -763,18 +764,16 @@ msgid "negative range in character class"
 msgstr "ujemny przedzia³ w klasie znaków"
 
 #: parse.y:918
-#, fuzzy
 msgid "[:^lower:] is ambiguous in case insensitive scanner"
 msgstr ""
-"przedzia³ znaków [%c-%c] jest niejednoznaczny w skanerze ignoruj±cym "
-"wielko¶æ liter"
+"[:^lower:] jest niejednoznaczne w przypadku skanera ignoruj±cego wielko¶æ "
+"liter"
 
 #: parse.y:924
-#, fuzzy
 msgid "[:^upper:] ambiguous in case insensitive scanner"
 msgstr ""
-"przedzia³ znaków [%c-%c] jest niejednoznaczny w skanerze ignoruj±cym "
-"wielko¶æ liter"
+"[:^upper:] jest niejednoznaczne w przypadku skanera ignoruj±cego wielko¶æ "
+"liter"
 
 #: scan.l:75 scan.l:192 scan.l:300 scan.l:443 scan.l:618 scan.l:676
 msgid "Input line too long\n"
@@ -839,9 +838,8 @@ msgid "EOF encountered inside an action"
 msgstr "EOF napotkany wewn±trz akcji"
 
 #: scan.l:945
-#, fuzzy
 msgid "EOF encountered inside pattern"
-msgstr "EOF napotkany wewn±trz akcji"
+msgstr "EOF napotkany wewn±trz wzorca"
 
 #: scan.l:967
 #, c-format
@@ -909,6 +907,3 @@ msgstr "Znacznik koñca\n"
 #, c-format
 msgid "*Something Weird* - tok: %d val: %d\n"
 msgstr "*Co¶ dziwnego* - tok: %d val: %d\n"
-
-#~ msgid "consistency check failed in symfollowset"
-#~ msgstr "kontrola spójno¶ci nie powiod³a siê w symfollowset"

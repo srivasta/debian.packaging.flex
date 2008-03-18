@@ -1,19 +1,20 @@
-# Translation of flex-2.5.33 to Dutch.
+# Translation of flex-2.5.34 to Dutch.
 # Copyright (C) 2005, 2006 Free Software Foundation, Inc.
-# Benno Schulenberg <benno@vertaalt.nl>, 2005, 2006, 2007.
+# This file is distributed under the same license as the flex package.
 #
+# Benno Schulenberg <benno@vertaalt.nl>, 2005, 2006, 2007, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: flex 2.5.33\n"
+"Project-Id-Version: flex-2.5.34\n"
 "Report-Msgid-Bugs-To: flex-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2007-12-12 16:05-0500\n"
-"PO-Revision-Date: 2007-08-15 00:06+0200\n"
+"POT-Creation-Date: 2008-02-26 16:34-0500\n"
+"PO-Revision-Date: 2008-02-09 21:59+0100\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.1\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: dfa.c:61
 #, c-format
@@ -436,7 +437,7 @@ msgstr "%s %s\n"
 
 #: main.c:1467
 msgid "fatal parse error"
-msgstr "fatale ontleedfout"
+msgstr "fatale ontledingsfout"
 
 #: main.c:1499
 #, c-format
@@ -615,8 +616,8 @@ msgstr ""
 "  -B, --batch             een batch-scanner genereren (tegengestelde van -"
 "I)\n"
 "  -i, --case-insensitive  hoofd-/kleine letters in patronen negeren\n"
-"  -l, --lex-compat        maximale compatibiliteit met de originele lex\n"
-"  -X, --posix-compat      maximale compatibiliteit met de POSIX lex\n"
+"  -l, --lex-compat        maximale compatibiliteit met de originele 'lex'\n"
+"  -X, --posix-compat      maximale compatibiliteit met de POSIX 'lex'\n"
 "  -I, --interactive       een interactieve scanner genereren\n"
 "      --yylineno          het regelaantal bijhouden in yylineno\n"
 "\n"
@@ -638,13 +639,13 @@ msgstr ""
 "  -c                      nietsdoende POSIX-optie\n"
 "  -n                      nietsdoende POSIX-optie\n"
 "  -?\n"
-"  -h, --help              dit hulpbericht tonen\n"
+"  -h, --help              deze hulptekst tonen\n"
 "  -V, --version           de versie van %s tonen\n"
 
 #: misc.c:100 misc.c:126
 #, c-format
 msgid "name \"%s\" ridiculously long"
-msgstr "naam \"%s\" is belachelijk lang"
+msgstr "naam is belachelijk lang: \"%s\""
 
 #: misc.c:175
 msgid "memory allocation failed in allocate_array()"
@@ -765,18 +766,12 @@ msgid "negative range in character class"
 msgstr "negatief bereik in tekenklasse"
 
 #: parse.y:918
-#, fuzzy
 msgid "[:^lower:] is ambiguous in case insensitive scanner"
-msgstr ""
-"het tekenbereik [%c-%c] is niet eenduidig in een hoofdletterongevoelige "
-"scanner"
+msgstr "[:^lower:] is niet eenduidig in een hoofdletterongevoelige scanner"
 
 #: parse.y:924
-#, fuzzy
 msgid "[:^upper:] ambiguous in case insensitive scanner"
-msgstr ""
-"het tekenbereik [%c-%c] is niet eenduidig in een hoofdletterongevoelige "
-"scanner"
+msgstr "[:^upper:] is niet eenduidig in een hoofdletterongevoelige scanner"
 
 #: scan.l:75 scan.l:192 scan.l:300 scan.l:443 scan.l:618 scan.l:676
 msgid "Input line too long\n"
@@ -838,12 +833,11 @@ msgstr "ontbrekende }"
 
 #: scan.l:940
 msgid "EOF encountered inside an action"
-msgstr "EOF bereikt tijdens een actie"
+msgstr "EOF werd bereikt tijdens een actie"
 
 #: scan.l:945
-#, fuzzy
 msgid "EOF encountered inside pattern"
-msgstr "EOF bereikt tijdens een actie"
+msgstr "EOF werd bereikt binnen een patroon"
 
 #: scan.l:967
 #, c-format
@@ -891,7 +885,7 @@ msgstr "geheugenreservering voor symbolentabel is mislukt"
 
 #: sym.c:202
 msgid "name defined twice"
-msgstr "naam twee keer gedefinieerd"
+msgstr "naam is twee keer gedefinieerd"
 
 #: sym.c:253
 #, c-format
@@ -900,7 +894,7 @@ msgstr "startvoorwaarde %s is twee keer vermeld"
 
 #: yylex.c:56
 msgid "premature EOF"
-msgstr "voortijdige EOF"
+msgstr "voortijdig einde van bestand"
 
 #: yylex.c:198
 #, c-format
@@ -911,6 +905,3 @@ msgstr "Eindmarkering\n"
 #, c-format
 msgid "*Something Weird* - tok: %d val: %d\n"
 msgstr "*Iets Raars* - token: %d waarde:%d\n"
-
-#~ msgid "consistency check failed in symfollowset"
-#~ msgstr "consistentiecontrole is mislukt in symfollowset()"
