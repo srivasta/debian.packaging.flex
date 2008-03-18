@@ -522,13 +522,6 @@ m4_ifdef( [[M4_YY_NOT_IN_HEADER]],
 #define unput(c) yyunput( c, YY_G(yytext_ptr) M4_YY_CALL_LAST_ARG )
 ]])
 
-/* The following is because we cannot portably get our hands on size_t
- * (without autoconf's help, which isn't available because we want
- * flex-generated scanners to compile on their own).
- * Given that the standard has decreed that size_t exists since 1989,
- * I guess we can afford to depend on it. Manoj.
- */
-
 #ifndef YY_TYPEDEF_YY_SIZE_T
 #define YY_TYPEDEF_YY_SIZE_T
 typedef size_t yy_size_t;
@@ -896,6 +889,8 @@ int yylex_init_extra M4_YY_PARAMS( YY_EXTRA_TYPE user_defined, yyscan_t* scanner
 
 %endif
 
+%endif End reentrant structures and macros.
+
 /* Accessor methods to globals.
    These are made visible to non-reentrant scanners for convenience. */
 
@@ -985,7 +980,6 @@ m4_ifdef( [[<M4_YY_BISON_LLOC>]],
     ]])
 ]])
 %endif
-%endif End reentrant structures and macros.
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.

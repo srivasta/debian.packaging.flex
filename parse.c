@@ -2225,8 +2225,8 @@ yyreduce:
 
             /* Do it again for upper/lowercase */
             if (sf_case_ins() && has_case((yyvsp[0]))){
-                (yyvsp[-1]) = reverse_case ((yyvsp[0]));
-                ccladd ((yyvsp[-1]), reverse_case ((yyvsp[0])));
+                (yyvsp[0]) = reverse_case ((yyvsp[0]));
+                ccladd ((yyvsp[-1]), (yyvsp[0]));
 
                 cclsorted = cclsorted && ((yyvsp[0]) > lastchar);
                 lastchar = (yyvsp[0]);
