@@ -1063,7 +1063,8 @@ m4_define( [[M4_YY_NO_TOP_STATE]])
 
 /* Amount of stuff to slurp up with each read. */
 #ifndef YY_READ_BUF_SIZE
-#define YY_READ_BUF_SIZE 8192
+/* On IA-64, the buffer size is 16k, not 8k */
+#define YY_READ_BUF_SIZE 16384
 #endif
 
 m4_ifdef( [[M4_YY_NOT_IN_HEADER]],
@@ -2348,8 +2349,8 @@ m4_ifdef( [[M4_YY_NO_SCAN_BYTES]],,
 %if-c-only
 /** Setup the input buffer state to scan the given bytes. The next call to yylex() will
  * scan from a @e copy of @a bytes.
- * @param bytes the byte buffer to scan
- * @param len the number of bytes in the buffer pointed to by @a bytes.
+ * @param yybytes the byte buffer to scan
+ * @param _yybytes_len the number of bytes in the buffer pointed to by @a bytes.
  * M4_YY_DOC_PARAM
  * @return the newly allocated buffer state object.
  */
