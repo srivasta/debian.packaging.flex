@@ -2085,7 +2085,8 @@ static int input (void );
     
 /* Amount of stuff to slurp up with each read. */
 #ifndef YY_READ_BUF_SIZE
-#define YY_READ_BUF_SIZE 8192
+/* On IA-64, the buffer size is 16k, not 8k */
+#define YY_READ_BUF_SIZE 16384
 #endif
 
 /* Copy whatever the last rule matched to the standard output. */
