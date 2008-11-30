@@ -34,7 +34,7 @@ YFLAGS = --defines --output=parser.c --name-prefix="test"
 
 testname = test-bison-yylval
 
-scanner.c: $(srcdir)/scanner.l
+scanner.c scanner.h: $(srcdir)/scanner.l
 	$(FLEX) $<
 
 parser.c: $(srcdir)/parser.y
@@ -50,4 +50,4 @@ test: $(testname)$(EXEEXT)
 	$(CC) -c -o $@ $(AM_CPPFLAGS) $(CPPFLAGS) $(CFLAGS) $<
 
 parser.h: parser.c
-main.o: parser.h
+main.o: parser.h scanner.h
