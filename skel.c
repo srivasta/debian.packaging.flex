@@ -285,6 +285,7 @@ const char *skel[] = {
   "#include <iostream> ",
   "#include <errno.h>",
   "#include <cstdlib>",
+  "#include <cstdio>",
   "#include <cstring>",
   "/* end standard C++ headers. */",
   "%endif",
