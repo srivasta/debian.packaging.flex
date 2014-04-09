@@ -1,0 +1,76 @@
+#!/usr/bin/make -f
+# Uncomment this to turn on verbose mode.
+# export DH_VERBOSE=1
+package:=flex
+SRCTOP:= $(shell if [ "$$PWD" != "" ]; then echo $$PWD; else pwd; fi)
+INSTALL = install
+ifeq (,$(filter nostrip,$(DEB_BUILD_OPTIONS)))
+    INSTALL_PROGRAM += -s
+endif
+install_file	= $(INSTALL) -p	   -o root -g root  -m	644
+install_program = $(INSTALL) -p	   -o root -g root  -m	755
+install_script	= $(INSTALL) -p	   -o root -g root  -m	755
+make_directory	= $(INSTALL) -p -d -o root -g root  -m	755
+
+DPKG_ARCH := dpkg-architecture
+export DEB_HOST_MULTIARCH  := $(shell $(DPKG_ARCH) $(ha) -qDEB_HOST_MULTIARCH)
+
+%:
+	dh $@  --with autoreconf
+
+override_dh_auto_configure:
+	if ! which flex >/dev/null 2>&1; then				   \
+	   if [ -e debian/scan.l.md5sum ] &&				   \
+	      [ "`md5sum scan.l`" = "`cat debian/scan.l.md5sum`" ]; then   \
+		if [ scan.l -nt scan.c ]; then				   \
+		   echo "scan.l newer than scan.c";			   \
+		fi;							   \
+		touch scan.c;						   \
+	   fi;								   \
+	fi
+	ac_cv_lib_util_getloadavg=no dh_auto_configure --    \
+	   --prefix=$(PREFIX) $(confflags)
+
+override_dh_install:
+	test ! -d debian/tmp/lib/$(DEB_HOST_MULTIARCH) ||               \
+            find debian/tmp/lib/$(DEB_HOST_MULTIARCH) -type f           \
+               -name \*.la -exec rm {} \;
+	dh_install
+	$(make_directory) debian/libfl-dev/usr/lib
+	sed -e 's,#DEB_HOST_MULTIARCH#,$(DEB_HOST_MULTIARCH),'           \
+           debian/libfl.shared_object > debian/libfl-dev/usr/lib/$(DEB_HOST_MULTIARCH)/libfl.so
+	dh_link usr/lib/$(DEB_HOST_MULTIARCH)/libfl.a usr/lib/$(DEB_HOST_MULTIARCH)/libl.a
+	dh_link usr/bin/flex    usr/bin/lex
+
+
+override_dh_installdocs:
+	dh_installdocs
+ifneq (,$(filter flex-doc, $(shell dh_listpackages)))
+	mv debian/flex-doc/usr/share/doc/flex-doc/flex.html debian/flex-doc/usr/share/doc/flex-doc/html
+endif
+
+override_dh_installexamples:
+	dh_installexamples
+ifneq (,$(filter flex, $(shell dh_listpackages)))
+	mv debian/flex/usr/share/doc/flex/examples/examples debian/flex/usr/share/doc/flex/tmp
+	rmdir debian/flex/usr/share/doc/flex/examples
+	mv debian/flex/usr/share/doc/flex/tmp debian/flex/usr/share/doc/flex/examples
+	test ! -f debian/flex/usr/share/doc/flex/COPYING || rm -f debian/flex/usr/share/doc/flex/COPYING
+endif
+
+override_dh_auto_build:
+	dh_auto_build
+	$(MAKE) -C doc flex.info flex.html
+	bash -n debian/flex-doc.postinst
+	bash -n debian/flex-doc.prerm
+	bash -n debian/flex.postinst
+	bash -n debian/flex.prerm
+
+override_dh_installman:
+	dh_installman
+	dh_link usr/share/man/man1/flex.1 usr/share/man/man1/flex++.1
+	dh_link usr/share/man/man1/flex.1 usr/share/man/man1/lex.1
+
+#Local variables:
+#mode: makefile
+#End:
