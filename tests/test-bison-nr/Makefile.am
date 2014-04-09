@@ -29,26 +29,27 @@ CLEANFILES = scanner.c scanner.h parser.c parser.h $(testname)$(EXEEXT) $(OBJS) 
 OBJS = scanner.o parser.o main.o
 
 AM_CPPFLAGS = -I$(srcdir) -I$(top_srcdir) -I$(top_builddir) -I$(builddir)
-#LDFLAGS = $(top_srcdir)/libfl.a 
+#LDFLAGS = $(top_srcdir)/libfl.a
 YFLAGS = --defines --output=parser.c --name-prefix="test"
 
 testname = test-bison-nr
 
 scanner.c scanner.h: $(srcdir)/scanner.l
 	$(FLEX) $<
+scanner.h: scanner.c
+scanner.o: parser.h
 
 parser.c: $(srcdir)/parser.y
 	$(BISON) $(YFLAGS) $<
+parser.h: parser.c
+
+main.o: scanner.h parser.h
 
 $(testname)$(EXEEXT): $(OBJS)
-	$(CC) -o $@ $(LDFLAGS) $(OBJS) $(LOADLIBES)
+	$(CC) $(CFLAGS) -o $@ $(LDFLAGS) $(OBJS) $(LOADLIBES)
 
 test: $(testname)$(EXEEXT)
 	./$(testname)$(EXEEXT) < $(srcdir)/test.input
 
 .c.o:
 	$(CC) -c -o $@ $(AM_CPPFLAGS) $(CPPFLAGS) $(CFLAGS) $<
-
-parser.h: parser.c
-scanner.o: parser.h
-main.o: parser.h scanner.h
