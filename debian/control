@@ -50,8 +50,8 @@ Section: libdevel
 Architecture: any
 Multi-Arch: same
 Depends: ${misc:Depends}, ${shlibs:Depends}
-Replaces: flex (<< 2.5.39)
-Breaks: flex (<< 2.5.39)
+Replaces: flex (<< 2.5.39), flex-old (<= 2.5.4a-10)
+Breaks: flex (<< 2.5.39), flex-old (<= 2.5.4a-10)
 Description: static library for flex (a fast lexical analyzer generator)
  Flex is a tool for generating scanners: programs which recognized lexical
  patterns in text. It reads the given input files for a description of a

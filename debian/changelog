@@ -1,3 +1,23 @@
+flex (2.5.39-2) unstable; urgency=low
+
+  * New bug fixing release
+  * Bug fix: "typo in README.Debian: libfla_pic.a -&gt; libfl_pic.a",
+    thanks to Jakub Wilk (Closes: #744853).
+  * Bug fix: "libfl-dev and flex-old: error when trying to install
+    together", thanks to Ralf Treinen. The package libfl-dev needs to
+    replace and Break the flex-old package too,  (Closes: #744833).
+  * Bug fix: "redundant redeclaration of ‘isatty’", thanks to Ludovic
+    Rousseau. This duplication was removed in the last upstream release.
+    (Closes: #488274).
+  * Bug fix: "flex-2.5.35 bug", thanks to Yuriy Z. scan.c now declares n
+    as size_t, in the new upstream version.  (Closes: #633008).
+  * Bug fix: "make check failure", thanks to Sayre, Alan N. The new
+    version of flex does succeed in running make check (it would not build
+    otherwise) (Closes: #632095).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Thu, 17 Apr 2014 02:15:10 -0700
+
+
 flex (2.5.39-1) unstable; urgency=medium
 
   * New upstream release

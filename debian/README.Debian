@@ -7,7 +7,7 @@
  libfl.a. However, since linking a shared library with a object
  containing non position independent code stopped working with gcc 4.1
  (apparently, it was sheer luck that it worked at all). So now we also
- provide libfla_pic.a for shared library packages to link with.
+ provide libfl_pic.a for shared library packages to link with.
 
 	An alternative would have been to provide a full fledged
  shared library, but that would have been a major break with upstream
@@ -19,3 +19,5 @@
  manoj
 
 arch-tag: 7421b315-d205-4e09-9a81-0fef07ba57b7
+
+ -- Manoj Srivastava <srivasta@debian.org>, Thu, 17 Apr 2014 01:11:31 -0700
