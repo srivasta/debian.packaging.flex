@@ -1,3 +1,11 @@
+flex (2.5.39-3) unstable; urgency=medium
+
+  * Move libl.a from flex to libfl-dev, for real
+  * install link manually for libfl-dev alone, cleaning up the rules file
+    in the process.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Thu, 17 Apr 2014 12:45:38 -0700
+
 flex (2.5.39-2) unstable; urgency=low
 
   * New bug fixing release
@@ -19,7 +27,6 @@ flex (2.5.39-2) unstable; urgency=low
 
 
 flex (2.5.39-1) unstable; urgency=medium
-
   * New upstream release
   * internationalization: added support for various languages. Fix make
     install target to not fail when the flex++ program is already
@@ -42,7 +49,6 @@ flex (2.5.39-1) unstable; urgency=medium
     build system in the NMU are not needed, dh does the right thing.
   * The new upstream release added the prototypes in re-entrant mode, so
     we are no longer carrying those patches.
-
  -- Manoj Srivastava <srivasta@debian.org>  Thu, 10 Apr 2014 18:06:12 -0700
 
 flex (2.5.35-10.1) unstable; urgency=low

@@ -36,15 +36,13 @@ override_dh_install:
             find debian/tmp/lib/$(DEB_HOST_MULTIARCH) -type f           \
                -name \*.la -exec rm {} \;
 	dh_install
+ifneq (,$(filter libfl-dev, $(shell dh_listpackages)))
 	$(make_directory) debian/libfl-dev/usr/lib
 	sed -e 's,#DEB_HOST_MULTIARCH#,$(DEB_HOST_MULTIARCH),'           \
            debian/libfl.shared_object > debian/libfl-dev/usr/lib/$(DEB_HOST_MULTIARCH)/libfl.so
-	dh_link usr/lib/$(DEB_HOST_MULTIARCH)/libfl.a usr/lib/$(DEB_HOST_MULTIARCH)/libl.a
-	test ! -e debian/flex/usr/lib/$(DEB_HOST_MULTIARCH)/libf.a ||     \
-          mv debian/flex/usr/lib/$(DEB_HOST_MULTIARCH)/libf.a             \
-             debian/libfl-dev/usr/lib/$(DEB_HOST_MULTIARCH)/
-	test ! -d debian/flex/usr/lib/$(DEB_HOST_MULTIARCH) ||            \
-             rmdir debian/flex/usr/lib/$(DEB_HOST_MULTIARCH) || true
+	ln -s libfl.a debian/libfl-dev/usr/lib/$(DEB_HOST_MULTIARCH)/libl.a
+endif
+	dh_link
 
 
 override_dh_installdocs:
@@ -70,7 +68,7 @@ override_dh_auto_build:
 	bash -n debian/flex.postinst
 	bash -n debian/flex.prerm
 
-override_dh_installman:
+verride_dh_installman:
 	dh_installman
 	dh_link usr/share/man/man1/flex.1 usr/share/man/man1/flex++.1
 	dh_link usr/share/man/man1/flex.1 usr/share/man/man1/lex.1
