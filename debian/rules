@@ -68,7 +68,7 @@ override_dh_auto_build:
 	bash -n debian/flex.postinst
 	bash -n debian/flex.prerm
 
-verride_dh_installman:
+override_dh_installman:
 	dh_installman
 	dh_link usr/share/man/man1/flex.1 usr/share/man/man1/flex++.1
 	dh_link usr/share/man/man1/flex.1 usr/share/man/man1/lex.1
