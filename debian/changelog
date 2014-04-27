@@ -1,3 +1,13 @@
+flex (2.5.39-5) unstable; urgency=low
+
+  * Adapted patch from Matthias Klose to add  pre-seeding of autoconf
+    values as paramaters, fixing cross builds. flex uses runtime checks
+    for configure tests, and preseeding allows cross build to succeed,
+  * Bug fix: "fix cross build", thanks to Matthias Klose. Applied fix
+    manually  (Closes: #746172).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Sun, 27 Apr 2014 15:55:36 -0700
+
 flex (2.5.39-4) unstable; urgency=low
 
   * Bug fix: "Flex 2.5.39-3 has a typo in installman", thanks to
