@@ -1,7 +1,7 @@
-From d5a900c9ea3ac0a1602422b9adfe29372d11e826 Mon Sep 17 00:00:00 2001
+From 2cd06e17a6500865438007bd7983c9823269cb99 Mon Sep 17 00:00:00 2001
 From: Manoj Srivastava <srivasta@golden-gryphon.com>
 Date: Fri, 2 Jan 2009 07:23:39 +0100
-Subject: [PATCH 3/4] [ia64-buffer-fix]]: Some more fixes for the ia64 buffer
+Subject: [PATCH 3/5] [ia64-buffer-fix]]: Some more fixes for the ia64 buffer
  issue.
 
 Signed-off-by: Manoj Srivastava <srivasta@golden-gryphon.com>
@@ -71,5 +71,5 @@ index 128cdb3..4ef6e3a 100644
    "",
    "m4_ifdef( [[M4_YY_NOT_IN_HEADER]],",
 -- 
-1.9.1
+2.0.0.rc0
 

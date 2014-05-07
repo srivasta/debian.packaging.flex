@@ -1,7 +1,7 @@
-From 4c141a0575624fc7e22435a23ebf3d5c41ae6e42 Mon Sep 17 00:00:00 2001
+From 5976487aeeaf3321d938ed450d8767f434f6b1e9 Mon Sep 17 00:00:00 2001
 From: Manoj Srivastava <srivasta@golden-gryphon.com>
-Date: Wed, 9 Apr 2014 00:42:31 -0700
-Subject: [PATCH 1/4] debcherry fixup patch
+Date: Tue, 6 May 2014 23:53:47 -0700
+Subject: [PATCH 1/5] debcherry fixup patch
 
 61112fc [topic--autoconf0files] Delete files create by autoconf
 	 - extra changes or conflicts
@@ -71,5 +71,5 @@ index d8e27f7..1937b34 100644
  scanner.h: scanner.c
  scanner.o: parser.h
 -- 
-1.9.1
+2.0.0.rc0
 

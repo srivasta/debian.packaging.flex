@@ -1,7 +1,7 @@
-From 20ab0512841996f895a43d4490f695206ad0e4a2 Mon Sep 17 00:00:00 2001
+From d3d8bc98898f2b917062d8ef935de9bb0a50b540 Mon Sep 17 00:00:00 2001
 From: Manoj Srivastava <srivasta@golden-gryphon.com>
 Date: Wed, 9 Apr 2014 00:23:07 -0700
-Subject: [PATCH 4/4] [bison-test-fixes] Do not use obsolete bison constructs
+Subject: [PATCH 4/5] [bison-test-fixes] Do not use obsolete bison constructs
  in tests.
 
 In Bison 3.0, support for YYLEX_PARAM and YYPARSE_PARAM has been
@@ -73,5 +73,5 @@ index 0ffdb89..626c5e7 100644
  %union  {
      long unused;
 -- 
-1.9.1
+2.0.0.rc0
 

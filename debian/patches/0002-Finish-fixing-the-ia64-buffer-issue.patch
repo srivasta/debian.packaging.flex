@@ -1,7 +1,7 @@
-From d4ba98f3f5ba3173e6f77faab6c85e5ee3d72bdc Mon Sep 17 00:00:00 2001
+From 028b2841cadc8abddfa1a8907b5b7b3ed31dbd0c Mon Sep 17 00:00:00 2001
 From: Cyril Brulebois <kibi@debian.org>
 Date: Fri, 2 Jan 2009 06:53:39 +0100
-Subject: [PATCH 2/4] Finish fixing the ia64 buffer issue.
+Subject: [PATCH 2/5] Finish fixing the ia64 buffer issue.
 
 Previous commits increased YY_READ_BUF_SIZE (where __ia64__ is defined) but
 left YY_BUF_SIZE unchanged, so that didn't fix the problem in the end. In the
@@ -77,5 +77,5 @@ index 6dc7644..128cdb3 100644
    "",
    "m4_ifdef( [[M4_YY_NOT_IN_HEADER]],",
 -- 
-1.9.1
+2.0.0.rc0
 
