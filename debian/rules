@@ -49,6 +49,9 @@ ifneq (,$(filter libfl-dev, $(shell dh_listpackages)))
            debian/libfl.shared_object > debian/libfl-dev/usr/lib/$(DEB_HOST_MULTIARCH)/libfl.so
 	ln -s libfl.a debian/libfl-dev/usr/lib/$(DEB_HOST_MULTIARCH)/libl.a
 endif
+ifneq (,$(filter flex, $(shell dh_listpackages)))
+	test ! -f debian/flex/usr/share/doc/flex/COPYING || rm -f debian/flex/usr/share/doc/flex/COPYING
+endif
 	dh_link
 
 
@@ -58,15 +61,6 @@ ifneq (,$(filter flex-doc, $(shell dh_listpackages)))
 	mv debian/flex-doc/usr/share/doc/flex-doc/flex.html debian/flex-doc/usr/share/doc/flex-doc/html
 endif
 
-override_dh_installexamples:
-	dh_installexamples
-ifneq (,$(filter flex, $(shell dh_listpackages)))
-	mv debian/flex/usr/share/doc/flex/examples/examples debian/flex/usr/share/doc/flex/tmp
-	rmdir debian/flex/usr/share/doc/flex/examples
-	mv debian/flex/usr/share/doc/flex/tmp debian/flex/usr/share/doc/flex/examples
-	test ! -f debian/flex/usr/share/doc/flex/COPYING || rm -f debian/flex/usr/share/doc/flex/COPYING
-endif
-
 override_dh_auto_build:
 	dh_auto_build
 	$(MAKE) -C doc flex.info flex.html
@@ -74,11 +68,6 @@ override_dh_auto_build:
 	bash -n debian/flex-doc.prerm
 	bash -n debian/flex.postinst
 	bash -n debian/flex.prerm
-
-override_dh_installman:
-	dh_installman
-	dh_link usr/share/man/man1/flex.1 usr/share/man/man1/flex++.1
-	dh_link usr/share/man/man1/flex.1 usr/share/man/man1/lex.1
 
 #Local variables:
 #mode: makefile
