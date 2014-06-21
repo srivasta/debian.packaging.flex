@@ -1,0 +1,75 @@
+From 5976487aeeaf3321d938ed450d8767f434f6b1e9 Mon Sep 17 00:00:00 2001
+From: Manoj Srivastava <srivasta@golden-gryphon.com>
+Date: Tue, 6 May 2014 23:53:47 -0700
+Subject: [PATCH 1/5] debcherry fixup patch
+
+61112fc [topic--autoconf0files] Delete files create by autoconf
+	 - extra changes or conflicts
+91d57d4 Correct a few dependencies in Makefiles
+	 - extra changes or conflicts
+---
+ tests/test-bison-nr/Makefile.am     | 4 ++--
+ tests/test-bison-yylloc/Makefile.am | 4 ++--
+ tests/test-bison-yylval/Makefile.am | 4 ++--
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/tests/test-bison-nr/Makefile.am b/tests/test-bison-nr/Makefile.am
+index 9bc8af3..f6e6de9 100644
+--- a/tests/test-bison-nr/Makefile.am
++++ b/tests/test-bison-nr/Makefile.am
+@@ -29,12 +29,12 @@ CLEANFILES = scanner.c scanner.h parser.c parser.h $(testname)$(EXEEXT) $(OBJS)
+ OBJS = scanner.o parser.o main.o
+ 
+ AM_CPPFLAGS = -I$(srcdir) -I$(top_srcdir) -I$(top_builddir) -I$(builddir)
+-#LDFLAGS = $(top_srcdir)/libfl.a 
++#LDFLAGS = $(top_srcdir)/libfl.a
+ YFLAGS = --defines --output=parser.c --name-prefix="test"
+ 
+ testname = test-bison-nr
+ 
+-scanner.c: $(srcdir)/scanner.l
++scanner.c scanner.h: $(srcdir)/scanner.l
+ 	$(FLEX) $<
+ scanner.h: scanner.c
+ scanner.o: parser.h
+diff --git a/tests/test-bison-yylloc/Makefile.am b/tests/test-bison-yylloc/Makefile.am
+index dc41b0f..0070991 100644
+--- a/tests/test-bison-yylloc/Makefile.am
++++ b/tests/test-bison-yylloc/Makefile.am
+@@ -29,12 +29,12 @@ CLEANFILES = scanner.c scanner.h parser.c parser.h $(testname)$(EXEEXT) $(OBJS)
+ OBJS = scanner.o parser.o main.o
+ 
+ AM_CPPFLAGS = -I$(srcdir) -I$(top_srcdir) -I$(top_builddir) -I$(builddir)
+-#LDFLAGS = $(top_srcdir)/libfl.a 
++#LDFLAGS = $(top_srcdir)/libfl.a
+ YFLAGS = --defines --output=parser.c --name-prefix="test"
+ 
+ testname = test-bison-yylloc
+ 
+-scanner.c: $(srcdir)/scanner.l
++scanner.c scanner.h: $(srcdir)/scanner.l
+ 	$(FLEX) $<
+ scanner.h: scanner.c
+ scanner.o: parser.h
+diff --git a/tests/test-bison-yylval/Makefile.am b/tests/test-bison-yylval/Makefile.am
+index d8e27f7..1937b34 100644
+--- a/tests/test-bison-yylval/Makefile.am
++++ b/tests/test-bison-yylval/Makefile.am
+@@ -29,12 +29,12 @@ CLEANFILES = scanner.c scanner.h parser.c parser.h $(testname)$(EXEEXT) $(OBJS)
+ OBJS = parser.o scanner.o main.o
+ 
+ AM_CPPFLAGS = -I$(srcdir) -I$(top_srcdir) -I$(top_builddir) -I$(builddir)
+-#LDFLAGS = $(top_srcdir)/libfl.a 
++#LDFLAGS = $(top_srcdir)/libfl.a
+ YFLAGS = --defines --output=parser.c --name-prefix="test"
+ 
+ testname = test-bison-yylval
+ 
+-scanner.c: $(srcdir)/scanner.l
++scanner.c scanner.h: $(srcdir)/scanner.l
+ 	$(FLEX) $<
+ scanner.h: scanner.c
+ scanner.o: parser.h
+-- 
+2.0.0.rc0
+

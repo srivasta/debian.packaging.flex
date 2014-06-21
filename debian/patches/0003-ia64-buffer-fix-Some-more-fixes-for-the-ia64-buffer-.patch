@@ -1,0 +1,75 @@
+From 2cd06e17a6500865438007bd7983c9823269cb99 Mon Sep 17 00:00:00 2001
+From: Manoj Srivastava <srivasta@golden-gryphon.com>
+Date: Fri, 2 Jan 2009 07:23:39 +0100
+Subject: [PATCH 3/5] [ia64-buffer-fix]]: Some more fixes for the ia64 buffer
+ issue.
+
+Signed-off-by: Manoj Srivastava <srivasta@golden-gryphon.com>
+---
+ flex.skl | 5 +++++
+ scan.c   | 8 +++++++-
+ skel.c   | 5 +++++
+ 3 files changed, 17 insertions(+), 1 deletion(-)
+
+diff --git a/flex.skl b/flex.skl
+index 460cbf4..85eea18 100644
+--- a/flex.skl
++++ b/flex.skl
+@@ -1104,7 +1104,12 @@ m4_define( [[M4_YY_NO_TOP_STATE]])
+ 
+ /* Amount of stuff to slurp up with each read. */
+ #ifndef YY_READ_BUF_SIZE
++#ifdef __ia64__
++/* On IA-64, the buffer size is 16k, not 8k */
++#define YY_READ_BUF_SIZE 16384
++#else
+ #define YY_READ_BUF_SIZE 8192
++#endif /* __ia64__ */
+ #endif
+ 
+ m4_ifdef( [[M4_YY_NOT_IN_HEADER]],
+diff --git a/scan.c b/scan.c
+index 83bb6aa..30b4bf2 100644
+--- a/scan.c
++++ b/scan.c
+@@ -1,5 +1,6 @@
++#line 2 "scan.c"
+ 
+-#line 3 "scan.c"
++#line 4 "scan.c"
+ 
+ #define  YY_INT_ALIGNED short int
+ 
+@@ -2095,7 +2096,12 @@ static int input (void );
+     
+ /* Amount of stuff to slurp up with each read. */
+ #ifndef YY_READ_BUF_SIZE
++#ifdef __ia64__
++/* On IA-64, the buffer size is 16k, not 8k */
++#define YY_READ_BUF_SIZE 16384
++#else
+ #define YY_READ_BUF_SIZE 8192
++#endif /* __ia64__ */
+ #endif
+ 
+ /* Copy whatever the last rule matched to the standard output. */
+diff --git a/skel.c b/skel.c
+index 128cdb3..4ef6e3a 100644
+--- a/skel.c
++++ b/skel.c
+@@ -1171,7 +1171,12 @@ const char *skel[] = {
+   "",
+   "/* Amount of stuff to slurp up with each read. */",
+   "#ifndef YY_READ_BUF_SIZE",
++  "#ifdef __ia64__",
++  "/* On IA-64, the buffer size is 16k, not 8k */",
++  "#define YY_READ_BUF_SIZE 16384",
++  "#else",
+   "#define YY_READ_BUF_SIZE 8192",
++  "#endif /* __ia64__ */",
+   "#endif",
+   "",
+   "m4_ifdef( [[M4_YY_NOT_IN_HEADER]],",
+-- 
+2.0.0.rc0
+
