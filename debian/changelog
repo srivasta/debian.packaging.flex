@@ -6,10 +6,17 @@ flex (2.5.39-8) unstable; urgency=low
     flex package's contents to not change if texinfo is not installed,
     e.g. in the stage1 build profile.  Thanks to Peter Pentchev
     <roam@ringlet.net>
+  * Move the flex-doc build dependencies to B-D-I. Move the TeX Live
+    dependencies to Build-Depends-Indep and only build the HTML and PDF
+    documentation if actually requested. This breaks a circular build
+    dependency by not requiring texlive for the build of the
+    arch-dependent flex binary packages.  (Closes: #749344).
   * Bug fix #752151: "pdfetex error about missing cm-super", thanks to
     Helmut Grohne and Cyril Brulebois
+  * Bug fix: #749344" Allow bootstrapping without texlive and
+    dh-autoreconf", thanks to Peter Pentchev
 
- -- Manoj Srivastava <srivasta@debian.org>  Fri, 20 Jun 2014 20:52:43 -0700
+ -- Manoj Srivastava <srivasta@debian.org>  Fri, 20 Jun 2014 20:58:31 -0700
 
 flex (2.5.39-7) unstable; urgency=low
 

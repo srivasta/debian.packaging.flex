@@ -37,6 +37,7 @@ override_dh_auto_configure:
 	   fi;								   \
 	fi
 	dh_auto_configure -- --prefix=$(PREFIX) $(confflags)
+	sed -i -e 's/^dist_doc_DATA[[:space:]]*=.*/dist_doc_DATA=/' doc/Makefile
 
 override_dh_install:
 	test ! -d debian/tmp/lib/$(DEB_HOST_MULTIARCH) ||               \
@@ -64,7 +65,9 @@ endif
 
 override_dh_auto_build:
 	dh_auto_build
-	$(MAKE) -C doc flex.info flex.html
+ifneq (,$(filter flex-doc, $(shell dh_listpackages)))
+	$(MAKE) -C doc flex.html flex.pdf
+endif
 	bash -n debian/flex-doc.postinst
 	bash -n debian/flex-doc.prerm
 	bash -n debian/flex.postinst
