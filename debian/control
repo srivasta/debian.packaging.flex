@@ -6,7 +6,7 @@ Homepage: http://flex.sf.net/
 Priority: optional
 Build-Depends: bison, gettext, texinfo, help2man, file, po-debconf,
                debhelper (>= 9.0.0), dh-autoreconf, texlive-latex-base,
-               texlive-fonts-recommended, dpkg-dev (>= 1.16.0)
+               texlive-fonts-recommended, dpkg-dev (>= 1.16.0), cm-super-minimal
 Maintainer: Manoj Srivastava <srivasta@debian.org>
 Standards-Version: 3.9.5
 
