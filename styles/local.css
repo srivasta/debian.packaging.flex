@@ -1,0 +1,548 @@
+
+body {
+   font-family: Palatino, "Palatino Linotype", "Hoefler Text", "Times New Roman", Times, Georgia, Utopia, serif;
+   color: #FFFFF0;
+   background-color: #494949; /* #D3EBD2; #dee3ff; */
+   margin: 0;
+   padding:0;
+   border:0;                        /* This removes the border around the viewport in old versions of IE */
+   width:100%;
+   min-width:600px;         /* Minimum width of layout - remove line if not required */
+   /* The min-width property does not work in old versions of Internet Explorer */
+   font-size:90%;
+}
+
+/*
+ * Layout. This is where we determine how the page is laid out.
+ * Indeed, this is all the layout specific segment, the rest can be
+ * abstracted out.
+ */
+
+/*******************************************************************/
+/*******************************************************************/
+
+/*
+ * The masthead is at the top of the page. It contains the title of
+ * the page, and the description.
+ */
+div#masthead {
+   padding: 0.01em 0.1em 0.01em 0.01em;
+   margin: 0;
+}
+/* Make the titles stand out */
+div#masthead h1 {
+   color: #FFD700;
+   background-color: #000020; /* #6f7b34; #1A344B;#5D97CF #AA889A; #00276C;  */
+   background-image: url('/images/icons/ggryphon.png');
+   background-repeat: no-repeat;
+   background-position: 95% 50%;
+   height: 150px;
+   vertical-align: 20%;
+   line-height: 150px;
+   text-align: left;
+   padding-left: 5%;
+   font-variant: small-caps;
+   font-family: Impact, Charcoal, sans-serif;
+   font-weight: bold;
+   font-size: xx-large;
+   text-transform: capitalize;
+   margin: 0.1em;
+   border-bottom: 1px solid;
+}
+div#masthead h2 {
+   font-family: helvetica, "Bitstream Vera Sans", "Helvetica Neue", Arial, Geneva, sans-serif;
+   font-weight: bold;
+   font-size: large;
+}
+div#masthead h3 {
+   font-family: Helvetica, "Bitstream Vera Sans", "Helvetica Neue", Arial, Geneva, sans-serif;
+   font-size: large;
+}
+/* This is the Title */
+div#masthead h4 {
+   font-family: Ravie, fantasy, sans-serif;;
+   text-align: center;
+   margin: 0.1em;
+}
+
+div#masthead  a:link    { color:#FFD700; text-decoration: none }
+div#masthead    a:hover   { border: 1px dotted; }
+div#masthead    a:visited {color:#FFD700;  text-decoration: none}
+div#masthead    a:active  {color:##FFD700;}
+
+/*******************************************************************/
+/* Just a placeholder. Probably should not even be here */
+div#links {
+}
+/*******************************************************************/
+/*
+ * This contains the menu at the top. The menu contains three parts
+ */
+div#wrapper {
+   clear: both;
+   padding: 0.75em 0.75em 2ex 0.75em ;
+}
+div.nav-wrapper {
+   clear: both;
+   padding: 0.5em 0.5em 1.2ex 0.5em ;
+}
+
+div#menubar {
+   clear: both;
+   text-align: center;
+   vertical-align: middle;
+   width: 99%;
+   padding: 0px;
+   margin: 0px;
+   border-bottom: solid 1px #494949;
+}
+/* The leftmost bits of the menubar */
+div#menubar-left {
+   float: left;
+   width: 33%;
+   text-align: left;
+   padding: 0px;
+   margin: 0px;
+  /* margin-bottom: 3px;
+  margin-top: 2px; */
+}
+
+/* Then come the right side of the mneu */
+div#menubar-right {
+   text-align: right;
+   float: right;
+   width: 33%;
+   display: inline;
+   padding: 0px;
+   margin: 0px;
+  /* margin-right: 5px;
+  margin-bottom: 3px;
+  margin-top: 2px;
+  padding: 0.3em 0.3em; */
+   font-size: 70%;
+   line-height: 130%;
+}
+/* And, finally, the closing parts of the menu */
+div#menubar-close{
+   clear: both;
+}
+
+
+ul.headlines {
+   list-style: inside;
+}
+
+li.headlines_date {
+   padding-left: 2px;
+}
+li.headlines_item {
+   padding-left: 1.5em;
+}
+
+
+/*******************************************************************/
+/*******************************************************************/
+/*******************************************************************/
+/*
+   Now we come to the navigation bar at the left. First, there is the
+   wrapper that contains all:
+ */
+
+/* Now comes the acual navigation panel, which contains blocks for navigation */
+div#navpanel {
+   background-color: #666666;/* #EBFFFF; #00FF00; #c3ffff; #D9FFB7; #f8dfdb; #EBFFFF; #dee3ff; */
+   font-family: Helvetica, Tahoma, Arial,sans-serif;
+   font-size: x-small;
+   padding: 5px 10px 5px 5px;
+   margin-right: 10px;
+   margin-top: 1em;
+   width: 20em;
+   float: left;
+   border-right: solid 2px #000020;
+   border-bottom: solid 2px #000020;
+}
+
+div#navpanel h4 {
+   margin-bottom: 0.05in;
+}
+
+div.navblock p img {
+   border: none;
+}
+
+/*
+   These litle blocks contain individual navigation. Each contains a
+   little h4 block as a title
+ */
+div.navblock {
+   background-color: #838383;/* #EBFFFF; #00FF00; #c3ffff; #D9FFB7; #f8dfdb; #EBFFFF; #dee3ff; */
+   width: 20em;
+   padding: 1px 0.05em 0.05em 0.05em;
+   border-right: solid 2px #000020;
+   border-bottom: solid 2px #000020;
+   margin-bottom: 1ex;
+}
+
+div.navblock h1 {
+   margin-top: 2px;
+   font-size:300%;
+   line-height: 120%;
+}
+div.navblock h2 {
+   margin-top: 3px;
+   font-size:250%;
+   line-height: 100%;
+}
+div.navblock h3 {
+   margin-top: 2px;
+   font-size:200%;
+   line-height: 90%;
+}
+/* h4 is the only one used */
+div.navblock h4 {
+   margin-top: 2px;
+   font-size:155%;
+   line-height: 80%;
+}
+div.navblock h4 img {
+   border: none;
+}
+
+div.navblock li {
+   list-style: none;
+}
+
+div.navblock ul {
+   margin: 0px;
+   padding: 0px;
+}
+div.navblock ul li {
+   display: block;
+   float: left;
+   color: black;
+   width: 21em;
+   margin: 2px 0px 0px 0px;
+   padding: 0px;
+   text-align: right;
+   font-weight: bold;
+}
+
+div.navblock ul li span.selflink {
+   text-align: left;
+   font-size: large;
+   padding-right: 4em;
+}
+
+/* Make the links stick out a bit. */
+div.navblock ul li a {
+   display: block;
+   color: #111133;
+   background-color: #9B9BA0;
+   padding: 5px;
+   padding-right:1em;
+   font-size:125%;
+   width: 100%;
+   border: 1px dotted black;
+   border-top-right-radius:17px;
+   border-bottom-right-radius:17px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+}
+
+div.navblock ul li a img {
+   border: none;
+}
+div.navblock ul li a:link, div.navblock ul li a:visited {
+   text-decoration: none;
+}
+
+div.navblock ul li a:hover {
+   text-decoration: underline;
+   border-bottom: solid blue 1px;
+}
+
+div.style_list div.navblock ul li {
+   margin-left: 1em;
+}
+
+/* Second level */
+div.navblock ul li ul li {
+   display: block;
+   float: right;
+   color: black;
+   width: 19em;
+   margin: 2px 0px 0px 0px;
+   padding: 0px;
+   text-align: right;
+   font-weight: bold;
+}
+div.navblock ul li ul li a {
+   width: 100%;
+   border: 1px dotted black;
+   color: #000020;
+   background-color: #A5A5B0;
+}
+div.navblock ul li ul li a img {
+   border: none;
+}
+
+div.navblock hr {
+   clear: both;
+   padding-top: 0.5ex;
+}
+
+
+
+/*******************************************************************/
+/*******************************************************************/
+/*******************************************************************/
+/* Now, we have the main panel */
+div#main-panel {
+   margin-left: 16em;
+   padding-bottom: 5ex;
+}
+
+/* Now, a small amount of content before the stories start */
+div#content {
+   padding-bottom: 5px;
+   padding-right: 10px;
+   padding-top: 0px;
+   margin-left: 0.5em;
+   clear: none;
+}
+
+/*
+   Then we have a small area for a message, where the results from
+   find, etc come
+ */
+div.message {
+}
+/*
+   Finally, any static content goes in here.
+ */
+div.content-header {
+}
+
+div.gotchi {
+   float:right;
+   width: auto;
+   margin: 0;
+   border: 0;
+   margin-bottom: -5ex;
+}
+
+/* Actual page contents go here */
+div#meat {
+   width: auto;
+}
+
+div.inlinepage {
+ clear:right;
+ border-radius: 2em;
+ background-color: #919191;
+ border: solid Black;
+}
+/*
+* The story starts here
+*/
+div.story {
+ width: auto;
+ clear: right;
+ padding-left: 1em;
+ margin-left: 1.5em;
+ margin-right: 5px;
+ margin-top: 5px;
+ margin-bottom: 0.3em;
+ border-radius: 3em;
+ border: 1px outset #000020;
+}
+.inline-body {
+ background-color: #666666;
+ border-radius: 3em;
+ margin: 5px;
+}
+.story  a:link    { color:#ffffb2; text-decoration: underline }
+.story  a:hover   { border: 1px dotted; }
+.story  a:visited {color:#FFF0F0;  text-decoration: none}
+.story  a:active  {color:#ffff74;}
+
+.story-body-title {
+ text-align: center;
+ font-size: large;
+}
+/* The body of the story is here */
+div.story-body{
+ margin-left: 0.15in;
+ margin-right: 0.15in;
+ padding: 5px;
+ margin: 5px;
+}
+
+span.message{
+}
+
+/* Thi should be moved to be just above the footer */
+div#information {
+   clear: both;
+   padding: 2px;
+   margin: 2px;
+   font-size: small;
+}
+
+h2#information {
+   font-size: 100%;
+   clear: both;
+   border-top: solid #FFFFF0 2px;
+}
+
+/*******************************************************************/
+/*******************************************************************/
+/*******************************************************************/
+/* We are at the foot of the page. */
+div#page-bot {
+   clear: both;
+   font-size: 0.81em;
+   text-align: center;
+   border-bottom: solid #FFFFF0 2px;
+}
+div.page-bot {
+   clear: both;
+   font-size: 0.81em;
+   text-align: center;
+   border-bottom: solid #FFFFF0 2px;
+}
+
+div#page-bot hr {
+   clear: both;
+   margin-top: 1ex;
+}
+div.page-bot hr {
+   clear: both;
+   margin-top: 1ex;
+}
+
+div.footinfo {
+   padding-top: 5px;
+   padding-bottom: 1px;
+   margin: 1px;
+   background-color: #000020;
+   color: #FFD700;   /* #1A344B #6f7b34; */
+   border-top: 1px solid;
+}
+
+div.footinfo address {
+   float: right;
+   width: 33%;
+   margin-right: 1em;
+   text-align: right;
+}
+div.footinfo address a:link, div.footinfo address a:visited {
+   text-decoration: none;
+   color: #DDFFDD;
+}
+div.footinfo address a:hover {
+   text-decoration: none;
+   color: #DDFFDD;
+   border-bottom: solid #DDFFDD 1px;
+}
+div.updated p {
+   margin-top: -0.2ex;
+   width: 99%;
+   text-align: center;
+}
+div.commitinfo {
+   width: 33%;
+   float: left;
+   margin-left: 1em;
+   text-align: left;
+   margin-bottom: 5px;
+}
+
+
+div.InfoLinks h2 {
+  font-variant: small-caps;
+   font-family: Impact, Charcoal, sans-serif;
+   font-weight: bold;
+   font-size: xx-large;
+   text-transform: capitalize;
+   color: White;
+}
+h2#InfoLinks {
+   font-variant: small-caps;
+   font-family: Impact, Charcoal, sans-serif;
+   font-weight: bold;
+   font-size: xx-large;
+   text-transform: capitalize;
+   color: White;
+}
+
+/* rsince this is inverser video, reset the links on the butpnes */
+div.InfoLinks a:link    { color:#000012; text-decoration: none;}
+div.InfoLinks a:link a:visited {color:#000012; text-decoration: none;}
+div.InfoLinks a:link a:active  {color:#000012; text-decoration: none;}
+
+
+/*******************************************************************/
+/*******************************************************************/
+/*******************************************************************/
+/* These are relevant only to the blog */
+.gr_custom_container_1402101821 {
+  /* customize your Goodreads widget container here*/
+  border: 1px solid gray;
+  border-radius:10px;
+  padding: 10px 5px 10px 5px;
+  background-color: transparent;
+  color: #FFFFF0;
+  width: 200px
+}
+.gr_custom_header_1402101821 {
+  /* customize your Goodreads header here*/
+  border-bottom: 1px solid gray;
+  width: 100%;
+  margin-bottom: 5px;
+  text-align: center;
+}
+.gr_custom_header_1402101821  a:link    { color:#FFFFF0; text-decoration: underline }
+.gr_custom_header_1402101821  a:visited { color:#FFF0F0;  text-decoration: underline}
+.gr_custom_header_1402101821  a:active  { color:#ffff74;}
+
+.gr_custom_title_1402101821  a:link    { color:#FFFFF0; text-decoration: underline }
+.gr_custom_title_1402101821  a:visited { color:#FFF0F0;  text-decoration: underline}
+.gr_custom_title_1402101821  a:active  { color:#ffff74;}
+
+.gr_custom_author_1402101821  a:link    { color:#F5F5E6; text-decoration: underline }
+.gr_custom_author_1402101821  a:visited { color:#F5F5E6;  text-decoration: underline}
+.gr_custom_author_1402101821  a:active  { color:#ffff74;}
+
+.gr_custom_each_container_1402101821 {
+  /* customize each individual book container here */
+  width: 100%;
+  clear: both;
+  margin-bottom: 10px;
+  overflow: auto;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #aaa;
+}
+.gr_custom_book_container_1402101821 {
+  /* customize your book covers here */
+  overflow: hidden;
+  height: 60px;
+    float: left;
+    margin-right: 4px;
+    width: 39px;
+}
+.gr_custom_author_1402101821 {
+  /* customize your author names here */
+  font-size: 10px;
+}
+.gr_custom_tags_1402101821 {
+  /* customize your tags here */
+  font-size: 10px;
+  color: gray;
+}
+.gr_custom_rating_1402101821 {
+  /* customize your rating stars here */
+  float: right;
+}

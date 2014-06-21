@@ -1,0 +1,255 @@
+/*******************************************************************/
+/*******************************************************************/
+/*******************************************************************/
+/* The rest of this should be pretty generic */
+
+div {
+   margin: 0;
+        /* border: solid black 6px; */
+}
+span {
+   margin: 0;
+        /* border: solid black 1px; */
+}
+
+tt, code, kbd, samp      { font-family: "Courier New", Courier, monospace }
+
+p.initial:first-letter
+{
+   font-size: 215%;
+  /*  padding: 0em; float: left; */
+}
+#bigchar {
+   background-color: red;
+   color: white;
+   font-size: 28pt;
+   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+/*
+   The trick here is to only indent paragraphs that follow other
+   paragraphs. The first paragaph of a page doesn't need to be
+   indented, and neither do paragraphs that follow a diagram, a
+   heading or something else that is offset from the text. The rule
+   is in fact very simple:
+   */
+p + p { text-indent: 1.5em; margin-top : 0  }
+/*
+   This indents the first line of only those paragraphs that follow
+   another paragraph. But in practice you will find that you still
+   need exceptions.
+
+   For example, there are P elements that are used as captions for
+   images, and are centered, and thus they should not be
+   indented. A simple rule 'p.caption {text-indent: 0}' takes care
+of it.
+
+We can now use various amounts of whitespace between paragraphs
+to indicate important breaks in the text. Let's define three
+different classes: stb (small thematic break), mtb (medium
+thematic break) and ltb (large thematic break).
+*/
+p.stb { text-indent: 0; margin-top: 0.83em }
+p.mtb { text-indent: 0; margin-top: 2.17em }
+p.ltb { text-indent: 0; margin-top: 3.08em }
+
+/*
+   * For example, there are P elements that are used as captions for
+   * images, and are centered, and thus they should not be indented. A
+   * simple rule '' takes care of it.
+   */
+p.caption {text-indent: 0; }
+
+/* letter and word spacing */
+.letterspaced    {letter-spacing: 10pt;}
+.wordspaced      {word-spacing: 20px;}
+/* vertical alignment examples */
+.sub     {vertical-align: sub;}
+.super   {vertical-align: super;}
+
+/* text alignment properties */
+.right   {text-align: right;}
+.left    {text-align: left;}
+.justify {text-align: justify;}
+.center  {text-align: center;}
+
+/*
+ *   Effects
+ */
+.underline   { text-decoration: underline;   }
+.overline    { text-decoration: overline;    }
+.blink       { text-decoration: blink;       }
+.line-through{ text-decoration: line-through;}
+
+/* white space control */
+.normal      { white-space: normal; }
+.pre         { white-space: pre;    }
+.nowrap      { white-space: nowrap; }
+.obeylines-h { white-space: nowrap; }
+.obeylines-v { white-space: nowrap; }
+
+/* text transformation properties */
+.uppercase  { text-transform: uppercase; }
+.lowercase  { text-transform: lowercase; }
+.capitalize { text-transform: capitalize;}
+
+.try  { border:  solid  4px; }
+.name { font-size: 4em; text-align: center }
+.oops { font-family: Jester, "Comic Sans MS", sans-serif }
+
+/*
+   * This is used to create rules and additional markers for
+   * browsers like w3m, which do not support css at all.
+   */
+.nocss {display: none; }
+.colophon    { display:        none;      }
+.invisible {  display: none; margin: 0; padding: 0; }
+.hide        {
+   display: none;
+   color: white;
+}
+
+span.skip                 { display: none }
+div.skip                  { display: none }
+
+.floatr { float: right;   width: auto; }
+.floatl { float: left;   width: auto; }
+
+/*
+   * Get a nice, 3d look for tables
+   */
+table.raised {
+   border-collapse: collapse; /*separate; */
+   border: outset 2pt;
+   border-spacing: 0pt;
+  /* border-spacing: 5pt; */
+}
+
+/*
+   td { border: inset 2pt }
+th { border: inset 2pt }
+*/
+table.raised td             { border: 1px solid; padding: 0.1em; }
+table.raised th             { border: 2px solid; padding: 0.1em; }
+
+/* Shouldn't the definition term be bold by default? */
+dt {font-weight: bold;}
+/*
+   * Add space at the bottom of the list, or else it seems to run
+   * into the following content
+   */
+dd {margin-bottom: 0.66em;}
+
+.title { text-align: center; }
+.todo  { color: red; }
+.done { color: green; }
+.timestamp { color: gray }
+.timestamp-kwd { color: rgb(05, 158, 160) }
+.tag { background-color: rgb(173, 216, 230); font-weight:normal }
+.target { }
+
+.titletext
+{
+   color: black;
+   font-size: 18pt;
+   font-weight: bold;
+   margin-bottom: -10px;
+}
+
+div.titlepage {
+   margin: 1em 0;
+   padding: 1em;
+   border:   solid thin;
+   border-color:   blue;
+}
+
+h2.section
+{
+   text-transform: capitalize;
+   text-decoration: underline;
+   margin-left: 5%;
+}
+/* Make the list numbering sane */
+OL OL    { list-style: lower-roman; }
+UL OL    { list-style: decimal; }
+OL OL OL { list-style: lower-alpha; }
+
+/*
+   * Ordered Lists
+   */
+ol.withroman  { list-style-type: lower-roman }
+ol.upperroman { list-style-type: upper-roman }
+ol.upperalpha { list-style-type: upper-alpha }
+ol.withalpha  { list-style-type: lower-alpha }
+
+li.serif      { font-family: Cambria, Georgia, "Palatino Linotype", Palatino, Times, "Times New Roman", serif }
+li.sans-serif { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; }
+li.fantasy    { font-family: fantasy   }
+li.monospace  { font-family: "Courier New", Courier, monospace }
+li.cursive    { font-family: cursive   }
+ul.padded     { line-height: 120%      }
+li.overskrift { margin-top: 2ex; font-weight: bold }
+
+small { font-size:      .92em;  }
+big   { font-size:      1.17em; }
+
+del                       {
+   text-decoration:        line-through;
+   background:     #900;
+}
+
+ins     {
+   text-decoration:        none;
+   background:     #060;
+}
+acronym {
+   font-variant:   small-caps;
+   letter-spacing: 0.1em;
+}
+
+
+pre {
+   border: 1pt solid;
+   background-color: #393949;
+   padding: 5pt;
+   font-family: "Courier New", courier, monospace;
+}
+
+
+/* Clickable Buttons  */
+.clear { /* generic container (i.e. div) for floating buttons */
+   overflow: hidden;
+   width: 100%;
+}
+
+
+.light-button {
+   border-top: 1px solid #fafff8;
+   background: #ffffc4;
+   color:      #000012;
+   background: -webkit-gradient(linear, left top, left bottom, from(#faffff), to(#ffffc4));
+   background: -webkit-linear-gradient(top, #faffff, #ffffc4);
+   background: -moz-linear-gradient(top, #faffff, #ffffc4);
+   background: -ms-linear-gradient(top, #faffff, #ffffc4);
+   background: -o-linear-gradient(top, #faffff, #ffffc4);
+   padding: 8px 16px;
+   -webkit-border-radius: 17px;
+   -moz-border-radius: 17px;
+   border-radius: 17px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   font-size: 14px;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.light-button:hover {
+   border-top-color: #f0f9de;
+   background:       #f0f9de;
+   color:            #0e0e54;
+   }
+.light-button:active {
+   border-top-color: #e3e3ea;
+   background:       #e3e3ea;
+}

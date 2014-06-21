@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+<div class="post">
+ <div class="inlinepage">
+   <div  class="story">
+     <div class="inlineheader">
+        <div class="blogDate">
+          <span class="dow">{{page.date|date:"%A"}}</span>
+          <span class="day">{{page.date|date:"%e"}}</span>
+          <span class="month">{{page.date|date:"%B"}} <br /></span>
+          <span class="year">{{page.date|date:"%Y"}}</span>
+        </div><!-- blogDate -->
+        <div class="headers">
+              <div class="taglink">
+                <span class="left">[</span>
+                <ul>
+                    <li class="tag">{{ page.categories | category_links }}</li>
+                </ul>
+                <span class="right">]</span>
+              </div> <!-- taglink -->
+            <p class="postedon">
+              <span class="pagedate">
+                Posted <span class="date">{{page.date|date:"%c"}}</span></span>
+            </p>
+        </div>  <!-- headers -->
+     </div><!--inlineheader-->
+     <div class="inline-body">
+        <div class="story-body">
+            <h3><span class="story-body-title">{{ page.title }}</span></h3>
+            {{content }}
+
+        </div>  <!-- story-body -->
+        <div class="postedby">
+            <p class="postedby">
+              <span class="author">{% if page.author %}{{page.author}}{% else %}{{site.author}}{% endif%}</span>
+            </p>
+        </div> <!-- postedby -->
+     </div> <!--inline-body-->
+   </div>
+ </div>
+</div>
