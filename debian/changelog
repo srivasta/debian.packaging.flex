@@ -2,10 +2,14 @@ flex (2.5.39-8) unstable; urgency=low
 
   * Added a missing build depends on vm-super-minimal, reuired fro
     building the pdf documentation,  (Closes: #752151).
+  * Move flex.pdf to the flex-doc package. This makes it possible for the
+    flex package's contents to not change if texinfo is not installed,
+    e.g. in the stage1 build profile.  Thanks to Peter Pentchev
+    <roam@ringlet.net>
   * Bug fix #752151: "pdfetex error about missing cm-super", thanks to
     Helmut Grohne and Cyril Brulebois
 
- -- Manoj Srivastava <srivasta@debian.org>  Fri, 20 Jun 2014 20:45:09 -0700
+ -- Manoj Srivastava <srivasta@debian.org>  Fri, 20 Jun 2014 20:52:43 -0700
 
 flex (2.5.39-7) unstable; urgency=low
 

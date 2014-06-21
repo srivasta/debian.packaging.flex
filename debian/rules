@@ -43,6 +43,7 @@ override_dh_install:
             find debian/tmp/lib/$(DEB_HOST_MULTIARCH) -type f           \
                -name \*.la -exec rm {} \;
 	dh_install
+	rm -f debian/flex/usr/share/doc/flex/flex.pdf
 ifneq (,$(filter libfl-dev, $(shell dh_listpackages)))
 	$(make_directory) debian/libfl-dev/usr/lib
 	sed -e 's,#DEB_HOST_MULTIARCH#,$(DEB_HOST_MULTIARCH),'           \

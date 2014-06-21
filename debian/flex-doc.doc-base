@@ -18,3 +18,6 @@ Section: Programming
 Format: HTML
 Index: /usr/share/doc/flex-doc/html/index.html
 Files: /usr/share/doc/flex-doc/html/*.html
+
+Format: PDF
+Files: /usr/share/doc/flex-doc/flex.pdf.gz
