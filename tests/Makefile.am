@@ -439,13 +439,13 @@ AM_OPT_LOG_FLAGS = -d $(srcdir) -i tableopts.txt -r
 tableopts_opt_nr%.c: tableopts.l4 $(FLEX)
 	$(FLEX) -P $(subst -,_,$(basename $(*F))) $* -o $@ $<
 
-tableopts_opt_nr%.$(OBJEXT): tableopts_opt_nr%.c
+tableopts_opt_nr%.$(OBJEXT): tableopts_opt_nr%.c 
 	$(COMPILE) -c -o $@ $<
 
 tableopts_opt_r%.c: tableopts.l4 $(FLEX)
 	$(FLEX) -P $(subst -,_,$(basename $(*F))) --reentrant $*  -o $@ $<
 
-tableopts_opt_r%.$(OBJEXT):  tableopts_opt_r%.c
+tableopts_opt_r%.$(OBJEXT):  tableopts_opt_r%.c 
 	$(COMPILE) -DTEST_IS_REENTRANT -c -o $@ $<
 
 SER_LOG_COMPILER = $(srcdir)/testwrapper.sh
@@ -454,7 +454,7 @@ AM_SER_LOG_FLAGS = -d $(builddir) -i $(srcdir)/tableopts.txt -r -t
 tableopts_ser_nr%.c: tableopts.l4 $(FLEX)
 	$(FLEX) -P $(subst -,_,$(basename $(*F))) --tables-file="tableopts_ser_nr$*.ser.tables"  $* -o $@ $<
 
-tableopts_ser_nr%.$(OBJEXT): tableopts_ser_nr%.c
+tableopts_ser_nr%.$(OBJEXT): tableopts_ser_nr%.c 
 	$(COMPILE) -DTEST_HAS_TABLES_EXTERNAL -c -o $@ $<
 
 tableopts_ser_r%.c: tableopts.l4 $(FLEX)
@@ -469,7 +469,7 @@ AM_VER_LOG_FLAGS = -d $(builddir) -i $(srcdir)/tableopts.txt -r -t
 tableopts_ver_nr%.c: tableopts.l4 $(FLEX)
 	$(FLEX) -P $(subst -,_,$(basename $(*F))) --tables-file="tableopts_ver_nr$*.ver.tables" --tables-verify $* -o $@ $<
 
-tableopts_ver_nr%.$(OBJEXT): tableopts_ver_nr%.c
+tableopts_ver_nr%.$(OBJEXT): tableopts_ver_nr%.c 
 	$(COMPILE) -DTEST_HAS_TABLES_EXTERNAL -c -o $@ $<
 
 tableopts_ver_nr%.ver$(EXEEXT): tableopts_ver_nr%.$(OBJEXT)
@@ -478,5 +478,5 @@ tableopts_ver_nr%.ver$(EXEEXT): tableopts_ver_nr%.$(OBJEXT)
 tableopts_ver_r%.c: tableopts.l4 $(FLEX)
 	$(FLEX) -P $(subst -,_,$(basename $(*F))) -R --tables-file="tableopts_ver_r$*.ver.tables" --tables-verify $*  -o $@ $<
 
-tableopts_ver_r%.$(OBJEXT):  tableopts_ver_r%.c
+tableopts_ver_r%.$(OBJEXT):  tableopts_ver_r%.c  
 	$(COMPILE) -DTEST_HAS_TABLES_EXTERNAL -DTEST_IS_REENTRANT -c -o $@ $<

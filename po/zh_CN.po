@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flex 2.5.38\n"
 "Report-Msgid-Bugs-To: flex-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2014-02-11 16:15-0500\n"
-"PO-Revision-Date: 2016-01-22 13:27-0800\n"
+"POT-Creation-Date: 2015-11-17 11:17-0500\n"
+"PO-Revision-Date: 2015-08-27 16:54+0800\n"
 "Last-Translator: Mingye Wang <arthur200126@gmail.com>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -18,55 +18,55 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.4\n"
 
-#: buf.c:78
+#: src/buf.c:78
 msgid "Allocation of buffer to print string failed"
-msgstr "ç¼™æµœˆç¼‚“å†æ’Œæ´ª…æ£°æµ ãƒ¦‰“åæ¿­—æ¶“å‰—è·ºã‘ç’¥"
+msgstr "ç»™äºˆç¼“å†²åŒºé…é¢ä»¥æ‰“å°å­—ä¸²æ—¶å¤±è´¥"
 
-#: buf.c:100
+#: src/buf.c:101
 msgid "Allocation of buffer for line directive failed"
-msgstr "ç¼™æµœˆç¼‚“å†æ’Œæ´ª…æ£°ç”ã„¤ºåˆ—æŒ‡æµ ã‚†—è·ºã‘ç’¥"
+msgstr "ç»™äºˆç¼“å†²åŒºé…é¢ç”¨äºåˆ—æŒ‡ä»¤æ—¶å¤±è´¥"
 
-#: buf.c:177
+#: src/buf.c:178
 msgid "Allocation of buffer for m4 def failed"
-msgstr "ç¼™æµœˆç¼‚“å†æ’Œæ´ª…æ£°ç”ã„¤º m4 def æ—è·ºã‘ç’¥"
+msgstr "ç»™äºˆç¼“å†²åŒºé…é¢ç”¨äº m4 def æ—¶å¤±è´¥"
 
-#: buf.c:197
+#: src/buf.c:198
 msgid "Allocation of buffer for m4 undef failed"
-msgstr "ç¼™æµœˆç¼‚“å†æ’Œæ´ª…æ£°ç”ã„¤º m4 undef æ—è·ºã‘ç’¥"
+msgstr "ç»™äºˆç¼“å†²åŒºé…é¢ç”¨äº m4 undef æ—¶å¤±è´¥"
 
-#: dfa.c:61
+#: src/dfa.c:61
 #, c-format
 msgid "State #%d is non-accepting -\n"
-msgstr "#%d å§ï½…¤„æµœéç’å——ô”ŒŠèˆµ€ -\n"
+msgstr "#%d æ­£å¤„äºéè®¿é—®çŠ¶æ€ -\n"
 
-#: dfa.c:124
+#: src/dfa.c:124
 msgid "dangerous trailing context"
-msgstr "æ¶“ç€¹‰å…ã„§š„æœô²ôºæ¶“Šæ¶“‹æ–‡"
+msgstr "ä¸å®‰å…¨çš„æœ«ç«¯ä¸Šä¸‹æ–‡"
 
-#: dfa.c:166
+#: src/dfa.c:166
 #, c-format
 msgid " associated rule line numbers:"
-msgstr " å…å® ”çš„ç‘™„åˆ™åˆ—åå‡¤¼š"
+msgstr " å…³è”çš„è§„åˆ™åˆ—å·ï¼š"
 
-#: dfa.c:202
+#: src/dfa.c:202
 #, c-format
 msgid " out-transitions: "
-msgstr " æ¾¶–æô‘ô‚¬¼š"
+msgstr " å¤–è½¬æ¢ï¼š"
 
-#: dfa.c:210
+#: src/dfa.c:210
 #, c-format
 msgid ""
 "\n"
 " jam-transitions: EOF "
 msgstr ""
 "\n"
-" åˆéªæƒ°æµ†æô‚¬¼šæ–‡æµ å‰»“ç¾ "
+" åˆå¹¶è½¬æ¢ï¼šæ–‡ä»¶ç»“å°¾ "
 
-#: dfa.c:341
+#: src/dfa.c:341
 msgid "consistency check failed in epsclosure()"
-msgstr "epsclosure() æ¶“ô’®š„æ¶“€è‡å­˜€Ñ„£€æŸãƒ¥ã‘ç’¥"
+msgstr "epsclosure() ä¸­çš„ä¸€è‡´æ€§æ£€æŸ¥å¤±è´¥"
 
-#: dfa.c:429
+#: src/dfa.c:429
 msgid ""
 "\n"
 "\n"
@@ -75,27 +75,27 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"DFA æô‘‚ô‹ ¼š\n"
+"DFA è½¬å‚¨ï¼š\n"
 "\n"
 
-#: dfa.c:604
+#: src/dfa.c:604
 msgid "could not create unique end-of-buffer state"
-msgstr "æ— å¨‰•åˆ›å¯¤è™¹‹ô‘«‹çš„ end-of-buffer çŠèˆµ€"
+msgstr "æ— æ³•åˆ›å»ºç‹¬ç«‹çš„ end-of-buffer çŠ¶æ€"
 
-#: dfa.c:625
+#: src/dfa.c:625
 #, c-format
 msgid "state # %d:\n"
-msgstr "çŠèˆµ€ # %dé”›š\n"
+msgstr "çŠ¶æ€ # %dï¼š\n"
 
-#: dfa.c:785
+#: src/dfa.c:785
 msgid "Could not write yynxt_tbl[][]"
-msgstr "æ— å¨‰•å†™å…¥ yynxt_tbl[][]"
+msgstr "æ— æ³•å†™å…¥ yynxt_tbl[][]"
 
-#: dfa.c:1049
+#: src/dfa.c:1049
 msgid "bad transition character detected in sympartition()"
-msgstr "åœ¨ sympartition() å¦«€å¨´‹åˆä¼´”™ç’‡ô•ªš„å˜æãˆ ­—ç»—¦"
+msgstr "åœ¨ sympartition() æ£€æµ‹åˆ°é”™è¯¯çš„å˜æ¢å­—ç¬¦"
 
-#: gen.c:478
+#: src/gen.c:499
 msgid ""
 "\n"
 "\n"
@@ -104,32 +104,32 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"ç»›‰æµ é£è¢«é”›š\n"
+"ç­‰ä»·ç±»ï¼š\n"
 "\n"
 
-#: gen.c:662 gen.c:691 gen.c:1215
+#: src/gen.c:684 src/gen.c:713 src/gen.c:1237
 #, c-format
 msgid "state # %d accepts: [%d]\n"
-msgstr "çŠèˆµ€ # %d æãƒ¥—é”›š[%d]\n"
+msgstr "çŠ¶æ€ # %d æ¥å—ï¼š[%d]\n"
 
-#: gen.c:1110
+#: src/gen.c:1132
 #, c-format
 msgid "state # %d accepts: "
-msgstr "çŠèˆµ€ # %d æãƒ¥—é”›š"
+msgstr "çŠ¶æ€ # %d æ¥å—ï¼š"
 
-#: gen.c:1157
+#: src/gen.c:1179
 msgid "Could not write yyacclist_tbl"
-msgstr "æ— å¨‰•å†™å…¥ yyacclist_tbl"
+msgstr "æ— æ³•å†™å…¥ yyacclist_tbl"
 
-#: gen.c:1233
+#: src/gen.c:1255
 msgid "Could not write yyacc_tbl"
-msgstr "æ— å¨‰•å†™å…¥ yyacc_tbl"
+msgstr "æ— æ³•å†™å…¥ yyacc_tbl"
 
-#: gen.c:1248 gen.c:1633 gen.c:1656
+#: src/gen.c:1270 src/gen.c:1655 src/gen.c:1678
 msgid "Could not write ecstbl"
-msgstr "æ— å¨‰•å†™å…¥ ecstbl"
+msgstr "æ— æ³•å†™å…¥ ecstbl"
 
-#: gen.c:1271
+#: src/gen.c:1293
 msgid ""
 "\n"
 "\n"
@@ -137,395 +137,397 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"å…ƒç»›‰æµ é£è¢«é”›š\n"
+"å…ƒç­‰ä»·ç±»ï¼š\n"
 
-#: gen.c:1293
+#: src/gen.c:1315
 msgid "Could not write yymeta_tbl"
-msgstr "æ— å¨‰•å†™å…¥ yymeta_tbl"
+msgstr "æ— æ³•å†™å…¥ yymeta_tbl"
 
-#: gen.c:1354
+#: src/gen.c:1376
 msgid "Could not write yybase_tbl"
-msgstr "æ— å¨‰•å†™å…¥ yybase_tbl"
+msgstr "æ— æ³•å†™å…¥ yybase_tbl"
 
-#: gen.c:1388
+#: src/gen.c:1410
 msgid "Could not write yydef_tbl"
-msgstr "æ— å¨‰•å†™å…¥ yydef_tbl"
+msgstr "æ— æ³•å†™å…¥ yydef_tbl"
 
-#: gen.c:1428
+#: src/gen.c:1450
 msgid "Could not write yynxt_tbl"
-msgstr "æ— å¨‰•å†™å…¥ yynxt_tbl"
+msgstr "æ— æ³•å†™å…¥ yynxt_tbl"
 
-#: gen.c:1464
+#: src/gen.c:1486
 msgid "Could not write yychk_tbl"
-msgstr "æ— å¨‰•å†™å…¥ yychk_tbl"
+msgstr "æ— æ³•å†™å…¥ yychk_tbl"
 
-#: gen.c:1618 gen.c:1647
+#: src/gen.c:1640 src/gen.c:1669
 msgid "Could not write ftbl"
-msgstr "æ— å¨‰•å†™å…¥ ftbl"
+msgstr "æ— æ³•å†™å…¥ ftbl"
 
-#: gen.c:1624
+#: src/gen.c:1646
 msgid "Could not write ssltbl"
-msgstr "æ— å¨‰•å†™å…¥ ssltbl"
+msgstr "æ— æ³•å†™å…¥ ssltbl"
 
-#: gen.c:1675
+#: src/gen.c:1697
 msgid "Could not write eoltbl"
-msgstr "æ— å¨‰•å†™å…¥ eoltbl"
+msgstr "æ— æ³•å†™å…¥ eoltbl"
 
-#: gen.c:1735
+#: src/gen.c:1757
 msgid "Could not write yynultrans_tbl"
-msgstr "æ— å¨‰•å†™å…¥ yynultrans_tbl"
+msgstr "æ— æ³•å†™å…¥ yynultrans_tbl"
 
-#: main.c:191
+#: src/main.c:192
 msgid "rule cannot be matched"
-msgstr "æ— å¨‰•åŒå½’…ç‘™„åˆ™"
+msgstr "æ— æ³•åŒ¹é…è§„åˆ™"
 
-#: main.c:196
+#: src/main.c:197
 msgid "-s option given but default rule can be matched"
-msgstr "-s é€‰æ¤¤ç‘°å‡¡ç¼™ç€¹šæµ£†æ˜ô•¨ô•§äº’åè¯²ˆç¼‚è™¹œç‘™„åˆ™"
+msgstr "-s é€‰é¡¹å·²ç»™å®šä½†æ˜¯å¯ä»¥å»åˆç¼ºçœè§„åˆ™"
 
-#: main.c:236
+#: src/main.c:237
 msgid "Can't use -+ with -l option"
-msgstr "æ— å¨‰•ç† -+ æ¶“ -l é€‰æ¤¤ç‘°…åŒæµ£è·¨”¨"
+msgstr "æ— æ³•å°† -+ ä¸ -l é€‰é¡¹å…±åŒä½¿ç”¨"
 
-#: main.c:239
+#: src/main.c:240
 msgid "Can't use -f or -F with -l option"
-msgstr "æ— å¨‰•ç† -f æˆ– -F æ¶“ -l é€‰æ¤¤ç‘°…åŒæµ£è·¨”¨"
+msgstr "æ— æ³•å°† -f æˆ– -F ä¸ -l é€‰é¡¹å…±åŒä½¿ç”¨"
 
-#: main.c:243
+#: src/main.c:244
 msgid "Can't use --reentrant or --bison-bridge with -l option"
-msgstr "æ— å¨‰•ç† --reentrant æˆ– --bison-bridge æ¶“ -l é€‰æ¤¤ç‘°…åŒæµ£è·¨”¨"
+msgstr "æ— æ³•å°† --reentrant æˆ– --bison-bridge ä¸ -l é€‰é¡¹å…±åŒä½¿ç”¨"
 
-#: main.c:275
+#: src/main.c:276
 msgid "-Cf/-CF and -Cm don't make sense together"
-msgstr "-Cf/-CF å’Œ -Cm å…è¾©”ã„¦—æœµ¸å…èœ‚æ¢æµ£•æ„æ¶”‰"
+msgstr "-Cf/-CF å’Œ -Cm å…±ç”¨æ—¶ä¸å…·ä»»ä½•æ„ä¹‰"
 
-#: main.c:278
+#: src/main.c:279
 msgid "-Cf/-CF and -I are incompatible"
-msgstr "-Cf/-CF å’Œ -I æ˜ô•§¸å…ç…ô“çš„"
+msgstr "-Cf/-CF å’Œ -I æ˜¯ä¸å…¼å®¹çš„"
 
-#: main.c:282
+#: src/main.c:283
 msgid "-Cf/-CF are incompatible with lex-compatibility mode"
-msgstr "-Cf/-CF æ¶“ lex å…ç…ô“å¦¯â€³¼æ˜ô•§¸å…ç…ô“çš„"
+msgstr "-Cf/-CF ä¸ lex å…¼å®¹æ¨¡å¼æ˜¯ä¸å…¼å®¹çš„"
 
-#: main.c:287
+#: src/main.c:288
 msgid "-Cf and -CF are mutually exclusive"
-msgstr "-Cf å’Œ -CF æ˜ô•§º’æ–ãƒ§š„"
+msgstr "-Cf å’Œ -CF æ˜¯äº’æ–¥çš„"
 
-#: main.c:291
+#: src/main.c:292
 msgid "Can't use -+ with -CF option"
-msgstr "æ— å¨‰•ç† -+ æ¶“ -CF é€‰æ¤¤ç‘°…åŒæµ£è·¨”¨"
+msgstr "æ— æ³•å°† -+ ä¸ -CF é€‰é¡¹å…±åŒä½¿ç”¨"
 
-#: main.c:294
+#: src/main.c:295
 #, c-format
 msgid "%array incompatible with -+ option"
-msgstr "%array æ¶“ -+ é€‰æ¤¤é€›¸å…ç…ô“"
+msgstr "%array ä¸ -+ é€‰é¡¹ä¸å…¼å®¹"
 
-#: main.c:299
+#: src/main.c:300
 msgid "Options -+ and --reentrant are mutually exclusive."
-msgstr "é€‰æ¤¤¹ -+ å’Œ --reentrant æ˜ô•§º’æ–ãƒ§š„ã€‚"
+msgstr "é€‰é¡¹ -+ å’Œ --reentrant æ˜¯äº’æ–¥çš„ã€‚"
 
-#: main.c:302
+#: src/main.c:303
 msgid "bison bridge not supported for the C++ scanner."
-msgstr "bison å¦—ãƒ¦ãƒ¥™ã„¤¸å— C++ æ‰ô±ç»‹‹æ´æ”ô•©Œã€‚"
+msgstr "bison æ¡¥æ¥å™¨ä¸å— C++ æ‰«æç¨‹åºæ”¯æŒã€‚"
 
-#: main.c:357 main.c:403
+#: src/main.c:358 src/main.c:404
 #, c-format
 msgid "could not create %s"
-msgstr "æ— å¨‰•åˆ›å¯¤º %s"
+msgstr "æ— æ³•åˆ›å»º %s"
 
-#: main.c:416
+#: src/main.c:417
 msgid "could not write tables header"
-msgstr "æ— å¨‰•å†™å…ãƒ¨ã€ƒæ¾¶´"
+msgstr "æ— æ³•å†™å…¥è¡¨å¤´"
 
-#: main.c:420
+#: src/main.c:421
 #, c-format
 msgid "can't open skeleton file %s"
-msgstr "æ— å¨‰•æ‰“å¯®€æ¥ ã„¦èˆµ–‡æµ ¶ %s"
+msgstr "æ— æ³•æ‰“å¼€éª¨æ¶æ–‡ä»¶ %s"
 
-#: main.c:456
+#: src/main.c:457
 msgid "allocation of macro definition failed"
-msgstr "ç¼™æµœˆç€¹ç€¹šæ¶”‰é…æ£°æ—è·ºã‘ç’¥"
+msgstr "ç»™äºˆå®å®šä¹‰é…é¢æ—¶å¤±è´¥"
 
-#: main.c:504
+#: src/main.c:505
 #, c-format
 msgid "input error reading skeleton file %s"
-msgstr "ç’‡è¯²–æ¥ ã„¦èˆµ–‡æµ ¶ %s æ—æƒ°¾“å…ãƒ©”™ç’‡¯"
+msgstr "è¯»å–éª¨æ¶æ–‡ä»¶ %s æ—¶è¾“å…¥é”™è¯¯"
 
-#: main.c:508
+#: src/main.c:509
 #, c-format
 msgid "error closing skeleton file %s"
-msgstr "å…æŠ½—ô’°ô•æèˆµ–‡æµ ¶ %s å‡æ´ª”™"
+msgstr "å…³é—­éª¨æ¶æ–‡ä»¶ %s å‡ºé”™"
 
-#: main.c:693
+#: src/main.c:694
 #, c-format
 msgid "error creating header file %s"
-msgstr "åˆ›å¯¤å“„ã”æ–‡æµ ¶ %s å‡æ´ª”™"
+msgstr "åˆ›å»ºå¤´æ–‡ä»¶ %s å‡ºé”™"
 
-#: main.c:701
+#: src/main.c:702
 #, c-format
 msgid "error writing output file %s"
-msgstr "å†™å…ãƒ¨¾“å‡çƒ˜–‡æµ ¶ %s å‡æ´ª”™"
+msgstr "å†™å…¥è¾“å‡ºæ–‡ä»¶ %s å‡ºé”™"
 
-#: main.c:705
+#: src/main.c:706
 #, c-format
 msgid "error closing output file %s"
-msgstr "å…æŠ½—ô’¯¾“å‡çƒ˜–‡æµ ¶ %s å‡æ´ª”™"
+msgstr "å…³é—­è¾“å‡ºæ–‡ä»¶ %s å‡ºé”™"
 
-#: main.c:709
+#: src/main.c:710
 #, c-format
 msgid "error deleting output file %s"
-msgstr "åˆ é™ã‚ˆ¾“å‡çƒ˜–‡æµ ¶ %s å‡æ´ª”™"
+msgstr "åˆ é™¤è¾“å‡ºæ–‡ä»¶ %s å‡ºé”™"
 
 # See Concept Index. fr translation is wrong for that 'archive'.
-#: main.c:716
+#: src/main.c:717
 #, c-format
 msgid "No backing up.\n"
-msgstr "å¨Œâ„ƒœ‰å›å©§ô•¦€‚\n"
+msgstr "æ²¡æœ‰å›æº¯ã€‚\n"
 
-#: main.c:720
+#: src/main.c:721
 #, c-format
 msgid "%d backing up (non-accepting) states.\n"
-msgstr "%d å›å©§¯ (éæãƒ¥—) çŠèˆµ€ã€‚\n"
+msgstr "%d å›æº¯ (éæ¥å—) çŠ¶æ€ã€‚\n"
 
-#: main.c:724
+#: src/main.c:725
 #, c-format
 msgid "Compressed tables always back up.\n"
-msgstr "å‹ç¼‚â•„¿‡çš„ç›ã„¦ å…¼€è®³¼šè‡ô’Šã„¥›å©§ô•¦€‚\n"
+msgstr "å‹ç¼©è¿‡çš„è¡¨æ ¼æ€»ä¼šè‡ªåŠ¨å›æº¯ã€‚\n"
 
-#: main.c:727
+#: src/main.c:728
 #, c-format
 msgid "error writing backup file %s"
-msgstr "å†™å…ãƒ¥›å©§ô•©–‡æµ ¶ %s å‡æ´ª”™"
+msgstr "å†™å…¥å›æº¯æ–‡ä»¶ %s å‡ºé”™"
 
-#: main.c:731
+#: src/main.c:732
 #, c-format
 msgid "error closing backup file %s"
-msgstr "å…æŠ½—ô’¬›å©§ô•©–‡æµ ¶ %s å‡æ´ª”™"
+msgstr "å…³é—­å›æº¯æ–‡ä»¶ %s å‡ºé”™"
 
-#: main.c:736
+#: src/main.c:737
 #, c-format
 msgid "%s version %s usage statistics:\n"
-msgstr "%s ç‰ˆæœ¬ %s ç”ã„¦³•ç¼Ÿç’â˜…¼š\n"
+msgstr "%s ç‰ˆæœ¬ %s ç”¨æ³•ç»Ÿè®¡ï¼š\n"
 
-#: main.c:739
+#: src/main.c:740
 #, c-format
 msgid "  scanner options: -"
-msgstr "  æ‰ô±å™ã„©€‰æ¤¤ç™¸¼š-"
+msgstr "  æ‰«æå™¨é€‰é¡¹ï¼š-"
 
-#: main.c:818
+#: src/main.c:819
 #, c-format
 msgid "  %d/%d NFA states\n"
-msgstr "  %d/%d NFA çŠèˆµ€\n"
+msgstr "  %d/%d NFA çŠ¶æ€\n"
 
-#: main.c:820
+#: src/main.c:821
 #, c-format
 msgid "  %d/%d DFA states (%d words)\n"
-msgstr "  %d/%d DFA çŠèˆµ€ (%d æ¶“ô’­—ç’‡)\n"
+msgstr "  %d/%d DFA çŠ¶æ€ (%d ä¸ªå­—è¯)\n"
 
-#: main.c:822
+#: src/main.c:823
 #, c-format
 msgid "  %d rules\n"
-msgstr "  %d æÂ¤§„åˆ™\n"
+msgstr "  %d æ¡è§„åˆ™\n"
 
-#: main.c:827
+#: src/main.c:828
 #, c-format
 msgid "  No backing up\n"
-msgstr "  å¨Œâ„ƒœ‰å›å©§¯\n"
+msgstr "  æ²¡æœ‰å›æº¯\n"
 
-#: main.c:831
+#: src/main.c:832
 #, c-format
 msgid "  %d backing-up (non-accepting) states\n"
-msgstr "  %d å›å©§¯ (éæãƒ¥—) çŠèˆµ€\n"
+msgstr "  %d å›æº¯ (éæ¥å—) çŠ¶æ€\n"
 
-#: main.c:836
+#: src/main.c:837
 #, c-format
 msgid "  Compressed tables always back-up\n"
-msgstr "  å‹ç¼‚â•„¿‡çš„ç›ã„¦ å…¼€è®³¼šè‡ô’Šã„¥›å©§¯\n"
+msgstr "  å‹ç¼©è¿‡çš„è¡¨æ ¼æ€»ä¼šè‡ªåŠ¨å›æº¯\n"
 
-#: main.c:840
+#: src/main.c:841
 #, c-format
 msgid "  Beginning-of-line patterns used\n"
-msgstr "  åˆ—æ££–å¯®æ å³°å‡¡æµ£è·¨”¨\n"
+msgstr "  åˆ—é¦–å¼æ ·å·²ä½¿ç”¨\n"
 
-#: main.c:842
+#: src/main.c:843
 #, c-format
 msgid "  %d/%d start conditions\n"
-msgstr "  %d/%d ç’§å³°§‹æâ€²æ¬¢\n"
+msgstr "  %d/%d èµ·å§‹æ¡ä»¶\n"
 
-#: main.c:846
+#: src/main.c:847
 #, c-format
 msgid "  %d epsilon states, %d double epsilon states\n"
-msgstr "  %d è”šçŠèˆµ€é”›Œ%d åŒå€è”šçŠèˆµ€\n"
+msgstr "  %d ÎµçŠ¶æ€ï¼Œ%d åŒå€ÎµçŠ¶æ€\n"
 
-#: main.c:850
+#: src/main.c:851
 #, c-format
 msgid "  no character classes\n"
-msgstr "  æ— ç€›—ç»—ôˆœè¢«åˆ«\n"
+msgstr "  æ— å­—ç¬¦ç±»åˆ«\n"
 
-#: main.c:854
+#: src/main.c:855
 #, c-format
 msgid "  %d/%d character classes needed %d/%d words of storage, %d reused\n"
-msgstr "  %d/%d ç€›—ç»—ôˆœè¢«åˆô±‰€éœ€ %d/%d ç€›—ç’‡çš„æ·‡ç€›˜æµ£“é”›Œ%d é‡æ–é¢å¨‡ç”¨\n"
+msgstr "  %d/%d å­—ç¬¦ç±»åˆ«æ‰€éœ€ %d/%d å­—è¯çš„ä¿å­˜ä½“ï¼Œ%d é‡æ–°ä½¿ç”¨\n"
 
-#: main.c:859
+#: src/main.c:860
 #, c-format
 msgid "  %d state/nextstate pairs created\n"
-msgstr "  %d çŠèˆµ€/æ¶“‹æ¶“€çŠèˆµ€ç€µç‘°å‡¡åˆ›å¯¤º\n"
+msgstr "  %d çŠ¶æ€/ä¸‹ä¸€çŠ¶æ€å¯¹å·²åˆ›å»º\n"
 
-#: main.c:862
+#: src/main.c:863
 #, c-format
 msgid "  %d/%d unique/duplicate transitions\n"
-msgstr "  %d/%d ç‹ô‘¸€/é‡æ¾¶æô‘¢\n"
+msgstr "  %d/%d ç‹¬ä¸€/é‡å¤è½¬æ¢\n"
 
-#: main.c:867
+#: src/main.c:868
 #, c-format
 msgid "  %d table entries\n"
-msgstr "  %d ç›ã„¦ å¥¸ã€ç›®\n"
+msgstr "  %d è¡¨æ ¼é¡¹ç›®\n"
 
-#: main.c:875
+#: src/main.c:876
 #, c-format
 msgid "  %d/%d base-def entries created\n"
-msgstr "  %d/%d base-def æ¤¤åœ­›ô”Šå‡¡åˆ›å¯¤º\n"
+msgstr "  %d/%d base-def é¡¹ç›®å·²åˆ›å»º\n"
 
-#: main.c:879
+#: src/main.c:880
 #, c-format
 msgid "  %d/%d (peak %d) nxt-chk entries created\n"
-msgstr "  %d/%d (å®„æ¿€¼ %d) nxt-chk æ¤¤åœ­›ô”Šå‡¡åˆ›å¯¤º\n"
+msgstr "  %d/%d (å³°å€¼ %d) nxt-chk é¡¹ç›®å·²åˆ›å»º\n"
 
-#: main.c:883
+#: src/main.c:884
 #, c-format
 msgid "  %d/%d (peak %d) template nxt-chk entries created\n"
-msgstr "  %d/%d (å®„æ¿€¼ %d) å¦¯â„ƒ¿ nxt-chk æ¤¤åœ­›ô”Šå‡¡åˆ›å¯¤º\n"
+msgstr "  %d/%d (å³°å€¼ %d) æ¨¡æ¿ nxt-chk é¡¹ç›®å·²åˆ›å»º\n"
 
-#: main.c:887
+#: src/main.c:888
 #, c-format
 msgid "  %d empty table entries\n"
-msgstr "  %d å¨“…ç»Œé¸¿ã€ƒæ å¥¸ã€ç›®\n"
+msgstr "  %d æ¸…ç©ºè¡¨æ ¼é¡¹ç›®\n"
 
-#: main.c:889
+#: src/main.c:890
 #, c-format
 msgid "  %d protos created\n"
-msgstr "  %d åŸå‹å®¸æ’ˆ›å¯¤º\n"
+msgstr "  %d åŸå‹å·²åˆ›å»º\n"
 
-#: main.c:892
+#: src/main.c:893
 #, c-format
 msgid "  %d templates created, %d uses\n"
-msgstr "  %d èŒƒæœô‘å‡¡åˆ›å¯¤çŒ´¼Œ%d æµ£è·¨”¨\n"
+msgstr "  %d èŒƒæœ¬å·²åˆ›å»ºï¼Œ%d ä½¿ç”¨\n"
 
-#: main.c:900
+#: src/main.c:901
 #, c-format
 msgid "  %d/%d equivalence classes created\n"
-msgstr "  %d/%d ç»›‰æµ é£è¢«åˆô°å‡¡åˆ›å¯¤º\n"
+msgstr "  %d/%d ç­‰ä»·ç±»åˆ«å·²åˆ›å»º\n"
 
-#: main.c:908
+#: src/main.c:909
 #, c-format
 msgid "  %d/%d meta-equivalence classes created\n"
-msgstr "  %d/%d åç’å‰§­‰æµ é£è¢«åˆô°å‡¡åˆ›å¯¤º\n"
+msgstr "  %d/%d åè®¾ç­‰ä»·ç±»åˆ«å·²åˆ›å»º\n"
 
-#: main.c:914
+#: src/main.c:915
 #, c-format
 msgid "  %d (%d saved) hash collisions, %d DFAs equal\n"
-msgstr "  %d (%d å®¸è¹­¿ç€›˜) å“ˆç”¯Œçº°ç‰ˆ’é”›Œ%d DFAs ç›å“¥­‰\n"
+msgstr "  %d (%d å·²ä¿å­˜) å“ˆå¸Œç¢°æ’ï¼Œ%d DFAs ç›¸ç­‰\n"
 
-#: main.c:916
+#: src/main.c:917
 #, c-format
 msgid "  %d sets of reallocations needed\n"
-msgstr "  éœ€ç‘• %d ç¼„é‡æ–ä¼´…ç¼ƒ®\n"
+msgstr "  éœ€è¦ %d ç»„é‡æ–°é…ç½®\n"
 
-#: main.c:918
+#: src/main.c:919
 #, c-format
 msgid "  %d total table entries needed\n"
-msgstr "  æ€æ˜ô“†éœ€ç‘• %d ç›ã„¦ å¥¸ã€ç›®\n"
+msgstr "  æ€»è®¡éœ€è¦ %d è¡¨æ ¼é¡¹ç›®\n"
 
-#: main.c:995
+#: src/main.c:996
 #, c-format
 msgid "Internal error. flexopts are malformed.\n"
-msgstr "å†…éƒã„©”™ç’‡ô•¦€‚flexopts åŠŸèƒè—‰¼‚ç”¯æ€‚\n"
+msgstr "å†…éƒ¨é”™è¯¯ã€‚flexopts åŠŸèƒ½å¼‚å¸¸ã€‚\n"
 
-#: main.c:1005
+#: src/main.c:1006
 #, c-format
 msgid "Try `%s --help' for more information.\n"
-msgstr "çç’‡•ã€Œ%s --helpã€æµ ãƒ¨å³°¾—æ›æ‘¤šæ·‡â„ƒô•¦€‚\n"
+msgstr "å°è¯•ã€Œ%s --helpã€ä»¥è·å¾—æ›´å¤šä¿¡æ¯ã€‚\n"
 
-#: main.c:1062
+#: src/main.c:1063
 #, c-format
 msgid "unknown -C option '%c'"
-msgstr "æœô”Ÿãƒ§š„ -C é€‰æ¤¤å…‰€œ%câ€"
+msgstr "æœªçŸ¥çš„ -C é€‰é¡¹â€œ%câ€"
 
-#: main.c:1191
+#: src/main.c:1192
 #, c-format
 msgid "%s %s\n"
 msgstr "%s %s\n"
 
-#: main.c:1466
+#: src/main.c:1468
 msgid "fatal parse error"
-msgstr "è‡æ‘‘ç•Œš„ç‘™ï½†é”™ç’‡¯"
+msgstr "è‡´å‘½çš„è§£æé”™è¯¯"
 
-#: main.c:1498
+#: src/main.c:1500
 #, c-format
 msgid "could not create backing-up info file %s"
-msgstr "æ— å¨‰•åˆ›å¯¤å“„›å©§ô•§ä¿Šæô•©–‡æµ ¶ %s"
+msgstr "æ— æ³•åˆ›å»ºå›æº¯ä¿¡æ¯æ–‡ä»¶ %s"
 
-#: main.c:1519
+#: src/main.c:1521
 #, c-format
 msgid "-l AT&T lex compatibility option entails a large performance penalty\n"
-msgstr "-l AT&T lex å…ç…ô“æ€Ñ‡€‰æ¤¤é€›¼šç€µè‰°‡æ‘ã‡éª…æ€Ñ†ƒè—‰‡é€€\n"
+msgstr "-l AT&T lex å…¼å®¹æ€§é€‰é¡¹ä¼šå¯¼è‡´å¤§å¹…æ€§èƒ½å‡é€€\n"
 
-#: main.c:1522
+#: src/main.c:1524
 #, c-format
 msgid " and may be the actual source of other reported performance penalties\n"
-msgstr " åŒæ—æœµ¹Ÿç’å‘Š˜ô•¨…æœµ»–å›æŠãƒ¦€Ñ†ƒè—‰‡é€€çš„ç€¹é™…æãƒ¦º\n"
+msgstr " åŒæ—¶ä¹Ÿè®¸æ˜¯å…¶ä»–å›æŠ¥æ€§èƒ½å‡é€€çš„å®é™…æ¥æº\n"
 
-#: main.c:1528
+#: src/main.c:1530
 #, c-format
-msgid "%%option yylineno entails a performance penalty ONLY on rules that can match newline characters\n"
-msgstr "%%option yylineno ç€µè‰°‡å­˜€Ñ†ƒè—‰‡é€€é”›Œåô“œ‰è¤°“ç’‡ãƒ¨§„åˆ™ç’‡ãƒ¥è¯²ˆæ–æ¿ˆ—ç€›—ç»—ôˆ›—èˆµ‰æµ¼š\n"
+msgid ""
+"%%option yylineno entails a performance penalty ONLY on rules that can match "
+"newline characters\n"
+msgstr "%%option yylineno å¯¼è‡´æ€§èƒ½å‡é€€ï¼Œåªæœ‰å½“è¯¥è§„åˆ™è¯¥å»åˆæ–°åˆ—å­—ç¬¦æ—¶æ‰ä¼š\n"
 
-#: main.c:1535
+#: src/main.c:1537
 #, c-format
 msgid "-I (interactive) entails a minor performance penalty\n"
-msgstr "-I (æµœã‚„º’å¯®) ç€µè‰°‡æ‘°éª…æ€Ñ†ƒè—‰‡é€€\n"
+msgstr "-I (äº¤äº’å¼) å¯¼è‡´å°å¹…æ€§èƒ½å‡é€€\n"
 
-#: main.c:1540
+#: src/main.c:1542
 #, c-format
 msgid "yymore() entails a minor performance penalty\n"
-msgstr "yymore() ç€µè‰°‡æ‘°éª…æ€Ñ†ƒè—‰‡é€€\n"
+msgstr "yymore() å¯¼è‡´å°å¹…æ€§èƒ½å‡é€€\n"
 
-#: main.c:1546
+#: src/main.c:1548
 #, c-format
 msgid "REJECT entails a large performance penalty\n"
-msgstr "REJECT ç€µè‰°‡æ‘ã‡éª…æ€Ñ†ƒè—‰‡é€€\n"
+msgstr "REJECT å¯¼è‡´å¤§å¹…æ€§èƒ½å‡é€€\n"
 
-#: main.c:1551
+#: src/main.c:1553
 #, c-format
 msgid "Variable trailing context rules entail a large performance penalty\n"
-msgstr "å˜é‡æœô°ç†¬æ¶“Šæ¶“‹æ–‡ç‘™„åˆ™ç€µè‰°‡æ‘ã‡éª…æ€Ñ†ƒè—‰‡é€€\n"
+msgstr "å˜é‡æœ«å°¾ä¸Šä¸‹æ–‡è§„åˆ™å¯¼è‡´å¤§å¹…æ€§èƒ½å‡é€€\n"
 
-#: main.c:1563
+#: src/main.c:1565
 msgid "REJECT cannot be used with -f or -F"
-msgstr "REJECT æ— å¨‰•æ¶“ -f æˆ– -F å…åŒæµ£è·¨”¨"
+msgstr "REJECT æ— æ³•ä¸ -f æˆ– -F å…±åŒä½¿ç”¨"
 
-#: main.c:1566
+#: src/main.c:1568
 #, c-format
 msgid "%option yylineno cannot be used with REJECT"
-msgstr "%option yylineno æ— å¨‰•æ¶“ REJECT å…åŒæµ£è·¨”¨"
+msgstr "%option yylineno æ— æ³•ä¸ REJECT å…±åŒä½¿ç”¨"
 
-#: main.c:1569
+#: src/main.c:1571
 msgid "variable trailing context rules cannot be used with -f or -F"
-msgstr "å˜é‡æœô°ç†¬æ¶“Šæ¶“‹æ–‡ç‘™„åˆ™æ— å¨‰•æ¶“ -f æˆ– -F å…åŒæµ£è·¨”¨"
+msgstr "å˜é‡æœ«å°¾ä¸Šä¸‹æ–‡è§„åˆ™æ— æ³•ä¸ -f æˆ– -F å…±åŒä½¿ç”¨"
 
-#: main.c:1692
+#: src/main.c:1699
 #, c-format
 msgid "%option yyclass only meaningful for C++ scanners"
-msgstr "%option yyclass åô’ô”¼æµœ C++ æ‰ô±ç»‹‹æ´æœ‰æ„æ¶”‰"
+msgstr "%option yyclass åªå¯¹äº C++ æ‰«æç¨‹åºæœ‰æ„ä¹‰"
 
-#: main.c:1799
+#: src/main.c:1806
 #, c-format
 msgid "Usage: %s [OPTIONS] [FILE]...\n"
-msgstr "ç”ã„¦³•é”›š%s [é€‰æ¤¤¹] [æ–‡æµ ¶]...\n"
+msgstr "ç”¨æ³•ï¼š%s [é€‰é¡¹] [æ–‡ä»¶]...\n"
 
-#: main.c:1802
-#, c-format
+#: src/main.c:1809
+#, fuzzy, c-format
 msgid ""
 "Generates programs that perform pattern-matching on text.\n"
 "\n"
@@ -548,13 +550,16 @@ msgid ""
 "  -T, --trace             %s should run in trace mode\n"
 "  -w, --nowarn            do not generate warnings\n"
 "  -v, --verbose           write summary of scanner statistics to stdout\n"
+"      --hex               use hexadecimal numbers instead of octal in debug "
+"outputs\n"
 "\n"
 "Files:\n"
 "  -o, --outfile=FILE      specify output filename\n"
 "  -S, --skel=FILE         specify skeleton file\n"
 "  -t, --stdout            write scanner on stdout instead of %s\n"
 "      --yyclass=NAME      name of C++ class\n"
-"      --header-file=FILE   create a C header file in addition to the scanner\n"
+"      --header-file=FILE   create a C header file in addition to the "
+"scanner\n"
 "      --tables-file[=FILE] write tables to FILE\n"
 "\n"
 "Scanner behavior:\n"
@@ -588,112 +593,112 @@ msgid ""
 "  -h, --help              produce this help message\n"
 "  -V, --version           report %s version\n"
 msgstr ""
-"æµœÑ…”Ÿèƒè—‰¤Ÿæ è§„ô”‹–‡æœô‘‘¿›ç›Œå¯®æ å³°Œå½’…çš„ç»‹‹æ´ã€‚\n"
+"äº§ç”Ÿèƒ½å¤Ÿæ ¹æ®æ–‡æœ¬è¿›è¡Œå¼æ ·åŒ¹é…çš„ç¨‹åºã€‚\n"
 "\n"
-"ç›ã„¦ ç…‹ç¼‚â•‹¼š\n"
-"  -Caé”›Œ--align      æãˆ¡‰æˆƒæ¾¶Ñ†ã€ƒæ é—´äº’èå³°–æˆƒæµ£å†²†…ç€›˜ç€µé€›½\n"
-"  -Ceé”›Œ--ecs        å¯¤çƒ˜„ç»›‰æµ é£è¢«åˆ«\n"
-"  -Cf               æ¶“å‹ç¼‚â•„ã€ƒæ ç¡·¼›æµ£è·¨”¨ -f ç›ã„§ãšå¨‰•\n"
-"  -CF               æ¶“å‹ç¼‚â•„ã€ƒæ ç¡·¼›æµ£è·¨”¨ -F ç›ã„§ãšå¨‰•\n"
-"  -Cmé”›Œ--meta-ecs   æ„é€ åç’å‰§­‰æµ é£è¢«åˆ«\n"
-"  -Cré”›Œ--read       æµ£è·¨”¨ read() æµ ãƒ¤å”¬æ›¿ stdio ç”ã„¤ºæ‰ô±ç»‹‹æ´çš„æˆ“å…¥\n"
-"  -f, --full        æµœÑ…”Ÿè¹‡ô´€Ÿé”›Œæ¾¶Ñƒ‹æ‰ô±ç»‹‹æ´ã€‚æ¿¡‚åŒ -Cfr\n"
-"  -F, --fast        æµ£è·¨”ã„¤æ°¦æ›èƒ¯ã€ƒæ è‰°ã€ƒç»€çƒ˜³•ã€‚æ¿¡‚åŒ -CFr\n"
-"  -Cem              ç¼‚è™¹œå‹ç¼‚© (æ¿¡‚åŒ --ecs --meta-ecs)\n"
+"è¡¨æ ¼å‹ç¼©ï¼š\n"
+"  -Caï¼Œ--align      æ¢æ‰è¾ƒå¤§è¡¨æ ¼ä»¥è·å–è¾ƒä½³å†…å­˜å¯¹ä½\n"
+"  -Ceï¼Œ--ecs        å»ºæ„ç­‰ä»·ç±»åˆ«\n"
+"  -Cf               ä¸å‹ç¼©è¡¨æ ¼ï¼›ä½¿ç”¨ -f è¡¨ç¤ºæ³•\n"
+"  -CF               ä¸å‹ç¼©è¡¨æ ¼ï¼›ä½¿ç”¨ -F è¡¨ç¤ºæ³•\n"
+"  -Cmï¼Œ--meta-ecs   æ„é€ åè®¾ç­‰ä»·ç±»åˆ«\n"
+"  -Crï¼Œ--read       ä½¿ç”¨ read() ä»¥ä»£æ›¿ stdio ç”¨äºæ‰«æç¨‹åºçš„è¾“å…¥\n"
+"  -f, --full        äº§ç”Ÿå¿«é€Ÿï¼Œå¤§å‹æ‰«æç¨‹åºã€‚å¦‚åŒ -Cfr\n"
+"  -F, --fast        ä½¿ç”¨äº¤æ›¿è¡¨æ ¼è¡¨ç¤ºæ³•ã€‚å¦‚åŒ -CFr\n"
+"  -Cem              ç¼ºçœå‹ç¼© (å¦‚åŒ --ecs --meta-ecs)\n"
 "\n"
-"ç’‹ƒç’‡•é”›š\n"
-"  -d, --debug             åœã„¦‰ô±ç»‹‹æ´æ¶“ô’¬ô•ª”ã„©™ã‚‰”™å¦¯â€³¼\n"
-"  -b, --backup            å†™å…ãƒ¥›å©§ô•§ä¿Šæô•¨ˆ° %s\n"
-"  -p, --perf-report       ç†æ€Ñ†ƒèŠ¥Šãƒ¥‘Šå†™å…ãƒ¦ ‡å‡†å‹˜ç’‡¯\n"
-"  -s, --nodefault         æŠ‘åˆå‰å·±çœç‘™„åˆ™æµ ãƒ¥›æ´”æ¶“ç»—ôˆšˆçš„æ–‡æœ¬\n"
-"  -T, --trace             %s æ´”ç’‡ãƒ¥œã„¨æ‹·éŸªô“Äå¯®æ¶“ô’¯¿ç›Œ\n"
-"  -w, --nowarn            æ¶“æµœÑ…”Ÿç’€ôˆš‘Š\n"
-"  -v, --verbose           ç†å§’‚ç‘•çš„æ‰ô±ç»‹‹æ´ç¼Ÿç’â€³†™å…ãƒ¦ ‡å‡†æˆ“å‡º\n"
+"è°ƒè¯•ï¼š\n"
+"  -d, --debug             åœ¨æ‰«æç¨‹åºä¸­å¯ç”¨é™¤é”™æ¨¡å¼\n"
+"  -b, --backup            å†™å…¥å›æº¯ä¿¡æ¯åˆ° %s\n"
+"  -p, --perf-report       å°†æ€§èƒ½æŠ¥å‘Šå†™å…¥æ ‡å‡†å‹˜è¯¯\n"
+"  -s, --nodefault         æŠ‘åˆ¶ç¼ºçœè§„åˆ™ä»¥å›åº”ä¸ç¬¦åˆçš„æ–‡æœ¬\n"
+"  -T, --trace             %s åº”è¯¥åœ¨è¿½è¸ªæ¨¡å¼ä¸­è¿è¡Œ\n"
+"  -w, --nowarn            ä¸äº§ç”Ÿè­¦å‘Š\n"
+"  -v, --verbose           å°†æ¦‚è¦çš„æ‰«æç¨‹åºç»Ÿè®¡å†™å…¥æ ‡å‡†è¾“å‡º\n"
 "\n"
-"æ–‡æµ è®¹¼š\n"
-"  -o, --outfile=æ–‡æµ ¶      æŒ‡ç€¹šæˆ“å‡çƒ˜–‡æµ è·º\n"
-"  -S, --skel=æ–‡æµ ¶         æŒ‡ç€¹šæèˆµ„æ–‡æµ ¶\n"
-"  -t, --stdout            ç†æ‰ô±ç»‹‹æ´å†™å…ãƒ¦ ‡å‡†æˆ“å‡è½°äº’æµ ï½†›¿ %s\n"
-"      --yyclass=åç»‰°      C++ ç»«è¯²ˆô²š„åç»‰°\n"
-"      --header-file=æ–‡æµ ¶   æ‰ô±ç»‹‹æ´æ¶”‹æ¾¶–åˆ›å¯¤º C æ ‡æ¾¶å­˜ã€‚\n"
-"      --tables-file[=æ–‡æµ ¶] ç†ç›ã„¦ ç…†™å…ãƒ¦–‡æµ ¶\n"
+"æ–‡ä»¶ï¼š\n"
+"  -o, --outfile=æ–‡ä»¶      æŒ‡å®šè¾“å‡ºæ–‡ä»¶å\n"
+"  -S, --skel=æ–‡ä»¶         æŒ‡å®šæ¶æ„æ–‡ä»¶\n"
+"  -t, --stdout            å°†æ‰«æç¨‹åºå†™å…¥æ ‡å‡†è¾“å‡ºä»¥ä»£æ›¿ %s\n"
+"      --yyclass=åç§°      C++ ç±»åˆ«çš„åç§°\n"
+"      --header-file=æ–‡ä»¶   æ‰«æç¨‹åºä¹‹å¤–åˆ›å»º C æ ‡å¤´æ¡£\n"
+"      --tables-file[=æ–‡ä»¶] å°†è¡¨æ ¼å†™å…¥æ–‡ä»¶\n"
 "\n"
-"æ‰ô±ç»‹‹æ´ç›Œæ¶“çŒ´¼š\n"
-"  -7, --7bit              æµœÑ…”Ÿæ¶“ƒå§£”ç‰è§„‰ô±ç»‹‹æ´\n"
-"  -8, --8bit              æµœÑ…”Ÿå…ô±¯”ç‰è§„‰ô±ç»‹‹æ´\n"
-"  -B, --batch             æµœÑ…”Ÿæ‰è§„ôŠæ‰ô±ç»‹‹æ´ (ç›ç¨¿ô”¼æµœ -I)\n"
-"  -i, --case-insensitive  è¹‡ç•Œ•ãƒ¥¼æ èœ‚è…‘çš„æ¾¶Ñƒ°å†™\n"
-"  -l, --lex-compat        æ¶“åŸæ¿®‹ lex æœ€æ¾¶Ñƒ…ç…ô“\n"
-"  -X, --posix-compat      æ¶“ POSIX lex æœ€æ¾¶Ñƒ…ç…ô“\n"
-"  -I, --interactive       æµœÑ…”Ÿæµœã‚„º’å¯®æ‰ô±ç»‹‹æ´ (ç›ç¨¿ô”¼æµœ -B)\n"
-"      --yylineno          åœ¨ yylineno æ¶“ô’¯ô“†æ•æ‹Œå»ºåˆ—\n"
+"æ‰«æç¨‹åºè¡Œä¸ºï¼š\n"
+"  -7, --7bit              äº§ç”Ÿä¸ƒæ¯”ç‰¹æ‰«æç¨‹åº\n"
+"  -8, --8bit              äº§ç”Ÿå…«æ¯”ç‰¹æ‰«æç¨‹åº\n"
+"  -B, --batch             äº§ç”Ÿæ‰¹æ¬¡æ‰«æç¨‹åº (ç›¸å¯¹äº -I)\n"
+"  -i, --case-insensitive  å¿½ç•¥å¼æ ·ä¸­çš„å¤§å°å†™\n"
+"  -l, --lex-compat        ä¸åŸå§‹ lex æœ€å¤§å…¼å®¹\n"
+"  -X, --posix-compat      ä¸ POSIX lex æœ€å¤§å…¼å®¹\n"
+"  -I, --interactive       äº§ç”Ÿäº¤äº’å¼æ‰«æç¨‹åº (ç›¸å¯¹äº -B)\n"
+"      --yylineno          åœ¨ yylineno ä¸­è®¡æ•°è½¨åˆ—\n"
 "\n"
-"æµœÑ…”Ÿçš„ç¼‚–ç é”›š\n"
-"  -+,  --c++               æµœÑ…”Ÿ C++ æ‰ô±ç»‹‹æ´ç»«è¯²ˆ«\n"
-"  -Dmacro [=defn]          #define ç€¹ defn  (ç¼‚è™¹œ defn æ¶“æ’€Œ1ã€)\n"
-"  -L,  --noline            åœã„¦‰ô±ç»‹‹æ´æ¶“ô’­Š‘åˆ¶ # åˆ—æŒ‡æµ ¤\n"
-"  -P,  --prefix=ç€›—æ¶“²       æµ£è·¨”ã„¥­—æ¶“è¹­½œæ¶“å“„‰ç¼‚€æµ ãƒ¤å”¬æ›è£¤€Œyyã€\n"
-"  -R,  --reentrant         æµœÑ…”Ÿé‡æ–æ‹Œ¿›å…¥ C æ‰ô±ç»‹‹æ´\n"
-"       --bison-bridge      æ‰ô±ç»‹‹æ´ç”ã„¤º bison pure å‰–æå™ã„£€‚\n"
-"       --bison-locations   åŒ…å« yylloc æ”ô•©Œã€‚\n"
-"       --stdinit           åˆæ¿®‹åŒ– yyin/yyout åˆç‰ˆ ‡å‡†æˆ“å…¥/æ ‡å‡†æˆ“å‡º\n"
-"       --noansi-definitions æ—Ñƒ¼å‡èŠ¥•æ¿®šæ¶”‰\n"
-"       --noansi-prototypes  åœã„¥Ÿå‹æ¶“ô’­¸…ç»Œå“„‚æ•ç‰ˆ¸…å•\n"
-"       --nounistd          æ¶“åŒ…å« <unistd.h>\n"
-"       --noFUNCTION        æ¶“æµœÑ…”Ÿç‰ç‘°®šå‡èŠ¥•°\n"
+"äº§ç”Ÿçš„ç¼–ç ï¼š\n"
+"  -+,  --c++               äº§ç”Ÿ C++ æ‰«æç¨‹åºç±»åˆ«\n"
+"  -Dmacro [=defn]          #define å® defn  (ç¼ºçœ defn ä¸ºã€Œ1ã€)\n"
+"  -L,  --noline            åœ¨æ‰«æç¨‹åºä¸­æŠ‘åˆ¶ # åˆ—æŒ‡ä»¤\n"
+"  -P,  --prefix=å­—ä¸²       ä½¿ç”¨å­—ä¸²ä½œä¸ºå‰ç¼€ä»¥ä»£æ›¿ã€Œyyã€\n"
+"  -R,  --reentrant         äº§ç”Ÿé‡æ–°è¿›å…¥ C æ‰«æç¨‹åº\n"
+"       --bison-bridge      æ‰«æç¨‹åºç”¨äº bison pure å‰–æå™¨ã€‚\n"
+"       --bison-locations   åŒ…å« yylloc æ”¯æŒã€‚\n"
+"       --stdinit           åˆå§‹åŒ– yyin/yyout åˆ°æ ‡å‡†è¾“å…¥/æ ‡å‡†è¾“å‡º\n"
+"       --noansi-definitions æ—§å¼å‡½æ•°å®šä¹‰\n"
+"       --noansi-prototypes  åœ¨åŸå‹ä¸­æ¸…ç©ºå‚æ•°æ¸…å•\n"
+"       --nounistd          ä¸åŒ…å« <unistd.h>\n"
+"       --noFUNCTION        ä¸äº§ç”Ÿç‰¹å®šå‡½æ•°\n"
 "\n"
-"æ‚æ¤¤ç™¸¼š\n"
-"  -c                      do-nothing POSIX é€‰æ¤¤¹\n"
-"  -n                      do-nothing POSIX é€‰æ¤¤¹\n"
+"æ‚é¡¹ï¼š\n"
+"  -c                      do-nothing POSIX é€‰é¡¹\n"
+"  -n                      do-nothing POSIX é€‰é¡¹\n"
 "  -?\n"
-"  -h, --help              æµœÑ…”Ÿæ©™æ¶“ô•ô”·æ˜å¨‘ˆæ¯\n"
-"  -V, --version           æŠãƒ¥‘Š %s ç‰ˆæœ¬\n"
+"  -h, --help              äº§ç”Ÿè¿™ä¸ªè¯´æ˜æ¶ˆæ¯\n"
+"  -V, --version           æŠ¥å‘Š %s ç‰ˆæœ¬\n"
 
-#: misc.c:65
+#: src/misc.c:65
 msgid "allocation of sko_stack failed"
-msgstr "ç¼™æµœˆ sko_stack é…æ£°æ—è·ºã‘ç’¥"
+msgstr "ç»™äºˆ sko_stack é…é¢æ—¶å¤±è´¥"
 
-#: misc.c:102 misc.c:128
+#: src/misc.c:102 src/misc.c:129
 #, c-format
 msgid "name \"%s\" ridiculously long"
-msgstr "åç»‰èˆ¬€Œ%sã€æœ‰è’ç’‹ô‘š„é•å®å®³"
+msgstr "åç§°ã€Œ%sã€æœ‰è’è°¬çš„é•¿åº¦"
 
-#: misc.c:177
+#: src/misc.c:179
 msgid "memory allocation failed in allocate_array()"
-msgstr "åœ¨ allocatearray() æ¶“ô’¬†…ç€›˜é…ç¼ƒô”Šã‘ç’¥"
+msgstr "åœ¨ allocatearray() ä¸­å†…å­˜é…ç½®å¤±è´¥"
 
-#: misc.c:230
+#: src/misc.c:232
 #, c-format
 msgid "bad character '%s' detected in check_char()"
-msgstr "åœ¨ checkchar() æ¶“ô’«ç›å¨´‹åˆé¢¸è¤°“çš„ç€›—ç»—ôˆ˜€Œ%sã€"
+msgstr "åœ¨ checkchar() ä¸­ä¾¦æµ‹åˆ°ä¸å½“çš„å­—ç¬¦ã€Œ%sã€"
 
-#: misc.c:235
+#: src/misc.c:237
 #, c-format
 msgid "scanner requires -8 flag to use the character %s"
-msgstr "æ‰ô±ç»‹‹æ´éœ€ç‘• -8 æ——æ ‡æµ ãƒ¤å¨‡ç”ã„¥­—ç»—¦ %s"
+msgstr "æ‰«æç¨‹åºéœ€è¦ -8 æ——æ ‡ä»¥ä½¿ç”¨å­—ç¬¦ %s"
 
-#: misc.c:268
+#: src/misc.c:270
 msgid "dynamic memory failure in copy_string()"
-msgstr "åœ¨ copystring() æ¶“ô’¬Šã„¦€å†…ç€›˜æ¾¶è¾«è§¦"
+msgstr "åœ¨ copystring() ä¸­åŠ¨æ€å†…å­˜å¤±è´¥"
 
-#: misc.c:367
+#: src/misc.c:369
 #, c-format
 msgid "%s: fatal internal error, %s\n"
-msgstr "%sé”›šæ¶“ãƒ©‡å†…éƒã„©”™ç’‡ô•²¼Œ%s\n"
+msgstr "%sï¼šä¸¥é‡å†…éƒ¨é”™è¯¯ï¼Œ%s\n"
 
-#: misc.c:803
+#: src/misc.c:795
 msgid "attempt to increase array size failed"
-msgstr "ç’‡•å›æƒ§¢åŠ æ•æ‰®»„æ¾¶Ñƒ°æ—è·ºã‘ç’¥"
+msgstr "è¯•å›¾å¢åŠ æ•°ç»„å¤§å°æ—¶å¤±è´¥"
 
-#: misc.c:930
+#: src/misc.c:922
 msgid "bad line in skeleton file"
-msgstr "æ¥ ã„¦èˆµ–‡æµ æœµè…‘é”™ç’‡ô•ªš„ç›Œ"
+msgstr "éª¨æ¶æ–‡ä»¶ä¸­é”™è¯¯çš„è¡Œ"
 
-#: misc.c:979
+#: src/misc.c:971
 msgid "memory allocation failed in yy_flex_xmalloc()"
-msgstr "åœ¨ yy_flex_xmalloc() æ¶“ô’®š„å†…ç€›˜åˆ†é…æ¾¶è¾«è§¦"
+msgstr "åœ¨ yy_flex_xmalloc() ä¸­çš„å†…å­˜åˆ†é…å¤±è´¥"
 
-#: nfa.c:104
+#: src/nfa.c:104
 #, c-format
 msgid ""
 "\n"
@@ -702,234 +707,234 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"********** å¯®€æ¿®‹æˆ“å‡é¸¿æ£æ¿®‹çŠèˆµ€æ¶“º %d çš„ NFA\n"
+"********** å¼€å§‹è¾“å‡ºèµ·å§‹çŠ¶æ€ä¸º %d çš„ NFA\n"
 
-#: nfa.c:115
+#: src/nfa.c:115
 #, c-format
 msgid "state # %4d\t"
-msgstr "çŠèˆµ€ # %4d\t"
+msgstr "çŠ¶æ€ # %4d\t"
 
-#: nfa.c:130
+#: src/nfa.c:130
 #, c-format
 msgid "********** end of dump\n"
-msgstr "********** æˆ“å‡è™¹»“æŸ\n"
+msgstr "********** è¾“å‡ºç»“æŸ\n"
 
-#: nfa.c:174
+#: src/nfa.c:174
 msgid "empty machine in dupmachine()"
-msgstr "åœ¨ dupmachine() æ¶“ô’­¸…ç»Œçƒ˜œå“„™¨"
+msgstr "åœ¨ dupmachine() ä¸­æ¸…ç©ºæœºå™¨"
 
-#: nfa.c:240
+#: src/nfa.c:240
 #, c-format
 msgid "Variable trailing context rule at line %d\n"
-msgstr "å˜é‡æœô°ç†¬æ¶“Šæ¶“‹æ–‡ç‘™„åˆ™æµœåˆ— %d\n"
+msgstr "å˜é‡æœ«å°¾ä¸Šä¸‹æ–‡è§„åˆ™äºåˆ— %d\n"
 
-#: nfa.c:364
+#: src/nfa.c:364
 msgid "bad state type in mark_beginning_as_normal()"
-msgstr "åœ¨ mark_beginning_as_normal() æ¶“ô’­œ‰æ¶“è¤°“çš„çŠèˆµ€æˆ“å…¥"
+msgstr "åœ¨ mark_beginning_as_normal() ä¸­æœ‰ä¸å½“çš„çŠ¶æ€è¾“å…¥"
 
-#: nfa.c:609
+#: src/nfa.c:609
 #, c-format
 msgid "input rules are too complicated (>= %d NFA states)"
-msgstr "æˆ“å…ãƒ¨§„åˆ™æ¾¶ô’¤æ‚ (>= %d NFA çŠèˆµ€)"
+msgstr "è¾“å…¥è§„åˆ™å¤ªå¤æ‚ (>= %d NFA çŠ¶æ€)"
 
-#: nfa.c:688
+#: src/nfa.c:688
 msgid "found too many transitions in mkxtion()"
-msgstr "åœ¨ mkxtion() æ¶“ô’­‰æƒ§ˆæ¿ãŠæ¾¶šæô‘¢"
+msgstr "åœ¨ mkxtion() ä¸­æ‰¾åˆ°å¤ªå¤šè½¬æ¢"
 
-#: nfa.c:714
+#: src/nfa.c:714
 #, c-format
 msgid "too many rules (> %d)!"
-msgstr "ç‘™„åˆ™æ©‡æ¾¶š (> %d)é”›"
+msgstr "è§„åˆ™è¿‡å¤š (> %d)ï¼"
 
-#: parse.y:159
+#: src/parse.y:159
 msgid "unknown error processing section 1"
-msgstr "æœô”Ÿãƒ§š„é”™ç’‡ô•¨¤„ç†èŠ‚ 1"
+msgstr "æœªçŸ¥çš„é”™è¯¯å¤„ç†èŠ‚ 1"
 
-#: parse.y:184 parse.y:351
+#: src/parse.y:184 src/parse.y:351
 msgid "bad start condition list"
-msgstr "é”™ç’‡ô•ªš„ç’§å³°§‹çŠèˆµ€åˆ—ç›¨"
+msgstr "é”™è¯¯çš„èµ·å§‹çŠ¶æ€åˆ—è¡¨"
 
-#: parse.y:315
+#: src/parse.y:315
 msgid "unrecognized rule"
-msgstr "æ¶“èƒå€Ÿ¯†åˆô²š„ç‘™„åˆ™"
+msgstr "ä¸èƒ½è¯†åˆ«çš„è§„åˆ™"
 
-#: parse.y:434 parse.y:447 parse.y:516
+#: src/parse.y:434 src/parse.y:447 src/parse.y:516
 msgid "trailing context used twice"
-msgstr "æœô°ç†¬æ¶“Šæ¶“‹æ–‡å®¸è¹­å¨‡ç”ã„¤è¢±å¨†¡"
+msgstr "æœ«å°¾ä¸Šä¸‹æ–‡å·²ä½¿ç”¨ä¸¤æ¬¡"
 
-#: parse.y:552 parse.y:562 parse.y:635 parse.y:645
+#: src/parse.y:552 src/parse.y:562 src/parse.y:635 src/parse.y:645
 msgid "bad iteration values"
-msgstr "æ¶“è¤°“çš„æ©ô’«å”¬å€¼"
+msgstr "ä¸å½“çš„è¿­ä»£å€¼"
 
-#: parse.y:580 parse.y:598 parse.y:663 parse.y:681
+#: src/parse.y:580 src/parse.y:598 src/parse.y:663 src/parse.y:681
 msgid "iteration value must be positive"
-msgstr "æ©ô’«å”¬å€ç…¿…æ¤¤ç»˜˜ô•©ô‘ªå€¼"
+msgstr "è¿­ä»£å€¼å¿…é¡»æ˜¯æ­£å€¼"
 
-#: parse.y:804 parse.y:814
+#: src/parse.y:804 src/parse.y:814
 #, c-format
 msgid "the character range [%c-%c] is ambiguous in a case-insensitive scanner"
-msgstr "åœã„¥ã‡çå†™æ¶“æ¤¤è¤›å“¥ôçš„æ‰ô±ç»‹‹æ´æ¶“ô’¶¼Œç€›—ç»—ôˆŒƒå›´ [%c-%c] æ˜ô•©Äå¦«å˜è¢±åô•ªš„"
+msgstr "åœ¨å¤§å°å†™ä¸é¡»ç›¸ç¬¦çš„æ‰«æç¨‹åºä¸­ï¼Œå­—ç¬¦èŒƒå›´ [%c-%c] æ˜¯æ¨¡æ£±ä¸¤å¯çš„"
 
-#: parse.y:819
+#: src/parse.y:819
 msgid "negative range in character class"
-msgstr "åœã„¥­—ç»—ôˆœè¢«åˆô¯è…‘æœ‰ç’Ÿå€è‰°Œƒå›´"
+msgstr "åœ¨å­—ç¬¦ç±»åˆ«ä¸­æœ‰è´Ÿå€¼èŒƒå›´"
 
-#: parse.y:916
+#: src/parse.y:916
 msgid "[:^lower:] is ambiguous in case insensitive scanner"
-msgstr "åœã„¥ã‡çå†™æ¶“æ¤¤è¤›å“¥ôçš„æ‰ô±ç»‹‹æ´æ¶“ô’¶¼Œ[:^lower:] æ˜ô•©Äå¦«å˜è¢±åô•ªš„"
+msgstr "åœ¨å¤§å°å†™ä¸é¡»ç›¸ç¬¦çš„æ‰«æç¨‹åºä¸­ï¼Œ[:^lower:] æ˜¯æ¨¡æ£±ä¸¤å¯çš„"
 
-#: parse.y:922
+#: src/parse.y:922
 msgid "[:^upper:] ambiguous in case insensitive scanner"
-msgstr "åœã„¥ã‡çå†™æ¶“æ¤¤è¤›å“¥ôçš„æ‰ô±ç»‹‹æ´æ¶“ô’¶¼Œ[:^upper:] æ˜ô•©Äå¦«å˜è¢±åô•ªš„"
+msgstr "åœ¨å¤§å°å†™ä¸é¡»ç›¸ç¬¦çš„æ‰«æç¨‹åºä¸­ï¼Œ[:^upper:] æ˜¯æ¨¡æ£±ä¸¤å¯çš„"
 
-#: scan.l:75 scan.l:618 scan.l:676
+#: src/scan.l:75 src/scan.l:618 src/scan.l:676
 msgid "Input line too long\n"
-msgstr "æˆ“å…ãƒ¥ˆ—æ¾¶ô–•¿\n"
+msgstr "è¾“å…¥åˆ—å¤ªé•¿\n"
 
-#: scan.l:161
+#: src/scan.l:161
 #, c-format
 msgid "malformed '%top' directive"
-msgstr "å¯®‚ç”¯å“¥š„ã€Œ%topã€æŒ‡æµ ¤"
+msgstr "å¼‚å¸¸çš„ã€Œ%topã€æŒ‡ä»¤"
 
-#: scan.l:183
+#: src/scan.l:183
 #, no-c-format
 msgid "unrecognized '%' directive"
-msgstr "æ— å¨‰•æˆã„¨¯†çš„ã€Œ%ã€æŒ‡æµ ¤"
+msgstr "æ— æ³•è¾¨è¯†çš„ã€Œ%ã€æŒ‡ä»¤"
 
-#: scan.l:192
+#: src/scan.l:192
 msgid "Definition name too long\n"
-msgstr "ç€¹šæ¶”‰åç»‰æ¿ãŠé•¿\n"
+msgstr "å®šä¹‰åç§°å¤ªé•¿\n"
 
-#: scan.l:284
+#: src/scan.l:284
 msgid "Unmatched '{'"
-msgstr "æ¶“æˆç€µåœ­š„ã€Œ{ã€"
+msgstr "ä¸æˆå¯¹çš„ã€Œ{ã€"
 
-#: scan.l:300
+#: src/scan.l:300
 #, c-format
 msgid "Definition value for {%s} too long\n"
-msgstr "{%s} çš„ç€¹šæ¶”‰å€ç…ãŠé•¿\n"
+msgstr "{%s} çš„å®šä¹‰å€¼å¤ªé•¿\n"
 
-#: scan.l:317
+#: src/scan.l:317
 msgid "incomplete name definition"
-msgstr "æ¶“ç€¹Œæ•å¯¸š„åç»‰æ¿®šæ¶”‰"
+msgstr "ä¸å®Œæ•´çš„åç§°å®šä¹‰"
 
-#: scan.l:443
+#: src/scan.l:443
 msgid "Option line too long\n"
-msgstr "é€‰æ¤¤ç‘°ˆ—æ¾¶ô–•¿\n"
+msgstr "é€‰é¡¹åˆ—å¤ªé•¿\n"
 
-#: scan.l:451
+#: src/scan.l:451
 #, c-format
 msgid "unrecognized %%option: %s"
-msgstr "æ¶“èƒå€Ÿ¯†åˆô²š„ %%é€‰æ¤¤ç™¸¼š%s"
+msgstr "ä¸èƒ½è¯†åˆ«çš„ %%é€‰é¡¹ï¼š%s"
 
-#: scan.l:633 scan.l:800
+#: src/scan.l:633 src/scan.l:800
 msgid "bad character class"
-msgstr "é”™ç’‡ô•ªš„ç€›—ç»—ôˆœè¢«åˆ«"
+msgstr "é”™è¯¯çš„å­—ç¬¦ç±»åˆ«"
 
-#: scan.l:683
+#: src/scan.l:683
 #, c-format
 msgid "undefined definition {%s}"
-msgstr "æœô’®šæ¶”‰çš„ç€¹šæ¶”‰ {%s}"
+msgstr "æœªå®šä¹‰çš„å®šä¹‰ {%s}"
 
-#: scan.l:755
+#: src/scan.l:755
 #, c-format
 msgid "bad <start condition>: %s"
-msgstr "é”™ç’‡¯ <ç’§å³°§‹æâ€²æ¬¢>é”›š%s"
+msgstr "é”™è¯¯ <èµ·å§‹æ¡ä»¶>ï¼š%s"
 
-#: scan.l:768
+#: src/scan.l:768
 msgid "missing quote"
-msgstr "é—å©•å¯®•å·"
+msgstr "é—æ¼å¼•å·"
 
-#: scan.l:834
+#: src/scan.l:834
 #, c-format
 msgid "bad character class expression: %s"
-msgstr "é”™ç’‡ô•ªš„ç€›—ç»—ôˆœè¢«åˆô³ã€ƒæˆæƒ§¼é”›š%s"
+msgstr "é”™è¯¯çš„å­—ç¬¦ç±»åˆ«è¡¨è¾¾å¼ï¼š%s"
 
-#: scan.l:856
+#: src/scan.l:856
 msgid "bad character inside {}'s"
-msgstr "æ¶“è¤°“ç€›—ç»—ôˆ™º {} å†…éƒ¨"
+msgstr "ä¸å½“å­—ç¬¦äº {} å†…éƒ¨"
 
-#: scan.l:862
+#: src/scan.l:862
 msgid "missing }"
-msgstr "é—å©• }"
+msgstr "é—æ¼ }"
 
-#: scan.l:940
+#: src/scan.l:940
 msgid "EOF encountered inside an action"
-msgstr "åœã„¥Šã„¤½œæ¶“ô’­–‡æµ å‰»“æŸ"
+msgstr "åœ¨åŠ¨ä½œä¸­æ–‡ä»¶ç»“æŸ"
 
-#: scan.l:945
+#: src/scan.l:945
 msgid "EOF encountered inside pattern"
-msgstr "åœã„¥¼æ èœ‚¹‹å†…é‡åˆç‰ˆ–‡æµ å‰»“æŸ"
+msgstr "åœ¨å¼æ ·ä¹‹å†…é‡åˆ°æ–‡ä»¶ç»“æŸ"
 
-#: scan.l:967
+#: src/scan.l:967
 #, c-format
 msgid "bad character: %s"
-msgstr "é”™ç’‡ô•ªš„ç€›—ç»—ôˆ¤¼š%s"
+msgstr "é”™è¯¯çš„å­—ç¬¦ï¼š%s"
 
-#: scan.l:996
+#: src/scan.l:996
 #, c-format
 msgid "can't open %s"
-msgstr "æ— å¨‰•æ‰“å¯®€ %s"
+msgstr "æ— æ³•æ‰“å¼€ %s"
 
-#: scanopt.c:291
+#: src/scanopt.c:291
 #, c-format
 msgid "Usage: %s [OPTIONS]...\n"
-msgstr "ç”ã„¦³•é”›š%s [é€‰æ¤¤¹]...\n"
+msgstr "ç”¨æ³•ï¼š%s [é€‰é¡¹]...\n"
 
-#: scanopt.c:564
+#: src/scanopt.c:559
 #, c-format
 msgid "option `%s' doesn't allow an argument\n"
-msgstr "é€‰æ¤¤å…‰€œ%sâ€æ¶“æãƒ¥—å‚æ•°\n"
+msgstr "é€‰é¡¹â€œ%sâ€ä¸æ¥å—å‚æ•°\n"
 
-#: scanopt.c:569
+#: src/scanopt.c:564
 #, c-format
 msgid "option `%s' requires an argument\n"
-msgstr "é€‰æ¤¤å…‰€œ%sâ€éœ€ç‘•æ¶“€æ¶“ô’‚æ•°\n"
+msgstr "é€‰é¡¹â€œ%sâ€éœ€è¦ä¸€ä¸ªå‚æ•°\n"
 
-#: scanopt.c:573
+#: src/scanopt.c:568
 #, c-format
 msgid "option `%s' is ambiguous\n"
-msgstr "é€‰æ¤¤å¹¿€Œ%sã€æ˜ô•©Äå¦«å˜è¢±åô•ªš„\n"
+msgstr "é€‰é¡¹ã€Œ%sã€æ˜¯æ¨¡æ£±ä¸¤å¯çš„\n"
 
-#: scanopt.c:577
+#: src/scanopt.c:572
 #, c-format
 msgid "Unrecognized option `%s'\n"
-msgstr "æœô”Ÿãƒ§š„é€‰æ¤¤å…‰€œ%sâ€\n"
+msgstr "æœªçŸ¥çš„é€‰é¡¹â€œ%sâ€\n"
 
-#: scanopt.c:581
+#: src/scanopt.c:576
 #, c-format
 msgid "Unknown error=(%d)\n"
-msgstr "æœô”Ÿãƒ©”™ç’‡¯=(%d)\n"
+msgstr "æœªçŸ¥é”™è¯¯=(%d)\n"
 
-#: sym.c:100
+#: src/sym.c:100
 msgid "symbol table memory allocation failed"
-msgstr "ç»—ôˆšç–¯ã€ƒå†…ç€›˜åˆ†é…æ¾¶è¾«è§¦"
+msgstr "ç¬¦å·è¡¨å†…å­˜åˆ†é…å¤±è´¥"
 
-#: sym.c:202
+#: src/sym.c:202
 msgid "name defined twice"
-msgstr "åç»‰æ¿®šæ¶”‰æµœ†æ¶“ã‚†ôŠ"
+msgstr "åç§°å®šä¹‰äº†ä¸¤æ¬¡"
 
-#: sym.c:253
+#: src/sym.c:253
 #, c-format
 msgid "start condition %s declared twice"
-msgstr "ç’§å³°§‹æâ€²æ¬¢ %s æ¾¹ç‰ˆ˜æµœ†æ¶“ã‚†ôŠ"
+msgstr "èµ·å§‹æ¡ä»¶ %s å£°æ˜äº†ä¸¤æ¬¡"
 
-#: yylex.c:56
+#: src/yylex.c:56
 msgid "premature EOF"
-msgstr "æ©‡æ—â•‡è™¹ç‰ˆ–‡æµ å‰»“ç¾"
+msgstr "è¿‡æ—©å‡ºç°æ–‡ä»¶ç»“å°¾"
 
-#: yylex.c:198
+#: src/yylex.c:199
 #, c-format
 msgid "End Marker\n"
-msgstr "ç¼“æŸæ ‡è¹‡—\n"
+msgstr "ç»“æŸæ ‡å¿—\n"
 
-#: yylex.c:204
+#: src/yylex.c:205
 #, c-format
 msgid "*Something Weird* - tok: %d val: %d\n"
-msgstr "*æƒ…å†é›¾ˆæ€ô’¼‚* - toké”›š%d valé”›š%d\n"
+msgstr "*æƒ…å†µå¾ˆæ€ªå¼‚* - tokï¼š%d valï¼š%d\n"
 
 #~ msgid "consistency check failed in symfollowset"
-#~ msgstr "symfollowset æ¶“ô’®š„æ¶“€è‡å­˜€Ñ„£€æŸãƒ¥ã‘ç’¥"
+#~ msgstr "symfollowset ä¸­çš„ä¸€è‡´æ€§æ£€æŸ¥å¤±è´¥"
 
 #~ msgid "unknown -R option '%c'"
-#~ msgstr "æœô”Ÿãƒ§š„ -R é€‰æ¤¤å…‰€œ%câ€"
+#~ msgstr "æœªçŸ¥çš„ -R é€‰é¡¹â€œ%câ€"
