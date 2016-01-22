@@ -1,15 +1,30 @@
-# Dutch translations for the fast parser Flex.
-# Copyright (C) 2014 The Flex Project (msgids)
-# This file is distributed under the same license as the flex package.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-# Beim schwarzen Schaf...
-#
-# Benno Schulenberg <benno@vertaalt.nl>, 2005, 2006, 2007, 2008, 2012, 2014.
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: flex-2.5.38\n"
-"Report-Msgid-Bugs-To: flex-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2014-03-26 15:00-0400\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"PO-Revision-Date: 2016-01-22 13:31-0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#~ # Dutch translations for the fast parser Flex.
+#~ # Copyright (C) 2014 The Flex Project (msgids)
+#~ # This file is distributed under the same license as the flex package.
+#~ #
+#~ # Beim schwarzen Schaf...
+#~ #
+#~ # Benno Schulenberg <benno@vertaalt.nl>, 2005, 2006, 2007, 2008, 2012, 2014.
+#~ msgid ""
+#~ msgstr ""
+#~ "Project-Id-Version: flex-2.5.38\n"
+#~ "Report-Msgid-Bugs-To: flex-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2014-02-11 16:15-0500\n"
 "PO-Revision-Date: 2014-02-13 22:25+0100\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -183,8 +198,7 @@ msgstr "voorschrift geeft geen overeenkomsten"
 
 #: main.c:196
 msgid "-s option given but default rule can be matched"
-msgstr ""
-"optie '-s' is gegeven, maar het standaardvoorschrift geeft overeenkomsten"
+msgstr "optie '-s' is gegeven, maar het standaardvoorschrift geeft overeenkomsten"
 
 #: main.c:236
 msgid "Can't use -+ with -l option"
@@ -367,8 +381,7 @@ msgstr "  geen tekenklassen\n"
 #: main.c:854
 #, c-format
 msgid "  %d/%d character classes needed %d/%d words of storage, %d reused\n"
-msgstr ""
-"  %d/%d tekenklassen hadden %d/%d opslagwoorden nodig, %d hergebruikt\n"
+msgstr "  %d/%d tekenklassen hadden %d/%d opslagwoorden nodig, %d hergebruikt\n"
 
 #: main.c:859
 #, c-format
@@ -472,25 +485,17 @@ msgstr "kon terugstapbestand %s niet aanmaken"
 #: main.c:1519
 #, c-format
 msgid "-l AT&T lex compatibility option entails a large performance penalty\n"
-msgstr ""
-"de AT&T-lexcompatibiliteitsoptie '-l' betekent een grote "
-"prestatievermindering\n"
+msgstr "de AT&T-lexcompatibiliteitsoptie '-l' betekent een grote prestatievermindering\n"
 
 #: main.c:1522
 #, c-format
 msgid " and may be the actual source of other reported performance penalties\n"
-msgstr ""
-" en zou de eigenlijke bron kunnen zijn van andere gemelde "
-"prestatieverminderingen\n"
+msgstr " en zou de eigenlijke bron kunnen zijn van andere gemelde prestatieverminderingen\n"
 
 #: main.c:1528
 #, c-format
-msgid ""
-"%%option yylineno entails a performance penalty ONLY on rules that can match "
-"newline characters\n"
-msgstr ""
-"de %%optie yylineno betekent een prestatievermindering, maar ALLEEN voor "
-"voorschriften die met het regeleindeteken overeen kunnen komen\n"
+msgid "%%option yylineno entails a performance penalty ONLY on rules that can match newline characters\n"
+msgstr "de %%optie yylineno betekent een prestatievermindering, maar ALLEEN voor voorschriften die met het regeleindeteken overeen kunnen komen\n"
 
 #: main.c:1535
 #, c-format
@@ -510,9 +515,7 @@ msgstr "REJECT betekent een grote prestatievermindering\n"
 #: main.c:1551
 #, c-format
 msgid "Variable trailing context rules entail a large performance penalty\n"
-msgstr ""
-"Voorschriften met variabele nakomende context betekenen een grote "
-"prestatievermindering\n"
+msgstr "Voorschriften met variabele nakomende context betekenen een grote prestatievermindering\n"
 
 #: main.c:1563
 msgid "REJECT cannot be used with -f or -F"
@@ -525,9 +528,7 @@ msgstr "%optie yylineno gaat niet samen met REJECT"
 
 #: main.c:1569
 msgid "variable trailing context rules cannot be used with -f or -F"
-msgstr ""
-"voorschriften met variabele nakomende context gaan niet samen met '-f' of '-"
-"F'"
+msgstr "voorschriften met variabele nakomende context gaan niet samen met '-f' of '-F'"
 
 #: main.c:1692
 #, c-format
@@ -569,8 +570,7 @@ msgid ""
 "  -S, --skel=FILE         specify skeleton file\n"
 "  -t, --stdout            write scanner on stdout instead of %s\n"
 "      --yyclass=NAME      name of C++ class\n"
-"      --header-file=FILE   create a C header file in addition to the "
-"scanner\n"
+"      --header-file=FILE   create a C header file in addition to the scanner\n"
 "      --tables-file[=FILE] write tables to FILE\n"
 "\n"
 "Scanner behavior:\n"
@@ -609,10 +609,8 @@ msgstr ""
 "Tabelcompressie:\n"
 "  -Ca, --align      meer geheugen gebruiken voor beter uitgelijnde tabellen\n"
 "  -Ce, --ecs        equivalentieklassen construeren\n"
-"  -Cf               tabellen niet comprimeren; de -f-representatie "
-"gebruiken\n"
-"  -CF               tabellen niet comprimeren; de -F-representatie "
-"gebruiken\n"
+"  -Cf               tabellen niet comprimeren; de -f-representatie gebruiken\n"
+"  -CF               tabellen niet comprimeren; de -F-representatie gebruiken\n"
 "  -Cm, --meta-ecs   meta-equivalentieklassen construeren\n"
 "  -Cr, --read       read() gebruiken in plaats van stdio voor scannerinvoer\n"
 "  -f, --full        een snelle, grote scanner genereren (zelfde als -Cfr)\n"
@@ -623,8 +621,7 @@ msgstr ""
 "  -d, --debug         debugmodus in scanner aanzetten\n"
 "  -b, --backup        terugstap-informatie naar %s schrijven\n"
 "  -p, --perf-report   prestatierapport naar standaardfoutuitvoer schrijven\n"
-"  -s, --nodefault     standaardvoorschrift dat onherkende tekst ECHO-t "
-"uitzetten\n"
+"  -s, --nodefault     standaardvoorschrift dat onherkende tekst ECHO-t uitzetten\n"
 "  -T, --trace         %s uitvoeren in tracemodus\n"
 "  -w, --nowarn        geen waarschuwingen geven\n"
 "  -v, --verbose       scannerstatistieken naar standaarduitvoer schrijven\n"
@@ -632,18 +629,15 @@ msgstr ""
 "Bestanden:\n"
 "  -o, --outfile=BESTAND   dit uitvoerbestand gebruiken\n"
 "  -S, --skel=BESTAND      dit skeletbestand gebruiken\n"
-"  -t, --stdout            scanner naar standaarduitvoer schrijven, niet naar "
-"%s\n"
+"  -t, --stdout            scanner naar standaarduitvoer schrijven, niet naar %s\n"
 "      --yyclass=NAAM      naam van de C++-klasse\n"
-"      --header-file=BESTAND    behalve de scanner ook een C-headerbestand "
-"maken\n"
+"      --header-file=BESTAND    behalve de scanner ook een C-headerbestand maken\n"
 "      --tables-file[=BESTAND]  tabellen schrijven (naar dit BESTAND)\n"
 "\n"
 "Scannergedrag:\n"
 "  -7, --7bit              een 7-bits-scanner genereren\n"
 "  -8, --8bit              een 8-bits-scanner genereren\n"
-"  -B, --batch             een batch-scanner genereren (tegengestelde van -"
-"I)\n"
+"  -B, --batch             een batch-scanner genereren (tegengestelde van -I)\n"
 "  -i, --case-insensitive  hoofd-/kleine letters in patronen negeren\n"
 "  -l, --lex-compat        maximale compatibiliteit met de originele 'lex'\n"
 "  -X, --posix-compat      maximale compatibiliteit met de POSIX 'lex'\n"
@@ -790,9 +784,7 @@ msgstr "iteratiewaarde moet positief zijn"
 #: parse.y:804 parse.y:814
 #, c-format
 msgid "the character range [%c-%c] is ambiguous in a case-insensitive scanner"
-msgstr ""
-"het tekenbereik [%c-%c] is niet eenduidig in een hoofdletterongevoelige "
-"scanner"
+msgstr "het tekenbereik [%c-%c] is niet eenduidig in een hoofdletterongevoelige scanner"
 
 #: parse.y:819
 msgid "negative range in character class"

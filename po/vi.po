@@ -1,16 +1,31 @@
-# Vietnamese translation for Flex.
-# Bản dịch tiếng Việt dành cho flex.
-# Copyright (C) 2014 The Flex Project (msgids)
-# Copyright (C) 2014 Free Software Foundation, Inc.
-# This file is distributed under the same license as the flex package.
-# Clytie Siddall <clytie@riverland.net.au>, 2005-2008.
-# Trần Ngọc Quân <vnwildman@gmail.com>, 2012-2014.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: flex-2.5.38\n"
-"Report-Msgid-Bugs-To: flex-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2014-03-26 15:00-0400\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"PO-Revision-Date: 2016-01-22 13:26-0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#~ # Vietnamese translation for Flex.
+#~ # Bản dịch tiếng Việt dành cho flex.
+#~ # Copyright (C) 2014 The Flex Project (msgids)
+#~ # Copyright (C) 2014 Free Software Foundation, Inc.
+#~ # This file is distributed under the same license as the flex package.
+#~ # Clytie Siddall <clytie@riverland.net.au>, 2005-2008.
+#~ # Trần Ngọc Quân <vnwildman@gmail.com>, 2012-2014.
+#~ #
+#~ msgid ""
+#~ msgstr ""
+#~ "Project-Id-Version: flex-2.5.38\n"
+#~ "Report-Msgid-Bugs-To: flex-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2014-02-11 16:15-0500\n"
 "PO-Revision-Date: 2014-02-14 08:17+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <translation-team-vi@lists.sourceforge.net>\n"
@@ -197,9 +212,7 @@ msgstr "Không thể dùng cờ \"-f\" hoặc \"-F\" với tùy chọn \"-l\""
 
 #: main.c:243
 msgid "Can't use --reentrant or --bison-bridge with -l option"
-msgstr ""
-"Không thể dùng đối số \"--reentrant\" (điều vào lại) hoặc \"--bison-bridge"
-"\" (chiếc cầu bison) với tùy chọn \"-l\""
+msgstr "Không thể dùng đối số \"--reentrant\" (điều vào lại) hoặc \"--bison-bridge\" (chiếc cầu bison) với tùy chọn \"-l\""
 
 #: main.c:275
 msgid "-Cf/-CF and -Cm don't make sense together"
@@ -211,9 +224,7 @@ msgstr "Hai tùy chọn \"-Cf/-CF\" và \"-I\" không tương thích với nhau"
 
 #: main.c:282
 msgid "-Cf/-CF are incompatible with lex-compatibility mode"
-msgstr ""
-"Tùy chọn \"-Cf/-CF\" không tương thích với chế độ \"lex-compatibility"
-"\" (tương thích với lex)"
+msgstr "Tùy chọn \"-Cf/-CF\" không tương thích với chế độ \"lex-compatibility\" (tương thích với lex)"
 
 #: main.c:287
 msgid "-Cf and -CF are mutually exclusive"
@@ -402,8 +413,7 @@ msgstr "  %d/%d (tối đa %d) mục tin nxt-chk (kiểm tra kế tiếp) đã �
 #: main.c:883
 #, c-format
 msgid "  %d/%d (peak %d) template nxt-chk entries created\n"
-msgstr ""
-"  %d/%d (tối đa %d) mục tin biểu mẫu nxt-chk (kiểm tra kế tiếp) đã được tạo\n"
+msgstr "  %d/%d (tối đa %d) mục tin biểu mẫu nxt-chk (kiểm tra kế tiếp) đã được tạo\n"
 
 #: main.c:887
 #, c-format
@@ -477,8 +487,7 @@ msgstr "không thể tạo tập tin thông tin sao lưu %s"
 #: main.c:1519
 #, c-format
 msgid "-l AT&T lex compatibility option entails a large performance penalty\n"
-msgstr ""
-"Tùy chọn kiểu tương thích lex AT&T \"-l\" làm giảm hiệu suất rất nhiều\n"
+msgstr "Tùy chọn kiểu tương thích lex AT&T \"-l\" làm giảm hiệu suất rất nhiều\n"
 
 #: main.c:1522
 #, c-format
@@ -487,12 +496,8 @@ msgstr " thì có lẽ thật gây ra trường hợp giảm hiệu suất khác
 
 #: main.c:1528
 #, c-format
-msgid ""
-"%%option yylineno entails a performance penalty ONLY on rules that can match "
-"newline characters\n"
-msgstr ""
-"%%tùy chọn \"yylineno\" giảm hiệu suất CHỈ với quy tắc khớp với ký tự dòng "
-"mới\n"
+msgid "%%option yylineno entails a performance penalty ONLY on rules that can match newline characters\n"
+msgstr "%%tùy chọn \"yylineno\" giảm hiệu suất CHỈ với quy tắc khớp với ký tự dòng mới\n"
 
 #: main.c:1535
 #, c-format
@@ -521,14 +526,11 @@ msgstr "Không cho phép dùng REJECT (đẩy ra) với tùy chọn \"-f\" hay \
 #: main.c:1566
 #, c-format
 msgid "%option yylineno cannot be used with REJECT"
-msgstr ""
-"Không cho phép dùng %option (tùy chọn) \"yylineno\" với REJECT (đẩy ra)"
+msgstr "Không cho phép dùng %option (tùy chọn) \"yylineno\" với REJECT (đẩy ra)"
 
 #: main.c:1569
 msgid "variable trailing context rules cannot be used with -f or -F"
-msgstr ""
-"không cho phép dùng quy tắc ngữ cảnh theo sau biến với tùy chọn \"-f\" hay "
-"\"-F\""
+msgstr "không cho phép dùng quy tắc ngữ cảnh theo sau biến với tùy chọn \"-f\" hay \"-F\""
 
 #: main.c:1692
 #, c-format
@@ -570,8 +572,7 @@ msgid ""
 "  -S, --skel=FILE         specify skeleton file\n"
 "  -t, --stdout            write scanner on stdout instead of %s\n"
 "      --yyclass=NAME      name of C++ class\n"
-"      --header-file=FILE   create a C header file in addition to the "
-"scanner\n"
+"      --header-file=FILE   create a C header file in addition to the scanner\n"
 "      --tables-file[=FILE] write tables to FILE\n"
 "\n"
 "Scanner behavior:\n"
@@ -608,35 +609,29 @@ msgstr ""
 "Tạo ra chương trình để thực hiện tiến trình khớp mẫu trên văn bản thường.\n"
 "\n"
 "Cách nén bảng:\n"
-"  -Ca, --align      thoả hiệp giữa bảng lớn hơn và độ _canh lề_ bộ nhớ khá "
-"hơn\n"
+"  -Ca, --align      thoả hiệp giữa bảng lớn hơn và độ _canh lề_ bộ nhớ khá hơn\n"
 "  -Ce, --ecs        cấu tạo lớp kiểu tương đương\n"
 "  -Cf               không nén bảng; dùng sự tiêu biểu \"-f\"\n"
 "  -CF               không nén bảng; dùng sự cách tiêu biểu \"-F\"\n"
 "  -Cm, --meta-ecs   cấu tạo lớp kiểu meta tương đương\n"
-"  -Cr, --read       dùng chức năng read() thay thế thiết bị nhập/xuất chuẩn "
-"để nhập bộ quét\n"
+"  -Cr, --read       dùng chức năng read() thay thế thiết bị nhập/xuất chuẩn để nhập bộ quét\n"
 "  -f, --full        tạo ra bộ quét nhanh và lớn; bằng -Cfr (_đầy đủ_)\n"
 "  -F, --fast        dùng sự tiêu biểu bảng xen kẽ; bằng -CFr (_nhanh_)\n"
-"  -Cem              phương pháp nén mặc định; bằng \"--ecs\" \"--meta-ecs"
-"\")\n"
+"  -Cem              phương pháp nén mặc định; bằng \"--ecs\" \"--meta-ecs\")\n"
 "\n"
 "Gỡ lỗi:\n"
 "  -d, --debug             bật chế độ _gỡ lỗi_ trong bộ quét\n"
 "  -b, --backup            ghi thông tin _sao lưu_ vào %s\n"
 "  -p, --perf-report       ghi _thông báo hiệu suất_ vào thiết bị lỗi chuẩn\n"
-"  -s, --nodefault         thu hồi quy tắc _mặc định_ để ECHO (vọng) đoạn "
-"chưa khớp\n"
+"  -s, --nodefault         thu hồi quy tắc _mặc định_ để ECHO (vọng) đoạn chưa khớp\n"
 "  -T, --trace             %s nên chạy trong chế độ theo _dấu vết_\n"
 "  -w, --nowarn            _không_ tạo ra lời _cảnh báo_\n"
-"  -v, --verbose           ghi tóm tắt các thống kê bộ quét vào thiết bị xuất "
-"chuẩn (_chi tiêt_)\n"
+"  -v, --verbose           ghi tóm tắt các thống kê bộ quét vào thiết bị xuất chuẩn (_chi tiêt_)\n"
 "\n"
 "Tập tin:\n"
 "  -o, --outfile=TẬP_TIN   ghi rõ tên _tập tin xuất_\n"
 "  -S, --skel=TẬP_TIN      ghi rõ tập tin _khung sườn_\n"
-"  -t, --stdout            ghi bộ quét ra _thiết bị xuất chuẩn_ thay thế ra "
-"%s\n"
+"  -t, --stdout            ghi bộ quét ra _thiết bị xuất chuẩn_ thay thế ra %s\n"
 "      --yyclass=TÊN       tên của _lớp_ C++\n"
 "      --header-file=TẬP_TIN   tạo _tập tin phần đầu_ C thêm vào bộ quét\n"
 "      --tables-file[=TẬP_TIN] ghi các bảng vào TẬP_TIN này\n"
@@ -653,20 +648,15 @@ msgstr ""
 "\n"
 "Mã đã tạo ra :\n"
 "  -+,  --c++               tạo ra hang bộ quét kiểu C++\n"
-"  -Dmacro[=định_nghĩa]     _định nghĩa_ cho lệnh #define (mặc định là "
-"\"1\")\n"
+"  -Dmacro[=định_nghĩa]     _định nghĩa_ cho lệnh #define (mặc định là \"1\")\n"
 "  -L,  --noline            thu hồi các chỉ thị #line trong bộ quét\n"
 "  -P,  --prefix=CHUỖI      dùng CHUỖI này là _tiền tố_ thay thế \"yy\"\n"
 "  -R,  --reentrant         tạo ra một bộ quét C kiểu _vào lại_\n"
-"       --bison-bridge      bộ quét cho trình phân tách thuần tuý kiểu "
-"bison.\n"
+"       --bison-bridge      bộ quét cho trình phân tách thuần tuý kiểu bison.\n"
 "       --bison-locations   gồm khả năng hỗ trợ yylloc (_địa điểm_).\n"
-"       --stdinit           khởi động yyin/yyout vào thiết bị nhập/xuất "
-"chuẩn\n"
-"       --noansi-definitions _lời định nghĩa_ chức năng kiểu cũ (_không "
-"ANSI_)\n"
-"       --noansi-prototypes danh sách tham số trống trong _khai báo nghi "
-"thức_ (_không ANSI_)\n"
+"       --stdinit           khởi động yyin/yyout vào thiết bị nhập/xuất chuẩn\n"
+"       --noansi-definitions _lời định nghĩa_ chức năng kiểu cũ (_không ANSI_)\n"
+"       --noansi-prototypes danh sách tham số trống trong _khai báo nghi thức_ (_không ANSI_)\n"
 "       --nounistd          _không_ bao gồm <unistd.h>\n"
 "       --noCHỨC_NĂNG       không tạo ra một CHỨC NĂNG cá biệt\n"
 "\n"
@@ -753,8 +743,7 @@ msgstr "Gặp quy tắc ngữ cảnh theo sau biến tại dòng %d\n"
 
 #: nfa.c:364
 msgid "bad state type in mark_beginning_as_normal()"
-msgstr ""
-"kiểu trạng thái sai trong mark_beginning_as_normal() (đánh dấu đầu là thường)"
+msgstr "kiểu trạng thái sai trong mark_beginning_as_normal() (đánh dấu đầu là thường)"
 
 #: nfa.c:609
 #, c-format
@@ -797,9 +786,7 @@ msgstr "giá trị lặp lại phải là số dương"
 #: parse.y:804 parse.y:814
 #, c-format
 msgid "the character range [%c-%c] is ambiguous in a case-insensitive scanner"
-msgstr ""
-"phạm vi ký tự [%c-%c] là chưa rõ ràng trong trường hợp quét bỏ qua chữ HOA/"
-"thường"
+msgstr "phạm vi ký tự [%c-%c] là chưa rõ ràng trong trường hợp quét bỏ qua chữ HOA/thường"
 
 #: parse.y:819
 msgid "negative range in character class"

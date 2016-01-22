@@ -2,14 +2,14 @@
 # Copyright (C) 2007 The Flex Project (msgids)
 # This file is distributed under the same license as the flex package.
 # Johan Linde <jl@theophys.kth.se>, 1996.
-# Keld Simonsen <keld@keldix.com>, 2000-2011.
+# Keld Simonsen <keld@keldix.com>, 2000-2011, 2015.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: flex-2.5.35\n"
+"Project-Id-Version: flex-2.5.38\n"
 "Report-Msgid-Bugs-To: flex-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2014-03-26 15:00-0400\n"
-"PO-Revision-Date: 2011-01-11 09:12+0100\n"
+"POT-Creation-Date: 2014-02-11 16:15-0500\n"
+"PO-Revision-Date: 2016-01-22 13:14-0800\n"
 "Last-Translator: Keld Simonsen <keld@keldix.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -19,19 +19,19 @@ msgstr ""
 
 #: buf.c:78
 msgid "Allocation of buffer to print string failed"
-msgstr ""
+msgstr "Tildeling af buffer til udskrivningsstreng mislykkedes"
 
 #: buf.c:100
 msgid "Allocation of buffer for line directive failed"
-msgstr ""
+msgstr "Tildeling af buffer til linjedirektiv mislykkedes"
 
 #: buf.c:177
 msgid "Allocation of buffer for m4 def failed"
-msgstr ""
+msgstr "Tildeling af buffer til m4 def mislykkedes"
 
 #: buf.c:197
 msgid "Allocation of buffer for m4 undef failed"
-msgstr ""
+msgstr "Tildeling af buffer til m4 undef mislykkedes"
 
 #: dfa.c:61
 #, c-format
@@ -245,7 +245,7 @@ msgstr "kan ikke åbne skabelonfilen %s"
 
 #: main.c:456
 msgid "allocation of macro definition failed"
-msgstr ""
+msgstr "tildeling af makro-definition mislykkedes"
 
 #: main.c:504
 #, c-format
@@ -469,8 +469,7 @@ msgstr "kunne ikke oprette sikkerhedskopi af info-fil %s"
 #: main.c:1519
 #, c-format
 msgid "-l AT&T lex compatibility option entails a large performance penalty\n"
-msgstr ""
-"flaget -l for opførsel som AT&T's lex medfører et væsentligt præstationstab\n"
+msgstr "flaget -l for opførsel som AT&T's lex medfører et væsentligt præstationstab\n"
 
 #: main.c:1522
 #, c-format
@@ -479,12 +478,8 @@ msgstr " og kan være den egentlige årsag til andre rapporter om dette\n"
 
 #: main.c:1528
 #, c-format
-msgid ""
-"%%option yylineno entails a performance penalty ONLY on rules that can match "
-"newline characters\n"
-msgstr ""
-"%%option yylineno medfører et præstationstab KUN på regler der kan matche "
-"nylinje-tegn\n"
+msgid "%%option yylineno entails a performance penalty ONLY on rules that can match newline characters\n"
+msgstr "%%option yylineno medfører et præstationstab KUN på regler der kan matche nylinje-tegn\n"
 
 #: main.c:1535
 #, c-format
@@ -504,9 +499,7 @@ msgstr "REJECT medfører et væsentligt præstationstab\n"
 #: main.c:1551
 #, c-format
 msgid "Variable trailing context rules entail a large performance penalty\n"
-msgstr ""
-"Regler for variabel efterfølgende kontekst medfører et væsentlig "
-"præstationstab\n"
+msgstr "Regler for variabel efterfølgende kontekst medfører et væsentlig præstationstab\n"
 
 #: main.c:1563
 msgid "REJECT cannot be used with -f or -F"
@@ -563,8 +556,7 @@ msgid ""
 "  -S, --skel=FILE         specify skeleton file\n"
 "  -t, --stdout            write scanner on stdout instead of %s\n"
 "      --yyclass=NAME      name of C++ class\n"
-"      --header-file=FILE   create a C header file in addition to the "
-"scanner\n"
+"      --header-file=FILE   create a C header file in addition to the scanner\n"
 "      --tables-file[=FILE] write tables to FILE\n"
 "\n"
 "Scanner behavior:\n"
@@ -601,8 +593,7 @@ msgstr ""
 "Genererer programmer som udfører mønstergenkendelse på tekst.\n"
 "\n"
 "Tabel-kompression: (normalt -Cem)\n"
-"  -Ca, --align      brug bedre hukommelses-tilpasning i stedet for mindre "
-"tabeller\n"
+"  -Ca, --align      brug bedre hukommelses-tilpasning i stedet for mindre tabeller\n"
 "  -Ce, --ecs        konstruér ækvivalensklasser\n"
 "  -Cf               komprimér ikke tabeller; brug -f repræsentation\n"
 "  -CF               komprimér ikke tabeller; brug -F repræsentation\n"
@@ -616,8 +607,7 @@ msgstr ""
 "  -d, --debug             aktivér fejlsøgnings-tilstand i skanneren\n"
 "  -b, --backup            skriv sikkerhedskopi-information til %s\n"
 "  -p, --perf-report       skriv ydelses-rapport på stdfejl\n"
-"  -s, --nodefault         undertryk normal regel om at udskrive tekst der "
-"ikke passede\n"
+"  -s, --nodefault         undertryk normal regel om at udskrive tekst der ikke passede\n"
 "  -T, --trace             %s bør køre i sporings-tilstand\n"
 "  -w, --nowarn            generér ikke advarsler\n"
 "  -v, --verbose           skriv sammendrag af skanner-statistik til stdud\n"
@@ -634,8 +624,7 @@ msgstr ""
 "  -7, --7bit              generér 7-bit-skanner\n"
 "  -8, --8bit              generér 8-bit-skanner\n"
 "  -B, --batch             generér batch-skanner (modsat -I)\n"
-"  -i, --case-insensitive  ignorér forskel på små og store bogstaver i "
-"mønstre\n"
+"  -i, --case-insensitive  ignorér forskel på små og store bogstaver i mønstre\n"
 "  -l, --lex-compat        maksimal kompatibilitet med oprindelig lex\n"
 "  -X, --posix-compat      maksimal kompatibilitet med POSIX lex\n"
 "  -I, --interactive       generér interaktiv skanner (modsat -B)\n"
@@ -664,7 +653,7 @@ msgstr ""
 
 #: misc.c:65
 msgid "allocation of sko_stack failed"
-msgstr ""
+msgstr "tildeling af sko_stack mislykkedes"
 
 #: misc.c:102 misc.c:128
 #, c-format
@@ -810,9 +799,8 @@ msgid "unrecognized '%' directive"
 msgstr "ukendt '%'-direktiv"
 
 #: scan.l:192
-#, fuzzy
 msgid "Definition name too long\n"
-msgstr "For lang inddatalinje\n"
+msgstr "For langt definitionsnavn\n"
 
 #: scan.l:284
 msgid "Unmatched '{'"
@@ -821,16 +809,15 @@ msgstr "Ensomt '{'"
 #: scan.l:300
 #, c-format
 msgid "Definition value for {%s} too long\n"
-msgstr ""
+msgstr "Definitionsværdi for (%s) for langt\n"
 
 #: scan.l:317
 msgid "incomplete name definition"
 msgstr "ufuldstændig navnedefinition"
 
 #: scan.l:443
-#, fuzzy
 msgid "Option line too long\n"
-msgstr "For lang inddatalinje\n"
+msgstr "For lang valgmulighedslinje\n"
 
 #: scan.l:451
 #, c-format
