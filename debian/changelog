@@ -1,3 +1,13 @@
+flex (2.6.0-1) unstable; urgency=low
+
+  * New upstream version  i
+  * Updated Standards version to 3.9.6. No changes needed.
+  * Updated the VCS-Git field of the control file to use HTTPS transport
+  * Updated the copyright file to DEP-5 format.
+  * Reverted to source format 1.0 , and use dgit
+
+ -- Manoj Srivastava <srivasta@debian.org>  Sat, 23 Jan 2016 20:11:32 -0800
+
 flex (2.5.39-8) unstable; urgency=low
 
   * Added a missing build depends on vm-super-minimal, reuired fro
