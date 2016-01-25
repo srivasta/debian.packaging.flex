@@ -1,6 +1,5 @@
-#line 2 "scan.c"
 
-#line 4 "scan.c"
+#line 3 "scan.c"
 
 #define  YY_INT_ALIGNED short int
 

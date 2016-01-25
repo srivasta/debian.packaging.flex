@@ -1106,7 +1106,7 @@ void gentabs (void)
 		out_str_dec (long_align ? get_int32_decl () :
 			     get_int16_decl (), "yy_acclist", MAX (numas,
 								   1) + 1);
-
+        
         buf_prints (&yydmap_buf,
                 "\t{YYTD_ID_ACCLIST, (void**)&yy_acclist, sizeof(%s)},\n",
                 long_align ? "flex_int32_t" : "flex_int16_t");
@@ -1114,7 +1114,7 @@ void gentabs (void)
         yyacclist_tbl = (struct yytbl_data*)calloc(1,sizeof(struct yytbl_data));
         yytbl_data_init (yyacclist_tbl, YYTD_ID_ACCLIST);
         yyacclist_tbl->td_lolen  = MAX(numas,1) + 1;
-        yyacclist_tbl->td_data = yyacclist_data =
+        yyacclist_tbl->td_data = yyacclist_data = 
             (flex_int32_t *) calloc (yyacclist_tbl->td_lolen, sizeof (flex_int32_t));
         yyacclist_curr = 1;
 
@@ -2184,7 +2184,7 @@ void make_tables (void)
 	skelout ();
 
 	/* Copy remainder of input to output. */
-        linenum--;
+
 	line_directive_out (stdout, 1);
 
 	if (sectnum == 3) {
