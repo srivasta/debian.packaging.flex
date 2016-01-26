@@ -1,3 +1,10 @@
+flex (2.6.0-3) unstable; urgency=low
+
+  * Revert the help2man fix; it was creating errors in the diff.gz
+    file. We are now back to being mostly in sync with upstream.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Mon, 25 Jan 2016 18:12:03 -0800
+
 flex (2.6.0-2) unstable; urgency=low
 
   * Revert "[fix-off-by-one-error]: generatred line numbers are off by
