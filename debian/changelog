@@ -1,3 +1,11 @@
+flex (2.6.0-2) unstable; urgency=low
+
+  * Revert "[fix-off-by-one-error]: generatred line numbers are off by
+    one". This brings us in line with upstream; and our fix was not
+    working anyway. Unfortunately, this still does not resolve #729927.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Mon, 25 Jan 2016 16:40:12 -0800
+
 flex (2.6.0-1) unstable; urgency=low
 
   * New upstream version  i
