@@ -51,6 +51,12 @@ AC_PROG_INSTALL
 
 AC_PATH_PROG(BISON, bison,bison)
 AC_PATH_PROG(HELP2MAN, help2man, help2man)
+if test "$cross_compiling" = yes; then
+FLEXexe='flex$(EXEEXT)'
+else
+FLEXexe='$(top_builddir)/flex$(EXEEXT)'
+fi
+AC_SUBST(FLEXexe)
 
 # Check for a m4 that supports -P
 
