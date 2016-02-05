@@ -17,7 +17,6 @@ Depends: ${shlibs:Depends}, m4, libfl-dev (= ${binary:Version}),
          dpkg (>= 1.15.4) |  install-info, ${misc:Depends}
 Recommends: gcc | c-compiler
 Suggests: bison, build-essential
-Multi-Arch: foreign
 Description: fast lexical analyzer generator
  Flex is a tool for generating scanners: programs which recognized lexical
  patterns in text. It reads the given input files for a description of a
@@ -47,7 +46,6 @@ Description: Documentation for flex (a fast lexical analyzer generator)
 Package: libfl-dev
 Section: libdevel
 Architecture: any
-Multi-Arch: same
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Replaces: flex (<< 2.5.39), flex-old (<= 2.5.4a-10)
 Breaks: flex (<< 2.5.39), flex-old (<= 2.5.4a-10)

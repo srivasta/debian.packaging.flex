@@ -1,5 +1,19 @@
-flex (2.6.0-3) unstable; urgency=low
+flex (2.6.0-4) unstable; urgency=low
+  * Bug fix: "C++ style comment in C output", thanks to Tim Rühsen
+    There is a fix uploaded to deferred by Salvatore Bonaccorso
+    <carnil@debian.org>. I am uploading this fix instead, since this
+    variant has the same fix applied by a signed cherry pick from
+    upstream, which will make the upgrade to the next version somewhat
+    simpler.  (Closes: #813256).
+  * Bug fix: "wrongly declares Multi-Arch:foreign", thanks to Helmut
+    Grohne. While we discuss the correct solution for this, I have removed
+    the MA package tags. I am not quite happy with the proposed solution
+    (swapping names of the packages seems icky, but I'll defer to the
+    experts if there is no better way)   (Closes: #761449).
 
+ -- Manoj Srivastava <srivasta@debian.org>  Fri, 05 Feb 2016 15:41:03 -0800
+
+flex (2.6.0-3) unstable; urgency=high
   * Revert the help2man fix; it was creating errors in the diff.gz
     file. We are now back to being mostly in sync with upstream.
 
