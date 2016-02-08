@@ -1,3 +1,12 @@
+flex (2.6.0-5) experimental; urgency=low
+
+  * First cut at correcting multi-arch support. flex is MA: foreign, and
+    libfl-dev is MA: same. flex no longer automatically pulls in
+    libfl-dev, so at the very least packages using C++ lexers will need to
+    pull in libfl-dev in build depends.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Mon, 08 Feb 2016 08:26:24 -0800
+
 flex (2.6.0-4) unstable; urgency=low
   * Bug fix: "C++ style comment in C output", thanks to Tim Rühsen
     There is a fix uploaded to deferred by Salvatore Bonaccorso

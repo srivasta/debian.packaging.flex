@@ -1,3 +1,14 @@
+flex (2.6.0-5) experimental; urgency=low
+
+ Flex no longer automatically pulls in libfl-dev, so at the very least
+ packages using C++ lexers will need to pull in libfl-dev in build
+ depends. libfl-dev is now demoted to a suggestion. This will impact
+ compilation where there was an implicit dependency on the C++ header
+ files provided by libfl-dev; please install libfl-dev explicitly if that
+ is the case.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Mon, 08 Feb 2016 08:27:57 -0800
+
 flex (2.5.33-7) unstable; urgency=low
 
    This version of Flex is a major upgrade from previous versions. There
@@ -33,8 +44,8 @@ flex (2.5.33-7) unstable; urgency=low
    behaviour, and the scanners require conforming implementations when
    flex is used in ANSI C mode. Flex has broken backwards
    compatibility. This is not a bug, but done deliberately, by
-   design. 
- 
+   design.
+
    The package flex-old provides the same behaviour as version 2.5.4a of
    Flex.
 
@@ -42,4 +53,3 @@ flex (2.5.33-7) unstable; urgency=low
    before continuing with its upgrade.
 
  -- Manoj Srivastava <srivasta@debian.org>  Fri, 31 Oct 2003 21:53:16 -0600
-

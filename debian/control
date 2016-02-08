@@ -12,11 +12,11 @@ Standards-Version: 3.9.6
 
 Package: flex
 Architecture: any
+Multi-Arch: foreign
 Pre-Depends: debconf | debconf-2.0
-Depends: ${shlibs:Depends}, m4, libfl-dev (= ${binary:Version}),
-         dpkg (>= 1.15.4) |  install-info, ${misc:Depends}
+Depends: ${shlibs:Depends}, m4, dpkg (>= 1.15.4) |  install-info, ${misc:Depends}
 Recommends: gcc | c-compiler
-Suggests: bison, build-essential
+Suggests: bison, build-essential, libfl-dev
 Description: fast lexical analyzer generator
  Flex is a tool for generating scanners: programs which recognized lexical
  patterns in text. It reads the given input files for a description of a
@@ -47,6 +47,8 @@ Package: libfl-dev
 Section: libdevel
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Multi-Arch: same
+Recommends: flex (= ${binary:Version})
 Replaces: flex (<< 2.5.39), flex-old (<= 2.5.4a-10)
 Breaks: flex (<< 2.5.39), flex-old (<= 2.5.4a-10)
 Description: static library for flex (a fast lexical analyzer generator)
@@ -59,4 +61,5 @@ Description: static library for flex (a fast lexical analyzer generator)
  executable is run, it analyzes its input for occurrences of the regular
  expressions. Whenever it finds one, it executes the corresponding C code.
  .
- This package contains the static library for flex.
+ This package contains the static library for flex, and the header files
+ for C++ lexers.
