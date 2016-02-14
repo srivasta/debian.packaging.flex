@@ -1,3 +1,16 @@
+flex (2.6.0-7) unstable; urgency=low
+
+  * Bug fix: "C++ style comment in C output", thanks to Tim Rühsen
+    So, when we applied the upstream patch, it only fixed the skeleton
+    file, flex.skl, and not the generated files skel.c and scan.c;. Added
+    a feature branch that fixes the generated files, the need for this
+    will go away with the next upstream release. I hope. For what it is
+    worth, the diff in upstream seems to be the same one that was in the
+    NMU; and I have no explanations for why the -6 would behave diferently
+    from the NMU. (Closes: #813256).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Sat, 13 Feb 2016 19:21:11 -0800
+
 flex (2.6.0-6) unstable; urgency=low
 
   * Back out the changes made to the experimental branch
