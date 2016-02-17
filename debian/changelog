@@ -1,3 +1,12 @@
+flex (2.6.0-8) unstable; urgency=low
+
+  * Bug fix: "flex FTCBFS: runs tests even when DEB_BUILD_OPTIONS contains
+    nocheck", thanks to Helmut Grohne. Added an AM_CONDITIONAL that tests
+    DEB_BUILD_OPTIONS in configure.ac, and use that in
+    tests/Makefile.am. Seems to work fine. (Closes: #812659).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Tue, 16 Feb 2016 21:32:42 -0800
+
 flex (2.6.0-7) unstable; urgency=low
 
   * Bug fix: "C++ style comment in C output", thanks to Tim Rühsen

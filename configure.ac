@@ -112,6 +112,9 @@ AC_FUNC_MALLOC
 AC_FUNC_REALLOC
 AC_CHECK_FUNCS([dup2 isascii memset pow regcomp setlocale strchr strtol])
 
+# are we ignoring tests
+AM_CONDITIONAL([SKIP_TEST], [ "$(echo $DEB_BUILD_OPTIONS | grep nocheck)" ])
+
 AC_CONFIG_FILES(
 Makefile
 doc/Makefile
