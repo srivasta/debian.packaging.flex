@@ -4,8 +4,11 @@ flex (2.6.0-8) unstable; urgency=low
     nocheck", thanks to Helmut Grohne. Added an AM_CONDITIONAL that tests
     DEB_BUILD_OPTIONS in configure.ac, and use that in
     tests/Makefile.am. Seems to work fine. (Closes: #812659).
+  * Bug fix: "runs host arch binaries during build via help2man", thanks
+    to Helmut Grohne. The change from the previous patch is that the flex
+    binary now is created in ./src/  (Closes: #762180).
 
- -- Manoj Srivastava <srivasta@debian.org>  Tue, 16 Feb 2016 21:32:42 -0800
+ -- Manoj Srivastava <srivasta@debian.org>  Tue, 16 Feb 2016 21:55:51 -0800
 
 flex (2.6.0-7) unstable; urgency=low
 
