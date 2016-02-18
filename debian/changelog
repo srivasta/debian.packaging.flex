@@ -1,3 +1,14 @@
+flex (2.6.0-9) unstable; urgency=low
+
+  * Updated standards version to 3.9.7. No changes needed.
+  * Bug fix: "[src:flex] FTCBFS: runs host arch binaries during build",
+    thanks to Helmut Grohne. Make the tests use either the installed flex
+    or the newly built flex to generate test soureces, depending on
+    whether or not we are cross compiling. Also added a build depends flex <cross>
+    Hope this works. This has not broken the common case. (Closes: #762180).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Thu, 18 Feb 2016 12:26:17 -0800
+
 flex (2.6.0-8) unstable; urgency=low
 
   * Bug fix: "flex FTCBFS: runs tests even when DEB_BUILD_OPTIONS contains
