@@ -36,13 +36,13 @@
 /* Take note: The buffer object is sometimes used as a String buffer (one
  * continuous string), and sometimes used as a list of strings, usually line by
  * line.
- * 
+ *
  * The type is specified in buf_init by the elt_size. If the elt_size is
  * sizeof(char), then the buffer should be treated as string buffer. If the
  * elt_size is sizeof(char*), then the buffer should be treated as a list of
  * strings.
  *
- * Certain functions are only appropriate for one type or the other. 
+ * Certain functions are only appropriate for one type or the other.
  */
 
 /* global buffers. */
@@ -93,10 +93,14 @@ struct Buf *buf_linedir (struct Buf *buf, const char* filename, int lineno)
     char *dst, *t;
     const char *src;
 
-    t = flex_alloc (strlen ("#line \"\"\n")          +   /* constant parts */
-                    2 * strlen (filename)            +   /* filename with possibly all backslashes escaped */
-                    (int) (1 + log10 (abs (lineno))) +   /* line number */
-                    1);                                  /* NUL */
+    if (gen_line_dirs)
+	return buf;
+
+    tsz = strlen("#line \"\"\n")                +   /* constant parts */
+               2 * strlen (filename)            +   /* filename with possibly all backslashes escaped */
+               (int) (1 + log10 (abs (lineno))) +   /* line number */
+               1;                                   /* NUL */
+    t = malloc(tsz);
     if (!t)
       flexfatal (_("Allocation of buffer for line directive failed"));
     for (dst = t + sprintf (t, "#line %d \"", lineno), src = filename; *src; *dst++ = *src++)
