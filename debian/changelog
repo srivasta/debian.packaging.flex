@@ -3,8 +3,10 @@ flex (2.6.0-10) unstable; urgency=low
   * Cherry pick fix from upstream.
   * Bug fix: "%option noline generates and error message", thanks to
     Arthur Schwarz (Closes: #729693).
+  * Bug fix: "flex --noline outputs a #line directive", thanks to Arthur
+    Schwarz (Closes: #729927).
 
- -- Manoj Srivastava <srivasta@debian.org>  Wed, 24 Feb 2016 14:48:38 -0800
+ -- Manoj Srivastava <srivasta@debian.org>  Wed, 24 Feb 2016 14:56:50 -0800
 
 flex (2.6.0-9) unstable; urgency=low
 
