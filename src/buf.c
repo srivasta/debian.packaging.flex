@@ -92,6 +92,7 @@ struct Buf *buf_linedir (struct Buf *buf, const char* filename, int lineno)
 {
     char *dst, *t;
     const char *src;
+    size_t tsz;
 
     if (gen_line_dirs)
 	return buf;
