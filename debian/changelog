@@ -3,8 +3,12 @@ flex (2.6.0-11) unstable; urgency=low
   * Cherry pick fix from upstream.
   * Bug fix: "n_alloc has wrong value in buf_append function", thanks to
     Howard Gong (Closes: #761250).
+  * Bug fix: "Type of yy_n_chars changed to yy_size_t by authors cause bug
+    in YY_INPUT macro where result argument is tested if &lt; 0; thanks to
+    gcc&#39;s -Werror=type-limits", thanks to Michal Fita (Closes:
+    #770161).
 
- -- Manoj Srivastava <srivasta@debian.org>  Wed, 24 Feb 2016 17:15:08 -0800
+ -- Manoj Srivastava <srivasta@debian.org>  Wed, 24 Feb 2016 17:43:41 -0800
 
 flex (2.6.0-10) unstable; urgency=low
 
