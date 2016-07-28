@@ -90,8 +90,8 @@ int yytbl_hdr_init (struct yytbl_hdr *th, const char *version_str,
 	th->th_hsize += yypad64 (th->th_hsize);
 	th->th_ssize = 0;	// Not known at this point.
 	th->th_flags = 0;
-	th->th_version = copy_string (version_str);
-	th->th_name = copy_string (name);
+	th->th_version = xstrdup(version_str);
+	th->th_name = xstrdup(name);
 	return 0;
 }
 
@@ -115,8 +115,7 @@ int yytbl_data_init (struct yytbl_data *td, enum yytbl_id id)
  */
 int yytbl_data_destroy (struct yytbl_data *td)
 {
-	if (td->td_data)
-		free (td->td_data);
+	free(td->td_data);
 	td->td_data = 0;
 	free (td);
 	return 0;
@@ -159,12 +158,12 @@ int yytbl_hdr_fwrite (struct yytbl_writer *wr, const struct yytbl_hdr *th)
 		flex_die (_("th_ssize|th_flags write failed"));
 	bwritten += 6;
 
-	sz = strlen (th->th_version) + 1;
+	sz = (int) strlen (th->th_version) + 1;
 	if ((rv = yytbl_writen (wr, th->th_version, sz)) != sz)
 		flex_die (_("th_version writen failed"));
 	bwritten += rv;
 
-	sz = strlen (th->th_name) + 1;
+	sz = (int) strlen (th->th_name) + 1;
 	if ((rv = yytbl_writen (wr, th->th_name, sz)) != sz)
 		flex_die (_("th_name writen failed"));
 	bwritten += rv;
@@ -482,7 +481,7 @@ void yytbl_data_compress (struct yytbl_data *tbl)
 	}
 
 	total_len = yytbl_calc_total_len (tbl);
-	newtbl.td_data = calloc (total_len, newsz);
+	newtbl.td_data = calloc ((size_t) total_len, newsz);
 	newtbl.td_flags =
 		TFLAGS_CLRDATA (newtbl.td_flags) | BYTES2TFLAG (newsz);
 

@@ -1,39 +1,47 @@
 AM_YFLAGS = -d
 localedir = $(datadir)/locale
 AM_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\" -I$(top_srcdir)/intl
-LIBS = @LIBINTL@ @LIBS@
+LIBS = @LIBS@
 
 m4 = @M4@
 
 bin_PROGRAMS = flex
+noinst_PROGRAMS = stage1flex
 lib_LTLIBRARIES = \
 	libfl.la \
 	libfl_pic.la
 
+stage1flex_SOURCES = \
+	scan.l \
+	$(COMMON_SOURCES)
+
 flex_SOURCES = \
+	stage1scan.l \
+	$(COMMON_SOURCES)
+
+COMMON_SOURCES = \
+	buf.c \
 	ccl.c \
 	dfa.c \
 	ecs.c \
-	scanflags.c \
+	filter.c \
 	gen.c \
 	main.c \
 	misc.c \
 	nfa.c \
+	options.c \
 	parse.y \
-	scan.l \
+	regex.c \
+	scanflags.c \
+	scanopt.c \
 	skel.c \
 	sym.c \
-	tblcmp.c \
-	yylex.c \
-	options.c \
-	scanopt.c \
-	buf.c \
 	tables.c \
 	tables_shared.c \
-	filter.c \
-	regex.c
+	tblcmp.c \
+	yylex.c
 
-LDADD = ../lib/libcompat.la
+LDADD = ../lib/libcompat.la @LIBINTL@
 
 libfl_la_SOURCES = \
 	libmain.c \
@@ -64,13 +72,25 @@ EXTRA_DIST = \
 	mkskel.sh \
 	gettext.h
 
-BUILT_SOURCES = \
-	skel.c
+DISTCLEANFILES = stage1scan.c
 
 MAINTAINERCLEANFILES = skel.c
 
-skel.c: flex.skl mkskel.sh flexint.h tables_shared.h
-	sed 's/m4_/m4postproc_/g; s/m4preproc_/m4_/g' $(srcdir)/flex.skl | $(m4) -P -DFLEX_MAJOR_VERSION=`echo $(VERSION)|cut -f 1 -d .` -DFLEX_MINOR_VERSION=`echo $(VERSION)|cut -f 2 -d .` -DFLEX_SUBMINOR_VERSION=`echo $(VERSION)|cut -f 3 -d .` | sed 's/m4postproc_/m4_/g' | $(SHELL) $(srcdir)/mkskel.sh  >skel.c
+$(srcdir)/skel.c: flex.skl mkskel.sh flexint.h tables_shared.h
+	sed 's/m4_/m4postproc_/g; s/m4preproc_/m4_/g' $(srcdir)/flex.skl | \
+	  $(m4) -P -I $(srcdir)						   \
+	    -DFLEX_MAJOR_VERSION=`   echo $(VERSION)|cut -f 1 -d .`	   \
+	    -DFLEX_MINOR_VERSION=`   echo $(VERSION)|cut -f 2 -d .`	   \
+	    -DFLEX_SUBMINOR_VERSION=`echo $(VERSION)|cut -f 3 -d .` |	   \
+	  sed 's/m4postproc_/m4_/g' |					   \
+	  $(SHELL) $(srcdir)/mkskel.sh >skel.c.tmp
+	mv skel.c.tmp $(srcdir)/skel.c
+
+stage1scan.l: scan.l
+	cp $(srcdir)/scan.l $(srcdir)/stage1scan.l
+
+stage1scan.c: stage1scan.l stage1flex$(EXEEXT)
+	$(top_builddir)/src/stage1flex$(EXEEXT) -o $@ $<
 
 # Explicitly describe dependencies.
 # You can recreate this with `gcc -I. -MM *.c'
