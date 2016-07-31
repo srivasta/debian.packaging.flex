@@ -1,3 +1,13 @@
+flex (2.6.1-1) unstable; urgency=low
+
+  * New upstream version. The development of flex ias transitionaing to
+    github; updated the watch file.
+  * Bug fix: "CVE-2016-6354: buffer overflow in generated code
+    (yy_get_next_buffer)", thanks to Salvatore Bonaccorso. The latest
+    upstream has this bug fixed.  (Closes: #832768).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Fri, 29 Jul 2016 18:07:24 -0700
+
 flex (2.6.0-11) unstable; urgency=low
 
   * Cherry pick fix from upstream.
