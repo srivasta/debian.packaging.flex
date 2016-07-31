@@ -188,13 +188,13 @@ extern int yydebug;
     NAME = 263,
     PREVCCL = 264,
     EOF_OP = 265,
-    OPTION_OP = 266,
-    OPT_OUTFILE = 267,
-    OPT_PREFIX = 268,
-    OPT_YYCLASS = 269,
-    OPT_HEADER = 270,
-    OPT_EXTRA_TYPE = 271,
-    OPT_TABLES = 272,
+    TOK_OPTION = 266,
+    TOK_OUTFILE = 267,
+    TOK_PREFIX = 268,
+    TOK_YYCLASS = 269,
+    TOK_HEADER_FILE = 270,
+    TOK_EXTRA_TYPE = 271,
+    TOK_TABLES_FILE = 272,
     CCE_ALNUM = 273,
     CCE_ALPHA = 274,
     CCE_BLANK = 275,
@@ -236,13 +236,13 @@ extern int yydebug;
 #define NAME 263
 #define PREVCCL 264
 #define EOF_OP 265
-#define OPTION_OP 266
-#define OPT_OUTFILE 267
-#define OPT_PREFIX 268
-#define OPT_YYCLASS 269
-#define OPT_HEADER 270
-#define OPT_EXTRA_TYPE 271
-#define OPT_TABLES 272
+#define TOK_OPTION 266
+#define TOK_OUTFILE 267
+#define TOK_PREFIX 268
+#define TOK_YYCLASS 269
+#define TOK_HEADER_FILE 270
+#define TOK_EXTRA_TYPE 271
+#define TOK_TABLES_FILE 272
 #define CCE_ALNUM 273
 #define CCE_ALPHA 274
 #define CCE_BLANK 275
@@ -611,9 +611,9 @@ static const yytype_uint16 yyrline[] =
 static const char *const yytname[] =
 {
   "$end", "error", "$undefined", "CHAR", "NUMBER", "SECTEND", "SCDECL",
-  "XSCDECL", "NAME", "PREVCCL", "EOF_OP", "OPTION_OP", "OPT_OUTFILE",
-  "OPT_PREFIX", "OPT_YYCLASS", "OPT_HEADER", "OPT_EXTRA_TYPE",
-  "OPT_TABLES", "CCE_ALNUM", "CCE_ALPHA", "CCE_BLANK", "CCE_CNTRL",
+  "XSCDECL", "NAME", "PREVCCL", "EOF_OP", "TOK_OPTION", "TOK_OUTFILE",
+  "TOK_PREFIX", "TOK_YYCLASS", "TOK_HEADER_FILE", "TOK_EXTRA_TYPE",
+  "TOK_TABLES_FILE", "CCE_ALNUM", "CCE_ALPHA", "CCE_BLANK", "CCE_CNTRL",
   "CCE_DIGIT", "CCE_GRAPH", "CCE_LOWER", "CCE_PRINT", "CCE_PUNCT",
   "CCE_SPACE", "CCE_UPPER", "CCE_XDIGIT", "CCE_NEG_ALNUM", "CCE_NEG_ALPHA",
   "CCE_NEG_BLANK", "CCE_NEG_CNTRL", "CCE_NEG_DIGIT", "CCE_NEG_GRAPH",
@@ -1570,7 +1570,7 @@ yyreduce:
   case 17:
 #line 195 "parse.y" /* yacc.c:1646  */
     {
-			outfilename = copy_string( nmstr );
+			outfilename = xstrdup(nmstr);
 			did_outfilename = 1;
 			}
 #line 1577 "parse.c" /* yacc.c:1646  */
@@ -1578,31 +1578,31 @@ yyreduce:
 
   case 18:
 #line 200 "parse.y" /* yacc.c:1646  */
-    { extra_type = copy_string( nmstr ); }
+    { extra_type = xstrdup(nmstr); }
 #line 1583 "parse.c" /* yacc.c:1646  */
     break;
 
   case 19:
 #line 202 "parse.y" /* yacc.c:1646  */
-    { prefix = copy_string( nmstr ); }
+    { prefix = xstrdup(nmstr); }
 #line 1589 "parse.c" /* yacc.c:1646  */
     break;
 
   case 20:
 #line 204 "parse.y" /* yacc.c:1646  */
-    { yyclass = copy_string( nmstr ); }
+    { yyclass = xstrdup(nmstr); }
 #line 1595 "parse.c" /* yacc.c:1646  */
     break;
 
   case 21:
 #line 206 "parse.y" /* yacc.c:1646  */
-    { headerfilename = copy_string( nmstr ); }
+    { headerfilename = xstrdup(nmstr); }
 #line 1601 "parse.c" /* yacc.c:1646  */
     break;
 
   case 22:
 #line 208 "parse.y" /* yacc.c:1646  */
-    { tablesext = true; tablesfilename = copy_string( nmstr ); }
+    { tablesext = true; tablesfilename = xstrdup(nmstr); }
 #line 1607 "parse.c" /* yacc.c:1646  */
     break;
 
@@ -2202,7 +2202,7 @@ yyreduce:
     {
 				/* Sort characters for fast searching.
 				 */
-				qsort( ccltbl + cclmap[(yyvsp[0])], ccllen[(yyvsp[0])], sizeof (*ccltbl), cclcmp );
+				qsort( ccltbl + cclmap[(yyvsp[0])], (size_t) ccllen[(yyvsp[0])], sizeof (*ccltbl), cclcmp );
 
 			if ( useecs )
 				mkeccl( ccltbl + cclmap[(yyvsp[0])], ccllen[(yyvsp[0])],
@@ -2814,7 +2814,7 @@ yyreturn:
  *                    conditions
  */
 
-void build_eof_action()
+void build_eof_action(void)
 	{
 	int i;
 	char action_text[MAXLINE];
@@ -2839,7 +2839,7 @@ void build_eof_action()
 			}
 		}
 
-	line_directive_out( (FILE *) 0, 1 );
+	line_directive_out(NULL, 1);
 
 	/* This isn't a normal rule after all - don't count it as
 	 * such, so we don't have any holes in the rule numbering
@@ -2853,8 +2853,7 @@ void build_eof_action()
 
 /* format_synerr - write out formatted syntax error */
 
-void format_synerr( msg, arg )
-const char *msg, arg[];
+void format_synerr( const char *msg, const char arg[] )
 	{
 	char errmsg[MAXLINE];
 
@@ -2865,8 +2864,7 @@ const char *msg, arg[];
 
 /* synerr - report a syntax error */
 
-void synerr( str )
-const char *str;
+void synerr( const char *str )
 	{
 	syntaxerror = true;
 	pinpoint_message( str );
@@ -2875,8 +2873,7 @@ const char *str;
 
 /* format_warn - write out formatted warning */
 
-void format_warn( msg, arg )
-const char *msg, arg[];
+void format_warn( const char *msg, const char arg[] )
 	{
 	char warn_msg[MAXLINE];
 
@@ -2887,8 +2884,7 @@ const char *msg, arg[];
 
 /* warn - report a warning, unless -w was given */
 
-void warn( str )
-const char *str;
+void warn( const char *str )
 	{
 	line_warning( str, linenum );
 	}
@@ -2897,8 +2893,7 @@ const char *str;
  *			     pinpointing its location
  */
 
-void format_pinpoint_message( msg, arg )
-const char *msg, arg[];
+void format_pinpoint_message( const char *msg, const char arg[] )
 	{
 	char errmsg[MAXLINE];
 
@@ -2909,8 +2904,7 @@ const char *msg, arg[];
 
 /* pinpoint_message - write out a message, pinpointing its location */
 
-void pinpoint_message( str )
-const char *str;
+void pinpoint_message( const char *str )
 	{
 	line_pinpoint( str, linenum );
 	}
@@ -2918,9 +2912,7 @@ const char *str;
 
 /* line_warning - report a warning at a given line, unless -w was given */
 
-void line_warning( str, line )
-const char *str;
-int line;
+void line_warning( const char *str, int line )
 	{
 	char warning[MAXLINE];
 
@@ -2934,9 +2926,7 @@ int line;
 
 /* line_pinpoint - write out a message, pinpointing it at the given line */
 
-void line_pinpoint( str, line )
-const char *str;
-int line;
+void line_pinpoint( const char *str, int line )
 	{
 	fprintf( stderr, "%s:%d: %s\n", infilename, line, str );
 	}
@@ -2946,8 +2936,7 @@ int line;
  *	     currently, messages are ignore
  */
 
-void yyerror( msg )
-const char *msg;
+void yyerror( const char *msg )
 	{
 		(void)msg;
 	}
