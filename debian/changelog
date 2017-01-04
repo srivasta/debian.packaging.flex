@@ -1,3 +1,32 @@
+flex (2.6.1-1.3) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix FTBFS on hurd (upstream 7975c43384d766ca12cb3f292754dbdc34168886).
+    (Closes: 838133).
+
+ -- Christoph Berg <myon@debian.org>  Wed, 04 Jan 2017 19:53:51 +0100
+
+flex (2.6.1-1.2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Cherry-pick 1da19feba7c957e0f0af0c3eeadc29e8c82b0ca3,
+    cf4121fa97abac8aeaa5e08b8fc0b2380228494e and
+    8c098febc9a599397921e9b6938b7fb85e38cc7e from upstream to fix comparison
+    between signed and unsigned integer expressions in generated lexer
+    (Closes: #835542).
+  * Fix distribution in last upload's NEWS.Debian.
+
+ -- Christoph Berg <myon@debian.org>  Fri, 30 Dec 2016 20:29:41 +0100
+
+flex (2.6.1-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Demote flex dependency on libfl-dev to Recommends.
+  * Have libfl-dev depend on flex to enforce the same-version constraint.
+  * Annotate flex Multi-Arch: foreign again (Closes: #840080).
+
+ -- Helmut Grohne <helmut@subdivi.de>  Thu, 24 Nov 2016 07:34:27 +0100
+
 flex (2.6.1-1) unstable; urgency=low
 
   * New upstream version. The development of flex ias transitionaing to
