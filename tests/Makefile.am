@@ -19,7 +19,11 @@
 # WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
 # PURPOSE.
 
-TESTS = $(check_PROGRAMS) options.cn
+if SKIP_TEST
+    TESTS = options.cn
+else !SKIP_TEST
+    TESTS = $(check_PROGRAMS) options.cn
+endif !SKIP_TEST
 
 # The script testwrapper.sh will run most tests as is. A couple tests
 # in the suite end in .reject, .table and the like so that we can pass
@@ -333,7 +337,7 @@ pthread_pthread_LDADD = -lpthread
 
 # specify how to process .l files in order to test the flex built by make all
 
-FLEX = $(top_builddir)/src/flex
+FLEX = $(FLEXexe)
 
 .l.c: $(FLEX)
 	$(FLEX) -o $@ $<

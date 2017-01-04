@@ -26,5 +26,5 @@ $(dist_man_MANS): $(top_srcdir)/configure.ac $(top_srcdir)/src/flex.skl $(top_sr
 	for i in $(dist_man_MANS) ; do \
 	$(help2man) --name='$(PACKAGE_NAME)' \
 	--section=`echo $$i | sed -e 's/.*\.\([^.]*\)$$/\1/'` \
-	 $(top_srcdir)/src/flex$(EXEEXT) > $$i || rm -f $$i ; \
+	 $(FLEXexe) > $$i || rm -f $$i ; \
 	done

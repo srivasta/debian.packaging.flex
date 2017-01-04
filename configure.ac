@@ -64,6 +64,13 @@ AC_PATH_PROGS([TEXI2DVI], [gtexi2dvi texi2dvi], [\${top_srcdir}/build-aux/missin
     AC_MSG_WARN(texi2dvi: program not found: building pdf version of manual will not work)
   )
 
+if test "$cross_compiling" = yes; then
+FLEXexe='flex$(EXEEXT)'
+else
+FLEXexe='$(top_builddir)/src/flex$(EXEEXT)'
+fi
+AC_SUBST(FLEXexe)
+
 # Check for a m4 that supports -P
 
 AC_CACHE_CHECK([for m4 that supports -P], [ac_cv_path_M4],
@@ -131,6 +138,9 @@ strdup dnl
 strtol)
 
 AC_REPLACE_FUNCS(reallocarray)
+
+# are we ignoring tests
+AM_CONDITIONAL([SKIP_TEST], [ "$(echo $DEB_BUILD_OPTIONS | grep nocheck)" ])
 
 AC_CONFIG_FILES(
 Makefile
