@@ -463,14 +463,9 @@ void ntod (void)
 			/* We still may want to use the table if numecs
 			 * is a power of 2.
 			 */
-			int     power_of_two;
-
-			for (power_of_two = 1; power_of_two <= csize;
-			     power_of_two *= 2)
-				if (numecs == power_of_two) {
-					use_NUL_table = true;
-					break;
-				}
+			if (numecs <= csize && is_power_of_2(numecs)) {
+				use_NUL_table = true;
+			}
 		}
 
 		if (use_NUL_table)
@@ -515,7 +510,7 @@ void ntod (void)
      
 		yytbl_data_init (yynxt_tbl, YYTD_ID_NXT);
 		yynxt_tbl->td_hilen = 1;
-		yynxt_tbl->td_lolen = num_full_table_rows;
+		yynxt_tbl->td_lolen = (flex_uint32_t) num_full_table_rows;
 		yynxt_tbl->td_data = yynxt_data =
 			calloc(yynxt_tbl->td_lolen *
 					    yynxt_tbl->td_hilen,
@@ -531,12 +526,12 @@ void ntod (void)
 		 */
 		if (gentables)
 			out_str_dec
-				("static yyconst %s yy_nxt[][%d] =\n    {\n",
+				("static const %s yy_nxt[][%d] =\n    {\n",
 				 long_align ? "flex_int32_t" : "flex_int16_t",
 				 num_full_table_rows);
 		else {
 			out_dec ("#undef YY_NXT_LOLEN\n#define YY_NXT_LOLEN (%d)\n", num_full_table_rows);
-			out_str ("static yyconst %s *yy_nxt =0;\n",
+			out_str ("static const %s *yy_nxt =0;\n",
 				 long_align ? "flex_int32_t" : "flex_int16_t");
 		}
 

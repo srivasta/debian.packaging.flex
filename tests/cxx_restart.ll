@@ -21,49 +21,31 @@
  * PURPOSE.
  */
 
-/* A reentrant scanner.
-   This file will not compile under flex version <= 2.5.4.
-   Sample Input:
-       # this is a comment
-       foo = true
-       bar = "string value"
-       integer = 43
-*/
 %{
+
 #include "config.h"
+
 %}
 
-%option prefix="test"
-%option nounput noyywrap noyylineno warn nodefault noinput
-%option reentrant
-%option noansi-definitions noansi-prototypes
+%option 8bit prefix="test"
+%option warn c++
+%option nounput nomain noinput noyywrap 
 
-IDENT [[:alnum:]_-]
-WS    [[:blank:]]
 %%
 
-^{IDENT}+{WS}*={WS}*(true|false){WS}*\r?\n    { return 100;}
-^{IDENT}+{WS}*={WS}*\"[^\"\n\r]*\"{WS}*\r?\n  { return 101;}
-^{IDENT}+{WS}*={WS}*[[:digit:]]+{WS}*\r?\n    { return 102;}
-^{WS}*#.*\r?\n     { }
-^{WS}*\r?\n        { }
-.|\n  { fprintf(stderr,"Invalid line.\n"); exit(-1);}
+.              { }
 
 %%
 
 int main(void);
 
-int main ()
+int
+main (void)
 {
-    yyscan_t  lexer;
-    yylex_init( &lexer );
-    yyset_out ( stdout,lexer);
-    yyset_in  ( stdin, lexer);
-    while( yylex(lexer) )
-    {
-    }
-    yylex_destroy( lexer );
-    printf("TEST RETURNING OK.\n");
+    yyFlexLexer f;
+    f.switch_streams(&std::cin, &std::cout);
+    f.yylex();
+    f.yyrestart(NULL);
+    std::cout << "TEST RETURNING OK." << std::endl;
     return 0;
 }
-

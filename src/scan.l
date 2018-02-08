@@ -38,6 +38,12 @@ extern bool tablesverify, tablesext;
 extern int trlcontxt; /* Set in  parse.y for each rule. */
 extern const char *escaped_qstart, *escaped_qend;
 
+#define M4QSTART "[""["
+#define M4QEND "]""]"
+
+#define ESCAPED_QSTART "[" M4QEND M4QSTART "[" M4QEND M4QSTART
+#define ESCAPED_QEND M4QEND "]" M4QSTART M4QEND "]" M4QSTART
+
 #define ACTION_ECHO add_action( yytext )
 #define ACTION_IFDEF(def, should_define) \
 	{ \
@@ -45,8 +51,8 @@ extern const char *escaped_qstart, *escaped_qend;
 		action_define( def, 1 ); \
 	}
 
-#define ACTION_ECHO_QSTART add_action (escaped_qstart)
-#define ACTION_ECHO_QEND   add_action (escaped_qend)
+#define ACTION_ECHO_QSTART add_action (ESCAPED_QSTART)
+#define ACTION_ECHO_QEND   add_action (ESCAPED_QEND)
 
 #define ACTION_M4_IFDEF(def, should_define) \
     do{ \
@@ -68,18 +74,20 @@ extern const char *escaped_qstart, *escaped_qend;
 #define RETURNNAME \
 	if(yyleng < MAXLINE) \
          { \
-	strcpy( nmstr, yytext ); \
+	strncpy( nmstr, yytext, sizeof(nmstr) ); \
+	return NAME; \
 	 } \
 	else \
-	 { \
+	 do { \
 	   synerr(_("Input line too long\n")); \
 	   FLEX_EXIT(EXIT_FAILURE);  \
-	 }  \
-	return NAME;
+	 } while (0)
 
 #define PUT_BACK_STRING(str, start) \
-	for ( i = strlen( str ) - 1; i >= start; --i ) \
-		unput((str)[i])
+	{ size_t i = strlen( str );	\
+	  while ( i > start )		\
+	    unput((str)[--i]);		\
+	}
 
 #define CHECK_REJECT(str) \
 	if ( all_upper( str ) ) \
@@ -93,6 +101,23 @@ extern const char *escaped_qstart, *escaped_qend;
 	if ( getenv("POSIXLY_CORRECT") ) \
 		posix_compat = true;
 
+#define START_CODEBLOCK(x) do { \
+    /* Emit the needed line directive... */\
+    if (indented_code == false) { \
+        linenum++; \
+        line_directive_out(NULL, 1); \
+    } \
+    add_action(M4QSTART); \
+    yy_push_state(CODEBLOCK); \
+    if ((indented_code = x)) ACTION_ECHO; \
+} while(0)
+
+#define END_CODEBLOCK do { \
+    yy_pop_state();\
+    add_action(M4QEND); \
+    if (!indented_code) line_directive_out(NULL, 0);\
+} while (0)
+
 %}
 
 %option caseless nodefault noreject stack noyy_top_state
@@ -104,7 +129,9 @@ extern const char *escaped_qstart, *escaped_qend;
 %x GROUP_WITH_PARAMS
 %x GROUP_MINUS_PARAMS
 %x EXTENDED_COMMENT
-%x COMMENT_DISCARD
+%x COMMENT_DISCARD CODE_COMMENT
+%x SECT3_NOESCAPE
+%x CHARACTER_CONSTANT
 
 WS		[[:blank:]]+
 OPTWS		[[:blank:]]*
@@ -125,8 +152,8 @@ CCL_EXPR	("[:"^?[[:alpha:]]+":]")
 
 LEXOPT		[aceknopr]
 
-M4QSTART    "[["
-M4QEND      "]]"
+M4QSTART    "[""["
+M4QEND      "]""]"
 
 %%
 	static int bracelevel, didadef, indented_code;
@@ -134,22 +161,17 @@ M4QEND      "]]"
 	static int option_sense;
 
 	int doing_codeblock = false;
-	int i, brace_depth=0, brace_start_line=0;
+	int brace_depth=0, brace_start_line=0;
 	char nmdef[MAXLINE];
 
 
 <INITIAL>{
-	^{WS}		indented_code = true; BEGIN(CODEBLOCK);
-	^"/*"		ACTION_ECHO; yy_push_state( COMMENT );
+	^{WS}		START_CODEBLOCK(true);
+	^"/*"		add_action("/*[""["); yy_push_state( COMMENT );
 	^#{OPTWS}line{WS}	yy_push_state( LINEDIR );
 	^"%s"{NAME}?	return SCDECL;
 	^"%x"{NAME}?	return XSCDECL;
-	^"%{".*{NL}	{
-			++linenum;
-			line_directive_out(NULL, 1);
-			indented_code = false;
-			BEGIN(CODEBLOCK);
-			}
+	^"%{".*{NL}	START_CODEBLOCK(false);
     ^"%top"[[:blank:]]*"{"[[:blank:]]*{NL}    {
                 brace_start_line = linenum;
                 ++linenum;
@@ -185,7 +207,7 @@ M4QEND      "]]"
 	^{NAME}		{
 			if(yyleng < MAXLINE)
         		 {
-			strcpy( nmstr, yytext );
+			strncpy( nmstr, yytext, sizeof(nmstr) );
 			 }
 			else
 			 {
@@ -203,13 +225,17 @@ M4QEND      "]]"
 }
 
 
-<COMMENT>{
-	"*/"		ACTION_ECHO; yy_pop_state();
-	"*"		ACTION_ECHO;
-    {M4QSTART}  ACTION_ECHO_QSTART;
-    {M4QEND}    ACTION_ECHO_QEND;
-	[^*\n]      ACTION_ECHO;
+<COMMENT,CODE_COMMENT>{ /* */
+        [^\[\]\*\n]*  ACTION_ECHO;
+        .           ACTION_ECHO;
+
 	{NL}	    ++linenum; ACTION_ECHO;
+}
+<COMMENT>{
+	"*/"	    add_action("*/]""]"); yy_pop_state();
+}
+<CODE_COMMENT>{
+        "*/"        ACTION_ECHO; yy_pop_state();
 }
 
 <COMMENT_DISCARD>{
@@ -223,7 +249,7 @@ M4QEND      "]]"
 <EXTENDED_COMMENT>{
     ")"         yy_pop_state();
     [^\n\)]+      ;
-    {NL}        ++linenum;        
+    {NL}        ++linenum;
 }
 
 <LINEDIR>{
@@ -237,19 +263,19 @@ M4QEND      "]]"
 			}
 	.		/* ignore spurious characters */
 }
+<ACTION,CODEBLOCK,ACTION_STRING,PERCENT_BRACE_ACTION,CHARACTER_CONSTANT,COMMENT,CODE_COMMENT>{
+   {M4QSTART}   ACTION_ECHO_QSTART;
+   {M4QEND}     ACTION_ECHO_QEND;
+}
 
 <CODEBLOCK>{
-	^"%}".*{NL}	++linenum; BEGIN(INITIAL);
-
-    {M4QSTART}  ACTION_ECHO_QSTART;
-    {M4QEND}    ACTION_ECHO_QEND;
-	.	        ACTION_ECHO;
-
+	^"%}".*{NL}	++linenum; END_CODEBLOCK;
+	[^\n%\[\]]*         ACTION_ECHO;
+        .		ACTION_ECHO;
 	{NL}		{
 			++linenum;
 			ACTION_ECHO;
-			if ( indented_code )
-				BEGIN(INITIAL);
+			if ( indented_code ) END_CODEBLOCK;
 			}
 }
 
@@ -274,10 +300,9 @@ M4QEND      "]]"
 
     {M4QSTART}  buf_strnappend(&top_buf, escaped_qstart, (int) strlen(escaped_qstart));
     {M4QEND}    buf_strnappend(&top_buf, escaped_qend, (int) strlen(escaped_qend));
-
-    [^{}\r\n]  {
-                buf_strnappend(&top_buf, yytext, yyleng);
-               }
+    ([^{}\r\n\[\]]+)|[^{}\r\n]  {
+       buf_strnappend(&top_buf, yytext, yyleng);
+    }
 
     <<EOF>>     {
                 linenum = brace_start_line;
@@ -293,7 +318,7 @@ M4QEND      "]]"
 	{NOT_WS}[^\r\n]*	{
  		        if(yyleng < MAXLINE)
  		         {
-			strcpy( nmdef, yytext );
+			strncpy( nmdef, yytext, sizeof(nmdef) );
  		         }
  		        else
  		         {
@@ -301,12 +326,12 @@ M4QEND      "]]"
  		           FLEX_EXIT(EXIT_FAILURE);
 			 }
 			/* Skip trailing whitespace. */
-			for ( i = strlen( nmdef ) - 1;
-			      i >= 0 && (nmdef[i] == ' ' || nmdef[i] == '\t');
-			      --i )
-				;
-
-			nmdef[i + 1] = '\0';
+			{
+			    size_t i = strlen( nmdef );
+			    while (i > 0 && (nmdef[i-1] == ' ' || nmdef[i-1] == '\t'))
+			       --i;
+			    nmdef[i] = '\0';
+			}
 
 			ndinstal( nmstr, nmdef );
 			didadef = true;
@@ -338,8 +363,6 @@ M4QEND      "]]"
             interactive = option_sense;
 			}
 	array		yytext_is_array = option_sense;
-    ansi-definitions ansi_func_defs = option_sense;
-    ansi-prototypes  ansi_func_protos = option_sense;
 	backup		backing_up_report = option_sense;
 	batch		interactive = ! option_sense;
     bison-bridge     bison_bridge_lval = option_sense;
@@ -437,7 +460,7 @@ M4QEND      "]]"
 	\"[^"\n]*\"	{
 			if(yyleng-1 < MAXLINE)
         		 {
-			strcpy( nmstr, yytext + 1 );
+			strncpy( nmstr, yytext + 1, sizeof(nmstr) );
 			 }
 			else
 			 {
@@ -462,19 +485,20 @@ M4QEND      "]]"
 	^"%{".*	++bracelevel; yyless( 2 );	/* eat only %{ */
 	^"%}".*	--bracelevel; yyless( 2 );	/* eat only %} */
 
-	^{WS}.*	ACTION_ECHO;	/* indented code in prolog */
+	^{WS} START_CODEBLOCK(true); /* indented code in prolog */
 
-	^{NOT_WS}.*	{	/* non-indented code */
-			if ( bracelevel <= 0 )
-				{ /* not in %{ ... %} */
-				yyless( 0 );	/* put it all back */
-				yy_set_bol( 1 );
-				mark_prolog();
-				BEGIN(SECT2);
-				}
-			else
-				ACTION_ECHO;
-			}
+	^{NOT_WS}.*	{
+        /* non-indented code */
+		if ( bracelevel <= 0 ) {
+            /* not in %{ ... %} */
+            yyless( 0 );	/* put it all back */
+            yy_set_bol( 1 );
+            mark_prolog();
+            BEGIN(SECT2);
+        } else {
+            START_CODEBLOCK(true);
+        }
+    }
 
 	.		ACTION_ECHO;
 	{NL}	++linenum; ACTION_ECHO;
@@ -532,6 +556,7 @@ M4QEND      "]]"
                             yyless(amt);
                         }
                         else {
+                            add_action("]""]");
                             continued_action = true;
                             ++linenum;
                             return '\n';
@@ -601,9 +626,10 @@ M4QEND      "]]"
 
 	^"%%".*		{
 			sectnum = 3;
-			BEGIN(SECT3);
+			BEGIN(no_section3_escape ? SECT3_NOESCAPE : SECT3);
 			outn("/* Begin user sect3 */");
 			yyterminate(); /* to stop the parser */
+
 			}
 
 	"["({FIRST_CCL_CHAR}|{CCL_EXPR})({CCL_CHAR}|{CCL_EXPR})*	{
@@ -611,7 +637,7 @@ M4QEND      "]]"
 
 			if(yyleng < MAXLINE)
         		 {
-			strcpy( nmstr, yytext );
+			strncpy( nmstr, yytext, sizeof(nmstr) );
 			 }
 			else
 			 {
@@ -669,7 +695,7 @@ M4QEND      "]]"
 
  			if(yyleng-1 < MAXLINE)
          		 {
-			strcpy( nmstr, yytext + 1 );
+			strncpy( nmstr, yytext + 1, sizeof(nmstr) );
  			 }
  			else
  			 {
@@ -685,7 +711,7 @@ nmstr[yyleng - 2 - end_is_ws] = '\0';  /* chop trailing brace */
 
 			else
 				{ /* push back name surrounded by ()'s */
-				int len = strlen( nmdefptr );
+				size_t len = strlen( nmdefptr );
                 if (end_is_ws)
                     unput(end_ch);
 
@@ -876,35 +902,31 @@ nmstr[yyleng - 2 - end_is_ws] = '\0';  /* chop trailing brace */
 <PERCENT_BRACE_ACTION>{
 	{OPTWS}"%}".*		bracelevel = 0;
 
-	<ACTION>"/*"		ACTION_ECHO; yy_push_state( COMMENT );
+	<ACTION>"/*"		ACTION_ECHO; yy_push_state( CODE_COMMENT );
 
 	<CODEBLOCK,ACTION>{
-		"reject"	{
-			ACTION_ECHO;
-			CHECK_REJECT(yytext);
-			}
-		"yymore"	{
-			ACTION_ECHO;
-			CHECK_YYMORE(yytext);
-			}
+		"reject" {
+            ACTION_ECHO;
+            CHECK_REJECT(yytext);
+        }
+		"yymore" {
+            ACTION_ECHO;
+            CHECK_YYMORE(yytext);
+        }
 	}
 
-    {M4QSTART}  ACTION_ECHO_QSTART;
-    {M4QEND}    ACTION_ECHO_QEND;
-    .           ACTION_ECHO;
-	{NL}		{
-			++linenum;
-			ACTION_ECHO;
-			if ( bracelevel == 0 ||
-			     (doing_codeblock && indented_code) )
-				{
-				if ( doing_rule_action )
-					add_action( "\tYY_BREAK\n" );
+    .       ACTION_ECHO;
+	{NL}	{
+		++linenum;
+		ACTION_ECHO;
+		if (bracelevel <= 0 || (doing_codeblock && indented_code)) {
+            if ( doing_rule_action )
+                add_action( "\tYY_BREAK]""]\n" );
 
-				doing_rule_action = doing_codeblock = false;
-				BEGIN(SECT2);
-				}
-			}
+            doing_rule_action = doing_codeblock = false;
+            BEGIN(SECT2);
+        }
+    }
 }
 
 
@@ -912,37 +934,41 @@ nmstr[yyleng - 2 - end_is_ws] = '\0';  /* chop trailing brace */
 <ACTION>{
 	"{"		ACTION_ECHO; ++bracelevel;
 	"}"		ACTION_ECHO; --bracelevel;
-    {M4QSTART}  ACTION_ECHO_QSTART;
-    {M4QEND}    ACTION_ECHO_QEND;
-	[^[:alpha:]_{}"'/\n\[\]]+	ACTION_ECHO;
-    [\[\]]      ACTION_ECHO;
-	{NAME}		ACTION_ECHO;
-	"'"([^'\\\n]|\\.)*"'"	ACTION_ECHO; /* character constant */
+	[^[:alpha:]_{}\"'/\n\[\]]+	ACTION_ECHO;
+        {NAME}		ACTION_ECHO;
+        "'"([^\'\\\n]|\\.)"'" ACTION_ECHO; /* character constant */
+        "'"             ACTION_ECHO; BEGIN(CHARACTER_CONSTANT);
 	\"		ACTION_ECHO; BEGIN(ACTION_STRING);
-	{NL}		{
-			++linenum;
-			ACTION_ECHO;
-			if ( bracelevel == 0 )
-				{
-				if ( doing_rule_action )
-					add_action( "\tYY_BREAK\n" );
+	{NL} {
+                ++linenum;
+                ACTION_ECHO;
+                if (bracelevel <= 0) {
+                   if ( doing_rule_action )
+                      add_action( "\tYY_BREAK]""]\n" );
 
-				doing_rule_action = false;
-				BEGIN(SECT2);
-				}
-			}
-	.		ACTION_ECHO;
+                   doing_rule_action = false;
+                   BEGIN(SECT2);
+                }
+             }
+        .      ACTION_ECHO;
 }
 
 <ACTION_STRING>{
-	[^"\\\n]+	ACTION_ECHO;
-	\\.		ACTION_ECHO;
-	{NL}		++linenum; ACTION_ECHO; BEGIN(ACTION);
+	[^\[\]\"\\\n]+	ACTION_ECHO;
 	\"		ACTION_ECHO; BEGIN(ACTION);
-	.		ACTION_ECHO;
+}
+<CHARACTER_CONSTANT>{
+	[^\[\]\'\\\n]+  ACTION_ECHO;
+        \'              ACTION_ECHO; BEGIN(ACTION);
+}
+<ACTION_STRING,CHARACTER_CONSTANT>{
+        (\\\n)*         ACTION_ECHO;
+	\\(\\\n)*.	ACTION_ECHO;
+	{NL}	++linenum; ACTION_ECHO; if (bracelevel <= 0) { BEGIN(SECT2); } else { BEGIN(ACTION); }
+        .	ACTION_ECHO;
 }
 
-<COMMENT,COMMENT_DISCARD,ACTION,ACTION_STRING><<EOF>>	{
+<COMMENT,CODE_COMMENT,COMMENT_DISCARD,ACTION,ACTION_STRING,CHARACTER_CONSTANT><<EOF>>	{
 			synerr( _( "EOF encountered inside an action" ) );
 			yyterminate();
 			}
@@ -961,15 +987,26 @@ nmstr[yyleng - 2 - end_is_ws] = '\0';  /* chop trailing brace */
 			return CHAR;
 			}
 
-
 <SECT3>{
-    {M4QSTART}  fwrite (escaped_qstart, 1, strlen(escaped_qstart), yyout);
-    {M4QEND}    fwrite (escaped_qend, 1, strlen(escaped_qend), yyout);
-	[^\[\]\n]*(\n?) ECHO;
-	(.|\n)      ECHO;
-	<<EOF>>		sectnum = 0; yyterminate();
+    {M4QSTART}   fputs(escaped_qstart, yyout);
+    {M4QEND}     fputs(escaped_qend, yyout);
+    [^\[\]]*     ECHO;
+    [][]         ECHO;
+    <<EOF>>      {
+        sectnum = 0;
+        yyterminate();
+    }
 }
-
+<SECT3_NOESCAPE>{
+    {M4QSTART}  fprintf(yyout, "[""[%s]""]", escaped_qstart);
+    {M4QEND}    fprintf(yyout, "[""[%s]""]", escaped_qend);
+    [^][]*      ECHO;
+    [][]        ECHO;
+    <<EOF>>		{
+       sectnum = 0;
+       yyterminate();
+    }
+}
 <*>.|\n			format_synerr( _( "bad character: %s" ), yytext );
 
 %%

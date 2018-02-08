@@ -29,21 +29,19 @@
 # to DEFS.
 
 ACLOCAL_AMFLAGS = -I m4
-indent = @INDENT@
 
 dist_doc_DATA = \
 	AUTHORS \
 	COPYING \
 	NEWS \
 	ONEWS \
-	README
+	README.md
 
 EXTRA_DIST = \
 	.indent.pro \
 	autogen.sh
 
 SUBDIRS = \
-	lib \
 	src \
 	doc \
 	examples \
@@ -58,8 +56,11 @@ ChangeLog: $(srcdir)/tools/git2cl
 		$(srcdir)/tools/git2cl > $@ \
 	; fi
 
+indent:
+	cd src && $(MAKE) $(AM_MAKEFLAGS) indent
+
 install-exec-hook:
 	cd $(DESTDIR)$(bindir) && \
 		$(LN_S) -f flex$(EXEEXT) flex++$(EXEEXT)
 
-.PHONY: ChangeLog tags indent
+.PHONY: ChangeLog indent
