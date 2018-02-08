@@ -106,7 +106,6 @@ int     num_input_files;
 jmp_buf flex_main_jmp_buf;
 bool   *rule_has_nl, *ccl_has_nl;
 int     nlch = '\n';
-bool    ansi_func_defs, ansi_func_protos;
 
 bool    tablesext, tablesverify, gentables;
 char   *tablesfilename=0,*tablesname=0;
@@ -128,8 +127,8 @@ static char outfile_path[MAXLINE];
 static int outfile_created = 0;
 static char *skelname = NULL;
 static int _stdout_closed = 0; /* flag to prevent double-fclose() on stdout. */
-const char *escaped_qstart = "[[]]M4_YY_NOOP[M4_YY_NOOP[M4_YY_NOOP[[]]";
-const char *escaped_qend   = "[[]]M4_YY_NOOP]M4_YY_NOOP]M4_YY_NOOP[[]]";
+const char *escaped_qstart = "]]M4_YY_NOOP[M4_YY_NOOP[M4_YY_NOOP[[";
+const char *escaped_qend   = "]]M4_YY_NOOP]M4_YY_NOOP]M4_YY_NOOP[[";
 
 /* For debugging. The max number of filters to apply to skeleton. */
 static int preproc_level = 1000;
@@ -277,7 +276,7 @@ void check_options (void)
 		flexerror (_("Can't use -+ with -CF option"));
 
 	if (C_plus_plus && yytext_is_array) {
-		warn (_("%array incompatible with -+ option"));
+		lwarn (_("%array incompatible with -+ option"));
 		yytext_is_array = false;
 	}
 
@@ -311,14 +310,8 @@ void check_options (void)
 		}
 	}
 
-    if (!ansi_func_defs)
-        buf_m4_define( &m4defs_buf, "M4_YY_NO_ANSI_FUNC_DEFS", NULL);
-
-    if (!ansi_func_protos)
-        buf_m4_define( &m4defs_buf, "M4_YY_NO_ANSI_FUNC_PROTOS", NULL);
-
-    if (extra_type)
-        buf_m4_define( &m4defs_buf, "M4_EXTRA_TYPE_DEFS", extra_type);
+	if (extra_type)
+		buf_m4_define( &m4defs_buf, "M4_EXTRA_TYPE_DEFS", extra_type);
 
 	if (!use_stdout) {
 		FILE   *prev_stdout;
@@ -360,7 +353,7 @@ void check_options (void)
 			} else {
 				int m4_length = strlen(m4);
 				do {
-					int length = strlen(path);
+					size_t length = strlen(path);
 					struct stat sbuf;
 
 					const char *endOfDir = strchr(path, ':');
@@ -368,16 +361,17 @@ void check_options (void)
 						endOfDir = path+length;
 
 					{
-						char m4_path[endOfDir-path + 1 + m4_length + 1];
+						char *m4_path = calloc(endOfDir-path + 1 + m4_length + 1, 1);
 
 						memcpy(m4_path, path, endOfDir-path);
 						m4_path[endOfDir-path] = '/';
 						memcpy(m4_path + (endOfDir-path) + 1, m4, m4_length + 1);
 						if (stat(m4_path, &sbuf) == 0 &&
 							(S_ISREG(sbuf.st_mode)) && sbuf.st_mode & S_IXUSR) {
-							m4 = strdup(m4_path);
+							m4 = m4_path;
 							break;
 						}
+						free(m4_path);
 					}
 					path = endOfDir+1;
 				} while (path[0]);
@@ -411,7 +405,7 @@ void check_options (void)
 		FILE   *tablesout;
 		struct yytbl_hdr hdr;
 		char   *pname = 0;
-		int     nbytes = 0;
+		size_t  nbytes = 0;
 
 		buf_m4_define (&m4defs_buf, "M4_YY_TABLES_EXTERNAL", NULL);
 
@@ -452,6 +446,8 @@ void check_options (void)
 	if ( bison_bridge_lloc)
         buf_m4_define (&m4defs_buf, "<M4_YY_BISON_LLOC>", NULL);
 
+    if (strchr(prefix, '[') || strchr(prefix, ']'))
+        flexerror(_("Prefix cannot include '[' or ']'"));
     buf_m4_define(&m4defs_buf, "M4_YY_PREFIX", prefix);
 
 	if (did_outfilename)
@@ -472,7 +468,7 @@ void check_options (void)
              char *str, *fmt = "#define %s %d\n";
              size_t strsz;
 
-             strsz = strlen(fmt) + strlen(scname[i]) + (int)(1 + log10(i)) + 2;
+             strsz = strlen(fmt) + strlen(scname[i]) + (size_t)(1 + ceil (log10(i))) + 2;
              str = malloc(strsz);
              if (!str)
                flexfatal(_("allocation of macro definition failed"));
@@ -645,7 +641,7 @@ void flexend (int exit_status)
 				"yypop_buffer_state",
 				"yyensure_buffer_stack",
                 "yyalloc",
-                "yyconst",
+                "const",
                 "yyextra",
                 "yyfree",
                 "yyget_debug",
@@ -970,7 +966,6 @@ void flexinit (int argc, char **argv)
 	tablesext = tablesverify = false;
 	gentables = true;
 	tablesfilename = tablesname = NULL;
-    ansi_func_defs = ansi_func_protos = true;
 
 	sawcmpflag = false;
 
@@ -1122,7 +1117,7 @@ void flexinit (int argc, char **argv)
 			break;
 
         case OPT_PREPROC_LEVEL:
-            preproc_level = strtol(arg,NULL,0);
+            preproc_level = (int) strtol(arg,NULL,0);
             break;
 
 		case OPT_MAIN:
@@ -1285,7 +1280,7 @@ void flexinit (int argc, char **argv)
 				}
 				else {
 					buf_strnappend (&userdef_buf, arg,
-							def - arg);
+							(int) (def - arg));
 					buf_strappend (&userdef_buf, " ");
 					buf_strappend (&userdef_buf,
 						       def + 1);
@@ -1346,14 +1341,6 @@ void flexinit (int argc, char **argv)
 		case OPT_NO_REJECT:
 			reject_really_used = false;
 			break;
-
-        case OPT_NO_ANSI_FUNC_DEFS:
-            ansi_func_defs = false;
-            break;
-
-        case OPT_NO_ANSI_FUNC_PROTOS:
-            ansi_func_protos = false;
-            break;
 
 		case OPT_NO_YY_PUSH_STATE:
 			//buf_strdefine (&userdef_buf, "YY_NO_PUSH_STATE", "1");
@@ -1441,6 +1428,10 @@ void flexinit (int argc, char **argv)
 			break;
 		case OPT_HEX:
 			trace_hex = 1;
+                        break;
+                case OPT_NO_SECT3_ESCAPE:
+                        no_section3_escape = true;
+                        break;
 		}		/* switch */
 	}			/* while scanopt() */
 
@@ -1596,9 +1587,9 @@ void readin (void)
 	if (!do_yywrap) {
 		if (!C_plus_plus) {
 			 if (reentrant)
-				outn ("\n#define yywrap(yyscanner) (/*CONSTCOND*/1)");
+				out_str ("\n#define %swrap(yyscanner) (/*CONSTCOND*/1)\n", prefix);
 			 else
-				outn ("\n#define yywrap() (/*CONSTCOND*/1)");
+				out_str ("\n#define %swrap() (/*CONSTCOND*/1)\n", prefix);
 		}
 		outn ("#define YY_SKIP_YYWRAP");
 	}
@@ -1607,10 +1598,7 @@ void readin (void)
 		outn ("\n#define FLEX_DEBUG");
 
 	OUT_BEGIN_CODE ();
-	if (csize == 256)
-		outn ("typedef unsigned char YY_CHAR;");
-	else
-		outn ("typedef char YY_CHAR;");
+	outn ("typedef flex_uint8_t YY_CHAR;");
 	OUT_END_CODE ();
 
 	if (C_plus_plus) {
@@ -1654,7 +1642,7 @@ void readin (void)
 
 	OUT_BEGIN_CODE ();
 	if (fullspd)
-		outn ("typedef yyconst struct yy_trans_info *yy_state_type;");
+		outn ("typedef const struct yy_trans_info *yy_state_type;");
 	else if (!C_plus_plus)
 		outn ("typedef int yy_state_type;");
 	OUT_END_CODE ();
@@ -1848,8 +1836,6 @@ void usage (void)
 		  "       --bison-bridge      scanner for bison pure parser.\n"
 		  "       --bison-locations   include yylloc support.\n"
 		  "       --stdinit           initialize yyin/yyout to stdin/stdout\n"
-          "       --noansi-definitions old-style function definitions\n"
-          "       --noansi-prototypes  empty parameter list in prototypes\n"
 		  "       --nounistd          do not include <unistd.h>\n"
 		  "       --noFUNCTION        do not generate a particular FUNCTION\n"
 		  "\n" "Miscellaneous:\n"

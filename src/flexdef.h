@@ -57,23 +57,24 @@
 #ifdef HAVE_LIMITS_H
 #include <limits.h>
 #endif
-#ifdef HAVE_UNISTD_H
+/* Required: dup() and dup2() in <unistd.h> */
 #include <unistd.h>
-#endif
 #ifdef HAVE_NETINET_IN_H
 #include <netinet/in.h>
 #endif
 #ifdef HAVE_SYS_PARAMS_H
 #include <sys/params.h>
 #endif
-#ifdef HAVE_SYS_STAT_H
+/* Required: stat() in <sys/stat.h> */
 #include <sys/stat.h>
-#endif
+/* Required: wait() in <sys/wait.h> */
 #include <sys/wait.h>
 #include <stdbool.h>
-#ifdef HAVE_REGEX_H
+#include <stdarg.h>
+/* Required: regcomp(), regexec() and regerror() in <regex.h> */
 #include <regex.h>
-#endif
+/* Required: strcasecmp() in <strings.h> */
+#include <strings.h>
 #include "flexint.h"
 
 /* We use gettext. So, when we write strings which should be translated, we mark them with _() */
@@ -108,6 +109,8 @@
 #define ABS(x) ((x) < 0 ? -(x) : (x))
 #endif
 
+/* Whether an integer is a power of two */
+#define is_power_of_2(n) ((n) > 0 && ((n) & ((n) - 1)) == 0)
 
 #define unspecified -1
 
@@ -358,7 +361,6 @@ extern int interactive, lex_compat, posix_compat, do_yylineno;
 extern int useecs, fulltbl, usemecs, fullspd;
 extern int gen_line_dirs, performance_report, backing_up_report;
 extern int reentrant, bison_bridge_lval, bison_bridge_lloc;
-extern bool ansi_func_defs, ansi_func_protos;
 extern int C_plus_plus, long_align, use_read, yytext_is_array, do_yywrap;
 extern int csize;
 extern int yymore_used, reject, real_reject, continued_action, in_rule;
@@ -843,9 +845,6 @@ extern void flexfatal(const char *);
     }while(0)
 #endif /* ! HAVE_DECL___func__ */
 
-/* Convert a hexadecimal digit string to an integer value. */
-extern int htoi(unsigned char[]);
-
 /* Report an error message formatted  */
 extern void lerr(const char *, ...)
 #if defined(__GNUC__) && __GNUC__ >= 3
@@ -881,9 +880,6 @@ extern int myctoi(const char *);
 
 /* Return character corresponding to escape sequence. */
 extern unsigned char myesc(unsigned char[]);
-
-/* Convert an octal digit string to an integer value. */
-extern int otoi(unsigned char[]);
 
 /* Output a (possibly-formatted) string to the generated scanner. */
 extern void out(const char *);
@@ -975,8 +971,9 @@ extern void line_pinpoint(const char *, int);
 extern void format_synerr(const char *, const char *);
 extern void synerr(const char *);	/* report a syntax error */
 extern void format_warn(const char *, const char *);
-extern void warn(const char *);	/* report a warning */
+extern void lwarn(const char *);	/* report a warning */
 extern void yyerror(const char *);	/* report a parse error */
+extern int yyparse(void);		/* the YACC parser */
 
 
 /* from file scan.l */
@@ -1064,9 +1061,10 @@ extern struct Buf defs_buf;    /* a char* buffer to save #define'd some symbols 
 extern struct Buf yydmap_buf;  /* a string buffer to hold yydmap elements */
 extern struct Buf m4defs_buf;  /* Holds m4 definitions. */
 extern struct Buf top_buf;     /* contains %top code. String buffer. */
+extern bool no_section3_escape; /* True if the undocumented option --unsafe-no-m4-sect3-escape was passed */
 
 /* For blocking out code from the header file. */
-#define OUT_BEGIN_CODE() outn("m4_ifdef( [[M4_YY_IN_HEADER]],,[[")
+#define OUT_BEGIN_CODE() outn("m4_ifdef( [[M4_YY_IN_HEADER]],,[[m4_dnl")
 #define OUT_END_CODE()   outn("]])")
 
 /* For setjmp/longjmp (instead of calling exit(2)). Linkage in main.c */

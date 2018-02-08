@@ -53,44 +53,30 @@ static int indent_level = 0;	/* each level is 8 spaces */
 static const char *get_int16_decl (void)
 {
 	return (gentables)
-		? "static yyconst flex_int16_t %s[%d] =\n    {   0,\n"
-		: "static yyconst flex_int16_t * %s = 0;\n";
+		? "static const flex_int16_t %s[%d] =\n    {   0,\n"
+		: "static const flex_int16_t * %s = 0;\n";
 }
 
 
 static const char *get_int32_decl (void)
 {
 	return (gentables)
-		? "static yyconst flex_int32_t %s[%d] =\n    {   0,\n"
-		: "static yyconst flex_int32_t * %s = 0;\n";
+		? "static const flex_int32_t %s[%d] =\n    {   0,\n"
+		: "static const flex_int32_t * %s = 0;\n";
 }
 
 static const char *get_state_decl (void)
 {
 	return (gentables)
-		? "static yyconst yy_state_type %s[%d] =\n    {   0,\n"
-		: "static yyconst yy_state_type * %s = 0;\n";
-}
-
-static const char *get_uint16_decl (void)
-{
-	return (gentables)
-		? "static yyconst flex_uint16_t %s[%d] =\n    {   0,\n"
-		: "static yyconst flex_uint16_t * %s = 0;\n";
-}
-
-static const char *get_uint32_decl (void)
-{
-	return (gentables)
-		? "static yyconst flex_uint32_t %s[%d] =\n    {   0,\n"
-		: "static yyconst flex_uint32_t * %s = 0;\n";
+		? "static const yy_state_type %s[%d] =\n    {   0,\n"
+		: "static const yy_state_type * %s = 0;\n";
 }
 
 static const char *get_yy_char_decl (void)
 {
 	return (gentables)
-		? "static yyconst YY_CHAR %s[%d] =\n    {   0,\n"
-		: "static yyconst YY_CHAR * %s = 0;\n";
+		? "static const YY_CHAR %s[%d] =\n    {   0,\n"
+		: "static const YY_CHAR * %s = 0;\n";
 }
 
 /* Indent to the current level. */
@@ -123,7 +109,7 @@ static struct yytbl_data *mkeoltbl (void)
 	tbl = calloc(1, sizeof (struct yytbl_data));
 	yytbl_data_init (tbl, YYTD_ID_RULE_CAN_MATCH_EOL);
 	tbl->td_flags = YYTD_DATA8;
-	tbl->td_lolen = num_rules + 1;
+	tbl->td_lolen = (flex_uint32_t) (num_rules + 1);
 	tbl->td_data = tdata =
 		calloc(tbl->td_lolen, sizeof (flex_int8_t));
 
@@ -231,7 +217,7 @@ static struct yytbl_data *mkctbl (void)
 	yytbl_data_init (tbl, YYTD_ID_TRANSITION);
 	tbl->td_flags = YYTD_DATA32 | YYTD_STRUCT;
 	tbl->td_hilen = 0;
-	tbl->td_lolen = tblend + numecs + 1;	/* number of structs */
+	tbl->td_lolen = (flex_uint32_t) (tblend + numecs + 1);	/* number of structs */
 
 	tbl->td_data = tdata =
 		calloc(tbl->td_lolen * 2, sizeof (flex_int32_t));
@@ -327,7 +313,7 @@ static struct yytbl_data *mkssltbl (void)
 	yytbl_data_init (tbl, YYTD_ID_START_STATE_LIST);
 	tbl->td_flags = YYTD_DATA32 | YYTD_PTRANS;
 	tbl->td_hilen = 0;
-	tbl->td_lolen = lastsc * 2 + 1;
+	tbl->td_lolen = (flex_uint32_t) (lastsc * 2 + 1);
 
 	tbl->td_data = tdata =
 		calloc(tbl->td_lolen, sizeof (flex_int32_t));
@@ -353,9 +339,9 @@ void genctbl (void)
 
 	/* Table of verify for transition and offset to next state. */
 	if (gentables)
-		out_dec ("static yyconst struct yy_trans_info yy_transition[%d] =\n    {\n", tblend + numecs + 1);
+		out_dec ("static const struct yy_trans_info yy_transition[%d] =\n    {\n", tblend + numecs + 1);
 	else
-		outn ("static yyconst struct yy_trans_info *yy_transition = 0;");
+		outn ("static const struct yy_trans_info *yy_transition = 0;");
 
 	/* We want the transition to be represented as the offset to the
 	 * next state, not the actual state number, which is what it currently
@@ -427,9 +413,9 @@ void genctbl (void)
 
 	/* Table of pointers to start states. */
 	if (gentables)
-		out_dec ("static yyconst struct yy_trans_info *yy_start_state_list[%d] =\n", lastsc * 2 + 1);
+		out_dec ("static const struct yy_trans_info *yy_start_state_list[%d] =\n", lastsc * 2 + 1);
 	else
-		outn ("static yyconst struct yy_trans_info **yy_start_state_list =0;");
+		outn ("static const struct yy_trans_info **yy_start_state_list =0;");
 
 	if (gentables) {
 		outn ("    {");
@@ -457,7 +443,7 @@ static struct yytbl_data *mkecstbl (void)
 	yytbl_data_init (tbl, YYTD_ID_EC);
 	tbl->td_flags |= YYTD_DATA32;
 	tbl->td_hilen = 0;
-	tbl->td_lolen = csize;
+	tbl->td_lolen = (flex_uint32_t) csize;
 
 	tbl->td_data = tdata =
 		calloc(tbl->td_lolen, sizeof (flex_int32_t));
@@ -523,8 +509,12 @@ void gen_find_action (void)
 		indent_puts ("yy_current_state = *--YY_G(yy_state_ptr);");
 		indent_puts ("YY_G(yy_lp) = yy_accept[yy_current_state];");
 
+		if (!variable_trailing_context_rules)
+			outn ("m4_ifdef( [[M4_YY_USES_REJECT]],\n[[");
 		if(reject_really_used)
 			outn ("find_rule: /* we branch to this label when backing up */");
+		if (!variable_trailing_context_rules)
+			outn ("]])\n");
 
 		indent_puts
 			("for ( ; ; ) /* until we find what rule we matched */");
@@ -663,7 +653,7 @@ struct yytbl_data *mkftbl (void)
 	yytbl_data_init (tbl, YYTD_ID_ACCEPT);
 	tbl->td_flags |= YYTD_DATA32;
 	tbl->td_hilen = 0;	/* it's a one-dimensional array */
-	tbl->td_lolen = lastdfa + 1;
+	tbl->td_lolen = (flex_uint32_t) (lastdfa + 1);
 
 	tbl->td_data = tdata =
 		calloc(tbl->td_lolen, sizeof (flex_int32_t));
@@ -752,7 +742,7 @@ void gen_next_compressed_state (char *char_map)
 		out_dec ("if ( yy_current_state >= %d )\n", lastdfa + 2);
 
 		++indent_level;
-		indent_puts ("yy_c = yy_meta[(unsigned int) yy_c];");
+		indent_puts ("yy_c = yy_meta[yy_c];");
 		--indent_level;
 	}
 
@@ -760,7 +750,7 @@ void gen_next_compressed_state (char *char_map)
 	--indent_level;
 
 	indent_puts
-		("yy_current_state = yy_nxt[yy_base[yy_current_state] + (flex_int16_t) yy_c];");
+		("yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];");
 }
 
 
@@ -810,11 +800,11 @@ void gen_next_match (void)
 	else if (fullspd) {
 		indent_puts ("{");
 		indent_puts
-			("yyconst struct yy_trans_info *yy_trans_info;\n");
+			("const struct yy_trans_info *yy_trans_info;\n");
 		indent_puts ("YY_CHAR yy_c;\n");
 		indent_put2s ("for ( yy_c = %s;", char_map);
 		indent_puts
-			("      (yy_trans_info = &yy_current_state[(unsigned int) yy_c])->");
+			("      (yy_trans_info = &yy_current_state[yy_c])->");
 		indent_puts ("yy_verify == yy_c;");
 		indent_put2s ("      yy_c = %s )", char_map_2);
 
@@ -977,7 +967,7 @@ void gen_NUL_trans (void)
 		out_dec ("int yy_c = %d;\n", NUL_ec);
 
 		indent_puts
-			("yyconst struct yy_trans_info *yy_trans_info;\n");
+			("const struct yy_trans_info *yy_trans_info;\n");
 		indent_puts
 			("yy_trans_info = &yy_current_state[(unsigned int) yy_c];");
 		indent_puts ("yy_current_state += yy_trans_info->yy_nxt;");
@@ -1106,7 +1096,7 @@ void gentabs (void)
 
         yyacclist_tbl = calloc(1,sizeof(struct yytbl_data));
         yytbl_data_init (yyacclist_tbl, YYTD_ID_ACCLIST);
-        yyacclist_tbl->td_lolen  = MAX(numas,1) + 1;
+        yyacclist_tbl->td_lolen  = (flex_uint32_t) (MAX(numas,1) + 1);
         yyacclist_tbl->td_data = yyacclist_data = 
             calloc(yyacclist_tbl->td_lolen, sizeof (flex_int32_t));
         yyacclist_curr = 1;
@@ -1215,7 +1205,7 @@ void gentabs (void)
 
 	yyacc_tbl = calloc(1, sizeof (struct yytbl_data));
 	yytbl_data_init (yyacc_tbl, YYTD_ID_ACCEPT);
-	yyacc_tbl->td_lolen = k;
+	yyacc_tbl->td_lolen = (flex_uint32_t) k;
 	yyacc_tbl->td_data = yyacc_data =
 		calloc(yyacc_tbl->td_lolen, sizeof (flex_int32_t));
     yyacc_curr=1;
@@ -1272,7 +1262,7 @@ void gentabs (void)
 		flex_int32_t *yymecs_data = 0;
 		yymeta_tbl = calloc(1, sizeof (struct yytbl_data));
 		yytbl_data_init (yymeta_tbl, YYTD_ID_META);
-		yymeta_tbl->td_lolen = numecs + 1;
+		yymeta_tbl->td_lolen = (flex_uint32_t) (numecs + 1);
 		yymeta_tbl->td_data = yymecs_data =
 			calloc(yymeta_tbl->td_lolen,
 					    sizeof (flex_int32_t));
@@ -1311,16 +1301,16 @@ void gentabs (void)
 
 	/* Begin generating yy_base */
 	out_str_dec ((tblend >= INT16_MAX || long_align) ?
-		     get_uint32_decl () : get_uint16_decl (),
+		     get_int32_decl () : get_int16_decl (),
 		     "yy_base", total_states + 1);
 
 	buf_prints (&yydmap_buf,
 		    "\t{YYTD_ID_BASE, (void**)&yy_base, sizeof(%s)},\n",
 		    (tblend >= INT16_MAX
-		     || long_align) ? "flex_uint32_t" : "flex_uint16_t");
+		     || long_align) ? "flex_int32_t" : "flex_int16_t");
 	yybase_tbl = calloc (1, sizeof (struct yytbl_data));
 	yytbl_data_init (yybase_tbl, YYTD_ID_BASE);
-	yybase_tbl->td_lolen = total_states + 1;
+	yybase_tbl->td_lolen = (flex_uint32_t) (total_states + 1);
 	yybase_tbl->td_data = yybase_data =
 		calloc(yybase_tbl->td_lolen,
 				    sizeof (flex_int32_t));
@@ -1378,7 +1368,7 @@ void gentabs (void)
 
 	yydef_tbl = calloc(1, sizeof (struct yytbl_data));
 	yytbl_data_init (yydef_tbl, YYTD_ID_DEF);
-	yydef_tbl->td_lolen = total_states + 1;
+	yydef_tbl->td_lolen = (flex_uint32_t) (total_states + 1);
 	yydef_tbl->td_data = yydef_data =
 		calloc(yydef_tbl->td_lolen, sizeof (flex_int32_t));
 
@@ -1400,17 +1390,17 @@ void gentabs (void)
 
 	/* Begin generating yy_nxt */
 	out_str_dec ((total_states >= INT16_MAX || long_align) ?
-		     get_uint32_decl () : get_uint16_decl (), "yy_nxt",
+		     get_int32_decl () : get_int16_decl (), "yy_nxt",
 		     tblend + 1);
 
 	buf_prints (&yydmap_buf,
 		    "\t{YYTD_ID_NXT, (void**)&yy_nxt, sizeof(%s)},\n",
 		    (total_states >= INT16_MAX
-		     || long_align) ? "flex_uint32_t" : "flex_uint16_t");
+		     || long_align) ? "flex_int32_t" : "flex_int16_t");
 
 	yynxt_tbl = calloc (1, sizeof (struct yytbl_data));
 	yytbl_data_init (yynxt_tbl, YYTD_ID_NXT);
-	yynxt_tbl->td_lolen = tblend + 1;
+	yynxt_tbl->td_lolen = (flex_uint32_t) (tblend + 1);
 	yynxt_tbl->td_data = yynxt_data =
 		calloc (yynxt_tbl->td_lolen, sizeof (flex_int32_t));
 
@@ -1447,7 +1437,7 @@ void gentabs (void)
 
 	yychk_tbl = calloc (1, sizeof (struct yytbl_data));
 	yytbl_data_init (yychk_tbl, YYTD_ID_CHK);
-	yychk_tbl->td_lolen = tblend + 1;
+	yychk_tbl->td_lolen = (flex_uint32_t) (tblend + 1);
 	yychk_tbl->td_data = yychk_data =
 		calloc(yychk_tbl->td_lolen, sizeof (flex_int32_t));
 
@@ -1706,7 +1696,7 @@ void make_tables (void)
 		yytbl_data_init (yynultrans_tbl, YYTD_ID_NUL_TRANS);
 		if (fullspd)
 			yynultrans_tbl->td_flags |= YYTD_PTRANS;
-		yynultrans_tbl->td_lolen = lastdfa + 1;
+		yynultrans_tbl->td_lolen = (flex_uint32_t) (lastdfa + 1);
 		yynultrans_tbl->td_data = yynultrans_data =
 			calloc(yynultrans_tbl->td_lolen,
 					    sizeof (flex_int32_t));
@@ -1875,7 +1865,7 @@ void make_tables (void)
 	if (!C_plus_plus) {
 		if (use_read) {
 			outn ("\terrno=0; \\");
-			outn ("\twhile ( (result = (int) read( fileno(yyin), buf, max_size )) < 0 ) \\");
+			outn ("\twhile ( (result = (int) read( fileno(yyin), buf, (yy_size_t) max_size )) < 0 ) \\");
 			outn ("\t{ \\");
 			outn ("\t\tif( errno != EINTR) \\");
 			outn ("\t\t{ \\");
@@ -1891,7 +1881,7 @@ void make_tables (void)
 			outn ("\tif ( YY_CURRENT_BUFFER_LVALUE->yy_is_interactive ) \\");
 			outn ("\t\t{ \\");
 			outn ("\t\tint c = '*'; \\");
-			outn ("\t\tsize_t n; \\");
+			outn ("\t\tint n; \\");
 			outn ("\t\tfor ( n = 0; n < max_size && \\");
 			outn ("\t\t\t     (c = getc( yyin )) != EOF && c != '\\n'; ++n ) \\");
 			outn ("\t\t\tbuf[n] = (char) c; \\");
@@ -1904,7 +1894,7 @@ void make_tables (void)
 			outn ("\telse \\");
 			outn ("\t\t{ \\");
 			outn ("\t\terrno=0; \\");
-			outn ("\t\twhile ( (result = (int) fread(buf, 1, max_size, yyin))==0 && ferror(yyin)) \\");
+			outn ("\t\twhile ( (result = (int) fread(buf, 1, (yy_size_t) max_size, yyin)) == 0 && ferror(yyin)) \\");
 			outn ("\t\t\t{ \\");
 			outn ("\t\t\tif( errno != EINTR) \\");
 			outn ("\t\t\t\t{ \\");
@@ -1949,7 +1939,7 @@ void make_tables (void)
 		++indent_level;
 		indent_puts ("{");
 		indent_puts
-			("YY_G(yy_more_len) = YY_G(yy_c_buf_p) - YY_G(yytext_ptr);");
+			("YY_G(yy_more_len) = (int) (YY_G(yy_c_buf_p) - YY_G(yytext_ptr));");
 		indent_puts ("YY_G(yy_more_flag) = 0;");
 		indent_puts ("}");
 		--indent_level;
@@ -2164,7 +2154,11 @@ void make_tables (void)
 
 	if (sectnum == 3) {
 		OUT_BEGIN_CODE ();
+                if (!no_section3_escape)
+                   fputs("[[", stdout);
 		(void) flexscan ();	/* copy remainder of input to output */
+                if (!no_section3_escape)
+                   fputs("]]", stdout);
 		OUT_END_CODE ();
 	}
 }

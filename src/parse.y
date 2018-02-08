@@ -80,7 +80,7 @@ int previous_continued_action;	/* whether the previous rule's action was '|' */
 	do{ \
         char fw3_msg[MAXLINE];\
         snprintf( fw3_msg, MAXLINE,(fmt), (a1), (a2) );\
-        warn( fw3_msg );\
+        lwarn( fw3_msg );\
 	}while(0)
 
 /* Expand a POSIX character class expression. */
@@ -140,7 +140,7 @@ goal		:  initlex sect1 sect1end sect2 initforrule
 			else
 				add_action( "ECHO" );
 
-			add_action( ";\n\tYY_BREAK\n" );
+			add_action( ";\n\tYY_BREAK]]\n" );
 			}
 		;
 
@@ -199,7 +199,9 @@ option		:  TOK_OUTFILE '=' NAME
 		|  TOK_EXTRA_TYPE '=' NAME
 			{ extra_type = xstrdup(nmstr); }
 		|  TOK_PREFIX '=' NAME
-			{ prefix = xstrdup(nmstr); }
+			{ prefix = xstrdup(nmstr);
+                          if (strchr(prefix, '[') || strchr(prefix, ']'))
+                              flexerror(_("Prefix must not contain [ or ]")); }
 		|  TOK_YYCLASS '=' NAME
 			{ yyclass = xstrdup(nmstr); }
 		|  TOK_HEADER_FILE '=' NAME
@@ -303,7 +305,7 @@ flexrule	:  '^' rule
 						scon_stk[++scon_stk_ptr] = i;
 
 				if ( scon_stk_ptr == 0 )
-					warn(
+					lwarn(
 			"all start conditions already have <<EOF>> rules" );
 
 				else
@@ -398,7 +400,7 @@ rule		:  re2 re
 				 * erroneously.
 				 */
 				if ( ! varlength || headcnt != 0 )
-					warn(
+					lwarn(
 		"trailing context made variable due to preceding '|' action" );
 
 				/* Mark as variable. */
@@ -453,7 +455,7 @@ rule		:  re2 re
 				/* See the comment in the rule for "re2 re"
 				 * above.
 				 */
-				warn(
+				lwarn(
 		"trailing context made variable due to preceding '|' action" );
 
 				varlength = true;
@@ -913,13 +915,13 @@ ccl_expr:
 		|  CCE_NEG_XDIGIT	{ CCL_NEG_EXPR(isxdigit); }
 		|  CCE_NEG_LOWER	{ 
 				if ( sf_case_ins() )
-					warn(_("[:^lower:] is ambiguous in case insensitive scanner"));
+					lwarn(_("[:^lower:] is ambiguous in case insensitive scanner"));
 				else
 					CCL_NEG_EXPR(islower);
 				}
 		|  CCE_NEG_UPPER	{
 				if ( sf_case_ins() )
-					warn(_("[:^upper:] ambiguous in case insensitive scanner"));
+					lwarn(_("[:^upper:] ambiguous in case insensitive scanner"));
 				else
 					CCL_NEG_EXPR(isupper);
 				}
@@ -977,6 +979,7 @@ void build_eof_action(void)
 		}
 
 	line_directive_out(NULL, 1);
+        add_action("[[");
 
 	/* This isn't a normal rule after all - don't count it as
 	 * such, so we don't have any holes in the rule numbering
@@ -1015,13 +1018,13 @@ void format_warn( const char *msg, const char arg[] )
 	char warn_msg[MAXLINE];
 
 	snprintf( warn_msg, sizeof(warn_msg), msg, arg );
-	warn( warn_msg );
+	lwarn( warn_msg );
 	}
 
 
-/* warn - report a warning, unless -w was given */
+/* lwarn - report a warning, unless -w was given */
 
-void warn( const char *str )
+void lwarn( const char *str )
 	{
 	line_warning( str, linenum );
 	}
