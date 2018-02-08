@@ -1,26 +1,11 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# flex-2.5.2 Korean po file
+# Copyright (C) 1996 The Flex Project
+# Choi Jun Ho <junker@jazz.snu.ac.kr>, 1997.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"PO-Revision-Date: 2018-02-08 10:37-0800\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: 8bit\n"
-
-#~ # flex-2.5.2 Korean po file
-#~ # Copyright (C) 1996 The Flex Project
-#~ # Choi Jun Ho <junker@jazz.snu.ac.kr>, 1997.
-#~ #
-#~ msgid ""
-#~ msgstr ""
-#~ "Project-Id-Version: flex 2.5.2\n"
-#~ "Report-Msgid-Bugs-To: flex-devel@lists.sourceforge.net\n"
+"Project-Id-Version: flex 2.5.2\n"
+"Report-Msgid-Bugs-To: flex-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2017-05-06 10:49-0400\n"
 "PO-Revision-Date: 1997-02-05 20:30\n"
 "Last-Translator: Choi Jun Ho <junker@jazz.snu.ac.kr>\n"

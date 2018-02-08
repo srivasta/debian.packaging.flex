@@ -1,27 +1,12 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Mensajes en español para GNU flex.
+# Copyright (C) 2002 The Flex Project
 #
-#, fuzzy
+# Nicolás García-Pedrajas <ngarcia-pedrajas@acm.org>, 1997.
+# Gracias a Nicolás Fernández García que me ha sugerido algunas ideas.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"PO-Revision-Date: 2018-02-08 10:27-0800\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: 8bit\n"
-
-#~ # Mensajes en español para GNU flex.
-#~ # Copyright (C) 2002 The Flex Project
-#~ #
-#~ # Nicolás García-Pedrajas <ngarcia-pedrajas@acm.org>, 1997.
-#~ # Gracias a Nicolás Fernández García que me ha sugerido algunas ideas.
-#~ msgid ""
-#~ msgstr ""
-#~ "Project-Id-Version: GNU flex 2.5.8\n"
-#~ "Report-Msgid-Bugs-To: flex-devel@lists.sourceforge.net\n"
+"Project-Id-Version: GNU flex 2.5.8\n"
+"Report-Msgid-Bugs-To: flex-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2017-05-06 10:49-0400\n"
 "PO-Revision-Date: 2003-01-02 12:06+0100\n"
 "Last-Translator: Nicolás García-Pedrajas <ngarcia-pedrajas@acm.org>\n"
@@ -31,22 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8-bit\n"
 "X-Bugs: Report translation errors to the Language-Team address.\n"
-
-#: src/buf.c:79
-msgid "Allocation of buffer to print string failed"
-msgstr ""
-
-#: src/buf.c:107
-msgid "Allocation of buffer for line directive failed"
-msgstr ""
-
-#: src/buf.c:177
-msgid "Allocation of buffer for m4 def failed"
-msgstr ""
-
-#: src/buf.c:198
-msgid "Allocation of buffer for m4 undef failed"
-msgstr ""
 
 #: src/buf.c:79
 msgid "Allocation of buffer to print string failed"
@@ -776,8 +745,6 @@ msgid ""
 "       --bison-bridge      scanner for bison pure parser.\n"
 "       --bison-locations   include yylloc support.\n"
 "       --stdinit           initialize yyin/yyout to stdin/stdout\n"
-"       --noansi-definitions old-style function definitions\n"
-"       --noansi-prototypes  empty parameter list in prototypes\n"
 "       --nounistd          do not include <unistd.h>\n"
 "       --noFUNCTION        do not generate a particular FUNCTION\n"
 "\n"
