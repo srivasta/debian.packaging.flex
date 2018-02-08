@@ -1,3 +1,11 @@
+flex (2.6.1-1.3) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix FTBFS on hurd (upstream 7975c43384d766ca12cb3f292754dbdc34168886).
+    (Closes: 838133).
+
+ -- Christoph Berg <myon@debian.org>  Wed, 04 Jan 2017 19:53:51 +0100
+
 flex (2.6.1-1.2) unstable; urgency=medium
 
   * Non-maintainer upload.
