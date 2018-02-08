@@ -1,3 +1,13 @@
+flex (2.6.1-1.1) UNRELEASED; urgency=medium
+
+   In this upload, the flex package drops its dependency on libfl-dev, because
+   it is impossible to forward the correct architecture constraint. It contains
+   the FlexLexer.h header and is thus required for using the FlexLexer C++
+   interface. Packages using this library need to add libfl-dev to their
+   Build-Depends.
+
+ -- Helmut Grohne <helmut@subdivi.de>  Wed, 23 Nov 2016 13:18:32 +0100
+
 flex (2.5.33-7) unstable; urgency=low
 
    This version of Flex is a major upgrade from previous versions. There
