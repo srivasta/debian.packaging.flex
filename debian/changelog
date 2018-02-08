@@ -1,3 +1,15 @@
+flex (2.6.1-1.2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Cherry-pick 1da19feba7c957e0f0af0c3eeadc29e8c82b0ca3,
+    cf4121fa97abac8aeaa5e08b8fc0b2380228494e and
+    8c098febc9a599397921e9b6938b7fb85e38cc7e from upstream to fix comparison
+    between signed and unsigned integer expressions in generated lexer
+    (Closes: #835542).
+  * Fix distribution in last upload's NEWS.Debian.
+
+ -- Christoph Berg <myon@debian.org>  Fri, 30 Dec 2016 20:29:41 +0100
+
 flex (2.6.1-1.1) unstable; urgency=medium
 
   * Non-maintainer upload.

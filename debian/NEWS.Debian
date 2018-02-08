@@ -1,4 +1,4 @@
-flex (2.6.1-1.1) UNRELEASED; urgency=medium
+flex (2.6.1-1.1) unstable; urgency=medium
 
    In this upload, the flex package drops its dependency on libfl-dev, because
    it is impossible to forward the correct architecture constraint. It contains
