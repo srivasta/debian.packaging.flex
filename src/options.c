@@ -62,6 +62,8 @@ optspec_t flexopts[] = {
 	,
 	{"--backup", OPT_BACKUP, 0}
 	,			/* Generate backing-up information to lex.backup. */
+	{"--backup-file=FILE", OPT_BACKUP_FILE, 0}
+	,			/* Generate backing-up information to FILE. */
 	{"-B", OPT_BATCH, 0}
 	,
 	{"--batch", OPT_BATCH, 0}
@@ -254,6 +256,10 @@ optspec_t flexopts[] = {
 	{"--noyyget_lineno", OPT_NO_YYGET_LINENO, 0}
 	,
 	{"--noyyset_lineno", OPT_NO_YYSET_LINENO, 0}
+	,
+	{"--noyyget_column", OPT_NO_YYGET_COLUMN, 0}
+	,
+	{"--noyyset_column", OPT_NO_YYSET_COLUMN, 0}
 	,
 	{"--noyyget_in", OPT_NO_YYGET_IN, 0}
 	,

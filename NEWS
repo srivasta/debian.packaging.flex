@@ -1,5 +1,59 @@
 flex NEWS
 
+* Noteworthy changes in release  ?.? (????-??-??) [?]
+
+** build
+
+*** Flex now includes its own <config.h> header before including
+    system headers so that any system specific features detected by
+    configure are taken into account during compilation of flex
+    itself.
+
+*** The flex build system now includes Makefile targets at the top
+    level to allow just building and installing libfl.
+
+*** The flex distribution now includes a file, src/libfl.pc, to allow
+    using pkgconfig to find out what flags to use when building
+    against libfl from flex.
+
+*** Various edge cases, mostly involving out-of-tree builds have been
+    accounted for in the autotools build system.
+
+*** A crash during building on NetBSD has been fixed.
+
+*** Flex is now automatically built by travis-ci. That should increase
+    the visibility of bugs and help prevent regressions.
+
+** documentation
+
+*** a new Ukrainian translation has been submitted from the Translation Project.
+
+** scanner
+
+*** Some memory leaks have been fixed.
+
+*** A long standing bug that effected expressions of the form c{i,j}
+    where 'c' is a character and {i,j} describes the number of times
+    to match against 'c' when case sensitivity was turned on has been
+    fixed.
+
+*** New option: --backup-file allows setting the name of the file
+    written containing backing up information. Useful if you need
+    backing up information from multiple scanners in the same
+    directory.
+
+*** flex emits correct line number directives when line numbers refer
+    to the file containing the line number directives.
+
+*** The options {no,}yy{get,set}_column are now supported.
+
+** test
+
+*** Generating the various tableoptions make rules is now more portable.
+
+*** Tests of the options -C*f and -C*F will now run correctly on
+    filesystems that are not case sensitive.
+
 * Noteworthy changes in release 2.6.4 (2017-05-06) [stable]
 
 ** build
