@@ -47,10 +47,9 @@ struct filter *filter_create_ext (struct filter *chain, const char *cmd,
 	va_list ap;
 
 	/* allocate and initialize new filter */
-	f = malloc(sizeof(struct filter));
+	f = calloc(sizeof(struct filter), 1);
 	if (!f)
-		flexerror(_("malloc failed (f) in filter_create_ext"));
-	memset (f, 0, sizeof (*f));
+		flexerror(_("calloc failed (f) in filter_create_ext"));
 	f->filter_func = NULL;
 	f->extra = NULL;
 	f->next = NULL;
@@ -100,10 +99,9 @@ struct filter *filter_create_int (struct filter *chain,
 	struct filter *f;
 
 	/* allocate and initialize new filter */
-	f = malloc(sizeof(struct filter));
+	f = calloc(sizeof(struct filter), 1);
 	if (!f)
-		flexerror(_("malloc failed in filter_create_int"));
-	memset (f, 0, sizeof (*f));
+		flexerror(_("calloc failed in filter_create_int"));
 	f->next = NULL;
 	f->argc = 0;
 	f->argv = NULL;
@@ -230,8 +228,7 @@ int filter_tee_header (struct filter *chain)
 	 * header file at the same time.
 	 */
 
-	const int readsz = 512;
-	char   *buf;
+	char    buf[512];
 	int     to_cfd = -1;
 	FILE   *to_c = NULL, *to_h = NULL;
 	bool    write_header;
@@ -283,10 +280,7 @@ int filter_tee_header (struct filter *chain)
 	fprintf (to_c, "m4_define( [[M4_YY_OUTFILE_NAME]],[[%s]])m4_dnl\n",
 		 outfilename ? outfilename : "<stdout>");
 
-	buf = malloc((size_t) readsz);
-	if (!buf)
-		flexerror(_("malloc failed in filter_tee_header"));
-	while (fgets (buf, readsz, stdin)) {
+	while (fgets (buf, sizeof buf, stdin)) {
 		fputs (buf, to_c);
 		if (write_header)
 			fputs (buf, to_h);
@@ -328,6 +322,13 @@ int filter_tee_header (struct filter *chain)
 	return 0;
 }
 
+static bool is_blank_line (const char *str)
+{
+	while (isspace(*str))
+		str++;
+	return (*str == '\0');
+}
+
 /** Adjust the line numbers in the #line directives of the generated scanner.
  * After the m4 expansion, the line numbers are incorrect since the m4 macros
  * can add or remove lines.  This only adjusts line numbers for generated code,
@@ -336,18 +337,14 @@ int filter_tee_header (struct filter *chain)
  */
 int filter_fix_linedirs (struct filter *chain)
 {
-	char   *buf;
-	const size_t readsz = 512;
+	char   buf[512];
+	const size_t readsz = sizeof buf;
 	int     lineno = 1;
 	bool    in_gen = true;	/* in generated code */
 	bool    last_was_blank = false;
 
 	if (!chain)
 		return 0;
-
-	buf = malloc(readsz);
-	if (!buf)
-		flexerror(_("malloc failed in filter_fix_linedirs"));
 
 	while (fgets (buf, (int) readsz, stdin)) {
 
@@ -391,7 +388,7 @@ int filter_fix_linedirs (struct filter *chain)
 				/* Adjust the line directives. */
 				in_gen = true;
 				snprintf (buf, readsz, "#line %d \"%s\"\n",
-					  lineno, filename);
+					  lineno + 1, filename);
 			}
 			else {
 				/* it's a #line directive for code we didn't write */
@@ -403,9 +400,7 @@ int filter_fix_linedirs (struct filter *chain)
 		}
 
 		/* squeeze blank lines from generated code */
-		else if (in_gen
-			 && regexec (&regex_blank_line, buf, 0, NULL,
-				     0) == 0) {
+		else if (in_gen && is_blank_line(buf)) {
 			if (last_was_blank)
 				continue;
 			else

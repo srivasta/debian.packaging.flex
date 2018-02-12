@@ -44,7 +44,6 @@
 #include <stdarg.h>
 #include <setjmp.h>
 #include <ctype.h>
-#include <libgen.h> /* for XPG version of basename(3) */
 #include <string.h>
 #include <math.h>
 
@@ -77,8 +76,10 @@
 #include <strings.h>
 #include "flexint.h"
 
-/* We use gettext. So, when we write strings which should be translated, we mark them with _() */
-#ifdef ENABLE_NLS
+/* We use gettext. So, when we write strings which should be translated, we
+ * mark them with _()
+ */
+#if defined(ENABLE_NLS) && ENABLE_NLS
 #ifdef HAVE_LOCALE_H
 #include <locale.h>
 #endif /* HAVE_LOCALE_H */
@@ -631,10 +632,6 @@ extern int sectnum, nummt, hshcol, dfaeql, numeps, eps2, num_reallocs;
 extern int tmpuses, totnst, peakpairs, numuniq, numdup, hshsave;
 extern int num_backing_up, bol_needed;
 
-#ifndef HAVE_REALLOCARRAY
-void *reallocarray(void *, size_t, size_t);
-#endif
-
 void   *allocate_array(int, size_t);
 void   *reallocate_array(void *, int, size_t);
 
@@ -1131,7 +1128,7 @@ extern int filter_fix_linedirs(struct filter *chain);
  * From "regex.c"
  */
 
-extern regex_t regex_linedir, regex_blank_line;
+extern regex_t regex_linedir;
 bool flex_init_regex(void);
 void flex_regcomp(regex_t *preg, const char *regex, int cflags);
 char   *regmatch_dup (regmatch_t * m, const char *src);

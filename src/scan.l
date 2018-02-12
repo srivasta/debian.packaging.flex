@@ -1,5 +1,11 @@
 /* scan.l - scanner for flex input -*-C-*- */
 
+%top{
+/* flexdef.h includes config.h, which may contain macros that alter the API */
+/* of libc functions. Must include first before any libc header. */
+#include "flexdef.h"
+}
+
 %{
 /*  Copyright (c) 1990 The Regents of the University of California. */
 /*  All rights reserved. */
@@ -32,7 +38,6 @@
 /*  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR */
 /*  PURPOSE. */
 
-#include "flexdef.h"
 #include "parse.h"
 extern bool tablesverify, tablesext;
 extern int trlcontxt; /* Set in  parse.y for each rule. */
@@ -433,6 +438,8 @@ M4QEND      "]""]"
     yyset_extra     ACTION_M4_IFDEF("M4""_YY_NO_SET_EXTRA", ! option_sense);
     yyget_leng      ACTION_M4_IFDEF("M4""_YY_NO_GET_LENG", ! option_sense);
     yyget_text      ACTION_M4_IFDEF("M4""_YY_NO_GET_TEXT", ! option_sense);
+    yyget_column    ACTION_M4_IFDEF("M4""_YY_NO_GET_COLUMN", ! option_sense);
+    yyset_column    ACTION_M4_IFDEF("M4""_YY_NO_SET_COLUMN", ! option_sense);
     yyget_lineno    ACTION_M4_IFDEF("M4""_YY_NO_GET_LINENO", ! option_sense);
     yyset_lineno    ACTION_M4_IFDEF("M4""_YY_NO_SET_LINENO", ! option_sense);
     yyget_in        ACTION_M4_IFDEF("M4""_YY_NO_GET_IN", ! option_sense);
