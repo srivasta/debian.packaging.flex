@@ -1,3 +1,39 @@
+flex (2.6.4-1) unstable; urgency=medium
+
+  * New upstream version. Notable changes
+    + a segfalt involving yyrestart(NULL) has been fixed
+    + flex should now handle quoting when mixed with m4 processing correctly
+    + flex handles `[[' and `]]' correctly
+    + flex no longer generates non-ANSI code
+    + more compilation warnings were squashed in generated scanners
+    + prevented a buffer overflow that could occur when input buffers were
+      the exact wrong size
+    + several bug fixes resolved problems introduced in recent flex
+      versions regarding processing of comments, literals and various
+      quoting scenarios.
+    +  If the path to m4 was sufficiently long, a buffer overflow could
+       occur. This has been resolved. The fix also removes dependence on
+       the constant PATH_MAX.
+    + Some minor performance enhancements.
+    +  We honor user defined yy_* macros again. We are also more careful
+       to not leak macro definitions into header files.
+    + A number of portability fixes were introduced so building flex is
+      more reliable on more platforms. Additionally, outdated function
+      calls were removed.
+    + When building the flex executable itself, %# comments from
+      flex.skl are removed when generating the C source code array. This
+      reduces the size of flex.
+    + Flex can be cross compiled.
+  * Bug fix: "comparison between signed and unsigned integer expressions",
+    thanks to Frank Heckenbach. This should be fixed now. (Closes: #835542).
+  * Bug fix: "Please update homepage in package description", thanks to
+    Tim Ruehsen (Closes: #851675).
+  * Bug fix: "Should Suggest: flex-doc", thanks to Yuri D&#39;Elia
+    (Closes: #856956).
+  * Stole some commits from 2.6.5 to fix FTBS issues in 2.6.4 release.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Mon, 12 Feb 2018 11:19:29 -0800
+
 flex (2.6.1-1.3) unstable; urgency=medium
 
   * Non-maintainer upload.

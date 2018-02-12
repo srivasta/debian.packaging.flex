@@ -2,14 +2,14 @@ Source: flex
 VCS-Git: https://anonscm.debian.org/git/users/srivasta/debian/flex.git
 VCS-Browser: https://anonscm.debian.org/gitweb/?p=users/srivasta/debian/flex.git
 Section: devel
-Homepage: http://flex.sf.net/
+Homepage: https://github.com/westes/flex
 Priority: optional
 Build-Depends: bison, gettext, texinfo, help2man, file, po-debconf,
                debhelper (>= 9.20141010), dh-autoreconf, dpkg-dev (>= 1.17.14),
                flex <cross>
 Build-Depends-Indep: texlive-latex-base, texlive-fonts-recommended, cm-super-minimal
 Maintainer: Manoj Srivastava <srivasta@debian.org>
-Standards-Version: 3.9.8
+Standards-Version: 4.1.3
 
 Package: flex
 Architecture: any
@@ -17,7 +17,7 @@ Pre-Depends: debconf | debconf-2.0
 Depends: ${shlibs:Depends}, m4,
          dpkg (>= 1.15.4) |  install-info, ${misc:Depends}
 Recommends: gcc | c-compiler, libfl-dev
-Suggests: bison, build-essential
+Suggests: bison, build-essential, flex-doc
 Multi-Arch: foreign
 Description: fast lexical analyzer generator
  Flex is a tool for generating scanners: programs which recognized lexical
