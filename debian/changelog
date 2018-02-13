@@ -1,3 +1,16 @@
+flex (2.6.4-2) unstable; urgency=medium
+
+  * Added get-orig-source target, and updated the watch file
+  * Bug fix: "flex FTCBFS: executes host architectue stage1flex during
+    build", thanks to Helmut Grohne (Closes: #833146). This reinstates
+    Helmut's original fix. There was a question about not using help2man
+    in the first place. I considered it; but upstream continues to use
+    help2man, including it in autoconf. I think Helmut's fix is elegant,
+    and saves work as flex's options change over time, and is a smaller
+    delta from upstream.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Tue, 13 Feb 2018 15:25:11 -0800
+
 flex (2.6.4-1) unstable; urgency=medium
 
   * New upstream version. Notable changes
