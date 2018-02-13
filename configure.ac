@@ -92,6 +92,12 @@ AC_PATH_PROG([HELP2MAN], help2man, [\${top_srcdir}/build-aux/missing help2man])
   AS_IF([test "$HELP2MAN" = "\${top_srcdir}/build-aux/missing help2man"],
     AC_MSG_WARN(help2man: program not found: building man page will not work)
   )
+if test "$cross_compiling" = yes; then
+  FLEXexe='flex$(EXEEXT)'
+else
+  FLEXexe='$(top_builddir)/flex$(EXEEXT)'
+fi
+AC_SUBST(FLEXexe)
 
 AC_PATH_PROGS([TEXI2DVI], [gtexi2dvi texi2dvi], [\${top_srcdir}/build-aux/missing texi2dvi])
   AS_IF([test "$TEXI2DVI" = "\${top_srcdir}/build-aux/missing texi2dvi"],
