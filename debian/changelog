@@ -1,3 +1,18 @@
+flex (2.6.4-3) unstable; urgency=medium
+
+  * Bug fix: "Debian-specific libfl.so linker script causes FTBFS", thanks
+    to Adrian Bunk (Closes: #890415).
+  * Bug fix: "Does not provide suitable libfl.a for PIEs", thanks to James
+    Clarke. I undertand that gcc now builds with PIE (Closes: #870769).
+  * Bug fix: "libfl_pic.a is not compiled with -fPIC", thanks to Balint
+    Reczey. We no longer provide that library. (Closes: #837658).
+  * Bug fix: "Type of yy_n_chars changed to yy_size_t by authors cause bug
+    in YY_INPUT macro where result argument is tested if &lt; 0; thanks to
+    gcc&#39;s -Werror=type-limits", thanks to calculus@rezozer.net</a>;
+    the change has been reverted in the new upstream. (Closes: #770161).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Thu, 15 Feb 2018 12:14:50 -0800
+
 flex (2.6.4-2) unstable; urgency=medium
 
   * Added get-orig-source target, and updated the watch file

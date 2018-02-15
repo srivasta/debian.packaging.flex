@@ -50,17 +50,8 @@ override_dh_auto_configure:
 	sed -i -e 's/^dist_doc_DATA[[:space:]]*=.*/dist_doc_DATA=/' doc/Makefile
 
 override_dh_install:
-	test ! -d debian/tmp/lib/$(DEB_HOST_MULTIARCH) ||               \
-            find debian/tmp/lib/$(DEB_HOST_MULTIARCH) -type f           \
-               -name \*.la -exec rm {} \;
 	dh_install
 	rm -f debian/flex/usr/share/doc/flex/flex.pdf
-ifneq (,$(filter libfl-dev, $(shell dh_listpackages)))
-	$(make_directory) debian/libfl-dev/usr/lib
-	sed -e 's,#DEB_HOST_MULTIARCH#,$(DEB_HOST_MULTIARCH),'           \
-           debian/libfl.shared_object > debian/libfl-dev/usr/lib/$(DEB_HOST_MULTIARCH)/libfl.so
-	ln -s libfl.a debian/libfl-dev/usr/lib/$(DEB_HOST_MULTIARCH)/libl.a
-endif
 ifneq (,$(filter flex, $(shell dh_listpackages)))
 	test ! -f debian/flex/usr/share/doc/flex/COPYING || rm -f debian/flex/usr/share/doc/flex/COPYING
 endif
