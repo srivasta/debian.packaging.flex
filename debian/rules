@@ -50,10 +50,14 @@ override_dh_auto_configure:
 	sed -i -e 's/^dist_doc_DATA[[:space:]]*=.*/dist_doc_DATA=/' doc/Makefile
 
 override_dh_install:
+	test ! -d debian/tmp/lib/$(DEB_HOST_MULTIARCH) ||                \
+            find debian/tmp/lib/$(DEB_HOST_MULTIARCH) -type f            \
+               -name \*.la -exec rm {} \;
 	dh_install
 	rm -f debian/flex/usr/share/doc/flex/flex.pdf
 ifneq (,$(filter flex, $(shell dh_listpackages)))
-	test ! -f debian/flex/usr/share/doc/flex/COPYING || rm -f debian/flex/usr/share/doc/flex/COPYING
+	test ! -f debian/flex/usr/share/doc/flex/COPYING ||              \
+            rm -f debian/flex/usr/share/doc/flex/COPYING
 endif
 	dh_link
 
@@ -61,7 +65,8 @@ endif
 override_dh_installdocs:
 	dh_installdocs
 ifneq (,$(filter flex-doc, $(shell dh_listpackages)))
-	mv debian/flex-doc/usr/share/doc/flex-doc/flex.html debian/flex-doc/usr/share/doc/flex-doc/html
+	mv debian/flex-doc/usr/share/doc/flex-doc/flex.html             \
+           debian/flex-doc/usr/share/doc/flex-doc/html
 endif
 
 override_dh_auto_build:
