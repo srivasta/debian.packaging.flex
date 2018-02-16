@@ -5,7 +5,7 @@ Section: devel
 Homepage: https://github.com/westes/flex
 Priority: optional
 Build-Depends: bison, gettext, texinfo, help2man, file, po-debconf,
-               debhelper (>= 9.20141010), dh-autoreconf, dpkg-dev (>= 1.17.14),
+               debhelper (>= 10), dh-autoreconf, dpkg-dev (>= 1.17.14),
                flex <cross>
 Build-Depends-Indep: texlive-latex-base, texlive-fonts-recommended, cm-super-minimal
 Maintainer: Manoj Srivastava <srivasta@debian.org>
@@ -45,11 +45,31 @@ Description: Documentation for flex (a fast lexical analyzer generator)
  .
  This package contains the HTML documentation for flex.
 
+Package: libfl2
+Section: libs
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Replaces: flex (<< 2.5.39), flex-old (<= 2.5.4a-10),
+          libfl-dev  (<= 2.6.4-4)
+Description: SHARED library for flex (a fast lexical analyzer generator)
+ Flex is a tool for generating scanners: programs which recognized lexical
+ patterns in text. It reads the given input files for a description of a
+ scanner to generate. The description is in the form of pairs of regular
+ expressions and C code, called rules. Flex generates as output a C source
+ file, lex.yy.c, which defines a routine yylex().  This file is compiled
+ and linked with the -lfl library to produce an executable. When the
+ executable is run, it analyzes its input for occurrences of the regular
+ expressions. Whenever it finds one, it executes the corresponding C code.
+ .
+ This package contains the shared library for flex.
+
 Package: libfl-dev
 Section: libdevel
 Architecture: any
 Multi-Arch: same
-Depends: ${misc:Depends}, ${shlibs:Depends}, flex (= ${binary:Version})
+Depends: ${misc:Depends}, flex (= ${binary:Version})
 Replaces: flex (<< 2.5.39), flex-old (<= 2.5.4a-10)
 Breaks: flex (<< 2.5.39), flex-old (<= 2.5.4a-10)
 Description: static library for flex (a fast lexical analyzer generator)

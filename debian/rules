@@ -8,6 +8,10 @@ ifeq (,$(filter nostrip,$(DEB_BUILD_OPTIONS)))
     INSTALL_PROGRAM += -s
 endif
 
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/buildflags.mk
+
 install_file	= $(INSTALL) -p	   -o root -g root  -m	644
 install_program = $(INSTALL) -p	   -o root -g root  -m	755
 install_script	= $(INSTALL) -p	   -o root -g root  -m	755
@@ -54,11 +58,19 @@ override_dh_install:
             find debian/tmp/lib/$(DEB_HOST_MULTIARCH) -type f            \
                -name \*.la -exec rm {} \;
 	dh_install
+	test ! -f debian/libfl2/usr/lib/$(DEB_HOST_MULTIARCH)/libfl.so    || \
+            rm -f debian/libfl2/usr/lib/$(DEB_HOST_MULTIARCH)/libfl.so
+	test ! -f debian/libfl2/usr/lib/$(DEB_HOST_MULTIARCH)/libfl.a    || \
+            rm -f debian/libfl2/usr/lib/$(DEB_HOST_MULTIARCH)/libfl.a
+	test ! -d debian/libfl2/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig  || \
+            rm -rf debian/libfl2/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig
+	test ! -d debian/libfl-dev/usr/lib/$(DEB_HOST_MULTIARCH)         || \
+            find debian/libfl-dev/usr/lib/$(DEB_HOST_MULTIARCH)             \
+               -name libfl.so.\* -exec rm {} \;
 	rm -f debian/flex/usr/share/doc/flex/flex.pdf
-ifneq (,$(filter flex, $(shell dh_listpackages)))
 	test ! -f debian/flex/usr/share/doc/flex/COPYING ||              \
             rm -f debian/flex/usr/share/doc/flex/COPYING
-endif
+	find debian/flex/usr/share/locale  -type d -empty -delete
 	dh_link
 
 
