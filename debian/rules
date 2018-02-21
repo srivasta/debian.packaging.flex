@@ -67,6 +67,9 @@ override_dh_install:
 	test ! -d debian/libfl-dev/usr/lib/$(DEB_HOST_MULTIARCH)         || \
             find debian/libfl-dev/usr/lib/$(DEB_HOST_MULTIARCH)             \
                -name libfl.so.\* -exec rm {} \;
+	test ! -f debian/libfl-dev/usr/lib/$(DEB_HOST_MULTIARCH)/libfl.a || \
+            ln -s libfl.a                                                   \
+                  debian/libfl-dev/usr/lib/$(DEB_HOST_MULTIARCH)/libl.a
 	rm -f debian/flex/usr/share/doc/flex/flex.pdf
 	test ! -f debian/flex/usr/share/doc/flex/COPYING ||              \
             rm -f debian/flex/usr/share/doc/flex/COPYING
@@ -77,8 +80,12 @@ override_dh_install:
 override_dh_installdocs:
 	dh_installdocs
 ifneq (,$(filter flex-doc, $(shell dh_listpackages)))
-	mv debian/flex-doc/usr/share/doc/flex-doc/flex.html             \
+	mv debian/flex-doc/usr/share/doc/flex/flex.html/    \
            debian/flex-doc/usr/share/doc/flex-doc/html
+	mv debian/flex-doc/usr/share/doc/flex/flex.pdf      \
+           debian/flex-doc/usr/share/doc/flex-doc/
+	mv debian/flex-doc/usr/share/doc/flex/README.md     \
+           debian/flex-doc/usr/share/doc/flex-doc/
 endif
 
 override_dh_auto_build:

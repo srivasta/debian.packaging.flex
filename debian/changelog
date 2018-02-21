@@ -1,3 +1,18 @@
+flex (2.6.4-6) unstable; urgency=medium
+
+  * Rolled back the feature test POSIX_C_SOURCE changes.
+  * Bug fix: "libfl-dev lost libl.a symlink", thanks to Bas Couwenberg
+    (Closes: #890608). Made sure the link actually did make it to the
+    .deb
+  * Bug fix: "Incomplete debian/copyright?", thanks to Chris Lamb (Closes:
+    #890714). Updated copyright using automation tools
+  * Bug fix: "missing dependency on libfl2", thanks to Sven Joachim
+    (Closes: #890743). Updated contreol
+  * Bug fix: "all amd64 binaries since 2.6.4-1 built with stale skel.c
+    file", thanks to James Cowgill (Closes: #890703).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Wed, 21 Feb 2018 15:25:10 -0800
+
 flex (2.6.4-5) unstable; urgency=medium
 
   * Added a new libfl2 package.
