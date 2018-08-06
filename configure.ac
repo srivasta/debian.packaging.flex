@@ -25,10 +25,12 @@
 # autoconf requirements and initialization
 
 AC_INIT([the fast lexical analyser generator],[2.6.4],[flex-help@lists.sourceforge.net],[flex])
+AC_PREREQ([2.60])
 AC_CONFIG_SRCDIR([src/scan.l])
 AC_CONFIG_AUX_DIR([build-aux])
+AC_USE_SYSTEM_EXTENSIONS
 LT_INIT
-AM_INIT_AUTOMAKE([1.11.3 -Wno-portability foreign check-news std-options dist-lzip parallel-tests subdir-objects])
+AM_INIT_AUTOMAKE([1.15 -Wno-portability foreign std-options dist-lzip parallel-tests subdir-objects])
 AC_CONFIG_HEADER([src/config.h])
 AC_CONFIG_LIBOBJ_DIR([lib])
 AC_CONFIG_MACRO_DIR([m4])
@@ -38,7 +40,7 @@ AC_SUBST(SHARED_VERSION_INFO)
 # checks for programs
 
 AM_GNU_GETTEXT([external])
-AM_GNU_GETTEXT_VERSION([0.18])
+AM_GNU_GETTEXT_VERSION([0.19.7])
 AC_PROG_YACC
 AS_IF([test "$YACC" != 'bison -y'], [
 	YACC="\${top_srcdir}/build-aux/missing bison -y"
@@ -53,6 +55,9 @@ AM_PROG_CC_C_O
 AC_PROG_LN_S
 AC_PROG_AWK
 AC_PROG_INSTALL
+
+pkgconfigdir=${libdir}/pkgconfig
+AC_SUBST(pkgconfigdir)
 
 # allow passing a variable `WARNINGFLAGS',
 #   either when invoking `configure', or when invoking `make'
@@ -87,11 +92,24 @@ AC_PATH_PROG([HELP2MAN], help2man, [\${top_srcdir}/build-aux/missing help2man])
   AS_IF([test "$HELP2MAN" = "\${top_srcdir}/build-aux/missing help2man"],
     AC_MSG_WARN(help2man: program not found: building man page will not work)
   )
+if test "$cross_compiling" = yes; then
+  FLEXexe='flex$(EXEEXT)'
+else
+  FLEXexe='$(top_builddir)/flex$(EXEEXT)'
+fi
+AC_SUBST(FLEXexe)
 
 AC_PATH_PROGS([TEXI2DVI], [gtexi2dvi texi2dvi], [\${top_srcdir}/build-aux/missing texi2dvi])
   AS_IF([test "$TEXI2DVI" = "\${top_srcdir}/build-aux/missing texi2dvi"],
     AC_MSG_WARN(texi2dvi: program not found: building pdf version of manual will not work)
   )
+
+if test "$cross_compiling" = yes; then
+FLEXexe='flex$(EXEEXT)'
+else
+FLEXexe='$(top_builddir)/src/flex$(EXEEXT)'
+fi
+AC_SUBST(FLEXexe)
 
 # Check for a m4 that supports -P
 
@@ -166,8 +184,12 @@ strtol dnl
 AC_CHECK_FUNCS([dnl
 pow dnl           Used only by "examples/manual/expr"
 setlocale dnl     Needed only if NLS is enabled
+reallocarr dnl    NetBSD function. Use reallocarray if not available.
 reallocarray dnl  OpenBSD function. We have replacement if not available.
 ])
+
+# are we ignoring tests
+AM_CONDITIONAL([SKIP_TEST], [ "$(echo $DEB_BUILD_OPTIONS | grep nocheck)" ])
 
 AC_CONFIG_FILES(
 Makefile
@@ -176,6 +198,7 @@ examples/Makefile
 examples/fastwc/Makefile
 examples/manual/Makefile
 po/Makefile.in
+src/libfl.pc
 src/Makefile
 tools/Makefile
 tests/Makefile

@@ -36,13 +36,13 @@
 /* Take note: The buffer object is sometimes used as a String buffer (one
  * continuous string), and sometimes used as a list of strings, usually line by
  * line.
- * 
+ *
  * The type is specified in buf_init by the elt_size. If the elt_size is
  * sizeof(char), then the buffer should be treated as string buffer. If the
  * elt_size is sizeof(char*), then the buffer should be treated as a list of
  * strings.
  *
- * Certain functions are only appropriate for one type or the other. 
+ * Certain functions are only appropriate for one type or the other.
  */
 
 /* global buffers. */

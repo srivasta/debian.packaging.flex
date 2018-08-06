@@ -117,7 +117,7 @@ struct yytbl_writer tableswr;
 char   *program_name = "flex";
 
 static const char outfile_template[] = "lex.%s.%s";
-static const char backing_name[] = "lex.backup";
+static const char *backing_name = "lex.backup";
 static const char tablesfile_template[] = "lex.%s.tables";
 
 /* From scan.l */
@@ -197,7 +197,7 @@ int flex_main (int argc, char *argv[])
 /* Wrapper around flex_main, so flex_main can be built as a library. */
 int main (int argc, char *argv[])
 {
-#if ENABLE_NLS
+#if defined(ENABLE_NLS) && ENABLE_NLS
 #if HAVE_LOCALE_H
 	setlocale (LC_MESSAGES, "");
         setlocale (LC_CTYPE, "");
@@ -648,6 +648,7 @@ void flexend (int exit_status)
                 "yyget_extra",
                 "yyget_in",
                 "yyget_leng",
+                "yyget_column",
                 "yyget_lineno",
                 "yyget_lloc",
                 "yyget_lval",
@@ -670,6 +671,7 @@ void flexend (int exit_status)
                 "yyset_debug",
                 "yyset_extra",
                 "yyset_in",
+                "yyset_column",
                 "yyset_lineno",
                 "yyset_lloc",
                 "yyset_lval",
@@ -994,7 +996,7 @@ void flexinit (int argc, char **argv)
     flex_init_regex();
 
 	/* Enable C++ if program name ends with '+'. */
-	program_name = basename (argv[0]);
+	program_name = argv[0];
 
 	if (program_name != NULL &&
 	    program_name[strlen (program_name) - 1] == '+')
@@ -1031,6 +1033,11 @@ void flexinit (int argc, char **argv)
 
 		case OPT_BACKUP:
 			backing_up_report = true;
+			break;
+
+		case OPT_BACKUP_FILE:
+			backing_up_report = true;
+                        backing_name = arg;
 			break;
 
 		case OPT_DONOTHING:
@@ -1201,7 +1208,7 @@ void flexinit (int argc, char **argv)
 			break;
 
 		case OPT_VERSION:
-			printf (_("%s %s\n"), program_name, flex_version);
+			printf ("%s %s\n", (C_plus_plus ? "flex++" : "flex"), flex_version);
 			FLEX_EXIT (0);
 
 		case OPT_WARN:
@@ -1393,6 +1400,14 @@ void flexinit (int argc, char **argv)
 		case OPT_NO_YYSET_LINENO:
 			//buf_strdefine (&userdef_buf, "YY_NO_SET_LINENO", "1");
             buf_m4_define( &m4defs_buf, "M4_YY_NO_SET_LINENO",0);
+			break;
+		case OPT_NO_YYGET_COLUMN:
+			//buf_strdefine (&userdef_buf, "YY_NO_GET_COLUMN", "1");
+            buf_m4_define( &m4defs_buf, "M4_YY_NO_GET_COLUMN",0);
+			break;
+		case OPT_NO_YYSET_COLUMN:
+			//buf_strdefine (&userdef_buf, "YY_NO_SET_COLUMN", "1");
+            buf_m4_define( &m4defs_buf, "M4_YY_NO_SET_COLUMN",0);
 			break;
 		case OPT_NO_YYGET_IN:
 			//buf_strdefine (&userdef_buf, "YY_NO_GET_IN", "1");
@@ -1817,7 +1832,8 @@ void usage (void)
 		  "  -t, --stdout            write scanner on stdout instead of %s\n"
 		  "      --yyclass=NAME      name of C++ class\n"
 		  "      --header-file=FILE   create a C header file in addition to the scanner\n"
-		  "      --tables-file[=FILE] write tables to FILE\n" "\n"
+		  "      --tables-file[=FILE] write tables to FILE\n"
+		  "      --backup-file=FILE  write backing-up information to FILE\n" "\n"
 		  "Scanner behavior:\n"
 		  "  -7, --7bit              generate 7-bit scanner\n"
 		  "  -8, --8bit              generate 8-bit scanner\n"
@@ -1844,6 +1860,6 @@ void usage (void)
 		  "  -?\n"
 		  "  -h, --help              produce this help message\n"
 		  "  -V, --version           report %s version\n"),
-		 backing_name, program_name, outfile_path, program_name);
+		 backing_name, "flex", outfile_path, "flex");
 
 }
