@@ -73,7 +73,9 @@ override_dh_install:
 	rm -f debian/flex/usr/share/doc/flex/flex.pdf
 	test ! -f debian/flex/usr/share/doc/flex/COPYING ||              \
             rm -f debian/flex/usr/share/doc/flex/COPYING
-	find debian/flex/usr/share/locale  -type d -empty -delete
+	if [ -d debian/flex/usr/share/locale ] ; then \
+	  find debian/flex/usr/share/locale  -type d -empty -delete ; \
+	fi
 	dh_link
 
 

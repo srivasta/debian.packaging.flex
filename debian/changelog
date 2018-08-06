@@ -1,3 +1,29 @@
+flex (2.6.4-6.2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+
+  [ Ruben Undheim ]
+  * debian/rules:
+    - Fix build with "dpkg-buildpackage -A" by checking if directory exists
+      first (Closes: #898725)
+
+  [ Niels Thykier ]
+  * debian/control:
+    - Set Rules-Requires-Root (R³) to no as flex does not need/require
+      (fake)root during package build.
+
+ -- Niels Thykier <niels@thykier.net>  Mon, 06 Aug 2018 19:40:25 +0000
+
+flex (2.6.4-6.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Bug fix: "removal of libfl2 makes files disappear from libfl-dev" (Closes:
+    #891525), add missing Breaks to match the list of packages in the Replaces
+    field and remove flex-old Breaks, that package never contained a shared
+    library.
+
+ -- Laurent Bigonville <bigon@debian.org>  Mon, 23 Apr 2018 11:53:14 +0200
+
 flex (2.6.4-6) unstable; urgency=medium
 
   * Rolled back the feature test POSIX_C_SOURCE changes.
