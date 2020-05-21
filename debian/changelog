@@ -1,3 +1,13 @@
+flex (2.6.4-7) unstable; urgency=medium
+
+  * Ack NMUS. Thanks Ruben Undheim and Niels Thykier <niels@thykier.net>
+  * Bug fix: "Embeds build paths in example Makefiles", thanks to Vagrant
+    Cascadian (Closes: #949343).
+  * Bug fix: "Embeds paths to various binaries differently on usrmerge
+    system", thanks to Vagrant Cascadian (Closes: #949342).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Wed, 20 May 2020 22:06:34 -0700
+
 flex (2.6.4-6.2) unstable; urgency=medium
 
   * Non-maintainer upload.
