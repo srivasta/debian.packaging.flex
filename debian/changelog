@@ -1,3 +1,11 @@
+flex (2.6.4-8) unstable; urgency=medium
+
+  * The source does not ship with example Makefiles, so no need to massage them.
+  * Bug fix: "binary-all FTBFS", thanks to Adrian Bunk (Closes: #961778).
+  * Movement on Bug#603787 https://github.com/westes/flex/pull/357
+
+ -- Manoj Srivastava <srivasta@debian.org>  Thu, 04 Jun 2020 22:32:05 -0700
+
 flex (2.6.4-7) unstable; urgency=medium
 
   * Ack NMUS. Thanks Ruben Undheim and Niels Thykier <niels@thykier.net>

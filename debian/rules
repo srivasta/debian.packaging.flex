@@ -80,7 +80,6 @@ override_dh_install:
 	fi
 	dh_link
 
-
 override_dh_installdocs:
 	dh_installdocs
 ifneq (,$(filter flex-doc, $(shell dh_listpackages)))
@@ -91,19 +90,6 @@ ifneq (,$(filter flex-doc, $(shell dh_listpackages)))
 	mv debian/flex-doc/usr/share/doc/flex/README.md     \
            debian/flex-doc/usr/share/doc/flex-doc/
 endif
-
-override_dh_installexamples:
-	dh_installexamples
-	# Clean up embedded build paths in order to ensure reproducible builds.
-	sed -i  -e "s,-fdebug-prefix-map=$(CURDIR)=\.,,g" \
-		-e "s,-ffile-prefix-map=$(CURDIR)=\.,,g" \
-		-e "s,abs_.*$(CURDIR).*,,g" \
-		-e "s,$(CURDIR).*missing --run,,g" \
-		-e "s,$(CURDIR),./,g" \
-		$(CURDIR)/debian/flex/usr/share/doc/flex/examples/fastwc/Makefile \
-		$(CURDIR)/debian/flex/usr/share/doc/flex/examples/manual/Makefile
-
-
 
 override_dh_auto_build:
 	dh_auto_build
